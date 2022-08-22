@@ -26,7 +26,7 @@ namespace XGStudios.MainMenu
             if (playButton != null)
             {
                 playButton.onClick.AddListener(() => {
-                    SceneManager.LoadScene($"Game");
+                    SceneManager.LoadScene($"Game Scene");
                 });
             }
             
