@@ -67,8 +67,8 @@ namespace XGStudios.GameScene
         public bool useEffects = false;
 
         // The following particle systems are used as tire smoke when the car drifts.
-        public ParticleSystem rlwParticleSystem;
-        public ParticleSystem rrwParticleSystem;
+        public GameObject rightSmoke;
+        public GameObject leftSmoke;
 
         [Header("UI")]
         [Space(10)]
@@ -189,10 +189,10 @@ namespace XGStudios.GameScene
             }
 
             if (useEffects) return;
-            if (rlwParticleSystem != null)
-                rlwParticleSystem.Stop();
-            if (rrwParticleSystem != null)
-                rrwParticleSystem.Stop();
+            if (leftSmoke != null)
+                leftSmoke.gameObject.SetActive(false);
+            if (rightSmoke != null)
+                rightSmoke.gameObject.SetActive(false);
         }
 
         void Update()
@@ -584,12 +584,12 @@ namespace XGStudios.GameScene
                         switch (isDrifting)
                         {
                             case true:
-                                rlwParticleSystem.Play();
-                                rrwParticleSystem.Play();
+                                leftSmoke.gameObject.SetActive(true);
+                                rightSmoke.gameObject.SetActive(true);
                                 break;
                             case false:
-                                rlwParticleSystem.Stop();
-                                rrwParticleSystem.Stop();
+                                leftSmoke.gameObject.SetActive(false);
+                                rightSmoke.gameObject.SetActive(false);
                                 break;
                         }
                     }
@@ -602,10 +602,10 @@ namespace XGStudios.GameScene
                     break;
                 case false:
                 {
-                    if (rlwParticleSystem != null)
-                        rlwParticleSystem.Stop();
-                    if (rrwParticleSystem != null)
-                        rrwParticleSystem.Stop();
+                    if (leftSmoke != null)
+                        leftSmoke.gameObject.SetActive(false);
+                    if (rightSmoke != null)
+                        rightSmoke.gameObject.SetActive(false);
 
                     break;
                 }
