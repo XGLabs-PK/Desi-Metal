@@ -69,10 +69,6 @@ namespace XGStudios.GameScene
         // The following particle systems are used as tire smoke when the car drifts.
         public ParticleSystem rlwParticleSystem;
         public ParticleSystem rrwParticleSystem;
-        
-        [Space(10)]
-        public TrailRenderer rlwTireSkid;
-        public TrailRenderer rrwTireSkid;
 
         [Header("UI")]
         [Space(10)]
@@ -116,6 +112,8 @@ namespace XGStudios.GameScene
         float _rlWheelSlip;
         WheelFrictionCurve _rrWheelFriction;
         float _rrWheelSlip;
+
+        bool _isGrounded;
 
         void Start()
         {
@@ -195,17 +193,14 @@ namespace XGStudios.GameScene
                 rlwParticleSystem.Stop();
             if (rrwParticleSystem != null)
                 rrwParticleSystem.Stop();
-            if (rlwTireSkid != null)
-                rlwTireSkid.emitting = false;
-            if (rrwTireSkid != null)
-                rrwTireSkid.emitting = false;
         }
 
         void Update()
         {
             //CAR DATA
+            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 3f + 0.1f);
             // We determine the speed of the car.
-            carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+            carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 80) / 1000;
             // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
             _localVelocityX = transform.InverseTransformDirection(_carRigidbody.velocity).x;
             // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
@@ -230,7 +225,7 @@ namespace XGStudios.GameScene
                 TurnRight();
             if (Input.GetKey(KeyCode.Space))
             {
-                CancelInvoke("DecelerateCar");
+                CancelInvoke(nameof(DecelerateCar));
                 _deceleratingCar = false;
                 Handbrake();
             }
@@ -240,7 +235,7 @@ namespace XGStudios.GameScene
                 ThrottleOff();
             if ((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) && !Input.GetKey(KeyCode.Space) && !_deceleratingCar)
             {
-                InvokeRepeating("DecelerateCar", 0f, 0.1f);
+                InvokeRepeating(nameof(DecelerateCar), 0f, 0.1f);
                 _deceleratingCar = true;
             }
             if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && _steeringAxis != 0f)
@@ -251,7 +246,9 @@ namespace XGStudios.GameScene
 
             // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
             AnimateWheelMeshes();
+            
         }
+        
         void RestartGame()
         {
             SceneManager.LoadScene($"Game Scene");
@@ -312,7 +309,7 @@ namespace XGStudios.GameScene
         //The following method turns the front car wheels to the left. The speed of this movement will depend on the steeringSpeed variable.
         void TurnLeft()
         {
-            _steeringAxis -= (Time.deltaTime * 10f * steeringSpeed);
+            _steeringAxis -= (Time.deltaTime * 7f * steeringSpeed);
             if (_steeringAxis < -1f)
             {
                 _steeringAxis = -1f;
@@ -325,7 +322,7 @@ namespace XGStudios.GameScene
         //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
         void TurnRight()
         {
-            _steeringAxis += (Time.deltaTime * 10f * steeringSpeed);
+            _steeringAxis += (Time.deltaTime * 7f * steeringSpeed);
             if (_steeringAxis > 1f)
             {
                 _steeringAxis = 1f;
@@ -339,8 +336,8 @@ namespace XGStudios.GameScene
         {
             _steeringAxis = _steeringAxis switch
             {
-                < 0f => _steeringAxis + (Time.deltaTime * 10f * steeringSpeed),
-                > 0f => _steeringAxis - (Time.deltaTime * 10f * steeringSpeed),
+                < 0f => _steeringAxis + (Time.deltaTime * 7f * steeringSpeed),
+                > 0f => _steeringAxis - (Time.deltaTime * 7f * steeringSpeed),
                 _ => _steeringAxis
             };
 
@@ -433,7 +430,7 @@ namespace XGStudios.GameScene
         // This method apply negative torque to the wheels in order to go backwards.
         void GoReverse()
         {
-            if (Mathf.Abs(_localVelocityX) > 2.5f)
+            if (Mathf.Abs(_localVelocityX) > 3f)
             {
                 isDrifting = true;
                 DriftCarPS();
@@ -513,7 +510,7 @@ namespace XGStudios.GameScene
                     _throttleAxis = 0f;
                 }
             }
-            _carRigidbody.velocity = _carRigidbody.velocity * (1f / (1f + (0.025f * decelerationMultiplier)));
+            _carRigidbody.velocity *= (1f / (1f + (0.025f * decelerationMultiplier)));
             // Since we want to decelerate the car, we are going to remove the torque from the wheels of the car.
             frontLeftCollider.motorTorque = 0;
             frontRightCollider.motorTorque = 0;
@@ -538,7 +535,7 @@ namespace XGStudios.GameScene
         void Handbrake()
         {
             CancelInvoke(nameof(RecoverTraction));
-            _driftingAxis = _driftingAxis + (Time.deltaTime);
+            _driftingAxis += (Time.deltaTime);
             float secureStartingPoint = _driftingAxis * _flWheelSlip * handbrakeDriftMultiplier;
 
             if (secureStartingPoint < _flWheelSlip)
@@ -600,44 +597,15 @@ namespace XGStudios.GameScene
                     {
                         Debug.LogWarning(ex);
                     }
-
-                    try
-                    {
-                        if ((isTractionLocked || Mathf.Abs(_localVelocityX) > 5f) && Mathf.Abs(carSpeed) > 12f)
-                        {
-                            rlwTireSkid.emitting = true;
-                            rrwTireSkid.emitting = true;
-                        }
-                        else
-                        {
-                            rlwTireSkid.emitting = false;
-                            rrwTireSkid.emitting = false;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.LogWarning(ex);
-                    }
+                    
 
                     break;
                 case false:
                 {
                     if (rlwParticleSystem != null)
-                    {
                         rlwParticleSystem.Stop();
-                    }
                     if (rrwParticleSystem != null)
-                    {
                         rrwParticleSystem.Stop();
-                    }
-                    if (rlwTireSkid != null)
-                    {
-                        rlwTireSkid.emitting = false;
-                    }
-                    if (rrwTireSkid != null)
-                    {
-                        rrwTireSkid.emitting = false;
-                    }
 
                     break;
                 }
