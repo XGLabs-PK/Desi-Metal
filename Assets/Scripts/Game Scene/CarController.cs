@@ -17,15 +17,8 @@ namespace XGStudios.GameScene
         public float motorDelta = 0;
         [Tooltip("How much steering to apply to the wheels. 1 is right, -1 is left, 0 is straight.")]
         public float steeringDelta = 0;
-        [Tooltip("How much boost to apply to the wheels. 1 is full boost, 0 is no boost.")]
-        public float boostDelta = 0;
         [Tooltip("Whether to apply the handbrake to the wheels.")]
         public bool applyHandbrake = false;
-        [Header("Speed boost")]
-        [Tooltip("Speed multiplier to apply when using the boost.")]
-        public float boostMaxSpeedMultiplier = 2;
-        [Tooltip("Acceleration multiplier to apply when using the boost.")]
-        public float boostAccelerationMultiplier = 2;
 
         void Awake()
         {
@@ -50,8 +43,6 @@ namespace XGStudios.GameScene
         {
             foreach (CarWheels wheel in wheels)
             {
-                wheel.setAccelerationMultiplier(Mathf.Lerp(1, boostAccelerationMultiplier, boostDelta));
-                wheel.setSpeedMultiplier(Mathf.Lerp(1, boostMaxSpeedMultiplier, boostDelta));
                 wheel.setMotor(motorDelta);
                 wheel.setSteering(steeringDelta);
                 wheel.setHandbrake(applyHandbrake);
@@ -83,11 +74,6 @@ namespace XGStudios.GameScene
             applyHandbrake = e;
         }
 
-        public void setBoost(float d)
-        {
-            boostDelta = d;
-        }
-
         public float getMotor()
         {
             return motorDelta;
@@ -101,11 +87,6 @@ namespace XGStudios.GameScene
         public bool getHandbrake()
         {
             return applyHandbrake;
-        }
-
-        public float getBoost()
-        {
-            return boostDelta;
         }
 
         public float getWheelsMaxSpin(int direction = 0)

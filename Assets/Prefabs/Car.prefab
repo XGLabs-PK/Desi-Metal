@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2145888086139506650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3524904089164911947}
+  m_Layer: 0
+  m_Name: Wheels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3524904089164911947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145888086139506650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5574541807488305107}
+  - {fileID: 5574541807100427948}
+  - {fileID: 5574541808148402720}
+  - {fileID: 5574541807785323060}
+  m_Father: {fileID: 5574541808559342386}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5574541807094293894
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +126,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541807094293894}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d224651e2928b4b86883d14118a58c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -127,8 +162,8 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5574541808843366368}
-  m_Father: {fileID: 5574541808559342386}
-  m_RootOrder: 3
+  m_Father: {fileID: 3524904089164911947}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5574541807100427947
 MonoBehaviour:
@@ -142,16 +177,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa20274ecd9d39418128b84e74abf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelRadius: 0.25
+  wheelRadius: 0.2
   wheelMass: 1
-  wheelMaterial: {fileID: 13400000, guid: 5a0135d8bfc76f9448551a1cd3562019, type: 2}
+  wheelMaterial: {fileID: 0}
   rigidbodyInterpolation: 1
   collisionDetectionMode: 2
   suspensionSpring: 500
   suspensionDamper: 50
   suspensionOffset: {x: 0, y: 0, z: 0}
   steeringEnabled: 1
-  steeringMaxAngle: 30
+  steeringMaxAngle: 15
   steeringOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -165,8 +200,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.0024414
+      value: 0.94999695
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -176,12 +211,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steeringSpring: 1000
-  steeringDamper: 20
+  steeringSpring: 700
+  steeringDamper: 50
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 8
-  motorAcceleration: 50
+  motorMaxSpeed: 15
+  motorAcceleration: 25
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -195,8 +230,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9902954
+      value: 1.0502319
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -206,7 +241,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  motorDrag: 20
+  motorDrag: 10
   handbrakeEnabled: 0
 --- !u!1 &5574541807488305108
 GameObject:
@@ -232,14 +267,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541807488305108}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: -0.5, z: 0.5}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5574541808191980713}
-  m_Father: {fileID: 5574541808559342386}
-  m_RootOrder: 2
+  m_Father: {fileID: 3524904089164911947}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5574541807488305106
 MonoBehaviour:
@@ -253,16 +288,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa20274ecd9d39418128b84e74abf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelRadius: 0.25
+  wheelRadius: 0.2
   wheelMass: 1
-  wheelMaterial: {fileID: 13400000, guid: 5a0135d8bfc76f9448551a1cd3562019, type: 2}
+  wheelMaterial: {fileID: 0}
   rigidbodyInterpolation: 1
   collisionDetectionMode: 2
   suspensionSpring: 500
   suspensionDamper: 50
   suspensionOffset: {x: 0, y: 0, z: 0}
   steeringEnabled: 1
-  steeringMaxAngle: 30
+  steeringMaxAngle: 50
   steeringOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -276,8 +311,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.0024414
+      value: 0.94999695
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -287,12 +322,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steeringSpring: 1000
-  steeringDamper: 20
+  steeringSpring: 700
+  steeringDamper: 50
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 8
-  motorAcceleration: 50
+  motorMaxSpeed: 15
+  motorAcceleration: 25
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -306,8 +341,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9902954
+      value: 1.0502319
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -317,7 +352,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  motorDrag: 20
+  motorDrag: 10
   handbrakeEnabled: 0
 --- !u!1 &5574541807785323061
 GameObject:
@@ -343,14 +378,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541807785323061}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: -0.5, z: -0.5}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5574541807094293893}
-  m_Father: {fileID: 5574541808559342386}
-  m_RootOrder: 5
+  m_Father: {fileID: 3524904089164911947}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5574541807785323059
 MonoBehaviour:
@@ -364,9 +399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa20274ecd9d39418128b84e74abf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelRadius: 0.25
+  wheelRadius: 0.2
   wheelMass: 1
-  wheelMaterial: {fileID: 13400000, guid: 5a0135d8bfc76f9448551a1cd3562019, type: 2}
+  wheelMaterial: {fileID: 0}
   rigidbodyInterpolation: 1
   collisionDetectionMode: 2
   suspensionSpring: 500
@@ -387,8 +422,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9927368
+      value: 1.049057
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -398,12 +433,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steeringSpring: 10000
-  steeringDamper: 1000
+  steeringSpring: 700
+  steeringDamper: 50
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 8
-  motorAcceleration: 50
+  motorMaxSpeed: 15
+  motorAcceleration: 25
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -417,8 +452,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9938965
+      value: 1.0497589
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -428,7 +463,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  motorDrag: 20
+  motorDrag: 10
   handbrakeEnabled: 1
 --- !u!1 &5574541807811749975
 GameObject:
@@ -521,7 +556,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541807811749975}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d224651e2928b4b86883d14118a58c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -551,14 +586,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541808148402721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: -0.5, z: -0.5}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5574541808572853857}
-  m_Father: {fileID: 5574541808559342386}
-  m_RootOrder: 4
+  m_Father: {fileID: 3524904089164911947}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5574541808148402735
 MonoBehaviour:
@@ -572,9 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa20274ecd9d39418128b84e74abf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelRadius: 0.25
+  wheelRadius: 0.2
   wheelMass: 1
-  wheelMaterial: {fileID: 13400000, guid: 5a0135d8bfc76f9448551a1cd3562019, type: 2}
+  wheelMaterial: {fileID: 0}
   rigidbodyInterpolation: 1
   collisionDetectionMode: 2
   suspensionSpring: 500
@@ -595,8 +630,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9927368
+      value: 1.049057
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -606,12 +641,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steeringSpring: 10000
-  steeringDamper: 1000
+  steeringSpring: 700
+  steeringDamper: 50
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 8
-  motorAcceleration: 50
+  motorMaxSpeed: 15
+  motorAcceleration: 25
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -625,8 +660,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9938965
+      value: 1.0497589
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -636,7 +671,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  motorDrag: 20
+  motorDrag: 10
   handbrakeEnabled: 1
 --- !u!1 &5574541808191980714
 GameObject:
@@ -729,7 +764,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541808191980714}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d224651e2928b4b86883d14118a58c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -747,7 +782,7 @@ GameObject:
   - component: {fileID: 5574541808559342384}
   - component: {fileID: 5574541808559342385}
   m_Layer: 0
-  m_Name: CAR
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,11 +801,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5574541808579480961}
+  - {fileID: 3524904089164911947}
   - {fileID: 7163140086349224621}
-  - {fileID: 5574541807488305107}
-  - {fileID: 5574541807100427948}
-  - {fileID: 5574541808148402720}
-  - {fileID: 5574541807785323060}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -788,10 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motorDelta: 0
   steeringDelta: 0
-  boostDelta: 0
   applyHandbrake: 0
-  boostMaxSpeedMultiplier: 2
-  boostAccelerationMultiplier: 2
 --- !u!114 &5574541808559342385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +954,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541808572853858}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d224651e2928b4b86883d14118a58c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -976,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f529d23ea4dd248a6002f0175f6461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyMass: 8
+  bodyMass: 5
   rigidbodyInterpolation: 1
   collisionDetectionMode: 1
   centerOfMass: {x: 0, y: 0, z: 0}
@@ -997,8 +1026,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.0012207
+      value: 0.9511719
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1025,8 +1054,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 0.9927368
+      value: 0.95047
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1127,7 +1156,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5574541808843366369}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d224651e2928b4b86883d14118a58c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1293,7 +1322,7 @@ Transform:
   - {fileID: 7163140086800154012}
   - {fileID: 7163140085094892242}
   m_Father: {fileID: 5574541808559342386}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7163140086349224620
 MonoBehaviour:
