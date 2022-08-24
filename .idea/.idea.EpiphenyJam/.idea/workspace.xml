@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60b244d4-73f6-4543-80a6-f7e6c13d9f33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/No Friction.physicMaterial" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/No Friction.physicMaterial.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Terrain.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCar.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +91,7 @@
       <workItem from="1661262463325" duration="5550000" />
       <workItem from="1661277798429" duration="839000" />
       <workItem from="1661308459457" duration="167000" />
-      <workItem from="1661347814709" duration="3705000" />
+      <workItem from="1661347814709" duration="5641000" />
     </task>
     <servers />
   </component>
