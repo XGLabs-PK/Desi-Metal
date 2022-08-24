@@ -8,6 +8,9 @@ namespace XGStudios.MainMenu
 {
     public class MainMenu : MonoBehaviour
     {
+        [Header("Strings")]
+        public string gameScene;
+        
         [Header("Menu Buttons")]
         public Button playButton;
         public Button settingsButton;
@@ -26,7 +29,7 @@ namespace XGStudios.MainMenu
             if (playButton != null)
             {
                 playButton.onClick.AddListener(() => {
-                    SceneManager.LoadScene($"Game Scene");
+                    SceneManager.LoadScene(gameScene);
                 });
             }
             
