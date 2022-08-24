@@ -50,7 +50,6 @@ namespace XGStudios.GameScene
                 float motorDelta = getInput(forwardInput) - getInput(reverseInput);
                 float steeringDelta = getInput(steerRightInput) - getInput(steerLeftInput);
                 bool handbrake = getInput(handbrakeInput) >= 0.5f;
-                float boostDelta = getInput(boostInput);
                 float respawnValue = getInput(respawnInput);
                 bool respawn = respawnValue >= 0.5f && respawnPreviousValue < 0.5f;
                 respawnPreviousValue = respawnValue;
@@ -70,7 +69,6 @@ namespace XGStudios.GameScene
                 carController.setMotor(motorDelta);
                 carController.setSteering(steeringDelta);
                 carController.setHandbrake(handbrake);
-                carController.setBoost(boostDelta);
             }
         }
 
