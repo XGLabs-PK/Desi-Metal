@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60b244d4-73f6-4543-80a6-f7e6c13d9f33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Btns 2.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Btns 2.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Halftone.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Halftone.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/MainLight.hlsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/MainLight.hlsl.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Btns.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Graphics Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Graphics Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Scene Transition.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Scene Transition.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
@@ -103,7 +108,10 @@
       <workItem from="1661386043322" duration="193000" />
       <workItem from="1661437390103" duration="93000" />
       <workItem from="1661437526805" duration="75000" />
-      <workItem from="1661437920871" duration="390000" />
+      <workItem from="1661437920871" duration="1022000" />
+      <workItem from="1661453355216" duration="790000" />
+      <workItem from="1661456544195" duration="6000" />
+      <workItem from="1661456602581" duration="917000" />
     </task>
     <servers />
   </component>
