@@ -2,6 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60b244d4-73f6-4543-80a6-f7e6c13d9f33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Media/bgBtn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/bgBtn.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/bgBtn2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/bgBtn2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/borderBtn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/borderBtn.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/borderBtn2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/borderBtn2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EpiphenyJam/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Btns.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recordings/movie_002.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +104,7 @@
       <workItem from="1661277798429" duration="839000" />
       <workItem from="1661308459457" duration="167000" />
       <workItem from="1661347814709" duration="5936000" />
+      <workItem from="1661386043322" duration="193000" />
     </task>
     <servers />
   </component>

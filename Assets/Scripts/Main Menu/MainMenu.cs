@@ -20,7 +20,6 @@ namespace XGStudios.MainMenu
         public Button playButton;
         public Button settingsButton;
         public Button creditsButton;
-        public Button aboutUsButton;
         public Button leaderBoardBtn;
         public Button quitButton;
         
@@ -30,8 +29,6 @@ namespace XGStudios.MainMenu
         public RectTransform settingsRect;
         public CanvasGroup creditsCanvas;
         public RectTransform creditsRect;
-        public CanvasGroup aboutUsCanvas;
-        public RectTransform aboutUsRect;
         public CanvasGroup leaderBoardCanvas;
         public RectTransform leaderBoardRect;
 
@@ -67,18 +64,6 @@ namespace XGStudios.MainMenu
                     creditsRect.transform.localPosition = new Vector3(0, -1000f, 0);
                     creditsRect.DOAnchorPos(new Vector2(0,0), 0.2f, false).SetEase(Ease.OutExpo);
                     creditsCanvas.DOFade(1, 0.2f);
-                });
-            }
-            
-            if (aboutUsButton != null)
-            {
-                aboutUsButton.onClick.AddListener(() => {
-                    aboutUsCanvas.alpha = 0;
-                    aboutUsCanvas.interactable = true;
-                    aboutUsCanvas.blocksRaycasts = true;
-                    aboutUsRect.transform.localPosition = new Vector3(0, -1000f, 0);
-                    aboutUsRect.DOAnchorPos(new Vector2(0,0), 0.2f, false).SetEase(Ease.OutExpo);
-                    aboutUsCanvas.DOFade(1, 0.2f);
                 });
             }
             
@@ -120,15 +105,6 @@ namespace XGStudios.MainMenu
                 creditsRect.transform.localPosition = new Vector3(0, 0, 0);
                 creditsRect.DOAnchorPos(new Vector2(0,-1000f), 0.2f, false).SetEase(Ease.OutExpo);
                 creditsCanvas.DOFade(0, 0.2f);
-            }
-            if (aboutUsCanvas.alpha != 0)
-            {
-                aboutUsCanvas.alpha = 1;
-                aboutUsCanvas.interactable = false;
-                aboutUsCanvas.blocksRaycasts = false;
-                aboutUsRect.transform.localPosition = new Vector3(0, 0, 0);
-                aboutUsRect.DOAnchorPos(new Vector2(0,-1000f), 0.2f, false).SetEase(Ease.OutExpo);
-                aboutUsCanvas.DOFade(0, 0.2f);
             }
         }
     }
