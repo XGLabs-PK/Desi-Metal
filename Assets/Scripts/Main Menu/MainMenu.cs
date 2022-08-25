@@ -3,6 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
@@ -22,15 +23,21 @@ namespace XGStudios.MainMenu
         public Button creditsButton;
         public Button leaderBoardBtn;
         public Button quitButton;
-        
+
         [Space(5f)]
         [Header("UI Panels")]
+        public CanvasGroup menuCanvas;
+        public RectTransform menuRect;
         public CanvasGroup settingsCanvas;
         public RectTransform settingsRect;
         public CanvasGroup creditsCanvas;
         public RectTransform creditsRect;
         public CanvasGroup leaderBoardCanvas;
         public RectTransform leaderBoardRect;
+
+        [Space(5f)]
+        [Header("Misc")]
+        public GameObject particles;
 
         void Start()
         {
@@ -81,7 +88,16 @@ namespace XGStudios.MainMenu
             }
             
             if (quitButton != null)
-                quitButton.onClick.AddListener(Application.Quit);
+                quitButton.onClick.AddListener(() => {
+                    menuCanvas.alpha = 1;
+                    menuCanvas.interactable = false;
+                    menuCanvas.blocksRaycasts = false;
+                    menuRect.transform.localPosition = new Vector3(0, 0, 0);
+                    menuRect.DOAnchorPos(new Vector2(0,-1000f), 0.2f, false).SetEase(Ease.OutExpo);
+                    menuCanvas.DOFade(0, 0.2f);
+                    particles.SetActive(false);
+                    Invoke(nameof(QuitGame), 1f);
+                });
         }
 
         void Update()
@@ -106,6 +122,11 @@ namespace XGStudios.MainMenu
                 creditsRect.DOAnchorPos(new Vector2(0,-1000f), 0.2f, false).SetEase(Ease.OutExpo);
                 creditsCanvas.DOFade(0, 0.2f);
             }
+        }
+
+        void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }

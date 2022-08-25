@@ -12,8 +12,13 @@ namespace XGStudios.SplashScreen
         IEnumerator Start()
         {
             yield return new WaitForSeconds(4f);
-            
             SceneManager.LoadScene("Main Menu");
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                SceneManager.LoadScene("Main Menu");
         }
     }
 }
