@@ -4,22 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - AI
+  - Car
+  - ResetDriftCollision
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Car
+  - Road
+  - BrakingGround
+  - Metal
+  - Rubber
+  - FinishZone
   - 
   - 
   - 
@@ -41,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Transition
-    uniqueID: 2266070263
     locked: 0
