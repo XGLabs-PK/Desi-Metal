@@ -11021,7 +11021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionCanvas: {fileID: 371954818}
   screenTransitionMat: {fileID: 2100000, guid: 55ec679db40e8694187cfc8fa6a6bef6, type: 2}
-  transitionTime: 3
+  transitionTime: 2
   propertyName: _Progress
   onTransitionDone:
     m_PersistentCalls:

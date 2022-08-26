@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/FullFrictionNoBounce.physicMaterial" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/FullFrictionNoBounce.physicMaterial.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Global Volume Profile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Global Volume Profile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Lighting.lighting" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Lighting.lighting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Splash Screen.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/DAY/Up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Left.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Right.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Skybox/NIGHT/Up.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/New Terrain.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/New Terrain.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/Terrain.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/Terrain.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FullFrictionNoBounce.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FullFrictionNoBounce.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Splash Screen.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Splash Screen.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/Terrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/Terrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Graphics Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Graphics Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Retro.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/Retro.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Dtz2huxNIZfWCqB5xzsHiBGn6d" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;F:\Unity Projects\DesiMetal&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="F:\Unity Projects\DesiMetal" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="" />
+      <created>1661532967528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661532967528</updated>
+      <workItem from="1661533007325" duration="458000" />
+      <workItem from="1661533654356" duration="922000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
