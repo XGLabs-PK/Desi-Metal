@@ -113,7 +113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followObject: {fileID: 0}
   stoppingDistance: 10.42
-  speed: 0.79
+  speed: 1.25
+  circleSpeed: 0.24
+  radiusAroundTarget: 17.47
+  rotationSpeed: 50.85
 --- !u!114 &2105019503504875401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,4 +130,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerptime: 4
-  spacing: 3.39
+  spacing: 6.11
