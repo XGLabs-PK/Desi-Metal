@@ -114,9 +114,19 @@ MonoBehaviour:
   followObject: {fileID: 0}
   stoppingDistance: 10.42
   speed: 1.25
-  circleSpeed: 0.24
-  radiusAroundTarget: 17.47
-  rotationSpeed: 50.85
+  circleSpeed: 0.25
+  radiusAroundTarget: 30.37
+  rotationSpeed: 72.6
+  detectionRadius: 15
+  viewAngle: 100
+  searchDelay: 0.1
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstructions:
+    serializedVersion: 2
+    m_Bits: 128
+  canSeePlayers: 0
 --- !u!114 &2105019503504875401
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,9 +21,9 @@ public class enemySwarm : MonoBehaviour
                 float distance = Vector3.Distance(go.transform.position, transform.position);
                 if (distance <= spacing) {
                     Vector3 dir = transform.position - go.transform.position;
-                    Vector3 aiDirection = (transform.position) + dir;//randomizedPlusorMinus(dir,transform.position);
+                    Vector3 aiDirection = (transform.position) + dir;
                     transform.position = Vector3.MoveTowards(transform.position, aiDirection, lerptime *Time.fixedDeltaTime);
-                    //Debug.Log(dir);
+                   
                 }
             }
         }

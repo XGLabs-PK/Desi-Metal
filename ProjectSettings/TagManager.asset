@@ -6,9 +6,8 @@ TagManager:
   tags:
   - Car
   - ResetDriftCollision
-  - Body
   - AI
-  - Enemy
+  - Body
   layers:
   - Default
   - TransparentFX
@@ -17,7 +16,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Obstruction
   - Car
   - Road
   - BrakingGround
