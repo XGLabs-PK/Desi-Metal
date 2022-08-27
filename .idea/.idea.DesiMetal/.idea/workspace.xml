@@ -2,108 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Change this terrain data with main one.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Change this terrain data with main one.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Camera.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Camera.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Recordings/movie_006.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/ConsoleProDebug.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/ConsoleProDebug.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Editor Console Pro Documentation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Editor Console Pro Documentation.pdf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Editor/ConsolePro.Editor.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Editor/ConsolePro.Editor.dll.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/ConsoleProRemoteServer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/ConsoleProRemoteServer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/BaseChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/BaseChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/ConnectionRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/ConnectionRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/INetEventListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/INetEventListener.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/Crc32cLayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/Crc32cLayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/PacketLayerBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/PacketLayerBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/XorEncryptLayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Layers/XorEncryptLayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NatPunchModule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NatPunchModule.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetConstants.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetConstants.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetDebug.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetDebug.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPacket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPacket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPacketPool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPacketPool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPeer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetPeer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetSocket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetSocket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetStatistics.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetStatistics.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetUtils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/NetUtils.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/ReliableChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/ReliableChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/SequencedChannel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/SequencedChannel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/CRC32C.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/CRC32C.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/FastBitConverter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/FastBitConverter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/INetSerializable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/INetSerializable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetDataReader.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetDataReader.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetDataWriter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetDataWriter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetPacketProcessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetPacketProcessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetSerializer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NetSerializer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NtpPacket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NtpPacket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NtpRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ConsolePro/Remote/LiteNetLib/Utils/NtpRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JimaWeaponBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/JimaWeaponBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/LightingData.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data/ReflectionProbe-0.exr.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/LightingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/LightingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/ReflectionProbe-0.exr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/ReflectionProbe-0.exr.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/WeaponController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/WeaponController.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,6 +89,7 @@
       <workItem from="1661553724392" duration="4998000" />
       <workItem from="1661617334305" duration="192000" />
       <workItem from="1661617543239" duration="7424000" />
+      <workItem from="1661632142730" duration="718000" />
     </task>
     <servers />
   </component>

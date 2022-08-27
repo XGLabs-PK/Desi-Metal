@@ -8,6 +8,7 @@ TagManager:
   - ResetDriftCollision
   - AI
   - Body
+  - Enemy
   layers:
   - Default
   - TransparentFX
