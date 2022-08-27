@@ -40,7 +40,7 @@ public struct Wheel
 		}
 	}
 
-	FXController FXController { get { return FXController.Instance; } }
+	//FXController FXController { get { return FXController.Instance; } }
 	Vector3 HitPoint;
 
 	const int SmoothValuesCount = 3;
@@ -73,7 +73,7 @@ public struct Wheel
 	{
 		UpdateTransform ();
 
-		if (WheelCollider.isGrounded && CurrentMaxSlip > SlipForGenerateParticle)
+		/*if (WheelCollider.isGrounded && CurrentMaxSlip > SlipForGenerateParticle)
 		{
 			//Emit particle.
 			var particles = FXController.GetAspahaltParticles;
@@ -97,7 +97,7 @@ public struct Wheel
 			//Set trail as free.
 			FXController.SetFreeTrail (Trail);
 			Trail = null;
-		}
+		}*/
 	}
 
 	public void UpdateTransform ()

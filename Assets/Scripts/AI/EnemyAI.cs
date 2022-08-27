@@ -16,7 +16,7 @@ namespace XGStudios.GameScene
         [SerializeField] float rotationSpeed = 1;
         private void Start()
         {
-            followObject = GameObject.FindGameObjectWithTag("Body");
+            followObject = GameObject.FindGameObjectWithTag("Car");
         }
         // Update is called once per frame
         void Update()

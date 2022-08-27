@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Car
   - ResetDriftCollision
+  - Body
+  - AI
+  - Enemy
   layers:
   - Default
   - TransparentFX
