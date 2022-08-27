@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace XGStudios.GameScene
-{
+
     
     public class EnemyAI : MonoBehaviour
     {
-        [SerializeField] GameObject followObject;
+        [SerializeField] public GameObject followObject;
         [Header("Normal AI Settings")]
         [SerializeField] float stoppingDistance;
         [SerializeField] float speed = 1;
@@ -14,10 +13,54 @@ namespace XGStudios.GameScene
         [SerializeField] float circleSpeed;
         [SerializeField] float radiusAroundTarget;
         [SerializeField] float rotationSpeed = 1;
+        [Header("Field of view")]
+        [SerializeField]  public float detectionRadius;
+        [Range(0,360)]
+        [SerializeField] public float viewAngle;
+        [SerializeField] float searchDelay = 0.1f;
+        public LayerMask playerMask;
+        public LayerMask obstructions;
+        public bool canSeePlayers;
+
         private void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Body");
+            StartCoroutine(fov());
         }
+        private IEnumerator fov() {
+            while (true) {
+                yield return new WaitForSeconds(searchDelay);
+                fieldOfviewSerch();
+            }
+        }
+
+        private void fieldOfviewSerch()
+        {
+            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, playerMask);
+            if (rangeChecks.Length != 0)
+            {
+                Transform target = rangeChecks[0].transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+                {
+                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructions))
+                    {
+                        canSeePlayers = true;
+
+                    }
+                    else
+                        canSeePlayers = false;
+                }
+                else
+                {
+                    canSeePlayers = false;
+                }
+            }
+            else if (canSeePlayers)
+                canSeePlayers = false;
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -27,17 +70,8 @@ namespace XGStudios.GameScene
             {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
             }
-            else 
+            else
             {
-                //foreach (GameObject go in myAI)
-                //{
-                //    if (go != gameObject)
-                //    {
-                //        go.transform.position = Vector3.Lerp(go.transform.position, calculatePoint(followObject.transform, radiusAroundTarget), speed * Time.deltaTime);
-                //    }
-                //}
-
-                //transform.position = Vector3.Lerp(transform.position, calculatePoint(followObject.transform,radiusAroundTarget), circleSpeed * Time.deltaTime);
                 moveToPoint(followObject.transform,radiusAroundTarget);
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed*Time.deltaTime);
             }
@@ -48,11 +82,10 @@ namespace XGStudios.GameScene
         {
             float angle = Random.Range(0, 360);
             Vector3 myPoint = new Vector3(target.position.x + (radius * Mathf.Cos(angle)), target.position.y, target.position.z + (radius * Mathf.Sin(angle)));
-            //return myPoint;
             Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
         }
 
     }
    
-}
+
 
