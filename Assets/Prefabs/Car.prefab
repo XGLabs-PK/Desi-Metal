@@ -6094,8 +6094,8 @@ MonoBehaviour:
     Spring: 0.5833333
     Damper: 0.45
     TargetPoint: 0.5
-    ForwardFriction: 0.5
-    SidewaysFriction: 0.8
+    ForwardFriction: 0.3
+    SidewaysFriction: 0.6
   m_WheelCollider: {fileID: 7401938933072103421}
   m_RB: {fileID: 7237505880633733003}
 --- !u!146 &7401938933072103421
@@ -6428,8 +6428,8 @@ MonoBehaviour:
     Spring: 0.5833333
     Damper: 0.45
     TargetPoint: 0.5
-    ForwardFriction: 0.5
-    SidewaysFriction: 0.8
+    ForwardFriction: 0.3
+    SidewaysFriction: 0.6
   m_WheelCollider: {fileID: 7402211744075684127}
   m_RB: {fileID: 7237505880633733003}
 --- !u!146 &7402211744075684127
