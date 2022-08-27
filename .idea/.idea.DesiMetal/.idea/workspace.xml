@@ -2,99 +2,286 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - ForCountdown.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - ForCountdown.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - MainTitle.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - MainTitle.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - WithOutline_For_MainMenu.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - WithOutline_For_MainMenu.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForMainMenuButtons.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForMainMenuButtons.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForStatistics SDF.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForStatistics SDF.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/New Material.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/New Material.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Documentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - ForCountdown.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - ForCountdown.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - MainTitle.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - MainTitle.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - WithOutline_For_MainMenu.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - WithOutline_For_MainMenu.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForMainMenuButtons.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForMainMenuButtons.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForStatistics SDF.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSansForStatistics SDF.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/LineBreaking Following Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_SDF.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Sprite Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Style Sheets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/TMP Settings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne Attribution.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/LightingData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/LightingData.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/ReflectionProbe-0.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game/ReflectionProbe-0.exr.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Feel/MMFeedbacks/Demos/MMFeedbacksDemo/TestScene/Lightmap-0_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Feel/MMFeedbacks/Demos/MMFeedbacksDemo/TestScene/Lightmap-0_comp_light.exr.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Documentation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Documentation.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/TMP Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/TMP Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/TMP Settings.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_SDF.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.json.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ClusterInputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ClusterInputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ACC_Lite.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Documentation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Documentation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Documentation/Documentation.pdf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Documentation/Documentation.pdf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars/SunLineGTE.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars/SunLineGTE.FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars/Wheels.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/Cars/Wheels.FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials/RoadDark.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials/RoadDark.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials/RoadDark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Materials/RoadDark.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Road.FBX.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/FBX/World/Road.FBX.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers SDF.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers.ttf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Fonts/ElectronicNumbers/ElectronicNumbers.ttf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Blue.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Blue.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Green.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Green.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Green.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Red.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/SunLineGTE_Red.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelDark.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelDark.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelDark.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelDark.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhite.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhite.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhite.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhite.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhiteMate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhiteMate.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhiteMate.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/Cars/WheelWhiteMate.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Checker.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Checker.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Checker.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Checker.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Particles01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Particles01.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Particles01.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Particles01.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Road.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Road.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Road.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/Road.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/TrailMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/TrailMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/TrailMaterial.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Materials/World/TrailMaterial.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials/ZeroFriction.physicMaterial" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials/ZeroFriction.physicMaterial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials/ZeroFriction.physicMaterial.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/PhysicsMaterials/ZeroFriction.physicMaterial.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Drift.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Drift.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Drift.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Drift.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_OldDrift.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_OldDrift.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_OldDrift.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_OldDrift.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Race.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Race.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Race.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Cars/SunLineGTE_Race.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/Camera.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/Camera.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/Camera.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/FXController.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/FXController.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/FXController.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/FXController.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/GameControllerTrack1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/GameControllerTrack1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/GameControllerTrack1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/Contreollers/GameControllerTrack1.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI/UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI/UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI/UI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/UI/UI.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World/Road.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World/Road.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World/Road.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Prefabs/World/Road.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes/Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes/Demo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes/Demo.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scenes/Demo.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CameraController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CameraController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/GameController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/GameController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/UserControl.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/UserControl.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/BodyTilt.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/BodyTilt.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarSoundController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarSoundController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarStateUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarStateUI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/FXController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/FXController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/CustomButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/CustomButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/MobileControlUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/MobileControlUI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Enums.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Enums.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/ActionExtentions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/ActionExtentions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/ArrayExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/ArrayExtensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/MaskExtentions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/MaskExtentions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/MathExtentions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/MathExtentions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/OtherExtentions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/OtherExtentions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/TransformExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/TransformExtensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/UIExtentions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Exts/UIExtentions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/ShortAccess.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/ShortAccess.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Singleton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils/Singleton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders/AlphaColorMask.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders/AlphaColorMask.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders/AlphaColorMask.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Shaders/AlphaColorMask.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/Engine3_Backfire.ogg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/Engine3_Backfire.ogg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/Engine3_Idle.ogg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/Engine3_Idle.ogg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/SlipAsphalt.ogg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sounds/SlipAsphalt.ogg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/1200x630.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/1200x630.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/512.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/512.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/ButtonArrowUpSprite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/ButtonArrowUpSprite.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/Tahometer.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/Tahometer.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/TahometerArrow.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/TahometerArrow.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/TahometerInside.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/UI/TahometerInside.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/WhitePixel.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Sprites/WhitePixel.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_Color1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_Color1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_ColorOrigin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_ColorOrigin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_ColorOrigin_WithAlpha.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_ColorOrigin_WithAlpha.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_MetallicSmoothness.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Cars/SunLineGTE/SunLineGTE_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles/Falloff.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles/Falloff.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles/Particles-01.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Particles/Particles-01.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Test.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Test.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_AlbedoTransparency.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_AlbedoTransparency.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_MetallicSmoothness.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_MetallicSmoothness.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/Wheel/Wheel_Wheel_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World/RoadDark.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World/RoadDark.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World/Road_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Textures/World/Road_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Global Volume Profile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Global Volume Profile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Test Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Test Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarBody.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarBody.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarCamera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarCollider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarCollider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarEffects.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarEffects.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarWheels.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarWheels.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/New Terrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/New Terrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/Terrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/Terrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_08236aac-9086-4982-af45-fefae23299f5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6943285c-8bcc-4799-9ab1-2b071e5714bb.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_6c7daee4-2b30-45a2-9a58-dfddfc75bfc7.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_8b84db49-c471-4ece-b5d8-b07eb2596f87.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_a511fe86-2f7c-406c-bf52-8a98bff20eb8.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_d74c66d5-5a1a-4771-be0d-d08fa62fdc00.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_db5b1171-2a33-4ac3-bdc4-afe4d199135b.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Terrain Data/TerrainData_e281309f-4060-43cc-a9bc-4020f3f4a107.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -157,7 +344,8 @@
       <updated>1661532967528</updated>
       <workItem from="1661533007325" duration="458000" />
       <workItem from="1661533654356" duration="922000" />
-      <workItem from="1661543232818" duration="639000" />
+      <workItem from="1661543232818" duration="1245000" />
+      <workItem from="1661553724392" duration="4358000" />
     </task>
     <servers />
   </component>

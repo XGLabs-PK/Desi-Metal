@@ -6,7 +6,7 @@ namespace PG_Physics.Wheel
 {
 
 	[RequireComponent (typeof (WheelCollider))]
-	public class PG_WheelCollider :MonoBehaviour
+	public class PG_WheelCollider : MonoBehaviour
 	{
 		[SerializeField, FullField] PG_WheelColliderConfig WheelConfig;
 

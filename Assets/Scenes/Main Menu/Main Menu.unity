@@ -15033,7 +15033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a0552dac07fdd4998304e0c9ad68cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: Test Scene
+  gameScene: Main Game
   leaderBoardTxt: {fileID: 1307213404}
   playButton: {fileID: 1853487465}
   settingsButton: {fileID: 1956521873}
