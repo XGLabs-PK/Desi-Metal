@@ -6,6 +6,8 @@ public class JimaCarController : MonoBehaviour
 {
     public Camera cam;
     public Rigidbody rb;
+    public Transform flatTransform;
+    [Space]
     public float transformSyncLerpFactor = 12.0f;
     [Space]
     public float speed = 10.0f;
@@ -32,7 +34,7 @@ public class JimaCarController : MonoBehaviour
 
     private float vertical = 0.0f;
     private float horizontal = 0.0f;
-    private bool forceRotate = false;
+    private bool respawn = false;
 
     private float velocity = 0.0f;
     private float turning = 0.0f;
@@ -50,7 +52,7 @@ public class JimaCarController : MonoBehaviour
         fdt = Time.fixedDeltaTime;
     }
 
-    void LateUpdate()
+    void Update()
     {
         onGround = IsGrounded();
 
@@ -58,7 +60,7 @@ public class JimaCarController : MonoBehaviour
 
         vertical = Input.GetAxisRaw("Vertical");
         horizontal = Input.GetAxisRaw("Horizontal");
-        forceRotate = Input.GetButtonDown("Jump");
+        respawn = Input.GetButtonDown("Jump");
 
         if(vertical != 0.0f && onGround)
         {
@@ -71,7 +73,7 @@ public class JimaCarController : MonoBehaviour
         }
         velocity = Mathf.Clamp(velocity, -negativeSpeed, speed);
 
-        if(horizontal != 0.0f && onGround && Mathf.Abs(velocity) > minTurnVelocity)
+        if(horizontal != 0.0f && Mathf.Abs(velocity) > minTurnVelocity && onGround)
         {
             turning += horizontal * turningAcceleration * dt;
         }
@@ -85,6 +87,14 @@ public class JimaCarController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, rb.position, transformSyncLerpFactor * dt);
         transform.rotation = Quaternion.Slerp(transform.rotation, rb.rotation, transformSyncLerpFactor * dt);
 
+        flatTransform.position = transform.position;
+        Vector3 flatRotation = transform.rotation.eulerAngles;
+        flatRotation.x = flatRotation.z = 0.0f;
+        flatTransform.rotation = Quaternion.Euler(flatRotation);
+    }
+
+    void LateUpdate()
+    {
         cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + (transform.right * cameraRelativeOffset.x) + (transform.up * cameraRelativeOffset.y) + (transform.forward * cameraRelativeOffset.z), cameraLerpFactor * dt);
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, transform.rotation, cameraLerpFactor * dt);
     }
@@ -95,16 +105,21 @@ public class JimaCarController : MonoBehaviour
 
         if(!onGround && Mathf.Abs(rb.velocity.y) < 50.0f) rb.velocity += Vector3.down * gravity * fdt;
         
-        rb.MovePosition(rb.position + (transform.forward * velocity * fdt));
+        rb.MovePosition(rb.position + ((onGround ? flatTransform.forward : rb.transform.forward) * velocity * fdt));
+
+        rb.drag = Mathf.Lerp(rb.drag, onGround ? 0.5f : 0.0f, 4.0f * fdt);
+        rb.angularDrag = Mathf.Lerp(rb.angularDrag, onGround ? 1.0f : 0.05f, 4.0f * fdt);
 
         Vector3 rotation = rb.rotation.eulerAngles;
         rotation.y += turning * fdt;
         rb.MoveRotation(Quaternion.Euler(rotation));
 
-        if(forceRotate)
+        if(respawn)
         {
-            rb.AddTorque((transform.right * -6000.0f), ForceMode.Impulse);
-            forceRotate = false;
+            rb.position += Vector3.up * 4.0f;
+            rb.rotation = Quaternion.identity;
+
+            respawn = false;
         }
     }
 
