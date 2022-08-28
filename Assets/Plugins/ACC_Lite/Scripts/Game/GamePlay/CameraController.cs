@@ -31,7 +31,7 @@ public class CameraController :Singleton<CameraController>
 			{
 				return transform.position;
 			}
-			Vector3 result = TargetCar.RB.velocity * ActivePreset.VelocityMultiplier;
+			Vector3 result = TargetCar.Rb.velocity * ActivePreset.VelocityMultiplier;
 			result += TargetCar.transform.position;
 			result.y = 0;
 			return result;

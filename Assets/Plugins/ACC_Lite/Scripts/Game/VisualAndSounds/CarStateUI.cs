@@ -40,7 +40,7 @@ public class CarStateUI :MonoBehaviour
 
 	void UpdateArrow ()
 	{
-		var procent = SelectedCar.EngineRPM / SelectedCar.GetMaxRPM;
+		var procent = SelectedCar.EngineRpm / SelectedCar.GetMaxRpm;
 		var angle = (MaxArrowAngle - MinArrowAngle) * procent + MinArrowAngle;
 		TahometerArrow.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 	}
