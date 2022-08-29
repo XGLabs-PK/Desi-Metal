@@ -12,6 +12,7 @@ namespace XGStudios.GameScene
         public Button restartButton;
         public Button quitButton;
         public Button advancedButton;
+        public Button goBackButton;
         
 
         void Start()
@@ -43,8 +44,17 @@ namespace XGStudios.GameScene
             
             if (advancedButton != null)
             {
-                advancedButton.onClick.AddListener(() => {
-                    
+                advancedButton.onClick.AddListener(() =>
+                {
+                    GameManager.Instance.AdvSettings();
+                });
+            }
+            
+            if (goBackButton != null)
+            {
+                goBackButton.onClick.AddListener(() =>
+                {
+                    GameManager.Instance.GoBack();
                 });
             }
         }

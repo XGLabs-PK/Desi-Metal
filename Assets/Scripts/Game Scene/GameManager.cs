@@ -11,6 +11,8 @@ namespace XGStudios.GameScene
         
         [Header("Pause Mode")]
         public GameObject pauseUI;
+        public GameObject pauseScreen;
+        public GameObject advSettingsScreen;
         public Animator pauseAnimator;
         
         [Space(5f)]
@@ -74,6 +76,18 @@ namespace XGStudios.GameScene
             Time.timeScale = 1f;
             camScript.enabled = true;
             weaponScript.enabled = true;
+        }
+
+        public void AdvSettings()
+        {
+            pauseScreen.gameObject.SetActive(false);
+            advSettingsScreen.gameObject.SetActive(true);
+        }
+        
+        public void GoBack()
+        {
+            pauseScreen.gameObject.SetActive(true);
+            advSettingsScreen.gameObject.SetActive(false);
         }
     }
 }
