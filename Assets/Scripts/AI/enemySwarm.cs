@@ -28,16 +28,5 @@ public class enemySwarm : MonoBehaviour
             }
         }
     }
-    Vector3 randomizedPlusorMinus(Vector3 direction,Vector3 ourPosition) {
-        float randomVar = Random.Range(0f, 1f);
-        Vector3 finalDirection;
-        if (randomVar > 0.5) {
-            finalDirection = direction + ourPosition;
-        }
-        else {
-            finalDirection = ourPosition - direction;
-        }
-
-        return finalDirection;
-    }
+ 
 }

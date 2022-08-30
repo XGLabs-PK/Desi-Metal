@@ -21,11 +21,13 @@ using UnityEngine;
         public LayerMask playerMask;
         public LayerMask obstructions;
         public bool canSeePlayers;
-    public int experimentAngle = 0;
+   
+    [SerializeField]GameObject bulletPrefab;
 
         private void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Car");
+        
             StartCoroutine(fov());
         }
         private IEnumerator fov() {
@@ -71,13 +73,17 @@ using UnityEngine;
             {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
                  transform.LookAt(followObject.transform);
-               transform.Rotate(transform.position, experimentAngle);
             }
             else
             {
                 moveToPoint(followObject.transform,radiusAroundTarget);
-                transform.RotateAround(followObject.transform.position, -Vector3.up, rotationSpeed*Time.deltaTime);
+                transform.RotateAround(followObject.transform.position, -transform.up, rotationSpeed*Time.deltaTime);
+            
             }
+        if (canSeePlayers) {
+            StartCoroutine(shoot());
+        
+        }
           
         }
        
@@ -87,6 +93,13 @@ using UnityEngine;
             Vector3 myPoint = new Vector3(target.position.x + (radius * Mathf.Cos(angle)), target.position.y, target.position.z + (radius * Mathf.Sin(angle)));
             Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
         }
+    IEnumerator shoot() {
+        canSeePlayers = false;
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        canSeePlayers = true;
+
+    }
 
     }
    

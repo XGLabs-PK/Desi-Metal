@@ -62,7 +62,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   canSeePlayers: 0
-  experimentAngle: 0
+  bulletPrefab: {fileID: 3707170685528506107, guid: d5dc3976f90ddfa4a9b06874e4180863,
+    type: 3}
 --- !u!114 &7318205257919216396
 MonoBehaviour:
   m_ObjectHideFlags: 0
