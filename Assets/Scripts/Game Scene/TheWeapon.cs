@@ -12,11 +12,9 @@ namespace XGStudios.GameScene
         public GameObject muzzleFlash;
         [Space]
         public float delay = 0.1f;
+        public AudioSource weaponAudio;
 
         float _timer;
-        
-        //20 and -50 on X
-        //20 and -20 on Z
 
         void Start()
         {
@@ -30,13 +28,16 @@ namespace XGStudios.GameScene
             muzzleFlash.SetActive(Input.GetButton("Fire1"));
             if(Input.GetButton("Fire1") && _timer <= 0f)
             {
+                weaponAudio.Play();
                 Transform firingTransform = firePoint.transform;
                 Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
                 _timer = delay;
             }
             else
+            {
+                //weaponAudio.Stop();
                 _timer -= Time.deltaTime;
-            
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent (typeof (Rigidbody))]
@@ -138,14 +139,9 @@ public class CarController :MonoBehaviour
 		_allGearsRatio[0] = ReversGearRatio * MainRatio;
 		_allGearsRatio[1] = 0;
 		for (int i = 0; i < GearsRatio.Length; i++)
-		{
 			_allGearsRatio[i + 2] = GearsRatio[i] * MainRatio;
-		}
-
 		foreach (ParticleSystem particles in BackFireParticles)
-		{
 			BackFireAction += () => particles.Emit (2);
-		}
 	}
 
 	public void UpdateControls (float horizontal, float vertical, bool handBrake)
@@ -206,9 +202,7 @@ public class CarController :MonoBehaviour
         for (int i = 0; i < Wheels.Length; i++)
 		{
             if (!_inHandBrake)
-            {
                 Wheels[i].WheelCollider.brakeTorque = _currentBrake;
-            }
 
 			Wheels[i].FixedUpdate ();
 
@@ -295,9 +289,7 @@ public class CarController :MonoBehaviour
 				EngineRpm = Mathf.Lerp (EngineRpm, GetInCutOffRpm, RpmEngineToRpmWheelsLerpSpeed * Time.fixedDeltaTime);
 			}
 			else
-			{
 				_inCutOff = false;
-			}
 		}
 
 		if (!GameController.RaceIsStarted)
@@ -314,15 +306,14 @@ public class CarController :MonoBehaviour
 				_inCutOff = true;
 				_cutOffTimer = CarConfig.CutOffTime;
 			}
+			
 			return;
 		}
 
 		//Get drive wheel with MinRPM.
 		float minRpm = 0;
 		for (int i = _firstDriveWheel + 1; i <= _lastDriveWheel; i++)
-		{
 			minRpm += Wheels[i].WheelCollider.rpm;
-		}
 
 		minRpm /= _lastDriveWheel - _firstDriveWheel + 1;
 
@@ -352,37 +343,27 @@ public class CarController :MonoBehaviour
 				float motorTorqueFromRpm = MotorTorqueFromRpmCurve.Evaluate (EngineRpm * 0.001f);
 				float motorTorque = _currentAcceleration * (motorTorqueFromRpm * (_maxMotorTorque * _allGearsRatio[CurrentGearIndex]));
 				if (Mathf.Abs (minRpm) * _allGearsRatio[CurrentGearIndex] > MaxRpm)
-				{
 					motorTorque = 0;
-				}
 
 				//If the rpm of the wheel is less than the max rpm engine * current ratio, then apply the current torque for wheel, else not torque for wheel.
 				float maxWheelRpm = _allGearsRatio[CurrentGearIndex] * EngineRpm;
 				for (int i = _firstDriveWheel; i <= _lastDriveWheel; i++)
 				{
 					if (Wheels[i].WheelCollider.rpm <= maxWheelRpm)
-					{
 						Wheels[i].WheelCollider.motorTorque = motorTorque;
-					}
 					else
-					{
 						Wheels[i].WheelCollider.motorTorque = 0;
-					}
 				}
 			}
 			else
-			{
 				_currentBrake = MaxBrakeTorque;
-			}
 		}
 		else
 		{
             _currentBrake = 0;
 
             for (int i = _firstDriveWheel; i <= _lastDriveWheel; i++)
-			{
 				Wheels[i].WheelCollider.motorTorque = 0;
-			}
 		}
 
 		//Automatic gearbox logic. 
@@ -413,22 +394,14 @@ public class CarController :MonoBehaviour
 			}
 
 			if (!Mathf.Approximately (prevRatio, 0) && !Mathf.Approximately (newRatio, 0))
-			{
 				EngineRpm = Mathf.Lerp (EngineRpm, EngineRpm * (newRatio / prevRatio), RpmEngineToRpmWheelsLerpSpeed * Time.fixedDeltaTime); //EngineRPM * (prevRatio / newRatio);// 
-			}
 
 			if (CarDirection <= 0 && _currentAcceleration < 0)
-			{
 				CurrentGear = -1;
-			}
 			else if (CurrentGear <= 0 && CarDirection >= 0 && _currentAcceleration > 0)
-			{
 				CurrentGear = 1;
-			}
 			else if (CarDirection == 0 && _currentAcceleration == 0)
-			{
 				CurrentGear = 0;
-			}
 		}
 	}
 	void PlayBackfireWithProbability ()
@@ -439,9 +412,7 @@ public class CarController :MonoBehaviour
 	void PlayBackfireWithProbability (float probability)
 	{
 		if (Random.Range (0f, 1f) <= probability)
-		{
 			BackFireAction.SafeInvoke ();
-		}
 	}
 
 	#endregion
