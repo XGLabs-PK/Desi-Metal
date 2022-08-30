@@ -21,10 +21,11 @@ using UnityEngine;
         public LayerMask playerMask;
         public LayerMask obstructions;
         public bool canSeePlayers;
+    public int experimentAngle = 0;
 
         private void Start()
         {
-            followObject = GameObject.FindGameObjectWithTag("Body");
+            followObject = GameObject.FindGameObjectWithTag("Car");
             StartCoroutine(fov());
         }
         private IEnumerator fov() {
@@ -69,11 +70,13 @@ using UnityEngine;
             if (distance >= stoppingDistance)
             {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
+                 transform.LookAt(followObject.transform);
+               transform.Rotate(transform.position, experimentAngle);
             }
             else
             {
                 moveToPoint(followObject.transform,radiusAroundTarget);
-                transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed*Time.deltaTime);
+                transform.RotateAround(followObject.transform.position, -Vector3.up, rotationSpeed*Time.deltaTime);
             }
           
         }
