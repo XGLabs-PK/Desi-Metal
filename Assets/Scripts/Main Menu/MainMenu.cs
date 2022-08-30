@@ -38,6 +38,8 @@ namespace XGStudios.MainMenu
         [Space(5f)]
         [Header("Misc")]
         public GameObject particles;
+        public Animator carAnim;
+        static readonly int StartGame = Animator.StringToHash("StartGame");
 
         void Start()
         {
@@ -46,7 +48,8 @@ namespace XGStudios.MainMenu
             if (playButton != null)
             {
                 playButton.onClick.AddListener(() => {
-                    SceneManager.LoadScene(gameScene);
+                    carAnim.SetTrigger(StartGame);
+                    Invoke(nameof(StartTheGame), 4f);
                 });
             }
             
@@ -127,6 +130,11 @@ namespace XGStudios.MainMenu
         void QuitGame()
         {
             Application.Quit();
+        }
+
+        public void StartTheGame()
+        {
+            SceneManager.LoadScene(gameScene);
         }
     }
 }

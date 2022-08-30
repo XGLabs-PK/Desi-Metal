@@ -11,8 +11,6 @@ namespace XGStudios.GameScene
         public Button resumeButton;
         public Button restartButton;
         public Button quitButton;
-        public Button advancedButton;
-        public Button goBackButton;
         
 
         void Start()
@@ -39,22 +37,6 @@ namespace XGStudios.GameScene
                 {
                     Time.timeScale = 1f;
                     SceneManager.LoadScene("Main Menu");
-                });
-            }
-            
-            if (advancedButton != null)
-            {
-                advancedButton.onClick.AddListener(() =>
-                {
-                    GameManager.Instance.AdvSettings();
-                });
-            }
-            
-            if (goBackButton != null)
-            {
-                goBackButton.onClick.AddListener(() =>
-                {
-                    GameManager.Instance.GoBack();
                 });
             }
         }

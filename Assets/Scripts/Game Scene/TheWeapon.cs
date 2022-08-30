@@ -14,6 +14,9 @@ namespace XGStudios.GameScene
         public float delay = 0.1f;
 
         float _timer;
+        
+        //20 and -50 on X
+        //20 and -20 on Z
 
         void Start()
         {
@@ -32,9 +35,8 @@ namespace XGStudios.GameScene
                 _timer = delay;
             }
             else
-            {
                 _timer -= Time.deltaTime;
-            }
+            
         }
     }
 }

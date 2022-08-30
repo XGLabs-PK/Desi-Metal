@@ -2,25 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Tire.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Tire.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DEATH.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DEATH.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathEnd.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathEnd.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathStart.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/DeathStart.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mehran.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Mehran.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuCar.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuCar.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuCarIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuCarIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Bullet.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Bullet.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/magic_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/magic_03.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheHealth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheHealth.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recordings/Desi Metal_003.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/PAUSE.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PAUSE.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseEnd.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PauseEnd.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseStart.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PauseStart.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF_White.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF_White.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/Scene Transition.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Scene Transition.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Group 7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Group 7.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Rectangle 5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Rectangle 5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Media/Muzzle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Media/Muzzle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-HeavyItalic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-HeavyItalic SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-Semibold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-Semibold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-SemiboldItalic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Feel/MMTools/Demos/MMTween/Fonts/Lato/SDF/Lato-SemiboldItalic SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mehran Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mehran Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Global Volume Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/UIStuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/UIStuff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Main Menu/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recordings/Desi Metal_002.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +136,7 @@
       <workItem from="1661700704715" duration="7070000" />
       <workItem from="1661716733746" duration="3856000" />
       <workItem from="1661796620622" duration="2020000" />
+      <workItem from="1661818627706" duration="7007000" />
     </task>
     <servers />
   </component>

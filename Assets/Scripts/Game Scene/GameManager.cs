@@ -1,19 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios.GameScene
 {
     public class GameManager : MonoBehaviour
     {
-        [HideInInspector]
         public static GameManager Instance;
         
         [Header("Pause Mode")]
         public GameObject pauseUI;
-        public GameObject pauseScreen;
-        public GameObject advSettingsScreen;
         public Animator pauseAnimator;
+        
+        [Space(5f)]
+        
+        [Header("Death Mode")]
+        public Animator deathAnim;
         
         [Space(5f)]
         
@@ -23,10 +27,14 @@ namespace XGStudios.GameScene
         [Tooltip("Scripts to disable when in Pause Mode or Car Gets Destroyed")]
         public TheWeapon weaponScript;
 
-        bool _gamePaused;
-        bool _carDestroyed;
+        [HideInInspector]
+        public bool gamePaused;
+        [HideInInspector]
+        public bool carDestroyed;
+        
         static readonly int IsPaused = Animator.StringToHash("isPaused");
         static readonly int IsResumed = Animator.StringToHash("isResumed");
+        static readonly int DeathStart = Animator.StringToHash("DeathStart");
 
         void Awake()
         {
@@ -45,20 +53,43 @@ namespace XGStudios.GameScene
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !_gamePaused)
+            if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused && !carDestroyed)
             {
                 PauseGame();
             }
-            else if (Input.GetKeyDown(KeyCode.Escape) && _gamePaused)
+            else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused && !carDestroyed)
             {
                 ResumeGame(); 
             }
+            
+            //DEBUG REMOVE IT
+            if (Input.GetKeyDown(KeyCode.C))
+                TheHealth.Instance.TakeDamage(50);
+
+            if (carDestroyed)
+            {
+                CarDestroyed();
                 
+                if (Input.GetKeyDown(KeyCode.F1))
+                {
+                    Time.timeScale = 1f;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+                else if (Input.GetKeyDown(KeyCode.F2))
+                {
+                    Time.timeScale = 1f;
+                    SceneManager.LoadScene("Main Menu");
+                }
+                else if (Input.GetKeyDown(KeyCode.F3))
+                {
+                    Application.Quit();
+                }
+            }
         }
 
         void PauseGame()
         {
-            _gamePaused = true;
+            gamePaused = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             pauseAnimator.SetTrigger(IsPaused);
@@ -69,7 +100,7 @@ namespace XGStudios.GameScene
 
         public void ResumeGame()
         {
-            _gamePaused = false;
+            gamePaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             pauseAnimator.SetTrigger(IsResumed);
@@ -78,16 +109,17 @@ namespace XGStudios.GameScene
             weaponScript.enabled = true;
         }
 
-        public void AdvSettings()
+        void CarDestroyed()
         {
-            pauseScreen.gameObject.SetActive(false);
-            advSettingsScreen.gameObject.SetActive(true);
-        }
-        
-        public void GoBack()
-        {
-            pauseScreen.gameObject.SetActive(true);
-            advSettingsScreen.gameObject.SetActive(false);
+            //Car Gets Destroyed
+            //Particles
+            //Sound
+            deathAnim.SetTrigger(DeathStart);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            camScript.enabled = false;
+            weaponScript.enabled = false;
         }
     }
 }

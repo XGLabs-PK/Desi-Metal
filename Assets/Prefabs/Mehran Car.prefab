@@ -5128,6 +5128,7 @@ GameObject:
   - component: {fileID: 834728730313233209}
   - component: {fileID: 835281448448302421}
   - component: {fileID: 801897975134547645}
+  - component: {fileID: 2465797580058974796}
   m_Layer: 8
   m_Name: Mehran
   m_TagString: Car
@@ -5373,7 +5374,19 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722398193766223341}
-  m_Enabled: 0
+  m_Enabled: 1
+--- !u!114 &2465797580058974796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722398193766223341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f57f90f02c008419b6d80ae8eb36f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &722409290509413429
 GameObject:
   m_ObjectHideFlags: 0
@@ -6620,7 +6633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4587130167369400813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
