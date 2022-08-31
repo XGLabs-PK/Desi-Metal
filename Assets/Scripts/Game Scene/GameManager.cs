@@ -10,6 +10,7 @@ namespace XGStudios.GameScene
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
+        public GameObject carPrefab;
         
         [Header("Pause Mode")]
         public GameObject pauseUI;
@@ -19,6 +20,7 @@ namespace XGStudios.GameScene
         
         [Header("Death Mode")]
         public Animator deathAnim;
+        public GameObject deathParticles;
         
         [Space(5f)]
         
@@ -47,6 +49,7 @@ namespace XGStudios.GameScene
 
         void Start()
         {
+            deathParticles.SetActive(false);
             pauseUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -113,8 +116,7 @@ namespace XGStudios.GameScene
 
         void CarDestroyed()
         {
-            //Car Gets Destroyed
-            //Particles
+            deathParticles.SetActive(true);
             //Sound
             deathAnim.SetTrigger(DeathStart);
             Cursor.lockState = CursorLockMode.None;
