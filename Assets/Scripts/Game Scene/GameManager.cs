@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Sentry;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios.GameScene
@@ -49,6 +50,7 @@ namespace XGStudios.GameScene
             pauseUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            SentrySdk.CaptureMessage("Test event");
         }
 
         void Update()
