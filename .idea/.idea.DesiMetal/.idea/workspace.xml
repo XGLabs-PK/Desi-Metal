@@ -2,40 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/Gradient.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/Gradient.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/TextureForCultus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/TextureForCultus.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/cultus.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/cultus/cultus.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/source.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/source/mmi.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/source/mmi.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/textures.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/textures/1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/textures/1.jpeg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/textures/Yes.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/minar-e-pakistan/textures/Yes.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/source.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/source/pakistan monument sketchfab.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/source/pakistan monument sketchfab.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/textures.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/textures/flag-symbolism-Pakistan-design-Islamic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/monument/textures/flag-symbolism-Pakistan-design-Islamic.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Explosion Bomb.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Explosion Bomb.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Impact.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Impact.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mehran Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mehran Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recordings/Desi Metal_003.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +106,7 @@
       <workItem from="1661897279191" duration="584000" />
       <workItem from="1661897935363" duration="2157000" />
       <workItem from="1661915587866" duration="97000" />
-      <workItem from="1661951204320" duration="3747000" />
+      <workItem from="1661951204320" duration="4344000" />
     </task>
     <servers />
   </component>
