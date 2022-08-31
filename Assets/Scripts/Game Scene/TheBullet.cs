@@ -17,16 +17,5 @@ namespace XGStudios.GameScene
         {
             transform.position += transform.forward * (speed * Time.deltaTime);
         }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Car")) return;
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-                //Decrease Enemy Health
-                //Particles
-                //Sound
-            }
-        }
     }
 }

@@ -9,6 +9,7 @@ namespace XGStudios.GameScene
         public Transform weapon;
         public GameObject bulletPrefab;
         public Transform firePoint;
+        public GameObject impactEffect;
         [Space]
         public float delay = 0.1f;
         public AudioSource weaponAudio;
@@ -24,17 +25,29 @@ namespace XGStudios.GameScene
         {
             weapon.transform.rotation = _cam.transform.rotation;
             if(Input.GetButton("Fire1") && _timer <= 0f)
-            {
-                weaponAudio.Play();
-                Transform firingTransform = firePoint.transform;
-                Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
-                _timer = delay;
-            }
+                Shoot();
             else
-            {
-                //weaponAudio.Stop();
                 _timer -= Time.deltaTime;
+        }
+
+        void Shoot()
+        {
+            Transform firingTransform = firePoint.transform;
+            Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
+            weaponAudio.Play();
+            _timer = delay;
+
+            if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
+                return;
+            if (hit.transform.CompareTag("Car")) return;
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                //Decrease Enemy Health
+                //Particles
+                //Sound
             }
+            
+            Instantiate(impactEffect, hit.point, Quaternion.identity);
         }
     }
 }
