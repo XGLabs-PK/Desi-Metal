@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Sentry;
 
 // ReSharper disable once CheckNamespace
@@ -10,7 +8,6 @@ namespace XGStudios.GameScene
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        public GameObject carPrefab;
         
         [Header("Pause Mode")]
         public GameObject pauseUI;
@@ -20,15 +17,9 @@ namespace XGStudios.GameScene
         
         [Header("Death Mode")]
         public Animator deathAnim;
-        public GameObject deathParticles;
         
-        [Space(5f)]
-        
-        [Header("Scripts Reference")]
-        [Tooltip("Scripts to disable when in Pause Mode or Car Gets Destroyed")]
-        public TheCamera camScript;
-        [Tooltip("Scripts to disable when in Pause Mode or Car Gets Destroyed")]
-        public TheWeapon weaponScript;
+        TheCamera _camScript;
+        TheWeapon _weaponScript;
 
         [HideInInspector]
         public bool gamePaused;
@@ -49,7 +40,8 @@ namespace XGStudios.GameScene
 
         void Start()
         {
-            deathParticles.SetActive(false);
+            _camScript = FindObjectOfType<TheCamera>();
+            _weaponScript = FindObjectOfType<TheWeapon>();
             pauseUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -69,7 +61,7 @@ namespace XGStudios.GameScene
             
             //DEBUG REMOVE IT
             if (Input.GetKeyDown(KeyCode.C))
-                TheHealth.Instance.TakeDamage(25);
+                TheHealth.Instance.TakeDamage(5);
 
             if (carDestroyed)
             {
@@ -99,8 +91,8 @@ namespace XGStudios.GameScene
             Cursor.visible = true;
             pauseAnimator.SetTrigger(IsPaused);
             Time.timeScale = 0f;
-            camScript.enabled = false;
-            weaponScript.enabled = false;
+            _camScript.enabled = false;
+            _weaponScript.enabled = false;
         }
 
         public void ResumeGame()
@@ -110,20 +102,18 @@ namespace XGStudios.GameScene
             Cursor.visible = false;
             pauseAnimator.SetTrigger(IsResumed);
             Time.timeScale = 1f;
-            camScript.enabled = true;
-            weaponScript.enabled = true;
+            _camScript.enabled = true;
+            _weaponScript.enabled = true;
         }
 
         void CarDestroyed()
         {
-            deathParticles.SetActive(true);
-            //Sound
             deathAnim.SetTrigger(DeathStart);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
-            camScript.enabled = false;
-            weaponScript.enabled = false;
+            _camScript.enabled = false;
+            _weaponScript.enabled = false;
         }
     }
 }

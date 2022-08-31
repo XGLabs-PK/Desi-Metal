@@ -39,15 +39,16 @@ namespace XGStudios.GameScene
 
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
                 return;
+            Instantiate(impactEffect, hit.point, Quaternion.identity);
             if (hit.transform.CompareTag("Car")) return;
             if (hit.transform.CompareTag("Enemy"))
             {
+                FeelManager.Instance.enemyDamage.PlayFeedbacks();
                 //Decrease Enemy Health
                 //Particles
                 //Sound
             }
             
-            Instantiate(impactEffect, hit.point, Quaternion.identity);
         }
     }
 }

@@ -8,9 +8,6 @@ namespace XGStudios.GameScene
     public class FeelManager : MonoBehaviour
     {
         public static FeelManager Instance;
-
-        public MMFeedbacks weaponFiring;
-        public MMFeedbacks carOnLowHealth;
         public MMFeedbacks carDamage;
         public MMFeedbacks enemyDamage;
         public MMFeedbacks carDestroyed;

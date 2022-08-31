@@ -6,6 +6,7 @@ namespace XGStudios.GameScene
     public class TheHealth : MonoBehaviour
     {
         public static TheHealth Instance;
+        public GameObject deathParticles;
 
         public int health = 100;
 
@@ -28,7 +29,6 @@ namespace XGStudios.GameScene
         {
             if (_maxHealth <= 25)
             {
-                FeelManager.Instance.carOnLowHealth.PlayFeedbacks();
                 //smoke from car
                 //Screen Grey
             }
@@ -58,10 +58,15 @@ namespace XGStudios.GameScene
         {
             if (_maxHealth == 0) return;
             
+            FeelManager.Instance.carDamage.PlayFeedbacks();
             _maxHealth -= damage;
 
             if (_maxHealth <= 0)
+            {
+                Instantiate(deathParticles, transform.position, Quaternion.identity);
+                FeelManager.Instance.carDestroyed.PlayFeedbacks();
                 GameManager.Instance.carDestroyed = true;
+            }
         }
     }
 }

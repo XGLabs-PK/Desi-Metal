@@ -14914,21 +14914,21 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
+  - {fileID: 2100000, guid: 40544a9caae519b46b8e163c30e79e5c, type: 2}
   - {fileID: -7184292951177722594, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: 4637519048616892231, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -7534965494740563588, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -4641480709187028994, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
+  - {fileID: 2100000, guid: 6f6e7c6a345900948be87ff0014480ad, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 7843615731489784175, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: 5820236662351892999, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -3910297048300210779, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -519228847297646248, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: 4006008569162626988, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: 4376495798698692818, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -983639443454985878, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -876546973899608171, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: 6745794236269559592, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
-  - {fileID: -2831527423223717487, guid: 77bac0d687c58d2448018a59379476c8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: e937d5bf37061234bba56e86c2f94f57, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: e937d5bf37061234bba56e86c2f94f57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15842,6 +15842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f57f90f02c008419b6d80ae8eb36f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathParticles: {fileID: 0}
   health: 100
 --- !u!1 &3729978309100680664
 GameObject:
@@ -16655,8 +16656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c0f0c79fd58fd45886c713e98f3790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theCar: {fileID: 3729934453344086116}
-  camHolder: {fileID: 8419889443240383753}
   sensitivity: 5
 --- !u!81 &7504012167359975830
 AudioListener:

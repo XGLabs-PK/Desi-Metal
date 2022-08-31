@@ -175,7 +175,6 @@ public class CarController :MonoBehaviour
 
 	void FixedUpdate ()
 	{
-
 		CurrentSpeed = Rb.velocity.magnitude;
 
 		UpdateSteerAngleLogic ();
@@ -280,7 +279,6 @@ public class CarController :MonoBehaviour
 
 	void UpdateRpmAndTorqueLogic ()
 	{
-
 		if (_inCutOff)
 		{
 			if (_cutOffTimer > 0)
@@ -302,7 +300,7 @@ public class CarController :MonoBehaviour
 			EngineRpm = Mathf.Lerp (EngineRpm, rpm, speed * Time.fixedDeltaTime);
 			if (EngineRpm >= CutOffRpm)
 			{
-				PlayBackfireWithProbability ();
+				PlayBackfireWithProbability();
 				_inCutOff = true;
 				_cutOffTimer = CarConfig.CutOffTime;
 			}
