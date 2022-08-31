@@ -64,7 +64,7 @@ namespace XGStudios.GameScene
             
             //DEBUG REMOVE IT
             if (Input.GetKeyDown(KeyCode.C))
-                TheHealth.Instance.TakeDamage(50);
+                TheHealth.Instance.TakeDamage(25);
 
             if (carDestroyed)
             {

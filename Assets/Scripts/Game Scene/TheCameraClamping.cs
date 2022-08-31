@@ -10,10 +10,10 @@ namespace XGStudios.GameScene
 
         void Update()
         {
-            Vector3 rot = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform);
+            /*Vector3 rot = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform);
 
             if (rot.x < clampingAngleX)
-                UnityEditor.TransformUtils.SetInspectorRotation(gameObject.transform, new Vector3(clampingAngleX, rot.y, rot.z));
+                UnityEditor.TransformUtils.SetInspectorRotation(gameObject.transform, new Vector3(clampingAngleX, rot.y, rot.z));*/
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
@@ -29,7 +28,15 @@ namespace XGStudios.GameScene
         {
             if (_maxHealth <= 25)
             {
+                FeelManager.Instance.carOnLowHealth.PlayFeedbacks();
                 //smoke from car
+                //Screen Grey
+            }
+            
+            if (_maxHealth <= 15)
+            {
+                //smoke from car
+                //Screen Dark Grey
             }
         }
 
