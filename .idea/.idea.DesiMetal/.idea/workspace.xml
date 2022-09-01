@@ -2,150 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Desert.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Desert.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_ambientOcclusion.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_ambientOcclusion.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_basecolor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_basecolor.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_height.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_height.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_normal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Desert/Stylized_Sand_001_normal.jpg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/AdvancedSettTxt.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/AdvancedSettTxt.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns 2.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns 2.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Btns.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DEATH.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DEATH.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathEnd.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathEnd.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathIdle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathIdle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathStart.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathStart.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Dropdown.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Dropdown.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeaderboardBtn.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/LeaderboardBtn.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Mehran.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Mehran.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/MenuCar.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/MenuCar.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/MenuCarIdle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/MenuCarIdle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PAUSE.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PAUSE.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseBtns.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseBtns.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseEnd.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseEnd.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseIdle.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseIdle.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseStart.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/PauseStart.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Toggle.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Toggle.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/gun_firing.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/gun_firing.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Change this terrain data with main one.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Change this terrain data with main one.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF_White.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling SDF_White.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/big_noodle_titling.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/BackLight.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/BackLight.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Bullet.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Bullet.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Dark.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Dark.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/FullFrictionNoBounce.physicMaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/FullFrictionNoBounce.physicMaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Headlight.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Headlight.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Jima2Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Jima2Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/JimaMaterial.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/JimaMaterial.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/MP.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/MP.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/No Friction.physicMaterial" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/No Friction.physicMaterial.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Prototype.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Prototype.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Retro.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Retro.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rim.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rim.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rusted.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rusted.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Scene Transition.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Scene Transition.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/White.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/White.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Windows.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Windows.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Flame.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Flame.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Muzzle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Muzzle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/flame2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/flame2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/magic_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/magic_02.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/magic_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/magic_03.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/12613.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/12613.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/MuzzleThings.blend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/MuzzleThings.blend.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Swift.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Swift.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/smoke.blend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/smoke.blend.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain 1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/New Terrain.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet Trail.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet Trail.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Impact.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Impact.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Muzzle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Muzzle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rusted Cultus.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rusted Cultus.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Enemy AI.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Enemy AI.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jima Car.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JimaVolume.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JimaVolume.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JimaVolume2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JimaVolume2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Light Data.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Models/Crate.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Models/Crate.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/PixelGlow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/PixelGlow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Terrain.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +116,7 @@
       <workItem from="1661959704622" duration="1000" />
       <workItem from="1661961453991" duration="536000" />
       <workItem from="1661975598260" duration="8078000" />
-      <workItem from="1662063850399" duration="737000" />
+      <workItem from="1662063850399" duration="5005000" />
     </task>
     <servers />
   </component>

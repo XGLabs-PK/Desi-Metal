@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8930975272560002800}
   - component: {fileID: 5503092137345124693}
   - component: {fileID: 7762550363485601183}
-  - component: {fileID: 5429396174648864757}
+  - component: {fileID: 5098826011162921784}
   m_Layer: 0
   m_Name: Rusted Cultus
   m_TagString: Untagged
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8123053495051672650}
-  m_LocalRotation: {x: -0.58487374, y: -0.023887904, z: 0.18144667, w: 0.79020834}
+  m_LocalRotation: {x: -0.584874, y: -0.023881514, z: 0.18145168, w: 0.7902072}
   m_LocalPosition: {x: 66.22397, y: 5.12, z: 114.09843}
-  m_LocalScale: {x: 1, y: 1.0079927, z: 1.0590925}
+  m_LocalScale: {x: 1, y: 1.0079927, z: 1.0590926}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,8 +92,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5429396174648864757
-BoxCollider:
+--- !u!64 &5098826011162921784
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,6 +102,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.228455, y: 3.128105, z: 2.0283532}
-  m_Center: {x: 0.12197946, y: 0.2526382, z: 0.98285717}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1707704292525421407, guid: 77bac0d687c58d2448018a59379476c8, type: 3}

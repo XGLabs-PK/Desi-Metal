@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -8,11 +9,15 @@ using Random = UnityEngine.Random;
 public class CarController :MonoBehaviour
 {
 
-	[Header("Lights")]
+	[Header("Lights & Effects")]
 	[SerializeField]
 	GameObject Headlights;
 	[SerializeField]
 	GameObject Backlights;
+	[SerializeField]
+	GameObject smokeEffect;
+	[SerializeField]
+	GameObject groundCheck;
 	[Space(10f)]
 	
 	[SerializeField] Wheel FrontLeftWheel;
@@ -101,6 +106,7 @@ public class CarController :MonoBehaviour
 	bool _backLights;
 	void Awake ()
 	{
+		smokeEffect.SetActive(false);
 		Headlights.SetActive(false);
 		Backlights.SetActive(false);
 		Rb.centerOfMass = COM.localPosition;
@@ -171,6 +177,14 @@ public class CarController :MonoBehaviour
 
 		for (int i = 0; i < Wheels.Length; i++)
 			Wheels[i].UpdateVisual ();
+
+		smokeEffect.SetActive(_rb.velocity.magnitude > 5 && IsGrounded());
+
+		if (Input.GetKeyDown(KeyCode.R) && IsGrounded())
+		{
+			transform.position = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
+			transform.rotation = Quaternion.Euler(0f, transform.rotation.y, 0f);
+		}
 	}
 
 	void FixedUpdate ()
@@ -436,6 +450,14 @@ public class CarController :MonoBehaviour
 		Gizmos.color = Color.white;
 	}
 
+	bool IsGrounded()
+	{
+		float height = .01f;
+		BoxCollider boxCollider = GetComponent<BoxCollider>();
+		Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+		Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height), Color.green);
+		return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+	}
 }
 
     [Serializable]
