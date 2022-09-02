@@ -21,7 +21,7 @@ namespace XGStudios
         void Update()
         {
             //transform.position = Vector3.Lerp(transform.position,finalPosition, bulletSpeed * Time.deltaTime);
-            if (this.gameObject != null)
+            if (enemyShootPoint != null)
                 transform.position += enemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
         }
 
@@ -31,7 +31,7 @@ namespace XGStudios
 
             if (other.gameObject.CompareTag("Car"))
                 TheHealth.Instance.TakeDamage(5);
-<<<<<<< Updated upstream
+            Destroy(transform.gameObject);
         }
 
         public void SendData(GameObject target, float displacement, Transform shotPoint)
@@ -42,10 +42,7 @@ namespace XGStudios
                 target.transform.position.z + displacement);
 
             enemyShootPoint = shotPoint;
-=======
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
->>>>>>> Stashed changes
         }
     }
-}
