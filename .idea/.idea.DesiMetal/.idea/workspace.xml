@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="" />
+    <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/MuzzleWave.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/MuzzleWave.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/MuzzleWave2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/MuzzleWave2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjGlowRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjGlowRed.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjHeadDigital.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjHeadDigital.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjTrail2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/ProjTrail2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Bullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Bullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Impact.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Impact.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TheRealEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TheRealEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,6 +125,7 @@
       <workItem from="1661961453991" duration="536000" />
       <workItem from="1661975598260" duration="8078000" />
       <workItem from="1662063850399" duration="5719000" />
+      <workItem from="1662127881312" duration="820000" />
     </task>
     <servers />
   </component>

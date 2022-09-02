@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
+  m_Name: Red 2
   m_Shader: {fileID: -6465566751694194690, guid: 80e0121f6d11aad44a3726824ef41516,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d65fa327437656c4b9c05cef8c0d0b2e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0a799a0ba1a5ba54c8b52ce562d8a1eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PatternTex:

@@ -5,7 +5,7 @@ using UnityEngine;
     
     public class EnemyAI : MonoBehaviour
     {
-        [SerializeField] public GameObject followObject;
+        [HideInInspector] [SerializeField] public GameObject followObject;
         [Header("Normal AI Settings")]
         [SerializeField] float stoppingDistance;
         [SerializeField] float speed = 1;

@@ -34343,7 +34343,7 @@ GameObject:
   - component: {fileID: 9170987790122023907}
   - component: {fileID: 4645751048405157503}
   m_Layer: 0
-  m_Name: Impact
+  m_Name: Car Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
