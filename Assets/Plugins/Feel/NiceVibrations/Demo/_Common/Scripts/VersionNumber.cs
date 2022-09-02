@@ -12,7 +12,7 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Awake()
         {
-            _text = this.gameObject.GetComponent<Text>();
+            _text = gameObject.GetComponent<Text>();
         }
 
         protected virtual void Start()

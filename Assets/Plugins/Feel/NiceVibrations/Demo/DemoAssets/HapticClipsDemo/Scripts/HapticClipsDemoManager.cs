@@ -13,7 +13,6 @@ namespace Lofelt.NiceVibrations
         public HapticClip HapticClip;
         public Sprite AssociatedSprite;
         public AudioSource AssociatedSound;
-
     }
 
     public class HapticClipsDemoManager : DemoManager
@@ -72,10 +71,9 @@ namespace Lofelt.NiceVibrations
         void OnDisable()
         {
             HapticController.PlaybackStopped -= OnHapticsStopped;
+
             if (HapticController.IsPlaying())
-            {
                 HapticController.Stop();
-            }
         }
 
         void OnEnable()
@@ -87,10 +85,7 @@ namespace Lofelt.NiceVibrations
         void OnApplicationFocus(bool hasFocus)
         {
             if (hasFocus)
-            {
                 StartCoroutine(BackToIdle());
-            }
         }
-
     }
 }

@@ -3,30 +3,35 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace EnhancedHierarchy.Icons {
-    public sealed class Warnings : IconBase {
-
-        private const int MAX_STRING_LEN = 750;
-        private const float ICONS_WIDTH = 16f;
+namespace EnhancedHierarchy.Icons
+{
+    public sealed class Warnings : IconBase
+    {
+        const int MAX_STRING_LEN = 750;
+        const float ICONS_WIDTH = 16f;
 
         public static StringBuilder goLogs = new StringBuilder(MAX_STRING_LEN);
         public static StringBuilder goWarnings = new StringBuilder(MAX_STRING_LEN);
         public static StringBuilder goErrors = new StringBuilder(MAX_STRING_LEN);
-        private static readonly GUIContent tempTooltipContent = new GUIContent();
+        static readonly GUIContent tempTooltipContent = new GUIContent();
 
-        private LogEntry log;
-        private LogEntry warning;
-        private LogEntry error;
+        LogEntry log;
+        LogEntry warning;
+        LogEntry error;
 
-        public override string Name { get { return "Logs, Warnings and Errors"; } }
-        public override float Width {
-            get {
-                var result = 0f;
+        public override string Name => "Logs, Warnings and Errors";
+        public override float Width
+        {
+            get
+            {
+                float result = 0f;
 
                 if (goLogs.Length > 0)
                     result += ICONS_WIDTH;
+
                 if (goWarnings.Length > 0)
                     result += ICONS_WIDTH;
+
                 if (goErrors.Length > 0)
                     result += ICONS_WIDTH;
 
@@ -34,11 +39,12 @@ namespace EnhancedHierarchy.Icons {
             }
         }
 
-        public override Texture2D PreferencesPreview { get { return Styles.warningIcon; } }
+        public override Texture2D PreferencesPreview => Styles.warningIcon;
 
         //public override string PreferencesTooltip { get { return "Some tag for the tooltip here"; } }
 
-        public override void Init() {
+        public override void Init()
+        {
             if (!EnhancedHierarchy.IsGameObject)
                 return;
 
@@ -53,16 +59,19 @@ namespace EnhancedHierarchy.Icons {
             var contextEntries = (List<LogEntry>)null;
             var components = EnhancedHierarchy.Components;
 
-            for (var i = 0; i < components.Count; i++)
+            for (int i = 0; i < components.Count; i++)
                 if (!components[i])
                     goWarnings.AppendLine("Missing MonoBehaviour\n");
 
-            foreach (var entry in LogEntry.compileEntries
-                    .Where(entry => entry.ClassType != null)
-                    .Where(entry => EnhancedHierarchy.Components
-                        .Any(comp => comp && (comp.GetType() == entry.ClassType || comp.GetType().IsAssignableFrom(entry.ClassType))))) {
+            foreach (LogEntry entry in LogEntry.compileEntries
+                         .Where(entry => entry.ClassType != null)
+                         .Where(entry => EnhancedHierarchy.Components
+                             .Any(comp =>
+                                 comp && (comp.GetType() == entry.ClassType ||
+                                          comp.GetType().IsAssignableFrom(entry.ClassType)))))
+            {
 
-                var isWarning = entry.HasMode(EntryMode.ScriptCompileWarning | EntryMode.AssetImportWarning);
+                bool isWarning = entry.HasMode(EntryMode.ScriptCompileWarning | EntryMode.AssetImportWarning);
 
                 if (goWarnings.Length < MAX_STRING_LEN && isWarning)
                     goWarnings.AppendLine(entry.ToString());
@@ -72,18 +81,22 @@ namespace EnhancedHierarchy.Icons {
 
                 if (isWarning && warning == null && !string.IsNullOrEmpty(entry.File))
                     warning = entry;
+
                 if (!isWarning && error == null && !string.IsNullOrEmpty(entry.File))
                     error = entry;
 
             }
 
             if (LogEntry.gameObjectEntries.TryGetValue(EnhancedHierarchy.CurrentGameObject, out contextEntries))
-                for (var i = 0; i < contextEntries.Count; i++) {
+                for (int i = 0; i < contextEntries.Count; i++)
+                {
 
-                    var entry = contextEntries[i];
-                    var isLog = entry.HasMode(EntryMode.ScriptingLog);
-                    var isWarning = entry.HasMode(EntryMode.ScriptingWarning);
-                    var isError = entry.HasMode(EntryMode.ScriptingError | EntryMode.ScriptingException | EntryMode.ScriptingAssertion);
+                    LogEntry entry = contextEntries[i];
+                    bool isLog = entry.HasMode(EntryMode.ScriptingLog);
+                    bool isWarning = entry.HasMode(EntryMode.ScriptingWarning);
+
+                    bool isError = entry.HasMode(EntryMode.ScriptingError | EntryMode.ScriptingException |
+                                                 EntryMode.ScriptingAssertion);
 
                     if (isLog && goLogs.Length < MAX_STRING_LEN)
                         goLogs.AppendLine(entry.ToString());
@@ -96,8 +109,10 @@ namespace EnhancedHierarchy.Icons {
 
                     if (isLog && log == null && !string.IsNullOrEmpty(entry.File))
                         log = entry;
+
                     if (isWarning && warning == null && !string.IsNullOrEmpty(entry.File))
                         warning = entry;
+
                     if (isError && error == null && !string.IsNullOrEmpty(entry.File))
                         error = entry;
 
@@ -105,8 +120,9 @@ namespace EnhancedHierarchy.Icons {
 
         }
 
-        public override void DoGUI(Rect rect) {
-            if ((!EnhancedHierarchy.IsRepaintEvent && !Preferences.OpenScriptsOfLogs) || !EnhancedHierarchy.IsGameObject)
+        public override void DoGUI(Rect rect)
+        {
+            if (!EnhancedHierarchy.IsRepaintEvent && !Preferences.OpenScriptsOfLogs || !EnhancedHierarchy.IsGameObject)
                 return;
 
             rect.xMax = rect.xMin + 17f;
@@ -118,7 +134,8 @@ namespace EnhancedHierarchy.Icons {
 
         }
 
-        private void DoSingleGUI(ref Rect rect, StringBuilder str, Texture2D icon, LogEntry entry) {
+        void DoSingleGUI(ref Rect rect, StringBuilder str, Texture2D icon, LogEntry entry)
+        {
             if (str.Length == 0)
                 return;
 
@@ -133,6 +150,5 @@ namespace EnhancedHierarchy.Icons {
 
             rect.x += ICONS_WIDTH;
         }
-
     }
 }

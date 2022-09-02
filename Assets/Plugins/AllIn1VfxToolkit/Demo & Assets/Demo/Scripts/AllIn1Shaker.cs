@@ -5,25 +5,30 @@ namespace AllIn1VfxToolkit.Demo.Scripts
 {
     public class AllIn1Shaker : MonoBehaviour
     {
-        [SerializeField] Vector3 maximumTranslationShake = Vector3.one;
-        [SerializeField] Vector3 maximumAngularShake = Vector3.one * 15;
-        [SerializeField] float shakeFrequency = 25;
-        [SerializeField] float shakeSmoothingExponent = 1;
-        [SerializeField] float shakeRecoverPerSecond = 1;
+        [SerializeField]
+        Vector3 maximumTranslationShake = Vector3.one;
+        [SerializeField]
+        Vector3 maximumAngularShake = Vector3.one * 15;
+        [SerializeField]
+        float shakeFrequency = 25;
+        [SerializeField]
+        float shakeSmoothingExponent = 1;
+        [SerializeField]
+        float shakeRecoverPerSecond = 1;
 
         public static AllIn1Shaker i;
-        private float currentShakeAmount;
-        private float seed;
+        float currentShakeAmount;
+        float seed;
 
-        private void Awake()
+        void Awake()
         {
             if (i != null && i != this) Destroy(gameObject);
-            else  i = this;
-            
+            else i = this;
+
             seed = Random.value;
         }
 
-        private void Update()
+        void Update()
         {
             float shake = SmoothShakeToApply();
             ShakePosition(shake);
@@ -31,13 +36,13 @@ namespace AllIn1VfxToolkit.Demo.Scripts
             currentShakeAmount = Mathf.Clamp01(currentShakeAmount - shakeRecoverPerSecond * Time.deltaTime);
         }
 
-        private float SmoothShakeToApply()
+        float SmoothShakeToApply()
         {
             float shake = Mathf.Pow(currentShakeAmount, shakeSmoothingExponent);
             return shake;
         }
 
-        private void ShakeRotation(float shake)
+        void ShakeRotation(float shake)
         {
             transform.localRotation = Quaternion.Euler(new Vector3(
                 maximumAngularShake.x * (Mathf.PerlinNoise(seed + 3, Time.time * shakeFrequency) * 2 - 1),
@@ -46,7 +51,7 @@ namespace AllIn1VfxToolkit.Demo.Scripts
             ) * shake);
         }
 
-        private void ShakePosition(float shake)
+        void ShakePosition(float shake)
         {
             transform.localPosition = new Vector3(
                 maximumTranslationShake.x * (Mathf.PerlinNoise(seed, Time.time * shakeFrequency) * 2 - 1),

@@ -7,28 +7,25 @@ using UnityEngine.Rendering;
 
 namespace MoreMountains.Tools
 {
-	[CustomEditor(typeof(MMPlaylist))]
-	[CanEditMultipleObjects]
+    [CustomEditor(typeof(MMPlaylist))]
+    [CanEditMultipleObjects]
+    /// <summary>
+    /// A custom editor that displays the current state of a playlist when the game is running
+    /// </summary>
+    public class MMPlaylistEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
-	/// <summary>
-	/// A custom editor that displays the current state of a playlist when the game is running
-	/// </summary>
-	public class MMPlaylistEditor : Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
+            MMPlaylist playlist = (MMPlaylist)target;
 
-			MMPlaylist playlist = (MMPlaylist)target;
+            DrawDefaultInspector();
 
-			DrawDefaultInspector();
+            if (playlist.PlaylistState != null)
+                EditorGUILayout.LabelField("Current State", playlist.PlaylistState.CurrentState.ToString());
 
-			if (playlist.PlaylistState != null)
-			{
-				EditorGUILayout.LabelField("Current State", playlist.PlaylistState.CurrentState.ToString());
-			}
-
-			serializedObject.ApplyModifiedProperties();
-		}
-	}
+            serializedObject.ApplyModifiedProperties();
+        }
+    }
 }

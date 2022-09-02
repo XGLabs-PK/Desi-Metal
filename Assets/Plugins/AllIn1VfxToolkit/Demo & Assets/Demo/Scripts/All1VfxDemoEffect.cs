@@ -10,26 +10,32 @@ namespace AllIn1VfxToolkit.Demo.Scripts
         public bool canBePlayedAgain = true;
         public float randomSpreadRadius;
         public float cooldown = 0.25f;
-        
-        [Space, Header("Chooses between Static Effect and Shoot Projectile")]
+
+        [Space]
+        [Header("Chooses between Static Effect and Shoot Projectile")]
         public bool isShootProjectile;
-        
-        [Space, Header("Static Effect Property")]
+
+        [Space]
+        [Header("Static Effect Property")]
         public GameObject effectPrefab;
         public bool spawnTouchingFloor;
-        
-        [Space, Header("Shoot Projectile Properties")]
+
+        [Space]
+        [Header("Shoot Projectile Properties")]
         public float projectileSpeed = 15f;
         public GameObject projectilePrefab;
         public GameObject muzzleFlashPrefab;
         public GameObject impactPrefab;
-        
-        [Space, Header("Camera Shake")]
+
+        [Space]
+        [Header("Camera Shake")]
         public bool doCameraShake;
         public float mainEffectShakeAmount = 1f;
-        [Header("Only if Shoot Projectile")] public float projectileImpactShakeAmount = 1f;
-        
-        [Space, Header("Other Properties")]
+        [Header("Only if Shoot Projectile")]
+        public float projectileImpactShakeAmount = 1f;
+
+        [Space]
+        [Header("Other Properties")]
         public Vector3 positionOffset;
         public float scaleMultiplier = 1f;
     }

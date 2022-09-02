@@ -4,16 +4,17 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     /// <summary>
     /// Log Entries from the console, to check if a game object has any errors or warnings.
     /// </summary>
-    public sealed class LogEntry {
+    public sealed class LogEntry
+    {
+        const double UPDATE_FREQUENCY = 0.75; // Every 750ms
 
-        private const double UPDATE_FREQUENCY = 0.75; // Every 750ms
-
-        private static readonly Type logEntriesType;
-        private static readonly Type logEntryType;
+        static readonly Type logEntriesType;
+        static readonly Type logEntryType;
 
         public int RowIndex { get; private set; }
         public string Condition { get; private set; }
@@ -28,51 +29,67 @@ namespace EnhancedHierarchy {
         public MonoScript Script { get; private set; }
         public Type ClassType { get; private set; }
 
-        public static Dictionary<GameObject, List<LogEntry>> gameObjectEntries = new Dictionary<GameObject, List<LogEntry>>(100);
+        public static Dictionary<GameObject, List<LogEntry>> gameObjectEntries =
+            new Dictionary<GameObject, List<LogEntry>>(100);
         public static List<LogEntry> compileEntries = new List<LogEntry>(100);
 
-        private static int lastCount;
-        private static bool entriesDirty;
-        private static bool lastCompileFailedState;
-        private static double lastUpdatedTime;
-        private static readonly Icons.Warnings warnings = new Icons.Warnings();
+        static int lastCount;
+        static bool entriesDirty;
+        static bool lastCompileFailedState;
+        static double lastUpdatedTime;
+        static readonly Icons.Warnings warnings = new Icons.Warnings();
 
-        static LogEntry() {
-            try {
+        static LogEntry()
+        {
+            try
+            {
                 logEntriesType = ReflectionHelper.FindType("UnityEditorInternal.LogEntries");
                 logEntryType = ReflectionHelper.FindType("UnityEditorInternal.LogEntry");
 
                 if (logEntriesType == null)
                     logEntriesType = ReflectionHelper.FindType("UnityEditor.LogEntries");
+
                 if (logEntryType == null)
                     logEntryType = ReflectionHelper.FindType("UnityEditor.LogEntry");
 
                 ReloadReferences();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(new Icons.Warnings());
             }
 
             Application.logMessageReceived += (logString, stackTrace, type) => MarkEntriesDirty();
 
-            EditorApplication.update += () => {
-                try {
-                    #if UNITY_2017_1_OR_NEWER
-                    if (!entriesDirty && EditorUtility.scriptCompilationFailed != lastCompileFailedState) {
+            EditorApplication.update += () =>
+            {
+                try
+                {
+#if UNITY_2017_1_OR_NEWER
+                    if (!entriesDirty && EditorUtility.scriptCompilationFailed != lastCompileFailedState)
+                    {
                         lastCompileFailedState = EditorUtility.scriptCompilationFailed;
                         MarkEntriesDirty();
                     }
-                    #endif
+#endif
 
-                    if (EditorApplication.timeSinceStartup - lastUpdatedTime > UPDATE_FREQUENCY) {
+                    if (EditorApplication.timeSinceStartup - lastUpdatedTime > UPDATE_FREQUENCY)
+                    {
 
-                        if (!entriesDirty) {
-                            var currentCount = GetLogCount();
-                            if (lastCount > currentCount) { // Console possibly cleared
+                        if (!entriesDirty)
+                        {
+                            int currentCount = GetLogCount();
+
+                            if (lastCount > currentCount)
+                            {
+                                // Console possibly cleared
                                 if (Preferences.DebugEnabled)
                                     Debug.Log("Detected console clear");
+
                                 MarkEntriesDirty();
                             }
+
                             lastCount = currentCount;
                         }
 
@@ -80,14 +97,17 @@ namespace EnhancedHierarchy {
                             ReloadReferences();
 
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     Debug.LogException(e);
                     Preferences.ForceDisableButton(new Icons.Warnings());
                 }
             };
         }
 
-        private LogEntry(object nativeEntry, int rowIndex) {
+        LogEntry(object nativeEntry, int rowIndex)
+        {
             RowIndex = rowIndex;
 
             if (nativeEntry.HasField("condition"))
@@ -120,12 +140,14 @@ namespace EnhancedHierarchy {
                 ClassType = Script.GetClass();
         }
 
-        public static void MarkEntriesDirty() {
+        public static void MarkEntriesDirty()
+        {
             if (!entriesDirty && Preferences.Enabled && Preferences.IsButtonEnabled(warnings))
                 entriesDirty = true;
         }
 
-        private static void ReloadReferences() {
+        static void ReloadReferences()
+        {
 
             if (Preferences.DebugEnabled)
                 Debug.Log("Reloading Logs References");
@@ -133,18 +155,21 @@ namespace EnhancedHierarchy {
             gameObjectEntries.Clear();
             compileEntries.Clear();
 
-            try {
-                var count = logEntriesType.InvokeStaticMethod<int>("StartGettingEntries");
-                var nativeEntry = Activator.CreateInstance(logEntryType);
+            try
+            {
+                int count = logEntriesType.InvokeStaticMethod<int>("StartGettingEntries");
+                object nativeEntry = Activator.CreateInstance(logEntryType);
 
-                for (var i = 0; i < count; i++) {
+                for (int i = 0; i < count; i++)
+                {
                     logEntriesType.InvokeStaticMethod("GetEntryInternal", i, nativeEntry);
 
-                    var proxyEntry = new LogEntry(nativeEntry, i);
-                    var go = proxyEntry.ObjectReference as GameObject;
+                    LogEntry proxyEntry = new LogEntry(nativeEntry, i);
+                    GameObject go = proxyEntry.ObjectReference as GameObject;
 
-                    if (proxyEntry.ObjectReference && !go) {
-                        var component = proxyEntry.ObjectReference as Component;
+                    if (proxyEntry.ObjectReference && !go)
+                    {
+                        Component component = proxyEntry.ObjectReference as Component;
 
                         if (component)
                             go = component.gameObject;
@@ -163,31 +188,38 @@ namespace EnhancedHierarchy {
                 }
 
                 EditorApplication.RepaintHierarchyWindow();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(new Icons.Warnings());
-            } finally {
+            }
+            finally
+            {
                 entriesDirty = false;
                 lastUpdatedTime = EditorApplication.timeSinceStartup;
                 logEntriesType.InvokeStaticMethod("EndGettingEntries");
             }
         }
 
-        public bool HasMode(EntryMode toCheck) {
+        public bool HasMode(EntryMode toCheck)
+        {
             return (Mode & toCheck) != 0;
         }
 
-        public void OpenToEdit() {
+        public void OpenToEdit()
+        {
             logEntriesType.InvokeStaticMethod("RowGotDoubleClicked", RowIndex);
         }
 
-        private static int GetLogCount() {
+        static int GetLogCount()
+        {
             return logEntriesType.InvokeStaticMethod<int>("GetCount");
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return Condition;
         }
-
     }
 }

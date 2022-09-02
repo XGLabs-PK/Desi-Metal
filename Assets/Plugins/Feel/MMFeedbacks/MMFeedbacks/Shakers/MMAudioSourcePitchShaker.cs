@@ -5,183 +5,193 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to an AudioSource to shake its pitch remapped along a curve 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioSourcePitchShaker")]
-	[RequireComponent(typeof(AudioSource))]
-	public class MMAudioSourcePitchShaker : MMShaker
-	{
-		[MMInspectorGroup("Pitch", true, 57)]
-		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
-		public bool RelativePitch = false;
-		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakePitch = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
-		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
-		[Range(-3f, 3f)]
-		public float RemapPitchZero = 0f;
-		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
-		[Range(-3f, 3f)]
-		public float RemapPitchOne = 1f;
+    /// <summary>
+    /// Add this to an AudioSource to shake its pitch remapped along a curve 
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioSourcePitchShaker")]
+    [RequireComponent(typeof(AudioSource))]
+    public class MMAudioSourcePitchShaker : MMShaker
+    {
+        [MMInspectorGroup("Pitch", true, 57)]
+        /// whether or not to add to the initial value
+        [Tooltip("whether or not to add to the initial value")]
+        public bool RelativePitch = false;
+        /// the curve used to animate the intensity value on
+        [Tooltip("the curve used to animate the intensity value on")]
+        public AnimationCurve ShakePitch =
+            new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
+        /// the value to remap the curve's 0 to
+        [Tooltip("the value to remap the curve's 0 to")]
+        [Range(-3f, 3f)]
+        public float RemapPitchZero = 0f;
+        /// the value to remap the curve's 1 to
+        [Tooltip("the value to remap the curve's 1 to")]
+        [Range(-3f, 3f)]
+        public float RemapPitchOne = 1f;
 
-		/// the audio source to pilot
-		protected AudioSource _targetAudioSource;
-		protected float _initialPitch;
-		protected float _originalShakeDuration;
-		protected bool _originalRelativePitch;
-		protected AnimationCurve _originalShakePitch;
-		protected float _originalRemapPitchZero;
-		protected float _originalRemapPitchOne;
+        /// the audio source to pilot
+        protected AudioSource _targetAudioSource;
+        protected float _initialPitch;
+        protected float _originalShakeDuration;
+        protected bool _originalRelativePitch;
+        protected AnimationCurve _originalShakePitch;
+        protected float _originalRemapPitchZero;
+        protected float _originalRemapPitchOne;
 
-		/// <summary>
-		/// On init we initialize our values
-		/// </summary>
-		protected override void Initialization()
-		{
-			base.Initialization();
-			_targetAudioSource = this.gameObject.GetComponent<AudioSource>();
-		}
-               
-		/// <summary>
-		/// When that shaker gets added, we initialize its shake duration
-		/// </summary>
-		protected virtual void Reset()
-		{
-			ShakeDuration = 2f;
-		}
+        /// <summary>
+        /// On init we initialize our values
+        /// </summary>
+        protected override void Initialization()
+        {
+            base.Initialization();
+            _targetAudioSource = gameObject.GetComponent<AudioSource>();
+        }
 
-		/// <summary>
-		/// Shakes values over time
-		/// </summary>
-		protected override void Shake()
-		{
-			float newPitch = ShakeFloat(ShakePitch, RemapPitchZero, RemapPitchOne, RelativePitch, _initialPitch);
-			_targetAudioSource.pitch = newPitch;
-		}
+        /// <summary>
+        /// When that shaker gets added, we initialize its shake duration
+        /// </summary>
+        protected virtual void Reset()
+        {
+            ShakeDuration = 2f;
+        }
 
-		/// <summary>
-		/// Collects initial values on the target
-		/// </summary>
-		protected override void GrabInitialValues()
-		{
-			_initialPitch = _targetAudioSource.pitch;
-		}
+        /// <summary>
+        /// Shakes values over time
+        /// </summary>
+        protected override void Shake()
+        {
+            float newPitch = ShakeFloat(ShakePitch, RemapPitchZero, RemapPitchOne, RelativePitch, _initialPitch);
+            _targetAudioSource.pitch = newPitch;
+        }
 
-		/// <summary>
-		/// When we get the appropriate event, we trigger a shake
-		/// </summary>
-		/// <param name="pitchCurve"></param>
-		/// <param name="duration"></param>
-		/// <param name="amplitude"></param>
-		/// <param name="relativePitch"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <param name="channel"></param>
-		public virtual void OnMMAudioSourcePitchShakeEvent(AnimationCurve pitchCurve, float duration, float remapMin, float remapMax, bool relativePitch = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
-		{
-			if (!CheckEventAllowed(channel) || (!Interruptible && Shaking))
-			{
-				return;
-			}
-            
-			if (stop)
-			{
-				Stop();
-				return;
-			}
-            
-			_resetShakerValuesAfterShake = resetShakerValuesAfterShake;
-			_resetTargetValuesAfterShake = resetTargetValuesAfterShake;
+        /// <summary>
+        /// Collects initial values on the target
+        /// </summary>
+        protected override void GrabInitialValues()
+        {
+            _initialPitch = _targetAudioSource.pitch;
+        }
 
-			if (resetShakerValuesAfterShake)
-			{
-				_originalShakeDuration = ShakeDuration;
-				_originalShakePitch = ShakePitch;
-				_originalRemapPitchZero = RemapPitchZero;
-				_originalRemapPitchOne = RemapPitchOne;
-				_originalRelativePitch = RelativePitch;
-			}
+        /// <summary>
+        /// When we get the appropriate event, we trigger a shake
+        /// </summary>
+        /// <param name="pitchCurve"></param>
+        /// <param name="duration"></param>
+        /// <param name="amplitude"></param>
+        /// <param name="relativePitch"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <param name="channel"></param>
+        public virtual void OnMMAudioSourcePitchShakeEvent(AnimationCurve pitchCurve, float duration, float remapMin,
+            float remapMax, bool relativePitch = false,
+            float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true,
+            bool resetTargetValuesAfterShake = true, bool forwardDirection = true,
+            TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
+        {
+            if (!CheckEventAllowed(channel) || !Interruptible && Shaking)
+                return;
 
-			TimescaleMode = timescaleMode;
-			ShakeDuration = duration;
-			ShakePitch = pitchCurve;
-			RemapPitchZero = remapMin * feedbacksIntensity;
-			RemapPitchOne = remapMax * feedbacksIntensity;
-			RelativePitch = relativePitch;
-			ForwardDirection = forwardDirection;
+            if (stop)
+            {
+                Stop();
+                return;
+            }
 
-			Play();
-		}
+            _resetShakerValuesAfterShake = resetShakerValuesAfterShake;
+            _resetTargetValuesAfterShake = resetTargetValuesAfterShake;
 
-		/// <summary>
-		/// Resets the target's values
-		/// </summary>
-		protected override void ResetTargetValues()
-		{
-			base.ResetTargetValues();
-			_targetAudioSource.pitch = _initialPitch;
-		}
+            if (resetShakerValuesAfterShake)
+            {
+                _originalShakeDuration = ShakeDuration;
+                _originalShakePitch = ShakePitch;
+                _originalRemapPitchZero = RemapPitchZero;
+                _originalRemapPitchOne = RemapPitchOne;
+                _originalRelativePitch = RelativePitch;
+            }
 
-		/// <summary>
-		/// Resets the shaker's values
-		/// </summary>
-		protected override void ResetShakerValues()
-		{
-			base.ResetShakerValues();
-			ShakeDuration = _originalShakeDuration;
-			ShakePitch = _originalShakePitch;
-			RemapPitchZero = _originalRemapPitchZero;
-			RemapPitchOne = _originalRemapPitchOne;
-			RelativePitch = _originalRelativePitch;
-		}
+            TimescaleMode = timescaleMode;
+            ShakeDuration = duration;
+            ShakePitch = pitchCurve;
+            RemapPitchZero = remapMin * feedbacksIntensity;
+            RemapPitchOne = remapMax * feedbacksIntensity;
+            RelativePitch = relativePitch;
+            ForwardDirection = forwardDirection;
 
-		/// <summary>
-		/// Starts listening for events
-		/// </summary>
-		public override void StartListening()
-		{
-			base.StartListening();
-			MMAudioSourcePitchShakeEvent.Register(OnMMAudioSourcePitchShakeEvent);
-		}
+            Play();
+        }
 
-		/// <summary>
-		/// Stops listening for events
-		/// </summary>
-		public override void StopListening()
-		{
-			base.StopListening();
-			MMAudioSourcePitchShakeEvent.Unregister(OnMMAudioSourcePitchShakeEvent);
-		}
-	}
+        /// <summary>
+        /// Resets the target's values
+        /// </summary>
+        protected override void ResetTargetValues()
+        {
+            base.ResetTargetValues();
+            _targetAudioSource.pitch = _initialPitch;
+        }
 
-	/// <summary>
-	/// An event used to trigger vignette shakes
-	/// </summary>
-	public struct MMAudioSourcePitchShakeEvent
-	{
-		public delegate void Delegate(AnimationCurve pitchCurve, float duration, float remapMin, float remapMax, bool relativePitch = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false);
-		static private event Delegate OnEvent;
+        /// <summary>
+        /// Resets the shaker's values
+        /// </summary>
+        protected override void ResetShakerValues()
+        {
+            base.ResetShakerValues();
+            ShakeDuration = _originalShakeDuration;
+            ShakePitch = _originalShakePitch;
+            RemapPitchZero = _originalRemapPitchZero;
+            RemapPitchOne = _originalRemapPitchOne;
+            RelativePitch = _originalRelativePitch;
+        }
 
-		static public void Register(Delegate callback)
-		{
-			OnEvent += callback;
-		}
+        /// <summary>
+        /// Starts listening for events
+        /// </summary>
+        public override void StartListening()
+        {
+            base.StartListening();
+            MMAudioSourcePitchShakeEvent.Register(OnMMAudioSourcePitchShakeEvent);
+        }
 
-		static public void Unregister(Delegate callback)
-		{
-			OnEvent -= callback;
-		}
+        /// <summary>
+        /// Stops listening for events
+        /// </summary>
+        public override void StopListening()
+        {
+            base.StopListening();
+            MMAudioSourcePitchShakeEvent.Unregister(OnMMAudioSourcePitchShakeEvent);
+        }
+    }
 
-		static public void Trigger(AnimationCurve pitchCurve, float duration, float remapMin, float remapMax, bool relativePitch = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
-		{
-			OnEvent?.Invoke(pitchCurve, duration, remapMin, remapMax, relativePitch,
-				feedbacksIntensity, channel, resetShakerValuesAfterShake, resetTargetValuesAfterShake, forwardDirection, timescaleMode, stop);
-		}
-	}
+    /// <summary>
+    /// An event used to trigger vignette shakes
+    /// </summary>
+    public struct MMAudioSourcePitchShakeEvent
+    {
+        public delegate void Delegate(AnimationCurve pitchCurve, float duration, float remapMin, float remapMax,
+            bool relativePitch = false,
+            float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true,
+            bool resetTargetValuesAfterShake = true, bool forwardDirection = true,
+            TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false);
+
+        static event Delegate OnEvent;
+
+        public static void Register(Delegate callback)
+        {
+            OnEvent += callback;
+        }
+
+        public static void Unregister(Delegate callback)
+        {
+            OnEvent -= callback;
+        }
+
+        public static void Trigger(AnimationCurve pitchCurve, float duration, float remapMin, float remapMax,
+            bool relativePitch = false,
+            float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true,
+            bool resetTargetValuesAfterShake = true, bool forwardDirection = true,
+            TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
+        {
+            OnEvent?.Invoke(pitchCurve, duration, remapMin, remapMax, relativePitch,
+                feedbacksIntensity, channel, resetShakerValuesAfterShake, resetTargetValuesAfterShake, forwardDirection,
+                timescaleMode, stop);
+        }
+    }
 }

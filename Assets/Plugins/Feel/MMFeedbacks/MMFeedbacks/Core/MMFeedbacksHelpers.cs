@@ -10,422 +10,456 @@ using UnityEditor;
 
 namespace MoreMountains.Feedbacks
 {
-	[AddComponentMenu("")]
-	public class MMFeedbacksHelpers : MonoBehaviour
-	{
-		/// <summary>
-		/// Remaps a value x in interval [A,B], to the proportional value in interval [C,D]
-		/// </summary>
-		/// <param name="x">The value to remap.</param>
-		/// <param name="A">the minimum bound of interval [A,B] that contains the x value</param>
-		/// <param name="B">the maximum bound of interval [A,B] that contains the x value</param>
-		/// <param name="C">the minimum bound of target interval [C,D]</param>
-		/// <param name="D">the maximum bound of target interval [C,D]</param>
-		public static float Remap(float x, float A, float B, float C, float D)
-		{
-			float remappedValue = C + (x - A) / (B - A) * (D - C);
-			return remappedValue;
-		}
-	}
+    [AddComponentMenu("")]
+    public class MMFeedbacksHelpers : MonoBehaviour
+    {
+        /// <summary>
+        /// Remaps a value x in interval [A,B], to the proportional value in interval [C,D]
+        /// </summary>
+        /// <param name="x">The value to remap.</param>
+        /// <param name="A">the minimum bound of interval [A,B] that contains the x value</param>
+        /// <param name="B">the maximum bound of interval [A,B] that contains the x value</param>
+        /// <param name="C">the minimum bound of target interval [C,D]</param>
+        /// <param name="D">the maximum bound of target interval [C,D]</param>
+        public static float Remap(float x, float A, float B, float C, float D)
+        {
+            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            return remappedValue;
+        }
+    }
 
-	public class MMFReadOnlyAttribute : PropertyAttribute { }
+    public class MMFReadOnlyAttribute : PropertyAttribute
+    {
+    }
 
-	[System.AttributeUsage(System.AttributeTargets.Field)]
-	public class MMFInspectorButtonAttribute : PropertyAttribute
-	{
-		public readonly string MethodName;
+    [AttributeUsage(AttributeTargets.Field)]
+    public class MMFInspectorButtonAttribute : PropertyAttribute
+    {
+        public readonly string MethodName;
 
-		public MMFInspectorButtonAttribute(string MethodName)
-		{
-			this.MethodName = MethodName;
-		}
-	}
+        public MMFInspectorButtonAttribute(string MethodName)
+        {
+            this.MethodName = MethodName;
+        }
+    }
 
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-	public class MMFEnumConditionAttribute : PropertyAttribute
-	{
-		public string ConditionEnum = "";
-		public bool Hidden = false;
+    [AttributeUsage(
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct,
+        Inherited = true)]
+    public class MMFEnumConditionAttribute : PropertyAttribute
+    {
+        public string ConditionEnum = "";
+        public bool Hidden = false;
 
-		BitArray bitArray = new BitArray(32);
-		public bool ContainsBitFlag(int enumValue)
-		{
-			return bitArray.Get(enumValue);
-		}
+        BitArray bitArray = new BitArray(32);
 
-		public MMFEnumConditionAttribute(string conditionBoolean, params int[] enumValues)
-		{
-			this.ConditionEnum = conditionBoolean;
-			this.Hidden = true;
+        public bool ContainsBitFlag(int enumValue)
+        {
+            return bitArray.Get(enumValue);
+        }
 
-			for (int i = 0; i < enumValues.Length; i++)
-			{
-				bitArray.Set(enumValues[i], true);
-			}
-		}
-	}
+        public MMFEnumConditionAttribute(string conditionBoolean, params int[] enumValues)
+        {
+            ConditionEnum = conditionBoolean;
+            Hidden = true;
 
-	#if UNITY_EDITOR
-	[CustomPropertyDrawer(typeof(MMFInspectorButtonAttribute))]
-	public class MMFInspectorButtonPropertyDrawer : PropertyDrawer
-	{
-		private MethodInfo _eventMethodInfo = null;
+            for (int i = 0; i < enumValues.Length; i++)
+                bitArray.Set(enumValues[i], true);
+        }
+    }
 
-		public override void OnGUI(Rect position, SerializedProperty prop, GUIContent label)
-		{
-			MMFInspectorButtonAttribute inspectorButtonAttribute = (MMFInspectorButtonAttribute)attribute;
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(MMFInspectorButtonAttribute))]
+    public class MMFInspectorButtonPropertyDrawer : PropertyDrawer
+    {
+        MethodInfo _eventMethodInfo = null;
 
-			float buttonLength = position.width;
-			Rect buttonRect = new Rect(position.x + (position.width - buttonLength) * 0.5f, position.y, buttonLength, position.height);
+        public override void OnGUI(Rect position, SerializedProperty prop, GUIContent label)
+        {
+            MMFInspectorButtonAttribute inspectorButtonAttribute = (MMFInspectorButtonAttribute)attribute;
 
-			if (GUI.Button(buttonRect, inspectorButtonAttribute.MethodName))
-			{
-				System.Type eventOwnerType = prop.serializedObject.targetObject.GetType();
-				string eventName = inspectorButtonAttribute.MethodName;
+            float buttonLength = position.width;
 
-				if (_eventMethodInfo == null)
-				{
-					_eventMethodInfo = eventOwnerType.GetMethod(eventName, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-				}
+            Rect buttonRect = new Rect(position.x + (position.width - buttonLength) * 0.5f, position.y, buttonLength,
+                position.height);
 
-				if (_eventMethodInfo != null)
-				{
-					_eventMethodInfo.Invoke(prop.serializedObject.targetObject, null);
-				}
-				else
-				{
-					Debug.LogWarning(string.Format("InspectorButton: Unable to find method {0} in {1}", eventName, eventOwnerType));
-				}
-			}
-		}
-	}
-	#endif
+            if (GUI.Button(buttonRect, inspectorButtonAttribute.MethodName))
+            {
+                Type eventOwnerType = prop.serializedObject.targetObject.GetType();
+                string eventName = inspectorButtonAttribute.MethodName;
 
-	public class MMFInformationAttribute : PropertyAttribute
-	{
-		public enum InformationType { Error, Info, None, Warning }
+                if (_eventMethodInfo == null)
+                    _eventMethodInfo = eventOwnerType.GetMethod(eventName,
+                        BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
 
-		#if UNITY_EDITOR
-		public string Message;
-		public MessageType Type;
-		public bool MessageAfterProperty;
+                if (_eventMethodInfo != null)
+                    _eventMethodInfo.Invoke(prop.serializedObject.targetObject, null);
+                else
+                    Debug.LogWarning(string.Format("InspectorButton: Unable to find method {0} in {1}", eventName,
+                        eventOwnerType));
+            }
+        }
+    }
+#endif
 
+    public class MMFInformationAttribute : PropertyAttribute
+    {
+        public enum InformationType
+        {
+            Error,
+            Info,
+            None,
+            Warning
+        }
+
+#if UNITY_EDITOR
+        public string Message;
+        public MessageType Type;
+        public bool MessageAfterProperty;
+
+        public MMFInformationAttribute(string message, InformationType type, bool messageAfterProperty)
+        {
+            Message = message;
+
+            if (type == InformationType.Error)
+                Type = MessageType.Error;
+
+            if (type == InformationType.Info)
+                Type = MessageType.Info;
+
+            if (type == InformationType.Warning)
+                Type = MessageType.Warning;
+
+            if (type == InformationType.None)
+                Type = MessageType.None;
+
+            MessageAfterProperty = messageAfterProperty;
+        }
+#else
 		public MMFInformationAttribute(string message, InformationType type, bool messageAfterProperty)
 		{
-			this.Message = message;
-			if (type == InformationType.Error) { this.Type = UnityEditor.MessageType.Error; }
-			if (type == InformationType.Info) { this.Type = UnityEditor.MessageType.Info; }
-			if (type == InformationType.Warning) { this.Type = UnityEditor.MessageType.Warning; }
-			if (type == InformationType.None) { this.Type = UnityEditor.MessageType.None; }
-			this.MessageAfterProperty = messageAfterProperty;
-		}
-		#else
-		public MMFInformationAttribute(string message, InformationType type, bool messageAfterProperty)
-		{
 
 		}
-		#endif
-	}
+#endif
+    }
 
-	public class MMFHiddenAttribute : PropertyAttribute { }
+    public class MMFHiddenAttribute : PropertyAttribute
+    {
+    }
 
-	[AttributeUsage(System.AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-	public class MMFConditionAttribute : PropertyAttribute
-	{
-		public string ConditionBoolean = "";
-		public bool Hidden = false;
+    [AttributeUsage(
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct,
+        Inherited = true)]
+    public class MMFConditionAttribute : PropertyAttribute
+    {
+        public string ConditionBoolean = "";
+        public bool Hidden = false;
 
-		public MMFConditionAttribute(string conditionBoolean)
-		{
-			this.ConditionBoolean = conditionBoolean;
-			this.Hidden = false;
-		}
+        public MMFConditionAttribute(string conditionBoolean)
+        {
+            ConditionBoolean = conditionBoolean;
+            Hidden = false;
+        }
 
-		public MMFConditionAttribute(string conditionBoolean, bool hideInInspector)
-		{
-			this.ConditionBoolean = conditionBoolean;
-			this.Hidden = hideInInspector;
-		}
-	}
-    
-	[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-	public class MMFHiddenPropertiesAttribute : Attribute
-	{
-		public string[] PropertiesNames;
+        public MMFConditionAttribute(string conditionBoolean, bool hideInInspector)
+        {
+            ConditionBoolean = conditionBoolean;
+            Hidden = hideInInspector;
+        }
+    }
 
-		public MMFHiddenPropertiesAttribute(params string[] propertiesNames)
-		{
-			PropertiesNames = propertiesNames;
-		}
-	}
-    
-	/// <summary>
-	/// An attribute used to group inspector fields under common dropdowns
-	/// Implementation inspired by Rodrigo Prinheiro's work, available at https://github.com/RodrigoPrinheiro/unityFoldoutAttribute
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-	public class MMFInspectorGroupAttribute : PropertyAttribute
-	{
-		public string GroupName;
-		public bool GroupAllFieldsUntilNextGroupAttribute;
-		public int GroupColorIndex;
-		public bool RequiresSetup;
-		public bool ClosedByDefault;
+    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+    public class MMFHiddenPropertiesAttribute : Attribute
+    {
+        public string[] PropertiesNames;
 
-		public MMFInspectorGroupAttribute(string groupName, bool groupAllFieldsUntilNextGroupAttribute = false, int groupColorIndex = 24, bool requiresSetup = false, bool closedByDefault = false)
-		{
-			if (groupColorIndex > 139) { groupColorIndex = 139; }
+        public MMFHiddenPropertiesAttribute(params string[] propertiesNames)
+        {
+            PropertiesNames = propertiesNames;
+        }
+    }
 
-			this.GroupName = groupName;
-			this.GroupAllFieldsUntilNextGroupAttribute = groupAllFieldsUntilNextGroupAttribute;
-			this.GroupColorIndex = groupColorIndex;
-			this.RequiresSetup = requiresSetup;
-			this.ClosedByDefault = closedByDefault;
-		}
-	}
-    
-	[AttributeUsage(AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
-	public class TmpAttribute : PropertyAttribute
-	{
-		/// <summary>
-		///   <para>The header text.</para>
-		/// </summary>
-		/// <footer><a href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/30_search.html?q=HeaderAttribute.header">`HeaderAttribute.header` on docs.unity3d.com</a></footer>
-		public readonly string header;
+    /// <summary>
+    /// An attribute used to group inspector fields under common dropdowns
+    /// Implementation inspired by Rodrigo Prinheiro's work, available at https://github.com/RodrigoPrinheiro/unityFoldoutAttribute
+    /// </summary>
+    [AttributeUsage(
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct,
+        Inherited = true)]
+    public class MMFInspectorGroupAttribute : PropertyAttribute
+    {
+        public string GroupName;
+        public bool GroupAllFieldsUntilNextGroupAttribute;
+        public int GroupColorIndex;
+        public bool RequiresSetup;
+        public bool ClosedByDefault;
 
-		/// <summary>
-		///   <para>Add a header above some fields in the Inspector.</para>
-		/// </summary>
-		/// <param name="header">The header text.</param>
-		/// <footer><a href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/30_search.html?q=HeaderAttribute">`HeaderAttribute` on docs.unity3d.com</a></footer>
-		public TmpAttribute(string header) => this.header = header;
-	}
+        public MMFInspectorGroupAttribute(string groupName, bool groupAllFieldsUntilNextGroupAttribute = false,
+            int groupColorIndex = 24, bool requiresSetup = false, bool closedByDefault = false)
+        {
+            if (groupColorIndex > 139)
+                groupColorIndex = 139;
 
-	public static class MMFeedbackStaticMethods
-	{
-		static List<Component> m_ComponentCache = new List<Component>();
+            GroupName = groupName;
+            GroupAllFieldsUntilNextGroupAttribute = groupAllFieldsUntilNextGroupAttribute;
+            GroupColorIndex = groupColorIndex;
+            RequiresSetup = requiresSetup;
+            ClosedByDefault = closedByDefault;
+        }
+    }
 
-		/// <summary>
-		/// Grabs a component without allocating memory uselessly
-		/// </summary>
-		/// <param name="this"></param>
-		/// <param name="componentType"></param>
-		/// <returns></returns>
-		public static Component GetComponentNoAlloc(this GameObject @this, System.Type componentType)
-		{
-			@this.GetComponents(componentType, m_ComponentCache);
-			var component = m_ComponentCache.Count > 0 ? m_ComponentCache[0] : null;
-			m_ComponentCache.Clear();
-			return component;
-		}
-        
-		public static Type MMFGetTypeByName(string name)
-		{
-			foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-			{
-				foreach (Type type in assembly.GetTypes())
-				{
-					if (type.Name == name)
-					{
-						return type;
-					}
-				}
-			}
- 
-			return null;
-		}
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true, Inherited = true)]
+    public class TmpAttribute : PropertyAttribute
+    {
+        /// <summary>
+        ///   <para>The header text.</para>
+        /// </summary>
+        /// <footer><a href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/30_search.html?q=HeaderAttribute.header">`HeaderAttribute.header` on docs.unity3d.com</a></footer>
+        public readonly string header;
 
-		/// <summary>
-		/// Grabs a component without allocating memory uselessly
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="this"></param>
-		/// <returns></returns>
-		public static T MMFGetComponentNoAlloc<T>(this GameObject @this) where T : Component
-		{
-			@this.GetComponents(typeof(T), m_ComponentCache);
-			Component component = m_ComponentCache.Count > 0 ? m_ComponentCache[0] : null;
-			m_ComponentCache.Clear();
-			return component as T;
-		}
-        
-		#if UNITY_EDITOR
-		/// <summary>
-		/// Returns the object value of a target serialized property
-		/// </summary>
-		/// <param name="property"></param>
-		/// <returns></returns>
-		public static object MMFGetObjectValue(this SerializedProperty property)
-		{
-			if (property == null)
-			{
-				return null;
-			}
+        /// <summary>
+        ///   <para>Add a header above some fields in the Inspector.</para>
+        /// </summary>
+        /// <param name="header">The header text.</param>
+        /// <footer><a href="https://docs.unity3d.com/2019.4/Documentation/ScriptReference/30_search.html?q=HeaderAttribute">`HeaderAttribute` on docs.unity3d.com</a></footer>
+        public TmpAttribute(string header)
+        {
+            this.header = header;
+        }
+    }
 
-			string propertyPath = property.propertyPath.Replace(".Array.data[", "[");
-			object targetObject = property.serializedObject.targetObject;
-			var elements = propertyPath.Split('.');
-			foreach (var element in elements)
-			{
-				if (!element.Contains("["))
-				{
-					targetObject = MMFGetPropertyValue(targetObject, element);
-				}
-				else
-				{
-					string elementName = element.Substring(0, element.IndexOf("["));
-					int elementIndex = System.Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[", "").Replace("]", ""));
-					targetObject = MMFGetPropertyValue(targetObject, elementName, elementIndex);
-				}
-			}
-			return targetObject;
-		}
-        
-		private static object MMFGetPropertyValue(object source, string propertyName)
-		{
-			if (source == null)
-			{
-				return null;
-			}
-                 
-			Type propertyType = source.GetType();
+    public static class MMFeedbackStaticMethods
+    {
+        static List<Component> m_ComponentCache = new List<Component>();
 
-			while (propertyType != null)
-			{
-				FieldInfo fieldInfo = propertyType.GetField(propertyName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-				if (fieldInfo != null)
-				{
-					return fieldInfo.GetValue(source);
-				}
-				PropertyInfo propertyInfo = propertyType.GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase | BindingFlags.Instance);
-				if (propertyInfo != null)
-				{
-					return propertyInfo.GetValue(source, null);
-				}
-				propertyType = propertyType.BaseType;
-			}
-			return null;
-		}
+        /// <summary>
+        /// Grabs a component without allocating memory uselessly
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="componentType"></param>
+        /// <returns></returns>
+        public static Component GetComponentNoAlloc(this GameObject @this, Type componentType)
+        {
+            @this.GetComponents(componentType, m_ComponentCache);
+            Component component = m_ComponentCache.Count > 0 ? m_ComponentCache[0] : null;
+            m_ComponentCache.Clear();
+            return component;
+        }
 
-		private static object MMFGetPropertyValue(object source, string propertyName, int index)
-		{
-			var enumerable = MMFGetPropertyValue(source, propertyName) as System.Collections.IEnumerable;
-			if (enumerable == null)
-			{
-				return null;
-			}
-			var enumerator = enumerable.GetEnumerator();
-			for (int i = 0; i <= index; i++)
-			{
-				if (!enumerator.MoveNext())
-				{
-					return null;
-				}
-			}
-			return enumerator.Current;
-		}
-		#endif
-	}
+        public static Type MMFGetTypeByName(string name)
+        {
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (Type type in assembly.GetTypes())
+                if (type.Name == name)
+                    return type;
 
-	/// <summary>
-	/// Atttribute used to mark feedback class.
-	/// The provided path is used to sort the feedback list displayed in the feedback manager dropdown
-	/// </summary>
-	[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-	public class FeedbackPathAttribute : System.Attribute
-	{
-		public string Path;
-		public string Name;
+            return null;
+        }
 
-		public FeedbackPathAttribute(string path)
-		{
-			Path = path;
-			Name = path.Split('/').Last();
-		}
+        /// <summary>
+        /// Grabs a component without allocating memory uselessly
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="this"></param>
+        /// <returns></returns>
+        public static T MMFGetComponentNoAlloc<T>(this GameObject @this) where T : Component
+        {
+            @this.GetComponents(typeof(T), m_ComponentCache);
+            Component component = m_ComponentCache.Count > 0 ? m_ComponentCache[0] : null;
+            m_ComponentCache.Clear();
+            return component as T;
+        }
 
-		static public string GetFeedbackDefaultName(System.Type type)
-		{
-			FeedbackPathAttribute attribute = type.GetCustomAttributes(false).OfType<FeedbackPathAttribute>().FirstOrDefault();
-			return attribute != null ? attribute.Name : type.Name;
-		}
+#if UNITY_EDITOR
+        /// <summary>
+        /// Returns the object value of a target serialized property
+        /// </summary>
+        /// <param name="property"></param>
+        /// <returns></returns>
+        public static object MMFGetObjectValue(this SerializedProperty property)
+        {
+            if (property == null)
+                return null;
 
-		static public string GetFeedbackDefaultPath(System.Type type)
-		{
-			FeedbackPathAttribute attribute = type.GetCustomAttributes(false).OfType<FeedbackPathAttribute>().FirstOrDefault();
-			return attribute != null ? attribute.Path : null;
-		}
-	}
+            string propertyPath = property.propertyPath.Replace(".Array.data[", "[");
+            object targetObject = property.serializedObject.targetObject;
+            string[] elements = propertyPath.Split('.');
 
-	/// <summary>
-	/// Atttribute used to mark feedback class.
-	/// The contents allow you to specify a help text for each feedback
-	/// </summary>
-	[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-	public class FeedbackHelpAttribute : System.Attribute
-	{
-		public string HelpText;
+            foreach (string element in elements)
+                if (!element.Contains("["))
+                    targetObject = MMFGetPropertyValue(targetObject, element);
+                else
+                {
+                    string elementName = element.Substring(0, element.IndexOf("["));
 
-		public FeedbackHelpAttribute(string helpText)
-		{
-			HelpText = helpText;
-		}
+                    int elementIndex =
+                        Convert.ToInt32(element.Substring(element.IndexOf("[")).Replace("[", "").Replace("]", ""));
 
-		static public string GetFeedbackHelpText(System.Type type)
-		{
-			FeedbackHelpAttribute attribute = type.GetCustomAttributes(false).OfType<FeedbackHelpAttribute>().FirstOrDefault();
-			return attribute != null ? attribute.HelpText : "";
-		}
-	}
-    
-	public static class MMF_FieldInfo
-	{
-		public static Dictionary<int, List<FieldInfo>> FieldInfoList = new Dictionary<int, List<FieldInfo>>();
+                    targetObject = MMFGetPropertyValue(targetObject, elementName, elementIndex);
+                }
 
-        
-		public static int GetFieldInfo(MMF_Feedback target, out List<FieldInfo> fieldInfoList)
-		{
-			Type targetType = target.GetType();
-			int targetTypeHashCode = targetType.GetHashCode();
+            return targetObject;
+        }
 
-			if (!FieldInfoList.TryGetValue(targetTypeHashCode, out fieldInfoList))
-			{
-				IList<Type> typeTree = targetType.GetBaseTypes();
-				fieldInfoList = target.GetType().GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
-					.OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
-					.ToList();
-				FieldInfoList.Add(targetTypeHashCode, fieldInfoList);
-			}
+        static object MMFGetPropertyValue(object source, string propertyName)
+        {
+            if (source == null)
+                return null;
 
-			return fieldInfoList.Count;
-		}
-        
-		public static int GetFieldInfo(UnityEngine.Object target, out List<FieldInfo> fieldInfoList)
-		{
-			Type targetType = target.GetType();
-			int targetTypeHashCode = targetType.GetHashCode();
+            Type propertyType = source.GetType();
 
-			if (!FieldInfoList.TryGetValue(targetTypeHashCode, out fieldInfoList))
-			{
-				IList<Type> typeTree = targetType.GetBaseTypes();
-				fieldInfoList = target.GetType().GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.NonPublic)
-					.OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
-					.ToList();
-				FieldInfoList.Add(targetTypeHashCode, fieldInfoList);
-			}
+            while (propertyType != null)
+            {
+                FieldInfo fieldInfo = propertyType.GetField(propertyName,
+                    BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-			return fieldInfoList.Count;
-		}
+                if (fieldInfo != null)
+                    return fieldInfo.GetValue(source);
 
-		public static IList<Type> GetBaseTypes(this Type t)
-		{
-			var types = new List<Type>();
-			while (t.BaseType != null)
-			{
-				types.Add(t);
-				t = t.BaseType;
-			}
+                PropertyInfo propertyInfo = propertyType.GetProperty(propertyName,
+                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase | BindingFlags.Instance);
 
-			return types;
-		}
-	}
+                if (propertyInfo != null)
+                    return propertyInfo.GetValue(source, null);
+
+                propertyType = propertyType.BaseType;
+            }
+
+            return null;
+        }
+
+        static object MMFGetPropertyValue(object source, string propertyName, int index)
+        {
+            IEnumerable enumerable = MMFGetPropertyValue(source, propertyName) as IEnumerable;
+
+            if (enumerable == null)
+                return null;
+
+            IEnumerator enumerator = enumerable.GetEnumerator();
+
+            for (int i = 0; i <= index; i++)
+                if (!enumerator.MoveNext())
+                    return null;
+
+            return enumerator.Current;
+        }
+#endif
+    }
+
+    /// <summary>
+    /// Atttribute used to mark feedback class.
+    /// The provided path is used to sort the feedback list displayed in the feedback manager dropdown
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class FeedbackPathAttribute : Attribute
+    {
+        public string Path;
+        public string Name;
+
+        public FeedbackPathAttribute(string path)
+        {
+            Path = path;
+            Name = path.Split('/').Last();
+        }
+
+        public static string GetFeedbackDefaultName(Type type)
+        {
+            FeedbackPathAttribute attribute =
+                type.GetCustomAttributes(false).OfType<FeedbackPathAttribute>().FirstOrDefault();
+
+            return attribute != null ? attribute.Name : type.Name;
+        }
+
+        public static string GetFeedbackDefaultPath(Type type)
+        {
+            FeedbackPathAttribute attribute =
+                type.GetCustomAttributes(false).OfType<FeedbackPathAttribute>().FirstOrDefault();
+
+            return attribute != null ? attribute.Path : null;
+        }
+    }
+
+    /// <summary>
+    /// Atttribute used to mark feedback class.
+    /// The contents allow you to specify a help text for each feedback
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class FeedbackHelpAttribute : Attribute
+    {
+        public string HelpText;
+
+        public FeedbackHelpAttribute(string helpText)
+        {
+            HelpText = helpText;
+        }
+
+        public static string GetFeedbackHelpText(Type type)
+        {
+            FeedbackHelpAttribute attribute =
+                type.GetCustomAttributes(false).OfType<FeedbackHelpAttribute>().FirstOrDefault();
+
+            return attribute != null ? attribute.HelpText : "";
+        }
+    }
+
+    public static class MMF_FieldInfo
+    {
+        public static Dictionary<int, List<FieldInfo>> FieldInfoList = new Dictionary<int, List<FieldInfo>>();
+
+
+        public static int GetFieldInfo(MMF_Feedback target, out List<FieldInfo> fieldInfoList)
+        {
+            Type targetType = target.GetType();
+            int targetTypeHashCode = targetType.GetHashCode();
+
+            if (!FieldInfoList.TryGetValue(targetTypeHashCode, out fieldInfoList))
+            {
+                var typeTree = targetType.GetBaseTypes();
+
+                fieldInfoList = target.GetType().GetFields(BindingFlags.Instance | BindingFlags.Static |
+                                                           BindingFlags.Public | BindingFlags.NonPublic |
+                                                           BindingFlags.NonPublic)
+                    .OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
+                    .ToList();
+
+                FieldInfoList.Add(targetTypeHashCode, fieldInfoList);
+            }
+
+            return fieldInfoList.Count;
+        }
+
+        public static int GetFieldInfo(UnityEngine.Object target, out List<FieldInfo> fieldInfoList)
+        {
+            Type targetType = target.GetType();
+            int targetTypeHashCode = targetType.GetHashCode();
+
+            if (!FieldInfoList.TryGetValue(targetTypeHashCode, out fieldInfoList))
+            {
+                var typeTree = targetType.GetBaseTypes();
+
+                fieldInfoList = target.GetType().GetFields(BindingFlags.Instance | BindingFlags.Static |
+                                                           BindingFlags.Public | BindingFlags.NonPublic |
+                                                           BindingFlags.NonPublic)
+                    .OrderByDescending(x => typeTree.IndexOf(x.DeclaringType))
+                    .ToList();
+
+                FieldInfoList.Add(targetTypeHashCode, fieldInfoList);
+            }
+
+            return fieldInfoList.Count;
+        }
+
+        public static IList<Type> GetBaseTypes(this Type t)
+        {
+            var types = new List<Type>();
+
+            while (t.BaseType != null)
+            {
+                types.Add(t);
+                t = t.BaseType;
+            }
+
+            return types;
+        }
+    }
 }

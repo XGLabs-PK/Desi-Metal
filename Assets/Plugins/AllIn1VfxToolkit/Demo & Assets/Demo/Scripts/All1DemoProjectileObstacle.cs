@@ -5,10 +5,11 @@ namespace AllIn1VfxToolkit.Demo.Scripts
 {
     public class All1DemoProjectileObstacle : MonoBehaviour
     {
-        [SerializeField] private GameObject[] projectileObstacles;
-        private Dropdown projectileObstacleDropdown;
-        
-        private void Start()
+        [SerializeField]
+        GameObject[] projectileObstacles;
+        Dropdown projectileObstacleDropdown;
+
+        void Start()
         {
             projectileObstacleDropdown = GetComponent<Dropdown>();
             DropdownValueChanged();
@@ -19,9 +20,9 @@ namespace AllIn1VfxToolkit.Demo.Scripts
             SetProjectileObstacleN(projectileObstacleDropdown.value);
         }
 
-        private void SetProjectileObstacleN(int nIndex)
+        void SetProjectileObstacleN(int nIndex)
         {
-            for(int i = 0; i < projectileObstacles.Length; i++) projectileObstacles[i].SetActive(i == nIndex);
+            for (int i = 0; i < projectileObstacles.Length; i++) projectileObstacles[i].SetActive(i == nIndex);
         }
     }
 }

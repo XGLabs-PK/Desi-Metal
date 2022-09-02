@@ -8,105 +8,114 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this to a Cinemachine virtual camera and it'll be able to listen to MMCinemachinePriorityEvent, usually triggered by a MMFeedbackCinemachineTransition
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Cinemachine/MMCinemachinePriorityListener")]
-	#if MM_CINEMACHINE
-	[RequireComponent(typeof(CinemachineVirtualCameraBase))]
-	#endif
-	public class MMCinemachinePriorityListener : MonoBehaviour
-	{
-        
-		[HideInInspector] 
-		public TimescaleModes TimescaleMode = TimescaleModes.Scaled;
-        
-        
-		public virtual float GetTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime; }
-		public virtual float GetDeltaTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime; }
-        
-		[Header("Priority Listener")]
-		/// the channel to listen to
-		[Tooltip("the channel to listen to")]
-		public int Channel = 0;
+    /// <summary>
+    /// Add this to a Cinemachine virtual camera and it'll be able to listen to MMCinemachinePriorityEvent, usually triggered by a MMFeedbackCinemachineTransition
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Cinemachine/MMCinemachinePriorityListener")]
+#if MM_CINEMACHINE
+    [RequireComponent(typeof(CinemachineVirtualCameraBase))]
+#endif
+    public class MMCinemachinePriorityListener : MonoBehaviour
+    {
+        [HideInInspector]
+        public TimescaleModes TimescaleMode = TimescaleModes.Scaled;
 
-		#if MM_CINEMACHINE
-		protected CinemachineVirtualCameraBase _camera;
-        
-		/// <summary>
-		/// On Awake we store our virtual camera
-		/// </summary>
-		protected virtual void Awake()
-		{
-			_camera = this.gameObject.GetComponent<CinemachineVirtualCameraBase>();
-		}
 
-		/// <summary>
-		/// When we get an event we change our priorities if needed
-		/// </summary>
-		/// <param name="channel"></param>
-		/// <param name="forceMaxPriority"></param>
-		/// <param name="newPriority"></param>
-		/// <param name="forceTransition"></param>
-		/// <param name="blendDefinition"></param>
-		/// <param name="resetValuesAfterTransition"></param>
-		public virtual void OnMMCinemachinePriorityEvent(int channel, bool forceMaxPriority, int newPriority, bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode)
-		{
-			TimescaleMode = timescaleMode;
-			if (channel == Channel)
-			{
-				_camera.Priority = newPriority;
-			}
-			else
-			{
-				if (forceMaxPriority)
-				{
-					_camera.Priority = 0;
-				}
-			}
-		}
+        public virtual float GetTime()
+        {
+            return TimescaleMode == TimescaleModes.Scaled ? Time.time : Time.unscaledTime;
+        }
 
-		/// <summary>
-		/// On enable we start listening for events
-		/// </summary>
-		protected virtual void OnEnable()
-		{
-			MMCinemachinePriorityEvent.Register(OnMMCinemachinePriorityEvent);
-		}
+        public virtual float GetDeltaTime()
+        {
+            return TimescaleMode == TimescaleModes.Scaled ? Time.deltaTime : Time.unscaledDeltaTime;
+        }
 
-		/// <summary>
-		/// Stops listening for events
-		/// </summary>
-		protected virtual void OnDisable()
-		{
-			MMCinemachinePriorityEvent.Unregister(OnMMCinemachinePriorityEvent);
-		}
-		#endif
-	}
+        [Header("Priority Listener")]
+        /// the channel to listen to
+        [Tooltip("the channel to listen to")]
+        public int Channel = 0;
 
-	/// <summary>
-	/// An event used to pilot priorities on cinemachine virtual cameras and brain transitions
-	/// </summary>
-	public struct MMCinemachinePriorityEvent
-	{
-		#if MM_CINEMACHINE
-		public delegate void Delegate(int channel, bool forceMaxPriority, int newPriority, bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode);
-		static private event Delegate OnEvent;
+#if MM_CINEMACHINE
+        protected CinemachineVirtualCameraBase _camera;
 
-		static public void Register(Delegate callback)
-		{
-			OnEvent += callback;
-		}
+        /// <summary>
+        /// On Awake we store our virtual camera
+        /// </summary>
+        protected virtual void Awake()
+        {
+            _camera = gameObject.GetComponent<CinemachineVirtualCameraBase>();
+        }
 
-		static public void Unregister(Delegate callback)
-		{
-			OnEvent -= callback;
-		}
+        /// <summary>
+        /// When we get an event we change our priorities if needed
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <param name="forceMaxPriority"></param>
+        /// <param name="newPriority"></param>
+        /// <param name="forceTransition"></param>
+        /// <param name="blendDefinition"></param>
+        /// <param name="resetValuesAfterTransition"></param>
+        public virtual void OnMMCinemachinePriorityEvent(int channel, bool forceMaxPriority, int newPriority,
+            bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition,
+            TimescaleModes timescaleMode)
+        {
+            TimescaleMode = timescaleMode;
 
-		static public void Trigger(int channel, bool forceMaxPriority, int newPriority, bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode)
-		{
-			OnEvent?.Invoke(channel, forceMaxPriority, newPriority, forceTransition, blendDefinition, resetValuesAfterTransition, timescaleMode);
-		}
-		#endif
-	}
+            if (channel == Channel)
+                _camera.Priority = newPriority;
+            else
+            {
+                if (forceMaxPriority)
+                    _camera.Priority = 0;
+            }
+        }
+
+        /// <summary>
+        /// On enable we start listening for events
+        /// </summary>
+        protected virtual void OnEnable()
+        {
+            MMCinemachinePriorityEvent.Register(OnMMCinemachinePriorityEvent);
+        }
+
+        /// <summary>
+        /// Stops listening for events
+        /// </summary>
+        protected virtual void OnDisable()
+        {
+            MMCinemachinePriorityEvent.Unregister(OnMMCinemachinePriorityEvent);
+        }
+#endif
+    }
+
+    /// <summary>
+    /// An event used to pilot priorities on cinemachine virtual cameras and brain transitions
+    /// </summary>
+    public struct MMCinemachinePriorityEvent
+    {
+#if MM_CINEMACHINE
+        public delegate void Delegate(int channel, bool forceMaxPriority, int newPriority, bool forceTransition,
+            CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode);
+
+        static event Delegate OnEvent;
+
+        public static void Register(Delegate callback)
+        {
+            OnEvent += callback;
+        }
+
+        public static void Unregister(Delegate callback)
+        {
+            OnEvent -= callback;
+        }
+
+        public static void Trigger(int channel, bool forceMaxPriority, int newPriority, bool forceTransition,
+            CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode)
+        {
+            OnEvent?.Invoke(channel, forceMaxPriority, newPriority, forceTransition, blendDefinition,
+                resetValuesAfterTransition, timescaleMode);
+        }
+#endif
+    }
 }

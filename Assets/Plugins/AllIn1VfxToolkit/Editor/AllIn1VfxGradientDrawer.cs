@@ -9,8 +9,8 @@ namespace AllIn1VfxToolkit
 {
     public class AllIn1VfxGradientDrawer : MaterialPropertyDrawer
     {
-        private int resolution;
-        private Texture2D textureAsset;
+        int resolution;
+        Texture2D textureAsset;
 
         public AllIn1VfxGradientDrawer()
         {
@@ -19,64 +19,71 @@ namespace AllIn1VfxToolkit
 
         public AllIn1VfxGradientDrawer(float res)
         {
-            resolution = (int) res;
+            resolution = (int)res;
         }
 
-        private static bool IsPropertyTypeSuitable(MaterialProperty prop)
+        static bool IsPropertyTypeSuitable(MaterialProperty prop)
         {
             return prop.type == MaterialProperty.PropType.Texture;
         }
 
-        public string TextureName(MaterialProperty prop) => $"{prop.name}Tex";
+        public string TextureName(MaterialProperty prop)
+        {
+            return $"{prop.name}Tex";
+        }
 
         public override void OnGUI(Rect position, MaterialProperty prop, GUIContent label, MaterialEditor editor)
         {
-            if(!IsPropertyTypeSuitable(prop))
+            if (!IsPropertyTypeSuitable(prop))
             {
                 EditorGUI.HelpBox(position, $"[Gradient] used on non-texture property \"{prop.name}\"",
                     MessageType.Error);
+
                 return;
             }
 
-            if(!AssetDatabase.Contains(prop.targets.FirstOrDefault()))
+            if (!AssetDatabase.Contains(prop.targets.FirstOrDefault()))
             {
                 EditorGUI.HelpBox(position,
                     "Save Material To Folder to use this effect",
                     MessageType.Error);
+
                 return;
             }
 
             string textureName = TextureName(prop);
 
             Gradient currentGradient = null;
-            if(prop.targets.Length == 1)
+
+            if (prop.targets.Length == 1)
             {
-                Material target = (Material) prop.targets[0];
+                Material target = (Material)prop.targets[0];
                 string path = AssetDatabase.GetAssetPath(target);
                 textureAsset = GetTextureAsset(path, textureName);
-                if(textureAsset != null)
+
+                if (textureAsset != null)
                     currentGradient = DecodeGradient(prop, textureAsset.name);
-                if(currentGradient == null)
+
+                if (currentGradient == null)
                     currentGradient = new Gradient() { };
 
                 EditorGUI.showMixedValue = false;
             }
             else
-            {
                 EditorGUI.showMixedValue = true;
-            }
 
-            using(EditorGUI.ChangeCheckScope changeScope = new EditorGUI.ChangeCheckScope())
+            using (EditorGUI.ChangeCheckScope changeScope = new EditorGUI.ChangeCheckScope())
             {
                 currentGradient = EditorGUILayout.GradientField(label, currentGradient, GUILayout.Height(15));
 
-                if(changeScope.changed)
+                if (changeScope.changed)
                 {
                     string encodedGradient = EncodeGradient(currentGradient);
                     string fullAssetName = textureName + encodedGradient;
-                    foreach(Object target in prop.targets)
+
+                    foreach (Object target in prop.targets)
                     {
-                        if(!AssetDatabase.Contains(target)) continue;
+                        if (!AssetDatabase.Contains(target)) continue;
 
                         string path = AssetDatabase.GetAssetPath(target);
                         Texture2D textureAsset = GetTexture(path, textureName);
@@ -85,7 +92,7 @@ namespace AllIn1VfxToolkit
                         BakeGradient(currentGradient, textureAsset);
                         EditorUtility.SetDirty(textureAsset);
 
-                        Material material = (Material) target;
+                        Material material = (Material)target;
                         material.SetTexture(prop.name, textureAsset);
                     }
                 }
@@ -94,15 +101,15 @@ namespace AllIn1VfxToolkit
             EditorGUI.showMixedValue = false;
         }
 
-        private Texture2D GetTexture(string path, string name)
+        Texture2D GetTexture(string path, string name)
         {
             textureAsset = GetTextureAsset(path, name);
-            if(textureAsset == null) CreateTexture(path, name);
-            if(textureAsset.width != resolution) textureAsset.Reinitialize(resolution, 1);
+            if (textureAsset == null) CreateTexture(path, name);
+            if (textureAsset.width != resolution) textureAsset.Reinitialize(resolution, 1);
             return textureAsset;
         }
 
-        private void CreateTexture(string path, string name = "unnamed texture")
+        void CreateTexture(string path, string name = "unnamed texture")
         {
             textureAsset = new Texture2D(resolution, 1, TextureFormat.RGBA32, false);
             textureAsset.wrapMode = TextureWrapMode.Clamp;
@@ -112,38 +119,40 @@ namespace AllIn1VfxToolkit
             AssetDatabase.Refresh();
         }
 
-        private string EncodeGradient(Gradient gradient)
+        string EncodeGradient(Gradient gradient)
         {
-            if(gradient == null) return null;
+            if (gradient == null) return null;
             return JsonUtility.ToJson(new GradientRepresentation(gradient));
         }
 
-        private Gradient DecodeGradient(MaterialProperty prop, string name)
+        Gradient DecodeGradient(MaterialProperty prop, string name)
         {
             string json = name.Substring(TextureName(prop).Length);
+
             try
             {
                 return JsonUtility.FromJson<GradientRepresentation>(json).ToGradient();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return null;
             }
         }
 
-        private Texture2D GetTextureAsset(string path, string name)
+        Texture2D GetTextureAsset(string path, string name)
         {
             return AssetDatabase.LoadAllAssetsAtPath(path).FirstOrDefault(asset => asset.name.StartsWith(name)) as
                 Texture2D;
         }
 
-        private void BakeGradient(Gradient gradient, Texture2D texture)
+        void BakeGradient(Gradient gradient, Texture2D texture)
         {
-            if(gradient == null) return;
-            for(int x = 0; x < texture.width; x++)
+            if (gradient == null) return;
+
+            for (int x = 0; x < texture.width; x++)
             {
-                Color color = gradient.Evaluate((float) x / (texture.width - 1));
-                for(int y = 0; y < texture.height; y++) texture.SetPixel(x, y, color);
+                Color color = gradient.Evaluate((float)x / (texture.width - 1));
+                for (int y = 0; y < texture.height; y++) texture.SetPixel(x, y, color);
             }
 
             texture.Apply();
@@ -152,14 +161,14 @@ namespace AllIn1VfxToolkit
         [MenuItem("Assets/AllIn1Vfx/Remove All Gradient Textures")]
         static void RemoveAllSubAssets()
         {
-            foreach(Object asset in Selection.GetFiltered<Object>(SelectionMode.Assets))
+            foreach (Object asset in Selection.GetFiltered<Object>(SelectionMode.Assets))
             {
                 string path = AssetDatabase.GetAssetPath(asset);
                 AssetDatabase.ImportAsset(path);
-                foreach(Object subAsset in AssetDatabase.LoadAllAssetRepresentationsAtPath(path))
-                {
+
+                foreach (Object subAsset in AssetDatabase.LoadAllAssetRepresentationsAtPath(path))
                     Object.DestroyImmediate(subAsset, true);
-                }
+
                 AssetDatabase.ImportAsset(path);
             }
         }

@@ -21,7 +21,8 @@ namespace Lofelt.NiceVibrations
         protected Text _text;
         protected int _currentFPS;
 
-        static string[] _stringsFrom00To300 = {
+        static string[] _stringsFrom00To300 =
+        {
             "00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
             "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
             "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
@@ -65,6 +66,7 @@ namespace Lofelt.NiceVibrations
                 Debug.LogWarning("FPSCounter requires a GUIText component.");
                 return;
             }
+
             _text = GetComponent<Text>();
             _timeLeft = UpdateInterval;
         }
@@ -82,10 +84,10 @@ namespace Lofelt.NiceVibrations
             if (_timeLeft <= 0.0)
             {
                 _currentFPS = (int)Mathf.Clamp(_framesAccumulated / _framesDrawnInTheInterval, 0, 300);
+
                 if (_currentFPS >= 0 && _currentFPS <= 300)
-                {
                     _text.text = _stringsFrom00To300[_currentFPS];
-                }
+
                 _framesDrawnInTheInterval = 0;
                 _framesAccumulated = 0f;
                 _timeLeft = UpdateInterval;

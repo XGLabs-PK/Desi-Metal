@@ -1,25 +1,27 @@
 using System;
 using UnityEngine;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     [Serializable]
-    public class IconData : ISerializationCallbackReceiver {
-
+    public class IconData : ISerializationCallbackReceiver
+    {
         [SerializeField]
-        private string name;
+        string name;
 
         public IconBase Icon { get; set; }
 
-        public void OnAfterDeserialize() {
+        public void OnAfterDeserialize()
+        {
             Icon = name;
         }
 
-        public void OnBeforeSerialize() {
+        public void OnBeforeSerialize()
+        {
             if (Icon == null)
                 return;
 
             name = Icon.Name;
         }
-
     }
 }

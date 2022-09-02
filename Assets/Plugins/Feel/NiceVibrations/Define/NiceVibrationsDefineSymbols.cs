@@ -18,7 +18,7 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// <summary>
         /// A list of all the symbols you want added to the build settings
         /// </summary>
-        public static readonly string[] Symbols = new string[] 
+        public static readonly string[] Symbols = new string[]
         {
             "MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED"
         };
@@ -28,10 +28,14 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// </summary>
         static NiceVibrationsDefineSymbols()
         {
-            string scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup); 
-            List<string> scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();
+            string scriptingDefinesString =
+                PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+
+            var scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();
             scriptingDefinesStringList.AddRange(Symbols.Except(scriptingDefinesStringList));
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, string.Join(";", scriptingDefinesStringList.ToArray()));
+
+            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup,
+                string.Join(";", scriptingDefinesStringList.ToArray()));
         }
     }
 #endif

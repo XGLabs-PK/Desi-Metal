@@ -19,7 +19,7 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Awake()
         {
-            _image = this.gameObject.GetComponent<Image>();
+            _image = gameObject.GetComponent<Image>();
         }
 
         public virtual void SetActive(bool status)
@@ -31,15 +31,15 @@ namespace Lofelt.NiceVibrations
         protected virtual void Update()
         {
             if (_active && !_activeLastFrame)
-            {
                 StartCoroutine(ColorBump());
-            }
+
             _activeLastFrame = _active;
         }
 
         protected virtual IEnumerator ColorBump()
         {
             _bumpDuration = 0f;
+
             while (_bumpDuration < BumpDuration)
             {
                 float curveValue = Curve.Evaluate(_bumpDuration / BumpDuration);

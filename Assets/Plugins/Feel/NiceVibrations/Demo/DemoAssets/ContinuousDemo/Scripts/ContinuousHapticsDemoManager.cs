@@ -65,15 +65,14 @@ namespace Lofelt.NiceVibrations
                 ContinuousProgressBar.UpdateBar(0f, 0f, ContinuousDuration);
                 Logo.Shaking = false;
                 TargetCurve.Move = false;
+
                 if (_continuousActive)
-                {
                     HapticController.Stop();
-                }
             }
-            if ((_frequencyLastFrame != ContinuousFrequency) || (_amplitudeLastFrame != ContinuousAmplitude))
-            {
+
+            if (_frequencyLastFrame != ContinuousFrequency || _amplitudeLastFrame != ContinuousAmplitude)
                 TargetCurve.UpdateCurve(ContinuousAmplitude, ContinuousFrequency);
-            }
+
             _amplitudeLastFrame = ContinuousAmplitude;
             _frequencyLastFrame = ContinuousFrequency;
         }

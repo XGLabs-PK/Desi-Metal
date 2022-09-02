@@ -8,39 +8,39 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This class will set the depth of field to focus on the set of targets specified in its inspector.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMAutoFocus")]
-	#if MM_POSTPROCESSING
+    /// <summary>
+    /// This class will set the depth of field to focus on the set of targets specified in its inspector.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMAutoFocus")]
+#if MM_POSTPROCESSING
 	[RequireComponent(typeof(PostProcessVolume))]
-	#endif
-	public class MMAutoFocus : MonoBehaviour
-	{
-		[Header("Bindings")]
-		/// the position of the camera
-		[Tooltip("the position of the camera")]
-		public Transform CameraTransform;
-		/// a list of all possible targets
-		[Tooltip("a list of all possible targets")]
-		public Transform[] FocusTargets;
-		/// an offset to apply to the focus target
-		[Tooltip("an offset to apply to the focus target")]
-		public Vector3 Offset;
+#endif
+    public class MMAutoFocus : MonoBehaviour
+    {
+        [Header("Bindings")]
+        /// the position of the camera
+        [Tooltip("the position of the camera")]
+        public Transform CameraTransform;
+        /// a list of all possible targets
+        [Tooltip("a list of all possible targets")]
+        public Transform[] FocusTargets;
+        /// an offset to apply to the focus target
+        [Tooltip("an offset to apply to the focus target")]
+        public Vector3 Offset;
 
-		[Header("Setup")]
-		/// the current target of this auto focus
-		[Tooltip("the current target of this auto focus")]
-		public float FocusTargetID;
-        
-		[Header("Desired Aperture")]
-		/// the aperture to work with
-		[Tooltip("the aperture to work with")]
-		[Range(0.1f, 20f)]
-		public float Aperture = 0.1f;
+        [Header("Setup")]
+        /// the current target of this auto focus
+        [Tooltip("the current target of this auto focus")]
+        public float FocusTargetID;
 
-        
-		#if MM_POSTPROCESSING
+        [Header("Desired Aperture")]
+        /// the aperture to work with
+        [Tooltip("the aperture to work with")]
+        [Range(0.1f, 20f)]
+        public float Aperture = 0.1f;
+
+
+#if MM_POSTPROCESSING
 		protected PostProcessVolume _volume;
 		protected PostProcessProfile _profile;
 		protected DepthOfField _depthOfField;
@@ -63,11 +63,12 @@ namespace MoreMountains.FeedbacksForThirdParty
 			int focusTargetID = Mathf.FloorToInt(FocusTargetID);
 			if (focusTargetID < FocusTargets.Length)
 			{
-				float distance = Vector3.Distance(CameraTransform.position, FocusTargets[focusTargetID].position + Offset);
+				float distance =
+ Vector3.Distance(CameraTransform.position, FocusTargets[focusTargetID].position + Offset);
 				_depthOfField.focusDistance.Override(distance);
 				_depthOfField.aperture.Override(Aperture);    
 			}
 		}
-		#endif
-	}
+#endif
+    }
 }

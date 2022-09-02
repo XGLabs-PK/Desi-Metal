@@ -16,7 +16,7 @@ namespace Lofelt.NiceVibrations
         public int PointsCount = 50;
         public float AmplitudeFactor = 3;
         [Range(1f, 4f)]
-        private float Period = 1;
+        float Period = 1;
         public RectTransform StartPoint;
         public RectTransform EndPoint;
 
@@ -42,8 +42,8 @@ namespace Lofelt.NiceVibrations
         protected virtual void Initialization()
         {
             Points = new List<Vector3>();
-            _canvas = this.gameObject.GetComponentInParent<Canvas>();
-            _targetLineRenderer = this.gameObject.GetComponent<LineRenderer>();
+            _canvas = gameObject.GetComponentInParent<Canvas>();
+            _targetLineRenderer = gameObject.GetComponent<LineRenderer>();
             _camera = _canvas.worldCamera;
             DrawCurve();
         }
@@ -63,9 +63,8 @@ namespace Lofelt.NiceVibrations
                 float sinValue = MMSignal.GetValue(t, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
 
                 if (Move)
-                {
-                    sinValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
-                }
+                    sinValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Sine, 1f,
+                        AmplitudeFactor, Period, 0f, false);
 
                 _workPoint.x = Mathf.Lerp(_startPosition.x, _endPosition.x, t);
                 _workPoint.y = sinValue * Amplitude + _startPosition.y;

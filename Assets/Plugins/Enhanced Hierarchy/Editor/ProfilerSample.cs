@@ -6,28 +6,31 @@ using UnityEngine.Profiling;
 #endif
 using Object = UnityEngine.Object;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     /// <summary>
     /// Prevents wrong profiler samples count.
     /// Very useful for things other than Enhanced Hierarchy, Unity could implement this on its API, just saying :).
     /// </summary>
-    public sealed class ProfilerSample : IDisposable {
-
-        #if HIERARCHY_PROFILING
+    public sealed class ProfilerSample : IDisposable
+    {
+#if HIERARCHY_PROFILING
         private static readonly StringBuilder name = new StringBuilder(150);
-        #endif
+#endif
 
-        private ProfilerSample(string name, Object targetObject) {
-            #if HIERARCHY_PROFILING
+        ProfilerSample(string name, Object targetObject)
+        {
+#if HIERARCHY_PROFILING
             if (!targetObject)
                 Profiler.BeginSample(name);
             else
                 Profiler.BeginSample(name, targetObject);
-            #endif
+#endif
         }
 
-        public static ProfilerSample Get() {
-            #if HIERARCHY_PROFILING
+        public static ProfilerSample Get()
+        {
+#if HIERARCHY_PROFILING
             Profiler.BeginSample("Getting Stack Frame");
 
             var stack = new StackFrame(1, false);
@@ -40,24 +43,25 @@ namespace EnhancedHierarchy {
             Profiler.EndSample();
 
             return Get(name.ToString(), null);
-            #else
+#else
             return null;
-            #endif
+#endif
         }
 
-        public static ProfilerSample Get(string name, Object targetObject = null) {
-            #if HIERARCHY_PROFILING
+        public static ProfilerSample Get(string name, Object targetObject = null)
+        {
+#if HIERARCHY_PROFILING
             return new ProfilerSample(name, targetObject);
-            #else
+#else
             return null;
-            #endif
+#endif
         }
 
-        public void Dispose() {
-            #if HIERARCHY_PROFILING
+        public void Dispose()
+        {
+#if HIERARCHY_PROFILING
             Profiler.EndSample();
-            #endif
+#endif
         }
-
     }
 }

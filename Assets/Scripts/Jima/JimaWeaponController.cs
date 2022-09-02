@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JimaWeaponController : MonoBehaviour
@@ -16,7 +14,7 @@ public class JimaWeaponController : MonoBehaviour
     [Space]
     public float delay = 0.1f;
 
-    private float timer = 0.0f;
+    float timer;
 
     void Start()
     {
@@ -27,7 +25,8 @@ public class JimaWeaponController : MonoBehaviour
     void Update()
     {
         cam.transform.position = Vector3.Lerp(cam.transform.position,
-            weapon.transform.position + (weapon.transform.right * camOffset.x) + (weapon.transform.up * camOffset.y) + (weapon.transform.forward * camOffset.z),
+            weapon.transform.position + weapon.transform.right * camOffset.x + weapon.transform.up * camOffset.y +
+            weapon.transform.forward * camOffset.z,
             lerpFactor * Time.deltaTime);
 
         Vector3 rotation = cam.transform.rotation.eulerAngles;
@@ -37,14 +36,12 @@ public class JimaWeaponController : MonoBehaviour
 
         weapon.transform.rotation = Quaternion.LookRotation(-cam.transform.forward, cam.transform.up);
 
-        if(Input.GetButton("Fire1") && timer <= 0.0f)
+        if (Input.GetButton("Fire1") && timer <= 0.0f)
         {
             Instantiate(bulletPrefab, muzzle.transform.position, muzzle.transform.rotation);
             timer = delay;
         }
         else
-        {
             timer -= Time.deltaTime;
-        }
     }
 }

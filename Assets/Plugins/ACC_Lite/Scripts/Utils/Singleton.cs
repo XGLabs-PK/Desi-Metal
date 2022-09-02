@@ -5,36 +5,29 @@ using UnityEngine;
 /// <summary> 
 /// To access the heir by a static field "Instance".
 /// </summary>
-public abstract class Singleton<T> :MonoBehaviour where T : Singleton<T>
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
+    [SerializeField]
+    bool dontDestroyOnLoad;
 
-	[SerializeField] private bool dontDestroyOnLoad;
+    static T instance;
 
-	private static T instance;
+    public static T Instance => instance;
 
-	public static T Instance
-	{
-		get
-		{
-			return instance;
-		}
-	}
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this as T;
 
-	void Awake ()
-	{
-		if (instance == null)
-		{
-			instance = this as T;
-			if (dontDestroyOnLoad)
-			{
-				DontDestroyOnLoad (gameObject);
-			}
-			AwakeSingleton ();
-		}
-		else
-		{
-			Destroy (gameObject.GetComponent<T> ());
-		}
-	}
-	protected abstract void AwakeSingleton ();
+            if (dontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
+
+            AwakeSingleton();
+        }
+        else
+            Destroy(gameObject.GetComponent<T>());
+    }
+
+    protected abstract void AwakeSingleton();
 }

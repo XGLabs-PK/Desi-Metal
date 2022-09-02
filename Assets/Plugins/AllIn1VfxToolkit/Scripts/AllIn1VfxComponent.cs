@@ -16,10 +16,10 @@ namespace AllIn1VfxToolkit
     [AddComponentMenu("AllIn1VfxToolkit/AddAllIn1Vfx")]
     public class AllIn1VfxComponent : MonoBehaviour
     {
-        private Material currMaterial, prevMaterial;
-        private bool matAssigned = false, destroyed = false;
+        Material currMaterial, prevMaterial;
+        bool matAssigned = false, destroyed = false;
 
-        private enum AfterSetAction
+        enum AfterSetAction
         {
             Clear,
             CopyMaterial,
@@ -27,62 +27,64 @@ namespace AllIn1VfxToolkit
         };
 
 #if UNITY_EDITOR
-        private static float timeLastReload = -1f;
+        static float timeLastReload = -1f;
 
-        private void Start()
+        void Start()
         {
-            if(timeLastReload < 0) timeLastReload = Time.time;
+            if (timeLastReload < 0) timeLastReload = Time.time;
         }
 
-        private void Update()
+        void Update()
         {
-            if(matAssigned || Application.isPlaying || !gameObject.activeSelf) return;
+            if (matAssigned || Application.isPlaying || !gameObject.activeSelf) return;
             Renderer sr = GetComponent<Renderer>();
-            if(sr != null)
+
+            if (sr != null)
             {
-                if(sr.sharedMaterial == null)
+                if (sr.sharedMaterial == null)
                 {
                     CleanMaterial();
                     MakeNewMaterial();
                 }
 
-                if(!sr.sharedMaterial.shader.name.Contains("Vfx")) MakeNewMaterial();
+                if (!sr.sharedMaterial.shader.name.Contains("Vfx")) MakeNewMaterial();
                 else matAssigned = true;
             }
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
-                    if(!img.material.shader.name.Contains("Vfx")) MakeNewMaterial();
+                    if (!img.material.shader.name.Contains("Vfx")) MakeNewMaterial();
                     else matAssigned = true;
                 }
             }
         }
 #endif
 
-        private void MakeNewMaterial(string shaderName = "AllIn1Vfx")
+        void MakeNewMaterial(string shaderName = "AllIn1Vfx")
         {
             SetMaterial(AfterSetAction.Clear, shaderName);
         }
 
         public void MakeCopy()
         {
-            if(currMaterial == null)
-            {
-                if(FetchCurrentMaterial()) return;
-            }
+            if (currMaterial == null)
+                if (FetchCurrentMaterial())
+                    return;
 
             string shaderName = currMaterial.shader.name;
-            if(shaderName.Contains("AllIn1Vfx/")) shaderName = shaderName.Replace("AllIn1Vfx/", "");
+            if (shaderName.Contains("AllIn1Vfx/")) shaderName = shaderName.Replace("AllIn1Vfx/", "");
             SetMaterial(AfterSetAction.CopyMaterial, shaderName);
         }
 
-        private bool FetchCurrentMaterial()
+        bool FetchCurrentMaterial()
         {
             bool rendererExists = false;
             Renderer sr = GetComponent<Renderer>();
-            if(sr != null)
+
+            if (sr != null)
             {
                 rendererExists = true;
                 currMaterial = sr.sharedMaterial;
@@ -90,14 +92,15 @@ namespace AllIn1VfxToolkit
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
                     rendererExists = true;
                     currMaterial = img.material;
                 }
             }
 
-            if(!rendererExists)
+            if (!rendererExists)
             {
                 MissingRenderer();
                 return true;
@@ -106,20 +109,21 @@ namespace AllIn1VfxToolkit
             return false;
         }
 
-        private void ResetAllProperties(string shaderName)
+        void ResetAllProperties(string shaderName)
         {
             SetMaterial(AfterSetAction.Reset, shaderName);
         }
 
-        private void SetMaterial(AfterSetAction action, string shaderName)
+        void SetMaterial(AfterSetAction action, string shaderName)
         {
             Shader allIn1VfxShader = Resources.Load(shaderName, typeof(Shader)) as Shader;
 
-            if(!Application.isPlaying && Application.isEditor && allIn1VfxShader != null)
+            if (!Application.isPlaying && Application.isEditor && allIn1VfxShader != null)
             {
                 bool rendererExists = false;
                 Renderer sr = GetComponent<Renderer>();
-                if(sr != null)
+
+                if (sr != null)
                 {
                     rendererExists = true;
                     prevMaterial = new Material(GetComponent<Renderer>().sharedMaterial);
@@ -132,7 +136,8 @@ namespace AllIn1VfxToolkit
                 else
                 {
                     Graphic img = GetComponent<Graphic>();
-                    if(img != null)
+
+                    if (img != null)
                     {
                         rendererExists = true;
                         prevMaterial = new Material(img.material);
@@ -144,27 +149,23 @@ namespace AllIn1VfxToolkit
                     }
                 }
 
-                if(!rendererExists)
+                if (!rendererExists)
                 {
                     MissingRenderer();
                     return;
                 }
                 else
-                {
                     SetSceneDirty();
-                }
             }
-            else if(allIn1VfxShader == null)
-            {
+            else if (allIn1VfxShader == null)
                 Debug.LogError(
                     "Make sure the AllIn1Vfx shader variants are inside the Resource folder!   You looked for " +
                     shaderName);
-            }
         }
 
-        private void DoAfterSetAction(AfterSetAction action)
+        void DoAfterSetAction(AfterSetAction action)
         {
-            switch(action)
+            switch (action)
             {
                 case AfterSetAction.Clear:
                     ClearAllKeywords();
@@ -179,10 +180,12 @@ namespace AllIn1VfxToolkit
         {
             bool rendererExists = false;
             Renderer sr = GetComponent<Renderer>();
-            if(sr != null)
+
+            if (sr != null)
             {
                 rendererExists = true;
-                if(sr != null && sr.sharedMaterial != null && sr.sharedMaterial.shader.name.Contains("Vfx"))
+
+                if (sr != null && sr.sharedMaterial != null && sr.sharedMaterial.shader.name.Contains("Vfx"))
                 {
                     ResetAllProperties("AllIn1Vfx");
                     ClearAllKeywords();
@@ -196,10 +199,12 @@ namespace AllIn1VfxToolkit
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
                     rendererExists = true;
-                    if(img.material.shader.name.Contains("Vfx"))
+
+                    if (img.material.shader.name.Contains("Vfx"))
                     {
                         ResetAllProperties("AllIn1Vfx");
                         ClearAllKeywords();
@@ -208,10 +213,8 @@ namespace AllIn1VfxToolkit
                 }
             }
 
-            if(!rendererExists)
-            {
+            if (!rendererExists)
                 MissingRenderer();
-            }
 
             SetSceneDirty();
         }
@@ -290,27 +293,30 @@ namespace AllIn1VfxToolkit
             SetSceneDirty();
         }
 
-        private void SetKeyword(string keyword, bool state = false)
+        void SetKeyword(string keyword, bool state = false)
         {
-            if(destroyed) return;
-            if(currMaterial == null)
+            if (destroyed) return;
+
+            if (currMaterial == null)
             {
                 FindCurrMaterial();
-                if(currMaterial == null)
+
+                if (currMaterial == null)
                 {
                     MissingRenderer();
                     return;
                 }
             }
 
-            if(!state) currMaterial.DisableKeyword(keyword);
+            if (!state) currMaterial.DisableKeyword(keyword);
             else currMaterial.EnableKeyword(keyword);
         }
 
-        private void FindCurrMaterial()
+        void FindCurrMaterial()
         {
             Renderer sr = GetComponent<Renderer>();
-            if(sr != null)
+
+            if (sr != null)
             {
                 currMaterial = GetComponent<Renderer>().sharedMaterial;
                 matAssigned = true;
@@ -318,7 +324,8 @@ namespace AllIn1VfxToolkit
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
                     currMaterial = img.material;
                     matAssigned = true;
@@ -329,7 +336,8 @@ namespace AllIn1VfxToolkit
         public void CleanMaterial()
         {
             Renderer sr = GetComponent<Renderer>();
-            if(sr != null)
+
+            if (sr != null)
             {
                 sr.sharedMaterial = new Material(Shader.Find("Sprites/Default"));
                 matAssigned = false;
@@ -337,7 +345,8 @@ namespace AllIn1VfxToolkit
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
                     img.material = new Material(Shader.Find("Sprites/Default"));
                     matAssigned = false;
@@ -351,52 +360,55 @@ namespace AllIn1VfxToolkit
         {
 #if UNITY_EDITOR
             string path = AllIn1VfxWindow.materialsSavesPath;
-            if(PlayerPrefs.HasKey("All1VfxMaterials")) path = PlayerPrefs.GetString("All1VfxMaterials");
+
+            if (PlayerPrefs.HasKey("All1VfxMaterials")) path = PlayerPrefs.GetString("All1VfxMaterials");
             else PlayerPrefs.SetString("All1VfxMaterials", AllIn1VfxWindow.materialsSavesPath);
+
             path += "/";
-            if(!System.IO.Directory.Exists(path))
+
+            if (!Directory.Exists(path))
             {
                 EditorUtility.DisplayDialog("The desired save folder doesn't exist",
                     "Go to Window -> AllIn1VfxWindow and set a valid folder", "Ok");
+
                 return;
             }
 
             path += gameObject.name;
             string fullPath = path + ".mat";
-            if(System.IO.File.Exists(fullPath))
-            {
+
+            if (File.Exists(fullPath))
                 SaveMaterialWithOtherName(path);
-            }
             else DoSaving(fullPath);
 
             SetSceneDirty();
 #endif
         }
 
-        private void SaveMaterialWithOtherName(string path, int i = 1)
+        void SaveMaterialWithOtherName(string path, int i = 1)
         {
             int number = i;
             string newPath = path + "_" + number.ToString();
             string fullPath = newPath + ".mat";
-            if(System.IO.File.Exists(fullPath))
+
+            if (File.Exists(fullPath))
             {
                 number++;
                 SaveMaterialWithOtherName(path, number);
             }
             else
-            {
                 DoSaving(fullPath);
-            }
         }
 
-        private void DoSaving(string fileName)
+        void DoSaving(string fileName)
         {
 #if UNITY_EDITOR
             bool rendererExists = false;
             Renderer sr = GetComponent<Renderer>();
             Material matToSave = null;
             Material createdMat = null;
-            if(sr != null)
+
+            if (sr != null)
             {
                 rendererExists = true;
                 matToSave = sr.sharedMaterial;
@@ -404,14 +416,15 @@ namespace AllIn1VfxToolkit
             else
             {
                 Graphic img = GetComponent<Graphic>();
-                if(img != null)
+
+                if (img != null)
                 {
                     rendererExists = true;
                     matToSave = img.material;
                 }
             }
 
-            if(!rendererExists)
+            if (!rendererExists)
             {
                 MissingRenderer();
                 return;
@@ -425,10 +438,8 @@ namespace AllIn1VfxToolkit
                 EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(fileName, typeof(Material)));
             }
 
-            if(sr != null)
-            {
+            if (sr != null)
                 sr.material = createdMat;
-            }
             else
             {
                 Graphic img = GetComponent<Graphic>();
@@ -440,21 +451,22 @@ namespace AllIn1VfxToolkit
         public void SetSceneDirty()
         {
 #if UNITY_EDITOR
-            if(!Application.isPlaying) EditorSceneManager.MarkAllScenesDirty();
+            if (!Application.isPlaying) EditorSceneManager.MarkAllScenesDirty();
 
             //If you get an error here please delete the 2 lines below
-            var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
-            if(prefabStage != null) EditorSceneManager.MarkSceneDirty(prefabStage.scene);
+            PrefabStage prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+            if (prefabStage != null) EditorSceneManager.MarkSceneDirty(prefabStage.scene);
 #endif
         }
 
-        private void MissingRenderer()
+        void MissingRenderer()
         {
 #if UNITY_EDITOR
             EditorUtility.DisplayDialog("Missing Renderer", "This GameObject (" +
                                                             gameObject.name +
                                                             ") has no Renderer or UI Graphic component. This AllIn1Vfx component will be removed.",
                 "Ok");
+
             destroyed = true;
             DestroyImmediate(this);
 #endif
@@ -466,27 +478,28 @@ namespace AllIn1VfxToolkit
             Renderer sr = GetComponent<Renderer>();
             Graphic img = GetComponent<Graphic>();
             Material matToApply = null;
-            if(sr != null) matToApply = sr.sharedMaterial;
-            else if(img != null)
-            {
+
+            if (sr != null) matToApply = sr.sharedMaterial;
+            else if (img != null)
                 matToApply = img.material;
-            }
             else
             {
                 MissingRenderer();
                 return;
             }
 
-            List<Transform> children = new List<Transform>();
+            var children = new List<Transform>();
             GetAllChildren(transform, ref children);
-            foreach(Transform t in children)
+
+            foreach (Transform t in children)
             {
                 sr = t.gameObject.GetComponent<Renderer>();
-                if(sr != null) sr.material = matToApply;
+
+                if (sr != null) sr.material = matToApply;
                 else
                 {
                     img = t.gameObject.GetComponent<Graphic>();
-                    if(img != null) img.material = matToApply;
+                    if (img != null) img.material = matToApply;
                 }
             }
         }
@@ -495,12 +508,12 @@ namespace AllIn1VfxToolkit
         {
             Renderer sr = GetComponent<Renderer>();
             Graphic img = GetComponent<Graphic>();
-            if(sr == null && img == null) MissingRenderer();
+            if (sr == null && img == null) MissingRenderer();
         }
 
-        private void GetAllChildren(Transform parent, ref List<Transform> transforms)
+        void GetAllChildren(Transform parent, ref List<Transform> transforms)
         {
-            foreach(Transform child in parent)
+            foreach (Transform child in parent)
             {
                 transforms.Add(child);
                 GetAllChildren(child, ref transforms);
@@ -509,10 +522,11 @@ namespace AllIn1VfxToolkit
 
         public void RenderToImage()
         {
-            if(currMaterial == null)
+            if (currMaterial == null)
             {
                 FindCurrMaterial();
-                if(currMaterial == null)
+
+                if (currMaterial == null)
                 {
                     MissingRenderer();
                     return;
@@ -520,15 +534,17 @@ namespace AllIn1VfxToolkit
             }
 
             Texture tex = currMaterial.GetTexture("_MainTex");
-            if(tex != null) RenderAndSaveTexture(currMaterial, tex);
+
+            if (tex != null) RenderAndSaveTexture(currMaterial, tex);
             else
             {
                 SpriteRenderer sr = GetComponent<SpriteRenderer>();
                 Graphic i = GetComponent<Graphic>();
-                if(sr != null) tex = sr.sprite.texture;
-                else if(i != null) tex = i.mainTexture;
 
-                if(tex != null) RenderAndSaveTexture(currMaterial, tex);
+                if (sr != null) tex = sr.sprite.texture;
+                else if (i != null) tex = i.mainTexture;
+
+                if (tex != null) RenderAndSaveTexture(currMaterial, tex);
                 else
                     EditorUtility.DisplayDialog("No valid target texture found",
                         "All In 1 VFX component couldn't find a valid Main Texture in this GameObject (" +
@@ -538,37 +554,44 @@ namespace AllIn1VfxToolkit
             }
         }
 
-        private void RenderAndSaveTexture(Material targetMaterial, Texture targetTexture)
+        void RenderAndSaveTexture(Material targetMaterial, Texture targetTexture)
         {
             float scaleSlider = 1;
-            if(PlayerPrefs.HasKey("All1VfxRenderImagesScale"))
+
+            if (PlayerPrefs.HasKey("All1VfxRenderImagesScale"))
                 scaleSlider = PlayerPrefs.GetFloat("All1VfxRenderImagesScale");
+
             RenderTexture renderTarget = new RenderTexture((int)(targetTexture.width * scaleSlider),
                 (int)(targetTexture.height * scaleSlider), 0, RenderTextureFormat.ARGB32);
+
             Graphics.Blit(targetTexture, renderTarget, targetMaterial);
             Texture2D resultTex = new Texture2D(renderTarget.width, renderTarget.height, TextureFormat.ARGB32, false);
             resultTex.ReadPixels(new Rect(0, 0, renderTarget.width, renderTarget.height), 0, 0);
             resultTex.Apply();
 
             string path = AllIn1VfxWindow.renderImagesSavesPath;
-            if(PlayerPrefs.HasKey("All1VfxRenderImages")) path = PlayerPrefs.GetString("All1VfxRenderImages");
+
+            if (PlayerPrefs.HasKey("All1VfxRenderImages")) path = PlayerPrefs.GetString("All1VfxRenderImages");
             else PlayerPrefs.SetString("All1VfxRenderImages", AllIn1VfxWindow.renderImagesSavesPath);
-            path +=  "/";
-            if(!System.IO.Directory.Exists(path))
+
+            path += "/";
+
+            if (!Directory.Exists(path))
             {
                 EditorUtility.DisplayDialog("The desired Material to Image Save Path doesn't exist",
                     "Go to Window -> AllIn1VfxWindow and set a valid folder", "Ok");
+
                 return;
             }
 
             string fullPath = path + gameObject.name + ".png";
-            if(System.IO.File.Exists(fullPath)) fullPath = GetNewValidPath(path + gameObject.name);
+            if (File.Exists(fullPath)) fullPath = GetNewValidPath(path + gameObject.name);
             string pingPath = fullPath;
 
             string fileName = fullPath.Replace(path, "");
             fileName = fileName.Replace(".png", "");
             fullPath = EditorUtility.SaveFilePanel("Save Render Image", path, fileName, "png");
-            if(fullPath.Length == 0) return;
+            if (fullPath.Length == 0) return;
 
             byte[] bytes = resultTex.EncodeToPNG();
             File.WriteAllBytes(pingPath, bytes);
@@ -576,16 +599,18 @@ namespace AllIn1VfxToolkit
             AssetDatabase.Refresh();
             DestroyImmediate(resultTex);
             EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath(pingPath, typeof(Texture)));
+
             Debug.Log("Render Image saved to: " + fullPath + " with scale: " + scaleSlider +
                       " (it can be changed in Window -> AllIn1VfxWindow)");
         }
 
-        private string GetNewValidPath(string path, int i = 1)
+        string GetNewValidPath(string path, int i = 1)
         {
             int number = i;
             string newPath = path + "_" + number.ToString();
             string fullPath = newPath + ".png";
-            if(System.IO.File.Exists(fullPath))
+
+            if (File.Exists(fullPath))
             {
                 number++;
                 fullPath = GetNewValidPath(path, number);
@@ -597,64 +622,69 @@ namespace AllIn1VfxToolkit
         public void AddHelperAndPlaceUnderAll1VfxMainComponent()
         {
             AllIn1ParticleHelperComponent psHelper = GetComponent<AllIn1ParticleHelperComponent>();
-            if(psHelper != null) return;
+            if (psHelper != null) return;
             psHelper = gameObject.AddComponent<AllIn1ParticleHelperComponent>();
-            Component[] components = GetComponents(typeof(Component));
+            var components = GetComponents(typeof(Component));
             int all1ComponentIndex = -1;
             bool rendererHasAppeared = false;
-            for(int i = 0; i < components.Length; i++)
+
+            for (int i = 0; i < components.Length; i++)
             {
-                if(components[i].GetType().FullName.Contains("ParticleSystemRenderer")) rendererHasAppeared = true;
-                if(components[i].GetType().FullName.Contains("AllIn1VfxComponent"))
+                if (components[i].GetType().FullName.Contains("ParticleSystemRenderer")) rendererHasAppeared = true;
+
+                if (components[i].GetType().FullName.Contains("AllIn1VfxComponent"))
                 {
                     all1ComponentIndex = i;
                     break;
                 }
             }
 
-            if(all1ComponentIndex <= -1) return;
+            if (all1ComponentIndex <= -1) return;
             int upTimes = components.Length - 2 - all1ComponentIndex;
-            if(!rendererHasAppeared) upTimes -= 1; //Takes into account invisible particle Renderer component
-            if(upTimes > 0)
-                for(int i = 0; i < upTimes; i++)
+            if (!rendererHasAppeared) upTimes -= 1; //Takes into account invisible particle Renderer component
+
+            if (upTimes > 0)
+                for (int i = 0; i < upTimes; i++)
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(psHelper);
         }
 
         [ContextMenu("Move component to the top of Inspector")]
         public void MoveComponentToTheTop()
         {
-            Component[] components = GetComponents(typeof(Component));
+            var components = GetComponents(typeof(Component));
             int upTimes = components.Length - 2;
-            if(upTimes > 0)
-                for(int i = 0; i < upTimes; i++)
+
+            if (upTimes > 0)
+                for (int i = 0; i < upTimes; i++)
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(this);
         }
 
         [ContextMenu("Delete all All1Vfx Components in Hierarchy")]
-        private void DeleteAllParticleHelpersInHierarchy()
+        void DeleteAllParticleHelpersInHierarchy()
         {
             StartCoroutine(DeleteAllChildAll1VfxComponentsCR());
             StartCoroutine(DelayedDestroyCR());
         }
 
         [ContextMenu("Delete child All1Vfx Components")]
-        private void DeleteChildParticleHelpers()
+        void DeleteChildParticleHelpers()
         {
             StartCoroutine(DeleteAllChildAll1VfxComponentsCR());
         }
 
-        private IEnumerator DelayedDestroyCR()
+        IEnumerator DelayedDestroyCR()
         {
             yield return null;
             DestroyImmediate(this);
         }
 
-        private IEnumerator DeleteAllChildAll1VfxComponentsCR()
+        IEnumerator DeleteAllChildAll1VfxComponentsCR()
         {
             yield return null;
-            AllIn1VfxComponent[] helpers = gameObject.GetComponentsInChildren<AllIn1VfxComponent>();
-            for(int i = 0; i < helpers.Length; i++)
-                if(!helpers[i].gameObject.Equals(gameObject))
+            var helpers = gameObject.GetComponentsInChildren<AllIn1VfxComponent>();
+
+            for (int i = 0; i < helpers.Length; i++)
+                if (!helpers[i].gameObject.Equals(gameObject))
                     DestroyImmediate(helpers[i]);
         }
 #endif

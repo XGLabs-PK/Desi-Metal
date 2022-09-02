@@ -1,5 +1,4 @@
 #if (UNITY_ANDROID && !UNITY_EDITOR)
-
 using System;
 using UnityEngine;
 
@@ -38,10 +37,12 @@ namespace Lofelt.NiceVibrations
             try
             {
                 IntPtr toStringMethodId = AndroidJNI.GetMethodID(throwableClass, "toString", "()Ljava/lang/String;");
-                IntPtr getStackTraceStringMethodId = AndroidJNI.GetStaticMethodID(androidUtilLogClass, "getStackTraceString", "(Ljava/lang/Throwable;)Ljava/lang/String;");
+                IntPtr getStackTraceStringMethodId =
+ AndroidJNI.GetStaticMethodID(androidUtilLogClass, "getStackTraceString", "(Ljava/lang/Throwable;)Ljava/lang/String;");
                 string exceptionMessage = AndroidJNI.CallStringMethod(throwable, toStringMethodId, new jvalue[] { });
                 jniArgs[0].l = throwable;
-                string exceptionCallStack = AndroidJNI.CallStaticStringMethod(androidUtilLogClass, getStackTraceStringMethodId, jniArgs);
+                string exceptionCallStack =
+ AndroidJNI.CallStaticStringMethod(androidUtilLogClass, getStackTraceStringMethodId, jniArgs);
                 return exceptionMessage + "\n" + exceptionCallStack;
             }
             finally

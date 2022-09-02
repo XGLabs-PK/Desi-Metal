@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace XGStudios
@@ -16,7 +14,7 @@ namespace XGStudios
         // Update is called once per frame
         void Update()
         {
-        
+
         }
     }
 }

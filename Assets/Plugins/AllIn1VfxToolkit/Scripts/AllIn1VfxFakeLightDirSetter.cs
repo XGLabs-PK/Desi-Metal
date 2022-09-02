@@ -7,48 +7,52 @@ namespace AllIn1VfxToolkit
     public class AllIn1VfxFakeLightDirSetter : MonoBehaviour
     {
         [Header("This script gets executed in edit mode too")]
-        [SerializeField] private bool setOnAwake = true;
-        [SerializeField] private bool setOnUpdate = false;
-        
-        [Space, Header("If target is null we'll use this object as target")] 
+        [SerializeField]
+        bool setOnAwake = true;
+        [SerializeField]
+        bool setOnUpdate = false;
+
+        [Space]
+        [Header("If target is null we'll use this object as target")]
         [Header("Direction is target's forward vector")]
-        [SerializeField] private Transform target;
+        [SerializeField]
+        Transform target;
 
-        private int lightDirId = 0;
-        
-        private void Awake()
+        int lightDirId = 0;
+
+        void Awake()
         {
-            if(setOnAwake) SetGlobalFakeLightDir();
-        }
-        
-        private void Update()
-        {
-            if(setOnUpdate) SetGlobalFakeLightDir();
+            if (setOnAwake) SetGlobalFakeLightDir();
         }
 
-        private void OnValidate()
+        void Update()
+        {
+            if (setOnUpdate) SetGlobalFakeLightDir();
+        }
+
+        void OnValidate()
         {
             SetGlobalFakeLightDir();
         }
 
         public void SetGlobalFakeLightDir()
         {
-            if(lightDirId == 0) lightDirId = Shader.PropertyToID("_All1VfxLightDir");
-            if(target == null) target = transform;
+            if (lightDirId == 0) lightDirId = Shader.PropertyToID("_All1VfxLightDir");
+            if (target == null) target = transform;
             Shader.SetGlobalVector(lightDirId, target.forward.normalized);
         }
 
         public void SetNewFakeLightDir(Vector3 newFakeLightDir)
         {
-            if(lightDirId == 0) lightDirId = Shader.PropertyToID("_All1VfxLightDir");
+            if (lightDirId == 0) lightDirId = Shader.PropertyToID("_All1VfxLightDir");
             Shader.SetGlobalVector(lightDirId, newFakeLightDir.normalized);
         }
-        
+
         public void SetNewTarget(Transform newTarget)
         {
             target = newTarget;
         }
-        
+
         public void SetOnUpdateBool(bool newSetOnUpdateValue)
         {
             setOnUpdate = newSetOnUpdateValue;

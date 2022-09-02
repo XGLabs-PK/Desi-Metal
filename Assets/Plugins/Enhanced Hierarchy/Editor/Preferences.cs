@@ -5,20 +5,21 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace EnhancedHierarchy {
-
-    public enum TintMode {
+namespace EnhancedHierarchy
+{
+    public enum TintMode
+    {
         Flat = 0,
         GradientRightToLeft = 1,
-        GradientLeftToRight = 2,
+        GradientLeftToRight = 2
     }
 
     /// <summary>
     /// Per layer color setting.
     /// </summary>
     [Serializable]
-    public struct LayerColor {
-
+    public struct LayerColor
+    {
         [SerializeField]
         public int layer;
         [SerializeField]
@@ -26,90 +27,111 @@ namespace EnhancedHierarchy {
         [SerializeField]
         public TintMode mode;
 
-        public LayerColor(int layer) : this(layer, Color.clear) { }
+        public LayerColor(int layer) : this(layer, Color.clear)
+        {
+        }
 
-        public LayerColor(int layer, Color color, TintMode mode = TintMode.GradientRightToLeft) {
+        public LayerColor(int layer, Color color, TintMode mode = TintMode.GradientRightToLeft)
+        {
             this.layer = layer;
             this.color = color;
             this.mode = mode;
         }
 
-        public static implicit operator LayerColor(int layer) {
+        public static implicit operator LayerColor(int layer)
+        {
             return new LayerColor(layer);
         }
 
-        public static bool operator ==(LayerColor left, LayerColor right) {
+        public static bool operator ==(LayerColor left, LayerColor right)
+        {
             return left.layer == right.layer;
         }
 
-        public static bool operator !=(LayerColor left, LayerColor right) {
+        public static bool operator !=(LayerColor left, LayerColor right)
+        {
             return left.layer != right.layer;
         }
 
-        public override bool Equals(object obj) {
+        public override bool Equals(object obj)
+        {
             if (!(obj is LayerColor))
                 return false;
 
             return ((LayerColor)obj).layer == layer;
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return layer.GetHashCode();
         }
-
     }
 
     /// <summary>
     /// Save and load hierarchy preferences.
     /// </summary>
-    public static partial class Preferences {
-
+    public static partial class Preferences
+    {
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-        private class AutoPrefItemAttribute : Attribute {
-
+        class AutoPrefItemAttribute : Attribute
+        {
             public string Key { get; private set; }
 
-            public AutoPrefItemAttribute(string key = null) { Key = key; }
-
+            public AutoPrefItemAttribute(string key = null)
+            {
+                Key = key;
+            }
         }
 
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-        private class AutoPrefItemDefaultValueAttribute : Attribute {
-
+        class AutoPrefItemDefaultValueAttribute : Attribute
+        {
             public object DefaultValue { get; private set; }
 
-            public AutoPrefItemDefaultValueAttribute(object defaultValue) { DefaultValue = defaultValue; }
-
+            public AutoPrefItemDefaultValueAttribute(object defaultValue)
+            {
+                DefaultValue = defaultValue;
+            }
         }
 
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-        private class AutoPrefItemLabelAttribute : Attribute {
-
+        class AutoPrefItemLabelAttribute : Attribute
+        {
             public GUIContent Label { get; private set; }
 
-            public AutoPrefItemLabelAttribute(string label, string tooltip = null) { Label = new GUIContent(label, tooltip); }
-
+            public AutoPrefItemLabelAttribute(string label, string tooltip = null)
+            {
+                Label = new GUIContent(label, tooltip);
+            }
         }
 
-        private static Color DefaultOddSortColor { get { return EditorGUIUtility.isProSkin ? new Color(0f, 0f, 0f, 0.1f) : new Color(1f, 1f, 1f, 0.2f); } }
-        private static Color DefaultEvenSortColor { get { return EditorGUIUtility.isProSkin ? new Color(0f, 0f, 0f, 0f) : new Color(1f, 1f, 1f, 0f); } }
-        private static Color DefaultLineColor { get { return new Color(0f, 0f, 0f, 0.2f); } }
-        private static Color DefaultHoverTint { get { return EditorGUIUtility.isProSkin ? new Color(0f, 0f, 0f, 0.2f) : new Color(0.12f, 0.12f, 0.12f, 0.2f); } }
+        static Color DefaultOddSortColor =>
+            EditorGUIUtility.isProSkin ? new Color(0f, 0f, 0f, 0.1f) : new Color(1f, 1f, 1f, 0.2f);
+        static Color DefaultEvenSortColor =>
+            EditorGUIUtility.isProSkin ? new Color(0f, 0f, 0f, 0f) : new Color(1f, 1f, 1f, 0f);
+        static Color DefaultLineColor => new Color(0f, 0f, 0f, 0.2f);
+        static Color DefaultHoverTint => EditorGUIUtility.isProSkin
+            ? new Color(0f, 0f, 0f, 0.2f)
+            : new Color(0.12f, 0.12f, 0.12f, 0.2f);
 
         #region PrefItems
+
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Enabled", "Enable or disable the entire plugin, it will be automatically disabled if any error occurs")]
+        [AutoPrefItemLabel("Enabled",
+            "Enable or disable the entire plugin, it will be automatically disabled if any error occurs")]
         public static PrefItem<bool> Enabled;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(0)]
-        [AutoPrefItemLabel("Right Margin", "Margin for icons, useful if you have more extensions that also uses hierarchy")]
+        [AutoPrefItemLabel("Right Margin",
+            "Margin for icons, useful if you have more extensions that also uses hierarchy")]
         public static PrefItem<int> RightMargin;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(0)]
-        [AutoPrefItemLabel("Left Margin", "Margin for icons, useful if you have more extensions that also uses hierarchy")]
+        [AutoPrefItemLabel("Left Margin",
+            "Margin for icons, useful if you have more extensions that also uses hierarchy")]
         public static PrefItem<int> LeftMargin;
 
         [AutoPrefItem]
@@ -119,7 +141,8 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(0.8f)]
-        [AutoPrefItemLabel("Hierarchy Tree Opacity", "The opacity of the tree view lines connecting child transforms to their parent, useful if you have multiple children inside children")]
+        [AutoPrefItemLabel("Hierarchy Tree Opacity",
+            "The opacity of the tree view lines connecting child transforms to their parent, useful if you have multiple children inside children")]
         public static PrefItem<float> TreeOpacity;
 
         [AutoPrefItem]
@@ -129,7 +152,8 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Select on Tree", "Select the parent when you click on the tree lines\n\nTHIS MAY AFFECT PERFORMANCE")]
+        [AutoPrefItemLabel("Select on Tree",
+            "Select the parent when you click on the tree lines\n\nTHIS MAY AFFECT PERFORMANCE")]
         public static PrefItem<bool> SelectOnTree;
 
         [AutoPrefItem]
@@ -144,7 +168,8 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Enhanced selection", "Allow selecting GameObjects by dragging over them with right mouse button")]
+        [AutoPrefItemLabel("Enhanced selection",
+            "Allow selecting GameObjects by dragging over them with right mouse button")]
         public static PrefItem<bool> EnhancedSelection;
 
         [AutoPrefItem]
@@ -153,7 +178,8 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(false)]
-        [AutoPrefItemLabel("Hide native icon", "Hide the native icon on the left side of the name, introducted in Unity 2018.3")]
+        [AutoPrefItemLabel("Hide native icon",
+            "Hide the native icon on the left side of the name, introducted in Unity 2018.3")]
         public static PrefItem<bool> DisableNativeIcon;
 
         [AutoPrefItem]
@@ -168,27 +194,32 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(false)]
-        [AutoPrefItemLabel("Pick locked objects", "Allow picking objects that are locked on scene view\nObjects locked before you change this option will not be affected\nRequires Unity 2019.3 or newer")]
+        [AutoPrefItemLabel("Pick locked objects",
+            "Allow picking objects that are locked on scene view\nObjects locked before you change this option will not be affected\nRequires Unity 2019.3 or newer")]
         public static PrefItem<bool> AllowPickingLockedObjects;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Change all selected", "This will make the enable, lock, layer, tag and static buttons affect all selected objects in the hierarchy")]
+        [AutoPrefItemLabel("Change all selected",
+            "This will make the enable, lock, layer, tag and static buttons affect all selected objects in the hierarchy")]
         public static PrefItem<bool> ChangeAllSelected;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Left side button at leftmost", "Put the left button to the leftmost side of the hierarchy, if disabled it will be next to the game object name")]
+        [AutoPrefItemLabel("Left side button at leftmost",
+            "Put the left button to the leftmost side of the hierarchy, if disabled it will be next to the game object name")]
         public static PrefItem<bool> LeftmostButton;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Open scripts of logs", "Clicking on warnings, logs or errors will open the script to edit in your IDE or text editor\n\nMAY AFFECT PERFORMANCE")]
+        [AutoPrefItemLabel("Open scripts of logs",
+            "Clicking on warnings, logs or errors will open the script to edit in your IDE or text editor\n\nMAY AFFECT PERFORMANCE")]
         public static PrefItem<bool> OpenScriptsOfLogs;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(false)]
-        [AutoPrefItemLabel("Replace default child toggle", "Replace the default toggle for expanding children to a new one that shows the children count")]
+        [AutoPrefItemLabel("Replace default child toggle",
+            "Replace the default toggle for expanding children to a new one that shows the children count")]
         public static PrefItem<bool> NumericChildExpand;
 
         [AutoPrefItem]
@@ -203,7 +234,8 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(true)]
-        [AutoPrefItemLabel("Centralize when possible", "Centralize minilabel when there's only tag or only layer on it")]
+        [AutoPrefItemLabel("Centralize when possible",
+            "Centralize minilabel when there's only tag or only layer on it")]
         public static PrefItem<bool> CentralizeMiniLabelWhenPossible;
 
         [AutoPrefItem]
@@ -239,7 +271,8 @@ namespace EnhancedHierarchy {
         public static PrefItem<Color> LineColor;
 
         [AutoPrefItem]
-        [AutoPrefItemLabel("Left side button", "The button that will appear in the left side of the hierarchy\nLooks better with \"Hierarchy Tree\" disabled")]
+        [AutoPrefItemLabel("Left side button",
+            "The button that will appear in the left side of the hierarchy\nLooks better with \"Hierarchy Tree\" disabled")]
         public static PrefItem<IconData> LeftSideButtonPref;
 
         [AutoPrefItem]
@@ -253,12 +286,14 @@ namespace EnhancedHierarchy {
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(ChildrenChangeMode.Ask)]
-        [AutoPrefItemLabel("Layer", "Which objects will have their layer changed when you click on the layer button or on the mini label")]
+        [AutoPrefItemLabel("Layer",
+            "Which objects will have their layer changed when you click on the layer button or on the mini label")]
         public static PrefItem<ChildrenChangeMode> LayerAskMode;
 
         [AutoPrefItem]
         [AutoPrefItemDefaultValue(ChildrenChangeMode.ObjectOnly)]
-        [AutoPrefItemLabel("Tag", "Which objects will have their tag changed when you click on the tag button or on the mini label")]
+        [AutoPrefItemLabel("Tag",
+            "Which objects will have their tag changed when you click on the tag button or on the mini label")]
         public static PrefItem<ChildrenChangeMode> TagAskMode;
 
         [AutoPrefItem]
@@ -282,80 +317,94 @@ namespace EnhancedHierarchy {
         [AutoPrefItem]
         [AutoPrefItemLabel("Per layer row color", "Set a row color for each different layer")]
         public static PrefItem<List<LayerColor>> PerLayerRowColors;
+
         #endregion
 
         public static MiniLabelProvider[] miniLabelProviders;
 
-        public static IconBase LeftSideButton {
-            get { return LeftSideButtonPref.Value.Icon; }
-            set {
+        public static IconBase LeftSideButton
+        {
+            get => LeftSideButtonPref.Value.Icon;
+            set
+            {
                 LeftSideButtonPref.Value.Icon = value;
                 LeftSideButtonPref.ForceSave();
             }
         }
 
-        public static bool ProfilingEnabled {
-            get {
-                #if HIERARCHY_PROFILING
+        public static bool ProfilingEnabled
+        {
+            get
+            {
+#if HIERARCHY_PROFILING
                 return true;
-                #else
+#else
                 return false;
-                #endif
+#endif
             }
         }
 
-        public static bool DebugEnabled {
-            get {
-                #if HIERARCHY_DEBUG
+        public static bool DebugEnabled
+        {
+            get
+            {
+#if HIERARCHY_DEBUG
                 return true;
-                #else
+#else
                 return false;
-                #endif
+#endif
             }
         }
 
-        public static bool MiniLabelTagEnabled {
+        public static bool MiniLabelTagEnabled
+        {
             get { return miniLabelProviders.Any(ml => ml is TagMiniLabel); }
         }
 
-        public static bool MiniLabelLayerEnabled {
+        public static bool MiniLabelLayerEnabled
+        {
             get { return miniLabelProviders.Any(ml => ml is LayerMiniLabel); }
         }
 
-        public static bool EnhancedSelectionSupported {
-            get { return Application.platform == RuntimePlatform.WindowsEditor; }
-        }
+        public static bool EnhancedSelectionSupported => Application.platform == RuntimePlatform.WindowsEditor;
 
-        static Preferences() {
+        static Preferences()
+        {
             InitializePreferences();
 
             Enabled.Label.text = string.Format("Enabled ({0}+H)", Utility.CtrlKey);
 
-            #if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
             LeftSideButtonPref.DefaultValue = new IconData() { Icon = new Icons.None() };
-            #else
+#else
             LeftSideButtonPref.DefaultValue = new IconData() { Icon = new Icons.GameObjectIcon() };
-            #endif
+#endif
 
             LineColor.DefaultValue = DefaultLineColor;
             OddRowColor.DefaultValue = DefaultOddSortColor;
             EvenRowColor.DefaultValue = DefaultEvenSortColor;
             HoverTintColor.DefaultValue = DefaultHoverTint;
 
-            var defaultLeftIcons = new IconList { new Icons.MonoBehaviourIcon(), new Icons.Warnings(), new Icons.SoundIcon() };
-            var defaultRightIcons = new IconList { new Icons.Active(), new Icons.Lock(), new Icons.Static(), new Icons.PrefabApply() };
+            IconList defaultLeftIcons = new IconList
+                { new Icons.MonoBehaviourIcon(), new Icons.Warnings(), new Icons.SoundIcon() };
+
+            IconList defaultRightIcons = new IconList
+                { new Icons.Active(), new Icons.Lock(), new Icons.Static(), new Icons.PrefabApply() };
+
             var defaultLayerColors = new List<LayerColor> { new LayerColor(5, new Color(0f, 0f, 1f, 0.3019608f)) };
 
             LeftIcons.DefaultValue = defaultLeftIcons;
             RightIcons.DefaultValue = defaultRightIcons;
             PerLayerRowColors.DefaultValue = defaultLayerColors;
-            MiniLabels.DefaultValue = new [] {
+
+            MiniLabels.DefaultValue = new[]
+            {
                 Array.IndexOf(MiniLabelProvider.MiniLabelsTypes, typeof(LayerMiniLabel)),
                 Array.IndexOf(MiniLabelProvider.MiniLabelsTypes, typeof(TagMiniLabel))
             };
 
             minilabelsNames = MiniLabelProvider.MiniLabelsTypes
-                .Select(ml => ml == null? "None": ObjectNames.NicifyVariableName(ml.Name.Replace("MiniLabel", "")))
+                .Select(ml => ml == null ? "None" : ObjectNames.NicifyVariableName(ml.Name.Replace("MiniLabel", "")))
                 .ToArray();
 
             leftIconsList = GenerateReordableList(LeftIcons);
@@ -367,7 +416,8 @@ namespace EnhancedHierarchy {
             rowColorsList = GenerateReordableList(PerLayerRowColors);
             rowColorsList.onAddDropdownCallback = (rect, newList) => RowColorsMenu.DropDown(rect);
 
-            rowColorsList.drawElementCallback = (rect, index, focused, active) => {
+            rowColorsList.drawElementCallback = (rect, index, focused, active) =>
+            {
                 GUI.changed = false;
 
                 rect.xMin -= EditorGUI.indentLevel * 16f;
@@ -380,15 +430,17 @@ namespace EnhancedHierarchy {
             RecreateMiniLabelProviders();
         }
 
-        public static void RecreateMiniLabelProviders() {
+        public static void RecreateMiniLabelProviders()
+        {
             miniLabelProviders = MiniLabels.Value
                 .Select(ml => MiniLabelProvider.MiniLabelsTypes.ElementAtOrDefault(ml))
                 .Where(ml => ml != null)
-                .Select(ml => Activator.CreateInstance(ml)as MiniLabelProvider)
+                .Select(ml => Activator.CreateInstance(ml) as MiniLabelProvider)
                 .ToArray();
         }
 
-        public static bool IsButtonEnabled(IconBase button) {
+        public static bool IsButtonEnabled(IconBase button)
+        {
             if (button == null)
                 return false;
 
@@ -398,7 +450,8 @@ namespace EnhancedHierarchy {
             return RightIcons.Value.Contains(button) || LeftIcons.Value.Contains(button);
         }
 
-        public static void ForceDisableButton(IconBase button) {
+        public static void ForceDisableButton(IconBase button)
+        {
             if (button == null)
                 Debug.LogError("Removing null button");
             else
@@ -414,25 +467,29 @@ namespace EnhancedHierarchy {
             LeftIcons.ForceSave();
         }
 
-        private static void InitializePreferences() {
-            var type = typeof(Preferences);
+        static void InitializePreferences()
+        {
+            Type type = typeof(Preferences);
             var members = type.GetMembers(ReflectionHelper.FULL_BINDING);
 
-            foreach (var member in members)
-                try {
+            foreach (MemberInfo member in members)
+                try
+                {
                     if (member == null)
                         continue;
 
-                    var prefItemType = (Type)null;
-                    var prop = member as PropertyInfo;
-                    var field = member as FieldInfo;
+                    Type prefItemType = (Type)null;
+                    PropertyInfo prop = member as PropertyInfo;
+                    FieldInfo field = member as FieldInfo;
 
-                    switch (member.MemberType) {
+                    switch (member.MemberType)
+                    {
                         case MemberTypes.Field:
                             if (typeof(IPrefItem).IsAssignableFrom(field.FieldType))
                                 prefItemType = field.FieldType;
                             else
                                 continue;
+
                             break;
 
                         case MemberTypes.Property:
@@ -440,19 +497,27 @@ namespace EnhancedHierarchy {
                                 prefItemType = prop.PropertyType;
                             else
                                 continue;
+
                             break;
 
                         default:
                             continue;
                     }
 
-                    var keyAttribute = (AutoPrefItemAttribute)member.GetCustomAttributes(typeof(AutoPrefItemAttribute), true).FirstOrDefault();
-                    var labelAttribute = (AutoPrefItemLabelAttribute)member.GetCustomAttributes(typeof(AutoPrefItemLabelAttribute), true).FirstOrDefault();
-                    var defaultValueAttribute = (AutoPrefItemDefaultValueAttribute)member.GetCustomAttributes(typeof(AutoPrefItemDefaultValueAttribute), true).FirstOrDefault();
+                    AutoPrefItemAttribute keyAttribute =
+                        (AutoPrefItemAttribute)member.GetCustomAttributes(typeof(AutoPrefItemAttribute), true)
+                            .FirstOrDefault();
 
-                    var key = member.Name;
-                    var defaultValue = (object)null;
-                    var label = new GUIContent(key);
+                    AutoPrefItemLabelAttribute labelAttribute = (AutoPrefItemLabelAttribute)member
+                        .GetCustomAttributes(typeof(AutoPrefItemLabelAttribute), true).FirstOrDefault();
+
+                    AutoPrefItemDefaultValueAttribute defaultValueAttribute =
+                        (AutoPrefItemDefaultValueAttribute)member
+                            .GetCustomAttributes(typeof(AutoPrefItemDefaultValueAttribute), true).FirstOrDefault();
+
+                    string key = member.Name;
+                    object defaultValue = (object)null;
+                    GUIContent label = new GUIContent(key);
 
                     //var savedValueType = prefItemType.GetGenericArguments()[0];
 
@@ -470,9 +535,11 @@ namespace EnhancedHierarchy {
                     //else if(savedValueType.IsValueType)
                     //    defaultValue = Activator.CreateInstance(savedValueType);
 
-                    var prefItem = Activator.CreateInstance(prefItemType, key, defaultValue, label.text, label.tooltip);
+                    object prefItem =
+                        Activator.CreateInstance(prefItemType, key, defaultValue, label.text, label.tooltip);
 
-                    switch (member.MemberType) {
+                    switch (member.MemberType)
+                    {
                         case MemberTypes.Field:
                             field.SetValue(null, prefItem);
                             break;
@@ -482,7 +549,9 @@ namespace EnhancedHierarchy {
                             break;
                     }
 
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     Debug.LogException(e);
                 }
         }

@@ -23,9 +23,12 @@ namespace Lofelt.NiceVibrations
         SerializedProperty loop;
         SerializedProperty fallbackPreset;
 
-        public static GUIContent hapticClipLabel = EditorGUIUtility.TrTextContent("Haptic Clip", "The HapticClip asset played by the HapticSource.");
-        public static GUIContent fallbackPresetLabel = EditorGUIUtility.TrTextContent("Haptic Preset fallback", "Set the haptic preset to play in case the device doesn't support playback of haptic clips");
-        public static GUIContent loopLabel = EditorGUIUtility.TrTextContent("Loop", "Set the haptic source to loop playback of the haptic clip");
+        public static GUIContent hapticClipLabel =
+            EditorGUIUtility.TrTextContent("Haptic Clip", "The HapticClip asset played by the HapticSource.");
+        public static GUIContent fallbackPresetLabel = EditorGUIUtility.TrTextContent("Haptic Preset fallback",
+            "Set the haptic preset to play in case the device doesn't support playback of haptic clips");
+        public static GUIContent loopLabel =
+            EditorGUIUtility.TrTextContent("Loop", "Set the haptic source to loop playback of the haptic clip");
 
         void OnEnable()
         {
@@ -80,8 +83,10 @@ namespace Lofelt.NiceVibrations
 
             GUIStyle style = GUI.skin.label;
             TextAnchor defaultAlignment = GUI.skin.label.alignment;
-            style.alignment = TextAnchor.UpperLeft; EditorGUI.LabelField(position, "High", style);
-            style.alignment = TextAnchor.UpperRight; EditorGUI.LabelField(position, "Low", style);
+            style.alignment = TextAnchor.UpperLeft;
+            EditorGUI.LabelField(position, "High", style);
+            style.alignment = TextAnchor.UpperRight;
+            EditorGUI.LabelField(position, "Low", style);
             GUI.skin.label.alignment = defaultAlignment;
 
             // Allow space for the High/Low labels
@@ -110,8 +115,10 @@ namespace Lofelt.NiceVibrations
 
             GUIStyle style = GUI.skin.label;
             TextAnchor defaultAlignment = GUI.skin.label.alignment;
-            style.alignment = TextAnchor.UpperLeft; EditorGUI.LabelField(position, "0.0", style);
-            style.alignment = TextAnchor.UpperRight; EditorGUI.LabelField(position, "5.0", style);
+            style.alignment = TextAnchor.UpperLeft;
+            EditorGUI.LabelField(position, "0.0", style);
+            style.alignment = TextAnchor.UpperRight;
+            EditorGUI.LabelField(position, "5.0", style);
             GUI.skin.label.alignment = defaultAlignment;
 
             // Allow space for the labels
@@ -140,8 +147,10 @@ namespace Lofelt.NiceVibrations
 
             GUIStyle style = GUI.skin.label;
             TextAnchor defaultAlignment = GUI.skin.label.alignment;
-            style.alignment = TextAnchor.UpperLeft; EditorGUI.LabelField(position, "-1.0", style);
-            style.alignment = TextAnchor.UpperRight; EditorGUI.LabelField(position, "1.0", style);
+            style.alignment = TextAnchor.UpperLeft;
+            EditorGUI.LabelField(position, "-1.0", style);
+            style.alignment = TextAnchor.UpperRight;
+            EditorGUI.LabelField(position, "1.0", style);
             GUI.skin.label.alignment = defaultAlignment;
 
             // Allow space for the labels

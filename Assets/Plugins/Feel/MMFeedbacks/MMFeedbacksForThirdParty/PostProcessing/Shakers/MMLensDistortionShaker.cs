@@ -7,41 +7,41 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a lens distortion post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMLensDistortionShaker")]
-	#if MM_POSTPROCESSING
+    /// <summary>
+    /// Add this class to a Camera with a lens distortion post processing and it'll be able to "shake" its values by getting events
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMLensDistortionShaker")]
+#if MM_POSTPROCESSING
 	[RequireComponent(typeof(PostProcessVolume))]
-	#endif
-	public class MMLensDistortionShaker : MMShaker
-	{
-		[MMInspectorGroup("Lens Distortion Intensity", true, 51)]
-		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
-		public bool RelativeIntensity = false;
-		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0),
-			new Keyframe(0.2f, 1),
-			new Keyframe(0.25f, -1),
-			new Keyframe(0.35f, 0.7f),
-			new Keyframe(0.4f, -0.7f),
-			new Keyframe(0.6f, 0.3f),
-			new Keyframe(0.65f, -0.3f),
-			new Keyframe(0.8f, 0.1f),
-			new Keyframe(0.85f, -0.1f),
-			new Keyframe(1, 0));
-		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
-		[Range(-100f, 100f)]
-		public float RemapIntensityZero = 0f;
-		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
-		[Range(-100f, 100f)]
-		public float RemapIntensityOne = 50f;
+#endif
+    public class MMLensDistortionShaker : MMShaker
+    {
+        [MMInspectorGroup("Lens Distortion Intensity", true, 51)]
+        /// whether or not to add to the initial value
+        [Tooltip("whether or not to add to the initial value")]
+        public bool RelativeIntensity = false;
+        /// the curve used to animate the intensity value on
+        [Tooltip("the curve used to animate the intensity value on")]
+        public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0),
+            new Keyframe(0.2f, 1),
+            new Keyframe(0.25f, -1),
+            new Keyframe(0.35f, 0.7f),
+            new Keyframe(0.4f, -0.7f),
+            new Keyframe(0.6f, 0.3f),
+            new Keyframe(0.65f, -0.3f),
+            new Keyframe(0.8f, 0.1f),
+            new Keyframe(0.85f, -0.1f),
+            new Keyframe(1, 0));
+        /// the value to remap the curve's 0 to
+        [Tooltip("the value to remap the curve's 0 to")]
+        [Range(-100f, 100f)]
+        public float RemapIntensityZero = 0f;
+        /// the value to remap the curve's 1 to
+        [Tooltip("the value to remap the curve's 1 to")]
+        [Range(-100f, 100f)]
+        public float RemapIntensityOne = 50f;
 
-		#if MM_POSTPROCESSING
+#if MM_POSTPROCESSING
 		protected PostProcessVolume _volume;
 		protected LensDistortion _lensDistortion;
 		protected float _initialIntensity;
@@ -74,7 +74,8 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// </summary>
 		protected override void Shake()
 		{
-			float newValue = ShakeFloat(ShakeIntensity, RemapIntensityZero, RemapIntensityOne, RelativeIntensity, _initialIntensity);
+			float newValue =
+ ShakeFloat(ShakeIntensity, RemapIntensityZero, RemapIntensityOne, RelativeIntensity, _initialIntensity);
 			_lensDistortion.intensity.Override(newValue);
 		}
 
@@ -95,8 +96,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// <param name="relativeIntensity"></param>
 		/// <param name="feedbacksIntensity"></param>
 		/// <param name="channel"></param>
-		public virtual void OnMMLensDistortionShakeEvent(AnimationCurve intensity, float duration, float remapMin, float remapMax, bool relativeIntensity = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, 
+		public virtual void OnMMLensDistortionShakeEvent(AnimationCurve intensity, float duration, float remapMin, float remapMax, bool relativeIntensity
+ = false,
+			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake =
+ true, bool resetTargetValuesAfterShake = true, 
 			bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
 		{
 			if (!CheckEventAllowed(channel) || (!Interruptible && Shaking))
@@ -173,31 +176,40 @@ namespace MoreMountains.FeedbacksForThirdParty
 			base.StopListening();
 			MMLensDistortionShakeEvent.Unregister(OnMMLensDistortionShakeEvent);
 		}
-		#endif
-	}
+#endif
+    }
 
-	/// <summary>
-	/// An event used to trigger vignette shakes
-	/// </summary>
-	public struct MMLensDistortionShakeEvent
-	{
-		public delegate void Delegate(AnimationCurve intensity, float duration, float remapMin, float remapMax, bool relativeIntensity = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, 
-			bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false);
-		static private event Delegate OnEvent;
-		static public void Register(Delegate callback)
-		{
-			OnEvent += callback;
-		}
-		static public void Unregister(Delegate callback)
-		{
-			OnEvent -= callback;
-		}
-		static public void Trigger(AnimationCurve intensity, float duration, float remapMin, float remapMax, bool relativeIntensity = false,
-			float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true, bool resetTargetValuesAfterShake = true, 
-			bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
-		{
-			OnEvent?.Invoke(intensity, duration, remapMin, remapMax, relativeIntensity, feedbacksIntensity, channel, resetShakerValuesAfterShake, resetTargetValuesAfterShake, forwardDirection, timescaleMode, stop);
-		}
-	}
+    /// <summary>
+    /// An event used to trigger vignette shakes
+    /// </summary>
+    public struct MMLensDistortionShakeEvent
+    {
+        public delegate void Delegate(AnimationCurve intensity, float duration, float remapMin, float remapMax,
+            bool relativeIntensity = false,
+            float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true,
+            bool resetTargetValuesAfterShake = true,
+            bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false);
+
+        static event Delegate OnEvent;
+
+        public static void Register(Delegate callback)
+        {
+            OnEvent += callback;
+        }
+
+        public static void Unregister(Delegate callback)
+        {
+            OnEvent -= callback;
+        }
+
+        public static void Trigger(AnimationCurve intensity, float duration, float remapMin, float remapMax,
+            bool relativeIntensity = false,
+            float feedbacksIntensity = 1.0f, int channel = 0, bool resetShakerValuesAfterShake = true,
+            bool resetTargetValuesAfterShake = true,
+            bool forwardDirection = true, TimescaleModes timescaleMode = TimescaleModes.Scaled, bool stop = false)
+        {
+            OnEvent?.Invoke(intensity, duration, remapMin, remapMax, relativeIntensity, feedbacksIntensity, channel,
+                resetShakerValuesAfterShake, resetTargetValuesAfterShake, forwardDirection, timescaleMode, stop);
+        }
+    }
 }

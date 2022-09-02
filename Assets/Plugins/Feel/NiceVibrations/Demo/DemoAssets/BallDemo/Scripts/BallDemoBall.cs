@@ -19,33 +19,30 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Awake()
         {
-            _rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
-            _ballAnimator = this.gameObject.GetComponent<Animator>();
+            _rigidBody = gameObject.GetComponent<Rigidbody2D>();
+            _ballAnimator = gameObject.GetComponent<Animator>();
             _hitAnimationParameter = Animator.StringToHash("Hit");
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            if (WallMask == (WallMask | (1 << collision.gameObject.layer)))
-            {
+            if (WallMask == (WallMask | 1 << collision.gameObject.layer))
                 HitWall();
-            }
         }
 
         protected virtual void Update()
         {
             float raycastLength = 5f;
 
-            Debug.DrawLine(this.transform.position, Vector3.down * raycastLength, Color.red);
+            Debug.DrawLine(transform.position, Vector3.down * raycastLength, Color.red);
 
             if (Time.time - _lastRaycastTimestamp > 1f)
             {
                 _lastRaycastTimestamp = Time.time;
-                RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, raycastLength, WallMask);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastLength, WallMask);
+
                 if (hit.collider != null)
-                {
                     HitBottom();
-                }
             }
         }
 

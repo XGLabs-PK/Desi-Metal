@@ -3,17 +3,20 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
-namespace EnhancedHierarchy.Icons {
-    public sealed class SoundIcon : IconBase {
+namespace EnhancedHierarchy.Icons
+{
+    public sealed class SoundIcon : IconBase
+    {
+        static AudioSource audioSource;
+        static AnimBool currentAnim;
+        static readonly Dictionary<AudioSource, AnimBool> sourcesAnim = new Dictionary<AudioSource, AnimBool>();
+        static Texture icon;
 
-        private static AudioSource audioSource;
-        private static AnimBool currentAnim;
-        private static readonly Dictionary<AudioSource, AnimBool> sourcesAnim = new Dictionary<AudioSource, AnimBool>();
-        private static Texture icon;
-
-        public override string Name { get { return "Audio Source Icon"; } }
-        public override float Width {
-            get {
+        public override string Name => "Audio Source Icon";
+        public override float Width
+        {
+            get
+            {
                 if (audioSource == null || currentAnim == null)
                     return 0f;
 
@@ -21,12 +24,14 @@ namespace EnhancedHierarchy.Icons {
             }
         }
 
-        public override Texture2D PreferencesPreview { get { return AssetPreview.GetMiniTypeThumbnail(typeof(AudioSource)); } }
+        public override Texture2D PreferencesPreview => AssetPreview.GetMiniTypeThumbnail(typeof(AudioSource));
 
         //public override string PreferencesTooltip { get { return "Some tag for the tooltip here"; } }
 
-        static SoundIcon() {
-            EditorApplication.update += () => {
+        static SoundIcon()
+        {
+            EditorApplication.update += () =>
+            {
                 if (!Preferences.IsButtonEnabled(new SoundIcon()))
                     return;
 
@@ -36,15 +41,17 @@ namespace EnhancedHierarchy.Icons {
             };
         }
 
-        public override void Init() {
+        public override void Init()
+        {
             if (!EnhancedHierarchy.IsGameObject)
                 return;
 
             var comps = EnhancedHierarchy.Components;
             audioSource = null;
 
-            for (var i = 0; i < comps.Count; i++)
-                if (comps[i] is AudioSource) {
+            for (int i = 0; i < comps.Count; i++)
+                if (comps[i] is AudioSource)
+                {
                     audioSource = comps[i] as AudioSource;
                     break;
                 }
@@ -52,17 +59,20 @@ namespace EnhancedHierarchy.Icons {
             if (!audioSource)
                 return;
 
-            if (!sourcesAnim.TryGetValue(audioSource, out currentAnim)) {
+            if (!sourcesAnim.TryGetValue(audioSource, out currentAnim))
+            {
                 sourcesAnim[audioSource] = currentAnim = new AnimBool(audioSource.isPlaying);
                 currentAnim.valueChanged.AddListener(EditorApplication.RepaintHierarchyWindow);
             }
         }
 
-        public override void DoGUI(Rect rect) {
+        public override void DoGUI(Rect rect)
+        {
             if (!EnhancedHierarchy.IsRepaintEvent || !EnhancedHierarchy.IsGameObject || !audioSource || Width <= 1f)
                 return;
 
-            using(ProfilerSample.Get()) {
+            using (ProfilerSample.Get())
+            {
                 if (!icon)
                     icon = EditorGUIUtility.ObjectContent(null, typeof(AudioSource)).image;
 

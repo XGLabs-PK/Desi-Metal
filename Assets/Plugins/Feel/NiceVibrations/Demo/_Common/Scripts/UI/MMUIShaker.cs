@@ -17,7 +17,7 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Start()
         {
-            _rectTransform = this.gameObject.GetComponent<RectTransform>();
+            _rectTransform = gameObject.GetComponent<RectTransform>();
             _initialPosition = _rectTransform.localPosition;
         }
 
@@ -37,9 +37,17 @@ namespace Lofelt.NiceVibrations
             }
             else
             {
-                _shakePosition.x = Mathf.PerlinNoise(-(Time.time) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
-                _shakePosition.y = Mathf.PerlinNoise(-(Time.time + 0.25f) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
-                _shakePosition.z = Mathf.PerlinNoise(-(Time.time + 0.5f) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
+                _shakePosition.x = Mathf.PerlinNoise(-Time.time * Frequency, Time.time * Frequency) * Amplitude -
+                                   Amplitude / 2f;
+
+                _shakePosition.y =
+                    Mathf.PerlinNoise(-(Time.time + 0.25f) * Frequency, Time.time * Frequency) * Amplitude -
+                    Amplitude / 2f;
+
+                _shakePosition.z =
+                    Mathf.PerlinNoise(-(Time.time + 0.5f) * Frequency, Time.time * Frequency) * Amplitude -
+                    Amplitude / 2f;
+
                 _rectTransform.localPosition = _initialPosition + _shakePosition;
             }
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JimaSphereCarController : MonoBehaviour
@@ -20,23 +18,23 @@ public class JimaSphereCarController : MonoBehaviour
     public float groundCheckRadius = 0.1f;
     public LayerMask groundCheckLayer;
 
-    private float vertical = 0.0f;
-    private float horizontal = 0.0f;
+    float currentSpeed;
+    float currentTurningSpeed;
 
-    private float dt;
-    private float fdt;
+    float dt;
+    float fdt;
 
-    private bool onGround = false;
+    Vector3 groundNormal = Vector3.up;
+    float horizontal;
 
-    private float currentSpeed = 0.0f;
-    private float currentTurningSpeed = 0.0f;
+    bool onGround;
+    Vector3 prevPosition;
 
-    private Vector3 groundNormal = Vector3.up;
-    private Vector3 prevPosition;
+    float vertical;
 
     void Start()
     {
-        if(rb == null) rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
 
         dt = Time.deltaTime;
         fdt = Time.fixedDeltaTime;
@@ -52,7 +50,7 @@ public class JimaSphereCarController : MonoBehaviour
 
         vertical = Input.GetAxisRaw("Vertical");
         horizontal = Input.GetAxisRaw("Horizontal");
-        if(!onGround) vertical = horizontal = 0.0f;
+        if (!onGround) vertical = horizontal = 0.0f;
 
         transform.position = Vector3.Lerp(transform.position, rb.position, transformSyncLerpFactor * dt);
 
@@ -69,12 +67,17 @@ public class JimaSphereCarController : MonoBehaviour
         fdt = Mathf.Lerp(fdt, Time.fixedDeltaTime, 0.05f);
 
         //rb.velocity = Vector3.Lerp(rb.velocity, (transform.forward * currentSpeed) + (transform.right * currentTurningSpeed) + (Vector3.down * gravity * (onGround ? 1.0f : 0.0f)), 2.0f * fdt);
-        rb.AddForce((transform.forward * currentSpeed) + (transform.right * currentTurningSpeed) + (Vector3.down * gravity * (onGround ? 1.0f : 0.0f)), ForceMode.Impulse);
+        rb.AddForce(
+            transform.forward * currentSpeed + transform.right * currentTurningSpeed +
+            Vector3.down * gravity * (onGround ? 1.0f : 0.0f), ForceMode.Impulse);
     }
 
     void LateUpdate()
     {
-        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + (transform.right * cameraRelativeOffset.x) + (transform.up * cameraRelativeOffset.y) + (transform.forward * cameraRelativeOffset.z), cameraLerpFactor * dt);
+        cam.transform.position = Vector3.Lerp(cam.transform.position,
+            transform.position + transform.right * cameraRelativeOffset.x + transform.up * cameraRelativeOffset.y +
+            transform.forward * cameraRelativeOffset.z, cameraLerpFactor * dt);
+
         cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, transform.rotation, cameraLerpFactor * dt);
 
         transform.rotation = Quaternion.LookRotation(transform.forward, groundNormal);
@@ -82,22 +85,25 @@ public class JimaSphereCarController : MonoBehaviour
         prevPosition = transform.position;
     }
 
-    private bool IsGrounded(float dt)
+    void OnDrawGizmosSelected()
+    {
+        Vector3 pos = transform.position + Vector3.down * groundCheckDistance;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(pos, pos + Vector3.down * groundCheckRadius);
+    }
+
+    bool IsGrounded(float dt)
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position + (Vector3.down * groundCheckDistance), Vector3.down, out hit, groundCheckRadius, groundCheckLayer))
+
+        if (Physics.Raycast(transform.position + Vector3.down * groundCheckDistance, Vector3.down, out hit,
+                groundCheckRadius, groundCheckLayer))
         {
             groundNormal = hit.normal;
             return true;
         }
+
         return false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 pos = transform.position + (Vector3.down * groundCheckDistance);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(pos, pos + (Vector3.down * groundCheckRadius));
     }
 }

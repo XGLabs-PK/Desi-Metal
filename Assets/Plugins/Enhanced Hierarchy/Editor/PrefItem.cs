@@ -2,12 +2,13 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     /// <summary>
     /// Generic preference item interface.
     /// </summary>
-    public interface IPrefItem {
-
+    public interface IPrefItem
+    {
         bool Drawing { get; }
         object Value { get; set; }
 
@@ -24,44 +25,49 @@ namespace EnhancedHierarchy {
     /// Generic preference item.
     /// </summary>
     [Serializable]
-    public sealed class PrefItem<T> : IPrefItem {
-
+    public sealed class PrefItem<T> : IPrefItem
+    {
         [Serializable]
-        private struct Wrapper {
+        struct Wrapper
+        {
             [SerializeField]
             public T value;
         }
 
-        private const string KEY_PREFIX = "EH.";
+        const string KEY_PREFIX = "EH.";
 
-        private string key;
-        private Wrapper wrapper;
-        private T defaultValue;
+        string key;
+        Wrapper wrapper;
+        T defaultValue;
 
-        private readonly GUIFade fade;
+        readonly GUIFade fade;
 
         public GUIContent Label { get; private set; }
 
-        public bool Drawing { get { return fade.Visible; } }
+        public bool Drawing => fade.Visible;
 
-        public T DefaultValue {
-            get { return defaultValue; }
-            set { SetDefaultValue(value); }
+        public T DefaultValue
+        {
+            get => defaultValue;
+            set => SetDefaultValue(value);
         }
 
-        public T Value {
-            get { return wrapper.value; }
-            set { SetValue(value, false); }
+        public T Value
+        {
+            get => wrapper.value;
+            set => SetValue(value, false);
         }
 
-        private bool UsingDefaultValue { get { return !EditorPrefs.HasKey(key); } }
+        bool UsingDefaultValue => !EditorPrefs.HasKey(key);
 
-        object IPrefItem.Value {
-            get { return Value; }
-            set { Value = (T)value; }
+        object IPrefItem.Value
+        {
+            get => Value;
+            set => Value = (T)value;
         }
 
-        public PrefItem(string key, T defaultValue, string text = "", string tooltip = "") {
+        public PrefItem(string key, T defaultValue, string text = "", string tooltip = "")
+        {
             this.key = KEY_PREFIX + key;
             this.defaultValue = defaultValue;
 
@@ -77,52 +83,67 @@ namespace EnhancedHierarchy {
                 LoadValue();
         }
 
-        public void SetDefaultValue(T newDefault) {
+        public void SetDefaultValue(T newDefault)
+        {
             if (UsingDefaultValue)
                 wrapper.value = Clone(newDefault);
+
             defaultValue = newDefault;
         }
 
-        private void LoadValue() {
-            try {
+        void LoadValue()
+        {
+            try
+            {
                 if (!EditorPrefs.HasKey(key))
                     return;
 
-                var json = EditorPrefs.GetString(key);
+                string json = EditorPrefs.GetString(key);
 
                 // if(Preferences.DebugEnabled)
                 //    Debug.LogFormat("Loading preference {0}: {1}", key, json);
 
                 wrapper = JsonUtility.FromJson<Wrapper>(json);
-            } catch (Exception e) {
-                Debug.LogWarningFormat("Failed to load preference item \"{0}\", using default value: {1}", key, defaultValue);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarningFormat("Failed to load preference item \"{0}\", using default value: {1}", key,
+                    defaultValue);
+
                 Debug.LogException(e);
                 ResetValue();
             }
         }
 
-        private void SetValue(T newValue, bool forceSave) {
-            try {
+        void SetValue(T newValue, bool forceSave)
+        {
+            try
+            {
                 if (Value != null && Value.Equals(newValue) && !forceSave)
                     return;
 
                 wrapper.value = newValue;
 
-                var json = JsonUtility.ToJson(wrapper, Preferences.DebugEnabled);
+                string json = JsonUtility.ToJson(wrapper, Preferences.DebugEnabled);
 
                 // if(Preferences.DebugEnabled)
                 //    Debug.LogFormat("Saving preference {0}: {1}", key, json);
 
                 EditorPrefs.SetString(key, json);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogWarningFormat("Failed to save {0}: {1}", key, e);
                 Debug.LogException(e);
-            } finally {
+            }
+            finally
+            {
                 wrapper.value = newValue;
             }
         }
 
-        private void ResetValue() {
+        void ResetValue()
+        {
             if (UsingDefaultValue)
                 return;
 
@@ -133,17 +154,19 @@ namespace EnhancedHierarchy {
             EditorPrefs.DeleteKey(key);
         }
 
-        public void ForceSave() {
+        public void ForceSave()
+        {
             SetValue(wrapper.value, true);
         }
 
-        private T Clone(T other) {
+        T Clone(T other)
+        {
             if (typeof(T).IsValueType)
                 return other;
 
-            var wrapper = new Wrapper() { value = other };
-            var json = JsonUtility.ToJson(wrapper, Preferences.DebugEnabled);
-            var clonnedWrapper = JsonUtility.FromJson<Wrapper>(json);
+            Wrapper wrapper = new Wrapper() { value = other };
+            string json = JsonUtility.ToJson(wrapper, Preferences.DebugEnabled);
+            Wrapper clonnedWrapper = JsonUtility.FromJson<Wrapper>(json);
 
             // if(Preferences.DebugEnabled)
             //     Debug.LogFormat("Clone of {0}: {1}", key, json);
@@ -151,36 +174,42 @@ namespace EnhancedHierarchy {
             return clonnedWrapper.value;
         }
 
-        public GUIEnabled GetEnabledScope() {
+        public GUIEnabled GetEnabledScope()
+        {
             return GetEnabledScope(Value.Equals(true));
         }
 
-        public GUIEnabled GetEnabledScope(bool enabled) {
+        public GUIEnabled GetEnabledScope(bool enabled)
+        {
             return new GUIEnabled(enabled);
         }
 
-        public GUIFade GetFadeScope(bool enabled) {
+        public GUIFade GetFadeScope(bool enabled)
+        {
             fade.SetTarget(enabled);
             return fade;
         }
 
-        public static implicit operator T(PrefItem<T> pb) {
-            if (pb == null) {
+        public static implicit operator T(PrefItem<T> pb)
+        {
+            if (pb == null)
+            {
                 Debug.LogError("Cannot get the value of a null PrefItem");
-                return default(T);
+                return default;
             }
 
             return pb.Value;
         }
 
-        public static implicit operator GUIContent(PrefItem<T> pb) {
-            if (pb == null) {
+        public static implicit operator GUIContent(PrefItem<T> pb)
+        {
+            if (pb == null)
+            {
                 Debug.LogError("Cannot get the content of a null PrefItem");
                 return new GUIContent("Null PrefItem");
             }
 
             return pb.Label;
         }
-
     }
 }

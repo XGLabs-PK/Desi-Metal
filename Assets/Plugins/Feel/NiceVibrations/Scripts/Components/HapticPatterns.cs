@@ -13,13 +13,12 @@ namespace Lofelt.NiceVibrations
     ///
     /// After playback has finished, the loaded clips in this class will remain
     /// loaded in HapticController.
-
     public static class HapticPatterns
     {
-        static String emphasisTemplate;
-        static String constantTemplate;
+        static string emphasisTemplate;
+        static string constantTemplate;
         static NumberFormatInfo numberFormat;
-        static private float[] constantPatternTime = new float[] { 0.0f, 0.0f };
+        static float[] constantPatternTime = new float[] { 0.0f, 0.0f };
 
         /// <summary>
         /// Enum that represents all the types of haptic presets available
@@ -48,7 +47,7 @@ namespace Lofelt.NiceVibrations
             public float[] time;
             public float[] amplitude;
 
-            static String clipJsonTemplate;
+            static string clipJsonTemplate;
 
             static Pattern()
             {
@@ -67,10 +66,9 @@ namespace Lofelt.NiceVibrations
             public GamepadRumble ToRumble()
             {
                 GamepadRumble result = new GamepadRumble();
+
                 if (time.Length <= 1)
-                {
                     return result;
-                }
 
                 Debug.Assert(time.Length == amplitude.Length);
 
@@ -82,6 +80,7 @@ namespace Lofelt.NiceVibrations
                 result.lowFrequencyMotorSpeeds = new float[rumbleCount];
                 result.highFrequencyMotorSpeeds = new float[rumbleCount];
                 result.totalDurationMs = 0;
+
                 for (int rumbleIndex = 0; rumbleIndex < rumbleCount; rumbleIndex++)
                 {
                     int patternDurationMs = (int)((time[rumbleIndex + 1] - time[rumbleIndex]) * 1000.0f);
@@ -90,29 +89,28 @@ namespace Lofelt.NiceVibrations
                     result.highFrequencyMotorSpeeds[rumbleIndex] = amplitude[rumbleIndex];
                     result.totalDurationMs += result.durationsMs[rumbleIndex];
                 }
+
                 return result;
             }
 
             // Converts a Pattern to a haptic clip JSON string.
-            public String ToClip()
+            public string ToClip()
             {
                 if (clipJsonTemplate == null)
-                {
                     return "";
-                }
 
-                String amplitudeEnvelope = "";
+                string amplitudeEnvelope = "";
+
                 for (int i = 0; i < time.Length; i++)
                 {
                     float clampedAmplitude = Mathf.Clamp(amplitude[i], 0.0f, 1.0f);
+
                     amplitudeEnvelope += "{ \"time\":" + time[i].ToString(numberFormat) + "," +
-                                           "\"amplitude\":" + clampedAmplitude.ToString(numberFormat) + "}";
+                                         "\"amplitude\":" + clampedAmplitude.ToString(numberFormat) + "}";
 
                     // Don't add a comma to the JSON data if we're at the end of the envelope
                     if (i + 1 < time.Length)
-                    {
                         amplitudeEnvelope += ",";
-                    }
                 }
 
                 return clipJsonTemplate.Replace("{amplitude-envelope}", amplitudeEnvelope);
@@ -145,23 +143,19 @@ namespace Lofelt.NiceVibrations
                 Debug.Assert(type != PresetType.None);
                 Pattern pattern = new Pattern(time, amplitude);
                 this.type = type;
-                this.maximumAmplitudePattern = pattern.time;
+                maximumAmplitudePattern = pattern.time;
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
-                this.gamepadRumble = pattern.ToRumble();
+                gamepadRumble = pattern.ToRumble();
 #endif
-                this.jsonClip = System.Text.Encoding.UTF8.GetBytes(pattern.ToClip());
+                jsonClip = System.Text.Encoding.UTF8.GetBytes(pattern.ToClip());
             }
 
             public float GetDuration()
             {
                 if (maximumAmplitudePattern.Length > 0)
-                {
                     return maximumAmplitudePattern[maximumAmplitudePattern.Length - 1];
-                }
                 else
-                {
                     return 0f;
-                }
             }
         }
 
@@ -222,32 +216,32 @@ namespace Lofelt.NiceVibrations
             // separator is used when building the JSON representation.
 
             Selection = new Preset(PresetType.Selection, new float[] { 0.0f, 0.04f },
-                                                         new float[] { 0.471f, 0.471f });
+                new float[] { 0.471f, 0.471f });
 
             Light = new Preset(PresetType.LightImpact, new float[] { 0.000f, 0.040f },
-                                                       new float[] { 0.156f, 0.156f });
+                new float[] { 0.156f, 0.156f });
 
             Medium = new Preset(PresetType.MediumImpact, new float[] { 0.000f, 0.080f },
-                                                         new float[] { 0.471f, 0.471f });
+                new float[] { 0.471f, 0.471f });
 
             Heavy = new Preset(PresetType.HeavyImpact, new float[] { 0.0f, 0.16f },
-                                                       new float[] { 1.0f, 1.00f });
+                new float[] { 1.0f, 1.00f });
 
             Rigid = new Preset(PresetType.RigidImpact, new float[] { 0.0f, 0.04f },
-                                                       new float[] { 1.0f, 1.00f });
+                new float[] { 1.0f, 1.00f });
 
             Soft = new Preset(PresetType.SoftImpact, new float[] { 0.000f, 0.160f },
-                                                     new float[] { 0.156f, 0.156f });
+                new float[] { 0.156f, 0.156f });
 
             Success = new Preset(PresetType.Success, new float[] { 0.0f, 0.040f, 0.080f, 0.240f },
-                                                     new float[] { 0.0f, 0.157f, 0.000f, 1.000f });
+                new float[] { 0.0f, 0.157f, 0.000f, 1.000f });
 
             Failure = new Preset(PresetType.Failure,
-                                 new float[] { 0.0f, 0.080f, 0.120f, 0.200f, 0.240f, 0.400f, 0.440f, 0.480f },
-                                 new float[] { 0.0f, 0.470f, 0.000f, 0.470f, 0.000f, 1.000f, 0.000f, 0.157f });
+                new float[] { 0.0f, 0.080f, 0.120f, 0.200f, 0.240f, 0.400f, 0.440f, 0.480f },
+                new float[] { 0.0f, 0.470f, 0.000f, 0.470f, 0.000f, 1.000f, 0.000f, 0.157f });
 
             Warning = new Preset(PresetType.Warning, new float[] { 0.0f, 0.120f, 0.240f, 0.280f },
-                                                     new float[] { 0.0f, 1.000f, 0.000f, 0.470f });
+                new float[] { 0.0f, 1.000f, 0.000f, 0.470f });
         }
 
         /// <summary>
@@ -263,9 +257,7 @@ namespace Lofelt.NiceVibrations
         public static void PlayEmphasis(float amplitude, float frequency)
         {
             if (emphasisTemplate == null || !HapticController.hapticsEnabled)
-            {
                 return;
-            }
 
             // Use HapticController.Play() to play a .haptic clip on mobile devices
             // that support it, or to play a gamepad rumble if a gamepad is connected.
@@ -275,7 +267,7 @@ namespace Lofelt.NiceVibrations
                 float clampedFrequency = Mathf.Clamp(frequency, 0.0f, 1.0f);
                 const float duration = 0.1f;
 
-                String json = emphasisTemplate
+                string json = emphasisTemplate
                     .Replace("{amplitude}", clampedAmplitude.ToString(numberFormat))
                     .Replace("{frequency}", clampedFrequency.ToString(numberFormat))
                     .Replace("{duration}", duration.ToString(numberFormat));
@@ -313,17 +305,11 @@ namespace Lofelt.NiceVibrations
         static PresetType presetTypeForEmphasis(float amplitude)
         {
             if (amplitude > 0.5f)
-            {
-                return HapticPatterns.PresetType.HeavyImpact;
-            }
+                return PresetType.HeavyImpact;
             else if (amplitude <= 0.5f && amplitude > 0.3)
-            {
-                return HapticPatterns.PresetType.MediumImpact;
-            }
+                return PresetType.MediumImpact;
             else
-            {
-                return HapticPatterns.PresetType.LightImpact;
-            }
+                return PresetType.LightImpact;
         }
 
         /// <summary>
@@ -349,22 +335,24 @@ namespace Lofelt.NiceVibrations
         public static void PlayConstant(float amplitude, float frequency, float duration)
         {
             if (constantTemplate == null || !HapticController.hapticsEnabled)
-            {
                 return;
-            }
 
             float clampedAmplitude = Mathf.Clamp(amplitude, 0.0f, 1.0f);
             float clampedFrequency = Mathf.Clamp(frequency, 0.0f, 1.0f);
             float clampedDurationSecs = Mathf.Max(duration, 0.0f);
 
-            String json = constantTemplate
+            string json = constantTemplate
                 .Replace("{duration}", clampedDurationSecs.ToString(numberFormat));
 
             // This preprocessor section will only run for non-mobile platforms
             GamepadRumble rumble = new GamepadRumble();
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
             int rumbleDurationMs = (int)(clampedDurationSecs * 1000);
-            const int rumbleEntryDurationMs = 16; // One rumble entry per frame at 60 FPS, which is the limit of what GamepadRumbler can play
+
+            const int
+                rumbleEntryDurationMs =
+                    16; // One rumble entry per frame at 60 FPS, which is the limit of what GamepadRumbler can play
+
             int rumbleEntryCount = rumbleDurationMs / rumbleEntryDurationMs;
             rumble.durationsMs = new int[rumbleEntryCount];
             rumble.lowFrequencyMotorSpeeds = new float[rumbleEntryCount];
@@ -453,9 +441,7 @@ namespace Lofelt.NiceVibrations
         public static void PlayPreset(PresetType presetType)
         {
             if (!HapticController.hapticsEnabled || presetType == PresetType.None)
-            {
                 return;
-            }
 
             Preset preset = GetPresetForType(presetType);
 
@@ -497,12 +483,9 @@ namespace Lofelt.NiceVibrations
         public static float GetPresetDuration(PresetType presetType)
         {
             if (presetType == PresetType.None)
-            {
                 return 0;
-            }
 
             return GetPresetForType(presetType).GetDuration();
         }
     }
-
 }

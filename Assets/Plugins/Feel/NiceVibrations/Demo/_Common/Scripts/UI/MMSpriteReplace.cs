@@ -10,9 +10,7 @@ namespace Lofelt.NiceVibrations
     /// </summary>
     public class MMSpriteReplace : MonoBehaviour
     {
-
         [Header("Sprites")]
-
         /// the sprite to use when in the "on" state
         public Sprite OnSprite;
         /// the sprite to use when in the "off" state
@@ -23,7 +21,7 @@ namespace Lofelt.NiceVibrations
         public bool StartsOn = true;
 
         /// the current state of the button
-        public bool CurrentValue { get { return (_image.sprite == OnSprite); } }
+        public bool CurrentValue => _image.sprite == OnSprite;
 
         protected Image _image;
         protected SpriteRenderer _spriteRenderer;
@@ -48,39 +46,28 @@ namespace Lofelt.NiceVibrations
 
             // grabs button
             _mmTouchButton = GetComponent<MMTouchButton>();
+
             if (_mmTouchButton != null)
-            {
                 _mmTouchButton.ReturnToInitialSpriteAutomatically = false;
-            }
 
             // handles start
-            if ((OnSprite == null) || (OffSprite == null))
-            {
+            if (OnSprite == null || OffSprite == null)
                 return;
-            }
 
             if (_image != null)
             {
                 if (StartsOn)
-                {
                     _image.sprite = OnSprite;
-                }
                 else
-                {
                     _image.sprite = OffSprite;
-                }
             }
 
             if (_spriteRenderer != null)
             {
                 if (StartsOn)
-                {
                     _spriteRenderer.sprite = OnSprite;
-                }
                 else
-                {
                     _spriteRenderer.sprite = OffSprite;
-                }
             }
         }
 
@@ -92,25 +79,17 @@ namespace Lofelt.NiceVibrations
             if (_image != null)
             {
                 if (_image.sprite != OnSprite)
-                {
                     SwitchToOnSprite();
-                }
                 else
-                {
                     SwitchToOffSprite();
-                }
             }
 
             if (_spriteRenderer != null)
             {
                 if (_spriteRenderer.sprite != OnSprite)
-                {
                     SwitchToOnSprite();
-                }
                 else
-                {
                     SwitchToOffSprite();
-                }
             }
         }
 
@@ -119,14 +98,11 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         public virtual void SwitchToOffSprite()
         {
-            if ((_image == null) && (_spriteRenderer == null))
-            {
+            if (_image == null && _spriteRenderer == null)
                 return;
-            }
+
             if (OffSprite == null)
-            {
                 return;
-            }
 
             SpriteOff();
         }
@@ -137,13 +113,10 @@ namespace Lofelt.NiceVibrations
         protected virtual void SpriteOff()
         {
             if (_image != null)
-            {
                 _image.sprite = OffSprite;
-            }
+
             if (_spriteRenderer != null)
-            {
                 _spriteRenderer.sprite = OffSprite;
-            }
         }
 
         /// <summary>
@@ -151,14 +124,11 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         public virtual void SwitchToOnSprite()
         {
-            if ((_image == null) && (_spriteRenderer == null))
-            {
+            if (_image == null && _spriteRenderer == null)
                 return;
-            }
+
             if (OnSprite == null)
-            {
                 return;
-            }
 
             SpriteOn();
         }
@@ -170,13 +140,10 @@ namespace Lofelt.NiceVibrations
         {
 
             if (_image != null)
-            {
                 _image.sprite = OnSprite;
-            }
+
             if (_spriteRenderer != null)
-            {
                 _spriteRenderer.sprite = OnSprite;
-            }
         }
     }
 }

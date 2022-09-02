@@ -32,28 +32,25 @@ namespace Lofelt.NiceVibrations
         protected virtual void Update()
         {
             if (_holding)
-            {
                 _newPosition = GetWorldPosition(_pointerEventData.position);
-            }
             else
-            {
                 _newPosition = Vector3.one * 5000f;
-            }
 
             _newPosition.z = _initialZPosition;
             BallMover.position = _newPosition;
         }
+
         protected virtual Vector3 GetWorldPosition(Vector3 testPosition)
         {
             if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, testPosition, _canvas.worldCamera, out _workPosition);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+                    testPosition, _canvas.worldCamera, out _workPosition);
+
                 return _canvas.transform.TransformPoint(_workPosition);
             }
             else
-            {
                 return testPosition;
-            }
         }
 
         public virtual void OnPointerEnter(PointerEventData data)
@@ -66,6 +63,5 @@ namespace Lofelt.NiceVibrations
         {
             _holding = false;
         }
-
     }
 }

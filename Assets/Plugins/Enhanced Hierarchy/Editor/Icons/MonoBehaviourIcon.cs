@@ -4,23 +4,25 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace EnhancedHierarchy.Icons {
-    public sealed class MonoBehaviourIcon : IconBase {
+namespace EnhancedHierarchy.Icons
+{
+    public sealed class MonoBehaviourIcon : IconBase
+    {
+        static readonly Dictionary<Type, string> monoBehaviourNames = new Dictionary<Type, string>();
+        static readonly StringBuilder goComponents = new StringBuilder(500);
+        static readonly GUIContent tempTooltipContent = new GUIContent();
+        static bool hasMonoBehaviour;
 
-        private static readonly Dictionary<Type, string> monoBehaviourNames = new Dictionary<Type, string>();
-        private static readonly StringBuilder goComponents = new StringBuilder(500);
-        private static readonly GUIContent tempTooltipContent = new GUIContent();
-        private static bool hasMonoBehaviour;
+        public override string Name => "MonoBehaviour Icon";
+        public override float Width => hasMonoBehaviour ? 15f : 0f;
+        public override IconPosition Side => IconPosition.All;
 
-        public override string Name { get { return "MonoBehaviour Icon"; } }
-        public override float Width { get { return hasMonoBehaviour ? 15f : 0f; } }
-        public override IconPosition Side { get { return IconPosition.All; } }
-
-        public override Texture2D PreferencesPreview { get { return AssetPreview.GetMiniTypeThumbnail(typeof(MonoScript)); } }
+        public override Texture2D PreferencesPreview => AssetPreview.GetMiniTypeThumbnail(typeof(MonoScript));
 
         //public override string PreferencesTooltip { get { return "Some tag for the tooltip here"; } }
 
-        public override void Init() {
+        public override void Init()
+        {
             hasMonoBehaviour = false;
 
             if (!EnhancedHierarchy.IsGameObject)
@@ -28,27 +30,31 @@ namespace EnhancedHierarchy.Icons {
 
             var components = EnhancedHierarchy.Components;
 
-            for (var i = 0; i < components.Count; i++)
-                if (components[i] is MonoBehaviour) {
+            for (int i = 0; i < components.Count; i++)
+                if (components[i] is MonoBehaviour)
+                {
                     hasMonoBehaviour = true;
                     break;
                 }
         }
 
-        public override void DoGUI(Rect rect) {
+        public override void DoGUI(Rect rect)
+        {
             if (!EnhancedHierarchy.IsRepaintEvent || !EnhancedHierarchy.IsGameObject || !hasMonoBehaviour)
                 return;
 
-            if (Utility.ShouldCalculateTooltipAt(rect) && Preferences.Tooltips) {
+            if (Utility.ShouldCalculateTooltipAt(rect) && Preferences.Tooltips)
+            {
                 goComponents.Length = 0;
                 var components = EnhancedHierarchy.Components;
 
-                for (var i = 0; i < components.Count; i++)
+                for (int i = 0; i < components.Count; i++)
                     if (components[i] is MonoBehaviour)
                         goComponents.AppendLine(GetComponentName(components[i]));
 
                 tempTooltipContent.tooltip = goComponents.ToString().TrimEnd('\n', '\r');
-            } else
+            }
+            else
                 tempTooltipContent.tooltip = string.Empty;
 
             rect.yMin += 1f;
@@ -59,9 +65,10 @@ namespace EnhancedHierarchy.Icons {
             EditorGUI.LabelField(rect, tempTooltipContent);
         }
 
-        private static string GetComponentName(Component component) {
+        static string GetComponentName(Component component)
+        {
             string result;
-            var type = component.GetType();
+            Type type = component.GetType();
 
             if (monoBehaviourNames.TryGetValue(type, out result))
                 return result;

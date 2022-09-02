@@ -5,19 +5,21 @@ namespace AllIn1VfxToolkit.Demo.Scripts
 {
     public class AllIn1ChangeAllChildTextFonts : MonoBehaviour
     {
-        [SerializeField] private Font newFont;
-        [SerializeField] private bool changeFontOnStart;
+        [SerializeField]
+        Font newFont;
+        [SerializeField]
+        bool changeFontOnStart;
 
-        private void Start()
+        void Start()
         {
-            if(changeFontOnStart) ChangeFonts();
+            if (changeFontOnStart) ChangeFonts();
         }
 
         [ContextMenu("ChangeFonts")]
-        private void ChangeFonts()
+        void ChangeFonts()
         {
-            Text[] canvasTexts = GetComponentsInChildren<Text>();
-            for(int i = 0; i < canvasTexts.Length; i++) canvasTexts[i].font = newFont;
+            var canvasTexts = GetComponentsInChildren<Text>();
+            for (int i = 0; i < canvasTexts.Length; i++) canvasTexts[i].font = newFont;
         }
     }
 }

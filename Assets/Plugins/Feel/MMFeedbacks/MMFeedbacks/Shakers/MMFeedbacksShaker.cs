@@ -5,80 +5,83 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.Feedbacks
 {
-	[RequireComponent(typeof(MMFeedbacks))]
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Feedbacks/MMFeedbacksShaker")]
-	public class MMFeedbacksShaker : MMShaker
-	{
-		protected MMFeedbacks _mmFeedbacks;
+    [RequireComponent(typeof(MMFeedbacks))]
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Feedbacks/MMFeedbacksShaker")]
+    public class MMFeedbacksShaker : MMShaker
+    {
+        protected MMFeedbacks _mmFeedbacks;
 
-		/// <summary>
-		/// On init we initialize our values
-		/// </summary>
-		protected override void Initialization()
-		{
-			base.Initialization();
-			_mmFeedbacks = this.gameObject.GetComponent<MMFeedbacks>();
-		}
+        /// <summary>
+        /// On init we initialize our values
+        /// </summary>
+        protected override void Initialization()
+        {
+            base.Initialization();
+            _mmFeedbacks = gameObject.GetComponent<MMFeedbacks>();
+        }
 
-		public virtual void OnMMFeedbacksShakeEvent(int channel = 0, bool useRange = false, float eventRange = 0f, Vector3 eventOriginPosition = default(Vector3))
-		{
-			if (!CheckEventAllowed(channel, useRange, eventRange, eventOriginPosition) || (!Interruptible && Shaking))
-			{
-				return;
-			}
-			Play();
-		}
+        public virtual void OnMMFeedbacksShakeEvent(int channel = 0, bool useRange = false, float eventRange = 0f,
+            Vector3 eventOriginPosition = default)
+        {
+            if (!CheckEventAllowed(channel, useRange, eventRange, eventOriginPosition) || !Interruptible && Shaking)
+                return;
 
-		protected override void ShakeStarts()
-		{
-			_mmFeedbacks.PlayFeedbacks();
-		}
+            Play();
+        }
 
-		/// <summary>
-		/// When that shaker gets added, we initialize its shake duration
-		/// </summary>
-		protected virtual void Reset()
-		{
-			ShakeDuration = 0.01f;
-		}
+        protected override void ShakeStarts()
+        {
+            _mmFeedbacks.PlayFeedbacks();
+        }
 
-		/// <summary>
-		/// Starts listening for events
-		/// </summary>
-		public override void StartListening()
-		{
-			base.StartListening();
-			MMFeedbacksShakeEvent.Register(OnMMFeedbacksShakeEvent);
-		}
+        /// <summary>
+        /// When that shaker gets added, we initialize its shake duration
+        /// </summary>
+        protected virtual void Reset()
+        {
+            ShakeDuration = 0.01f;
+        }
 
-		/// <summary>
-		/// Stops listening for events
-		/// </summary>
-		public override void StopListening()
-		{
-			base.StopListening();
-			MMFeedbacksShakeEvent.Unregister(OnMMFeedbacksShakeEvent);
-		}
-	}
+        /// <summary>
+        /// Starts listening for events
+        /// </summary>
+        public override void StartListening()
+        {
+            base.StartListening();
+            MMFeedbacksShakeEvent.Register(OnMMFeedbacksShakeEvent);
+        }
 
-	public struct MMFeedbacksShakeEvent
-	{
-		public delegate void Delegate(int channel = 0, bool useRange = false, float eventRange = 0f, Vector3 eventOriginPosition = default(Vector3));
-		static private event Delegate OnEvent;
+        /// <summary>
+        /// Stops listening for events
+        /// </summary>
+        public override void StopListening()
+        {
+            base.StopListening();
+            MMFeedbacksShakeEvent.Unregister(OnMMFeedbacksShakeEvent);
+        }
+    }
 
-		static public void Register(Delegate callback)
-		{
-			OnEvent += callback;
-		}
+    public struct MMFeedbacksShakeEvent
+    {
+        public delegate void Delegate(int channel = 0, bool useRange = false, float eventRange = 0f,
+            Vector3 eventOriginPosition = default);
 
-		static public void Unregister(Delegate callback)
-		{
-			OnEvent -= callback;
-		}
+        static event Delegate OnEvent;
 
-		static public void Trigger(int channel = 0, bool useRange = false, float eventRange = 0f, Vector3 eventOriginPosition = default(Vector3))
-		{
-			OnEvent?.Invoke(channel, useRange, eventRange, eventOriginPosition);
-		}
-	}
+        public static void Register(Delegate callback)
+        {
+            OnEvent += callback;
+        }
+
+        public static void Unregister(Delegate callback)
+        {
+            OnEvent -= callback;
+        }
+
+        public static void Trigger(int channel = 0, bool useRange = false, float eventRange = 0f,
+            Vector3 eventOriginPosition = default)
+        {
+            OnEvent?.Invoke(channel, useRange, eventRange, eventOriginPosition);
+        }
+    }
 }

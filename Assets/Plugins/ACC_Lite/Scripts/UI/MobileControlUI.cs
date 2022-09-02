@@ -9,47 +9,44 @@ using UnityEngine.UI;
 /// </summary>
 public class MobileControlUI : MonoBehaviour
 {
+    [SerializeField]
+    CustomButton TurnLeftButton;
+    [SerializeField]
+    CustomButton TurnRigthButton;
+    [SerializeField]
+    CustomButton AccelerationButton;
+    [SerializeField]
+    CustomButton DecelerationButton;
 
-	[SerializeField] CustomButton TurnLeftButton;
-	[SerializeField] CustomButton TurnRigthButton;
-	[SerializeField] CustomButton AccelerationButton;
-	[SerializeField] CustomButton DecelerationButton;
+    bool LeftPressed => TurnLeftButton.ButtonIsPressed;
+    bool RightPressed => TurnRigthButton.ButtonIsPressed;
+    bool AccelerationPressed => AccelerationButton.ButtonIsPressed;
+    bool DecelerationPressed => DecelerationButton.ButtonIsPressed;
+    public bool ControlInUse => LeftPressed || RightPressed || AccelerationPressed || DecelerationPressed;
 
-	bool LeftPressed { get { return TurnLeftButton.ButtonIsPressed; } }
-	bool RightPressed { get { return TurnRigthButton.ButtonIsPressed; } }
-	bool AccelerationPressed { get { return AccelerationButton.ButtonIsPressed; } }
-	bool DecelerationPressed { get { return DecelerationButton.ButtonIsPressed; } }
-	public bool ControlInUse { get { return LeftPressed || RightPressed || AccelerationPressed || DecelerationPressed; } }
+    public float GetHorizontalAxis
+    {
+        get
+        {
+            if (LeftPressed)
+                return -1;
+            else if (RightPressed)
+                return 1;
 
-	public float GetHorizontalAxis
-	{
-		get
-		{
-			if (LeftPressed)
-			{
-				return -1;
-			}
-			else if (RightPressed)
-			{
-				return 1;
-			}
-			return 0;
-		}
-	}
+            return 0;
+        }
+    }
 
-	public float GetVerticalAxis
-	{
-		get
-		{
-			if (AccelerationPressed)
-			{
-				return 1;
-			}
-			else if (DecelerationPressed)
-			{
-				return -1;
-			}
-			return 0;
-		}
-	}
+    public float GetVerticalAxis
+    {
+        get
+        {
+            if (AccelerationPressed)
+                return 1;
+            else if (DecelerationPressed)
+                return -1;
+
+            return 0;
+        }
+    }
 }

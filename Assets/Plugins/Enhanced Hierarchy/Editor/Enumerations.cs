@@ -1,9 +1,10 @@
 using System;
 
-namespace EnhancedHierarchy {
-
+namespace EnhancedHierarchy
+{
     [Flags]
-    public enum EntryMode {
+    public enum EntryMode
+    {
         Error = 1 << 0,
         Assert = 1 << 1,
         Log = 1 << 2,
@@ -28,10 +29,10 @@ namespace EnhancedHierarchy {
         VisualScriptingError = 1 << 22
     }
 
-    public enum ChildrenChangeMode {
+    public enum ChildrenChangeMode
+    {
         ObjectAndChildren = 0,
         ObjectOnly = 1,
-        Ask = 2,
+        Ask = 2
     }
-
 }

@@ -32,7 +32,7 @@ namespace XGStudios
                 //smoke from car
                 //Screen Grey
             }
-            
+
             if (_maxHealth <= 15)
             {
                 //smoke from car

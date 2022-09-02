@@ -17,7 +17,6 @@ namespace Lofelt.NiceVibrations
         public List<float> Dents;
 
         [Header("Car")]
-
         public AudioSource CarEngineAudioSource;
         public Transform LeftWheel;
         public Transform RightWheel;
@@ -65,7 +64,7 @@ namespace Lofelt.NiceVibrations
 
             if (!_carStarted)
             {
-                if ((_knobValue > MinimumKnobValue) && (Knob.Active))
+                if (_knobValue > MinimumKnobValue && Knob.Active)
                 {
                     _carStarted = true;
                     _carStartedAt = Time.time;
@@ -88,9 +87,7 @@ namespace Lofelt.NiceVibrations
                     else
                     {
                         if (!Knob.Active)
-                        {
                             Knob.SetValue(CarSpeed);
-                        }
                     }
                 }
             }
@@ -134,7 +131,9 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void UpdateCar()
         {
-            float targetSpeed = _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
+            float targetSpeed =
+                _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
+
             CarSpeed = Mathf.Lerp(CarSpeed, targetSpeed, Time.deltaTime * 1f);
 
             CarEngineAudioSource.volume = CarSpeed;
@@ -157,20 +156,21 @@ namespace Lofelt.NiceVibrations
                 // start dent
                 if (Time.time - _lastStartClickAt < StartClickDuration)
                 {
-                    float elapsedTime = StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
+                    float elapsedTime =
+                        StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
+
                     Knob._rectTransform.localScale = Vector3.one + Vector3.one * elapsedTime * 0.05f;
                     Knob._image.color = Color.Lerp(ActiveColor, Color.white, elapsedTime);
                 }
 
                 // other dents
                 foreach (float f in Dents)
-                {
-                    if (((_knobValue >= f) && (_knobValueLastFrame < f)) || ((_knobValue <= f) && (_knobValueLastFrame > f)))
+                    if (_knobValue >= f && _knobValueLastFrame < f || _knobValue <= f && _knobValueLastFrame > f)
                     {
                         _lastDentAt = Time.time;
                         break;
                     }
-                }
+
                 if (Time.time - _lastDentAt < DentDuration)
                 {
                     float elapsedTime = StartClickCurve.Evaluate((Time.time - _lastDentAt) * (1 / DentDuration));
@@ -184,28 +184,18 @@ namespace Lofelt.NiceVibrations
 
             // power bars
             if (CarSpeed <= 0.1f)
-            {
                 for (int i = 0; i < SpeedBars.Count; i++)
-                {
                     SpeedBars[i].SetActive(false);
-                }
-            }
             else
             {
                 int barsAmount = (int)(CarSpeed * 5f);
+
                 for (int i = 0; i < SpeedBars.Count; i++)
-                {
                     if (i <= barsAmount)
-                    {
                         SpeedBars[i].SetActive(true);
-                    }
                     else
-                    {
                         SpeedBars[i].SetActive(false);
-                    }
-                }
             }
         }
     }
 }
-

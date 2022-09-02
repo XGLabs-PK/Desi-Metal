@@ -11,11 +11,29 @@ namespace Lofelt.NiceVibrations
     public class MMProgressBar : MonoBehaviour
     {
         /// the possible fill modes
-        public enum FillModes { LocalScale, FillAmount, Width, Height }
+        public enum FillModes
+        {
+            LocalScale,
+            FillAmount,
+            Width,
+            Height
+        }
+
         /// the possible directions for the fill (for local scale and fill amount only)
-        public enum BarDirections { LeftToRight, RightToLeft, UpToDown, DownToUp }
+        public enum BarDirections
+        {
+            LeftToRight,
+            RightToLeft,
+            UpToDown,
+            DownToUp
+        }
+
         /// the possible timescales the bar can work on
-        public enum TimeScales { UnscaledTime, Time }
+        public enum TimeScales
+        {
+            UnscaledTime,
+            Time
+        }
 
         [Header("General Settings")]
         /// the local scale or fillamount value to reach when the bar is empty
@@ -63,9 +81,11 @@ namespace Lofelt.NiceVibrations
         /// the color to apply to the bar when bumping
         public Color BumpColor = Color.white;
         /// the curve to map the bump animation on
-        public AnimationCurve BumpAnimationCurve = new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
+        public AnimationCurve BumpAnimationCurve =
+            new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
         /// the curve to map the bump animation color animation on
-        public AnimationCurve BumpColorAnimationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+        public AnimationCurve BumpColorAnimationCurve =
+            new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
         /// whether or not the bar is bumping right now
         public bool Bumping { get; protected set; }
 
@@ -95,17 +115,17 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         protected virtual void Start()
         {
-            _initialScale = this.transform.localScale;
+            _initialScale = transform.localScale;
 
             if (ForegroundBar != null)
             {
                 _foregroundImage = ForegroundBar.GetComponent<Image>();
                 _initialFrontBarSize = _foregroundImage.rectTransform.sizeDelta;
             }
+
             if (DelayedBar != null)
-            {
                 _delayedImage = DelayedBar.GetComponent<Image>();
-            }
+
             _initialized = true;
         }
 
@@ -122,13 +142,11 @@ namespace Lofelt.NiceVibrations
         protected virtual void AutoUpdate()
         {
             if (!AutoUpdating)
-            {
                 return;
-            }
 
             _newPercent = Remap(BarProgress, 0f, 1f, StartValue, EndValue);
             _targetFill = _newPercent;
-            _lastUpdateTimestamp = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            _lastUpdateTimestamp = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
         }
 
         /// <summary>
@@ -136,14 +154,14 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         protected virtual void UpdateFrontBar()
         {
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledTime;
+            float currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledTime;
 
             if (ForegroundBar != null)
-            {
                 switch (FillMode)
                 {
                     case FillModes.LocalScale:
                         _targetLocalScale = Vector3.one;
+
                         switch (BarDirection)
                         {
                             case BarDirections.LeftToRight:
@@ -161,53 +179,52 @@ namespace Lofelt.NiceVibrations
                         }
 
                         if (LerpForegroundBar)
-                        {
-                            _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale, currentDeltaTime * LerpForegroundBarSpeed);
-                        }
+                            _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale,
+                                currentDeltaTime * LerpForegroundBarSpeed);
                         else
-                        {
                             _newScale = _targetLocalScale;
-                        }
 
                         ForegroundBar.localScale = _newScale;
                         break;
 
                     case FillModes.Width:
                         if (_foregroundImage == null)
-                        {
                             return;
-                        }
+
                         float newSizeX = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.x);
-                        newSizeX = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeX, currentDeltaTime * LerpForegroundBarSpeed);
-                        _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newSizeX);
+
+                        newSizeX = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeX,
+                            currentDeltaTime * LerpForegroundBarSpeed);
+
+                        _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+                            newSizeX);
+
                         break;
 
                     case FillModes.Height:
                         if (_foregroundImage == null)
-                        {
                             return;
-                        }
+
                         float newSizeY = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.y);
-                        newSizeY = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeY, currentDeltaTime * LerpForegroundBarSpeed);
+
+                        newSizeY = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeY,
+                            currentDeltaTime * LerpForegroundBarSpeed);
+
                         _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newSizeY);
                         break;
 
                     case FillModes.FillAmount:
                         if (_foregroundImage == null)
-                        {
                             return;
-                        }
+
                         if (LerpForegroundBar)
-                        {
-                            _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill, currentDeltaTime * LerpForegroundBarSpeed);
-                        }
+                            _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill,
+                                currentDeltaTime * LerpForegroundBarSpeed);
                         else
-                        {
                             _foregroundImage.fillAmount = _targetFill;
-                        }
+
                         break;
                 }
-            }
         }
 
         /// <summary>
@@ -215,11 +232,10 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         protected virtual void UpdateDelayedBar()
         {
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledDeltaTime;
-            float currentTime = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            float currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledDeltaTime;
+            float currentTime = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
 
             if (DelayedBar != null)
-            {
                 if (currentTime - _lastUpdateTimestamp > Delay)
                 {
                     if (FillMode == FillModes.LocalScale)
@@ -243,29 +259,23 @@ namespace Lofelt.NiceVibrations
                         }
 
                         if (LerpDelayedBar)
-                        {
-                            _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale, currentDeltaTime * LerpDelayedBarSpeed);
-                        }
+                            _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale,
+                                currentDeltaTime * LerpDelayedBarSpeed);
                         else
-                        {
                             _newScale = _targetLocalScale;
-                        }
+
                         DelayedBar.localScale = _newScale;
                     }
 
-                    if ((FillMode == FillModes.FillAmount) && (_delayedImage != null))
+                    if (FillMode == FillModes.FillAmount && _delayedImage != null)
                     {
                         if (LerpDelayedBar)
-                        {
-                            _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill, currentDeltaTime * LerpDelayedBarSpeed);
-                        }
+                            _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill,
+                                currentDeltaTime * LerpDelayedBarSpeed);
                         else
-                        {
                             _delayedImage.fillAmount = _targetFill;
-                        }
                     }
                 }
-            }
         }
 
         /// <summary>
@@ -277,13 +287,13 @@ namespace Lofelt.NiceVibrations
         public virtual void UpdateBar(float currentValue, float minValue, float maxValue)
         {
             _newPercent = Remap(currentValue, minValue, maxValue, StartValue, EndValue);
-            if ((_newPercent != BarProgress) && !Bumping)
-            {
+
+            if (_newPercent != BarProgress && !Bumping)
                 Bump();
-            }
+
             BarProgress = _newPercent;
             _targetFill = _newPercent;
-            _lastUpdateTimestamp = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            _lastUpdateTimestamp = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
             _lastPercent = _newPercent;
         }
 
@@ -293,17 +303,13 @@ namespace Lofelt.NiceVibrations
         public virtual void Bump()
         {
             if (!BumpScaleOnChange || !_initialized)
-            {
                 return;
-            }
-            if (!BumpOnIncrease && (_lastPercent < _newPercent))
-            {
+
+            if (!BumpOnIncrease && _lastPercent < _newPercent)
                 return;
-            }
-            if (this.gameObject.activeInHierarchy)
-            {
+
+            if (gameObject.activeInHierarchy)
                 StartCoroutine(BumpCoroutine());
-            }
         }
 
         /// <summary>
@@ -313,13 +319,12 @@ namespace Lofelt.NiceVibrations
         protected virtual IEnumerator BumpCoroutine()
         {
             float journey = 0f;
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledDeltaTime;
+            float currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledDeltaTime;
 
             Bumping = true;
+
             if (_foregroundImage != null)
-            {
                 _initialColor = _foregroundImage.color;
-            }
 
             while (journey <= BumpDuration)
             {
@@ -327,15 +332,14 @@ namespace Lofelt.NiceVibrations
                 float percent = Mathf.Clamp01(journey / BumpDuration);
                 float curvePercent = BumpAnimationCurve.Evaluate(percent);
                 float colorCurvePercent = BumpColorAnimationCurve.Evaluate(percent);
-                this.transform.localScale = curvePercent * _initialScale;
+                transform.localScale = curvePercent * _initialScale;
 
-                if (ChangeColorWhenBumping && (_foregroundImage != null))
-                {
+                if (ChangeColorWhenBumping && _foregroundImage != null)
                     _foregroundImage.color = Color.Lerp(_initialColor, BumpColor, colorCurvePercent);
-                }
 
                 yield return null;
             }
+
             _foregroundImage.color = _initialColor;
             Bumping = false;
             yield return null;

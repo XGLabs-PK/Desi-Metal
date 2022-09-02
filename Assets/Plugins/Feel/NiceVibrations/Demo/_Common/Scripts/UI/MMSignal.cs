@@ -31,7 +31,8 @@ namespace Lofelt.NiceVibrations
         /// <param name="offset"></param>
         /// <param name="Invert"></param>
         /// <returns></returns>
-        public static float GetValue(float time, SignalType signalType, float phase, float amplitude, float frequency, float offset, bool Invert = false)
+        public static float GetValue(float time, SignalType signalType, float phase, float amplitude, float frequency,
+            float offset, bool Invert = false)
         {
             float value = 0f;
             float invert = Invert ? -1 : 1;
@@ -52,7 +53,7 @@ namespace Lofelt.NiceVibrations
                     value = 2f * (t - (float)Mathf.Floor(t + 0.5f));
                     break;
                 case SignalType.Pulse:
-                    value = (Mathf.Abs(Mathf.Sin(2 * Mathf.PI * t)) < 1.0 - 10E-3) ? (0) : (1);
+                    value = Mathf.Abs(Mathf.Sin(2 * Mathf.PI * t)) < 1.0 - 10E-3 ? 0 : 1;
                     break;
                 case SignalType.WhiteNoise:
                     value = 2f * Random.Range(0, int.MaxValue) / int.MaxValue - 1f;
@@ -62,8 +63,7 @@ namespace Lofelt.NiceVibrations
                     break;
             }
 
-            return (invert * amplitude * value + offset);
+            return invert * amplitude * value + offset;
         }
     }
 }
-

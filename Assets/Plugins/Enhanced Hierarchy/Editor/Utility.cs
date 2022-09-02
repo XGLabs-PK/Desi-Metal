@@ -3,44 +3,51 @@ using System.Linq;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     /// <summary>
     /// Misc utilities for Enhanced Hierarchy.
     /// </summary>
-    public static class Utility {
+    public static class Utility
+    {
+        const string CTRL = "Ctrl";
+        const string CMD = "Cmd";
+        const string MENU_ITEM_PATH = "Edit/Enhanced Hierarchy %h";
 
-        private const string CTRL = "Ctrl";
-        private const string CMD = "Cmd";
-        private const string MENU_ITEM_PATH = "Edit/Enhanced Hierarchy %h";
+        static int errorCount;
+        static readonly GUIContent tempContent = new GUIContent();
 
-        private static int errorCount;
-        private static readonly GUIContent tempContent = new GUIContent();
-
-        public static string CtrlKey { get { return Application.platform == RuntimePlatform.OSXEditor ? CMD : CTRL; } }
+        public static string CtrlKey => Application.platform == RuntimePlatform.OSXEditor ? CMD : CTRL;
 
         [MenuItem(MENU_ITEM_PATH, false, int.MinValue)]
-        private static void EnableDisableHierarchy() {
+        static void EnableDisableHierarchy()
+        {
             Preferences.Enabled.Value = !Preferences.Enabled;
             EditorApplication.RepaintHierarchyWindow();
         }
 
         [MenuItem(MENU_ITEM_PATH, true)]
-        private static bool CheckHierarchyEnabled() {
+        static bool CheckHierarchyEnabled()
+        {
             Menu.SetChecked(MENU_ITEM_PATH, Preferences.Enabled);
             return true;
         }
 
-        public static void EnableFPSCounter() {
-            var frames = 0;
-            var fps = 0d;
-            var lastTime = 0d;
-            var content = new GUIContent();
-            var evt = EventType.Repaint;
+        public static void EnableFPSCounter()
+        {
+            int frames = 0;
+            double fps = 0d;
+            double lastTime = 0d;
+            GUIContent content = new GUIContent();
+            EventType evt = EventType.Repaint;
 
-            EditorApplication.hierarchyWindowItemOnGUI += (id, rect) => {
-                using(ProfilerSample.Get("Enhanced Hierarchy"))
-                using(ProfilerSample.Get("FPS Counter")) {
+            EditorApplication.hierarchyWindowItemOnGUI += (id, rect) =>
+            {
+                using (ProfilerSample.Get("Enhanced Hierarchy"))
+                using (ProfilerSample.Get("FPS Counter"))
+                {
                     if (evt == Event.current.type)
                         return;
 
@@ -64,31 +71,44 @@ namespace EnhancedHierarchy {
             };
         }
 
-        public static bool ShouldCalculateTooltipAt(Rect area) {
+        public static bool ShouldCalculateTooltipAt(Rect area)
+        {
             return area.Contains(Event.current.mousePosition);
         }
 
-        public static void ForceUpdateHierarchyEveryFrame() {
+        public static void ForceUpdateHierarchyEveryFrame()
+        {
             // EditorApplication.update += () => {
             //     if(EditorWindow.mouseOverWindow)
             //         EditorApplication.RepaintHierarchyWindow();
             // };
         }
 
-        public static void LogException(Exception e) {
+        public static void LogException(Exception e)
+        {
             Debug.LogError("Unexpected exception in Enhanced Hierarchy");
             Debug.LogException(e);
 
-            if (errorCount++ >= 10) {
-                Debug.LogWarning("Automatically disabling Enhanced Hierarchy, if the error persists contact the developer");
+            if (errorCount++ >= 10)
+            {
+                Debug.LogWarning(
+                    "Automatically disabling Enhanced Hierarchy, if the error persists contact the developer");
+
                 Preferences.Enabled.Value = false;
                 errorCount = 0;
 
                 if (!EditorPrefs.GetBool("EHEmailAskDisabled", false))
-                    switch (EditorUtility.DisplayDialogComplex("Mail Developer", "Enhanced Hierarchy has found an exeption, would you like to report a bug to the developer? (If you choose yes your mail app will open with a few techinical information)", "Yes", "Not now", "No and don't ask again")) {
+                    switch (EditorUtility.DisplayDialogComplex("Mail Developer",
+                                "Enhanced Hierarchy has found an exeption, would you like to report a bug to the developer? (If you choose yes your mail app will open with a few techinical information)",
+                                "Yes", "Not now", "No and don't ask again"))
+                    {
                         case 0:
                             Preferences.OpenSupportEmail(e);
-                            EditorUtility.DisplayDialog("Mail Developer", "Your mail app will open now, if it doesn't please send an email reporting the bug to " + Preferences.DEVELOPER_EMAIL, "OK");
+
+                            EditorUtility.DisplayDialog("Mail Developer",
+                                "Your mail app will open now, if it doesn't please send an email reporting the bug to " +
+                                Preferences.DEVELOPER_EMAIL, "OK");
+
                             break;
                         case 1:
 
@@ -101,29 +121,40 @@ namespace EnhancedHierarchy {
             }
         }
 
-        public static void SetHierarchyTitle(string title) {
-            try {
+        public static void SetHierarchyTitle(string title)
+        {
+            try
+            {
                 Reflected.HierarchyWindowInstance.titleContent.text = title;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogWarning("Failed to set hierarchy title: " + e);
             }
         }
 
-        public static void SetHierarchyTitle(GUIContent content) {
-            try {
+        public static void SetHierarchyTitle(GUIContent content)
+        {
+            try
+            {
                 Reflected.HierarchyWindowInstance.titleContent = content;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogWarning("Failed to set hierarchy title: " + e);
             }
         }
 
-        public static GUIStyle CreateStyleFromTextures(Texture2D on, Texture2D off) {
+        public static GUIStyle CreateStyleFromTextures(Texture2D on, Texture2D off)
+        {
             return CreateStyleFromTextures(null, on, off);
         }
 
-        public static GUIStyle CreateStyleFromTextures(GUIStyle reference, Texture2D on, Texture2D off) {
-            using(ProfilerSample.Get()) {
-                var style = reference != null ? new GUIStyle(reference) : new GUIStyle();
+        public static GUIStyle CreateStyleFromTextures(GUIStyle reference, Texture2D on, Texture2D off)
+        {
+            using (ProfilerSample.Get())
+            {
+                GUIStyle style = reference != null ? new GUIStyle(reference) : new GUIStyle();
 
                 style.active.background = off;
                 style.focused.background = off;
@@ -135,7 +166,8 @@ namespace EnhancedHierarchy {
                 style.onNormal.background = on;
                 style.imagePosition = ImagePosition.ImageOnly;
 
-                EditorApplication.update += () => {
+                EditorApplication.update += () =>
+                {
                     style.fixedHeight = Preferences.IconsSize;
                     style.fixedWidth = Preferences.IconsSize;
                 };
@@ -144,76 +176,93 @@ namespace EnhancedHierarchy {
             }
         }
 
-        public static Texture2D GetBackground(GUIStyle style, bool on) {
-            return on ?
-                style.onNormal.background :
-                style.normal.background;
+        public static Texture2D GetBackground(GUIStyle style, bool on)
+        {
+            return on ? style.onNormal.background : style.normal.background;
         }
 
-        public static Texture2D FindOrLoad(string base64) {
-            var name = string.Format("Enhanced_Hierarchy_{0}", (long)base64.GetHashCode() - int.MinValue);
+        public static Texture2D FindOrLoad(string base64)
+        {
+            string name = string.Format("Enhanced_Hierarchy_{0}", (long)base64.GetHashCode() - int.MinValue);
 
             return FindTextureFromName(name) ?? LoadTexture(base64, name);
         }
 
-        public static Texture2D LoadTexture(string base64, string name) {
-            using(ProfilerSample.Get())
-            try {
-                var bytes = Convert.FromBase64String(base64);
-                var texture = new Texture2D(0, 0, TextureFormat.ARGB32, false, false);
+        public static Texture2D LoadTexture(string base64, string name)
+        {
+            using (ProfilerSample.Get())
+            {
+                try
+                {
+                    byte[] bytes = Convert.FromBase64String(base64);
+                    Texture2D texture = new Texture2D(0, 0, TextureFormat.ARGB32, false, false);
 
-                texture.name = name;
-                texture.hideFlags = HideFlags.HideAndDontSave;
-                texture.LoadImage(bytes);
+                    texture.name = name;
+                    texture.hideFlags = HideFlags.HideAndDontSave;
+                    texture.LoadImage(bytes);
 
-                return texture;
-            } catch (Exception e) {
-                Debug.LogErrorFormat("Failed to load texture \"{0}\": {1}", name, e);
-                return null;
+                    return texture;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogErrorFormat("Failed to load texture \"{0}\": {1}", name, e);
+                    return null;
+                }
             }
         }
 
-        public static Texture2D FindTextureFromName(string name) {
-            using(ProfilerSample.Get())
-            try {
-                var textures = Resources.FindObjectsOfTypeAll<Texture2D>();
+        public static Texture2D FindTextureFromName(string name)
+        {
+            using (ProfilerSample.Get())
+            {
+                try
+                {
+                    var textures = Resources.FindObjectsOfTypeAll<Texture2D>();
 
-                for (var i = 0; i < textures.Length; i++)
-                    if (textures[i].name == name)
-                        return textures[i];
+                    for (int i = 0; i < textures.Length; i++)
+                        if (textures[i].name == name)
+                            return textures[i];
 
-                return null;
-            } catch (Exception e) {
-                Debug.LogErrorFormat("Failed to find texture \"{0}\": {1}", name, e);
-                return null;
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogErrorFormat("Failed to find texture \"{0}\": {1}", name, e);
+                    return null;
+                }
             }
         }
 
-        public static Color GetHierarchyColor(Transform t) {
+        public static Color GetHierarchyColor(Transform t)
+        {
             if (!t)
                 return Color.clear;
 
             return GetHierarchyColor(t.gameObject);
         }
 
-        public static Color GetHierarchyColor(GameObject go) {
+        public static Color GetHierarchyColor(GameObject go)
+        {
             if (!go)
                 return Color.black;
 
             return GetHierarchyLabelStyle(go).normal.textColor;
         }
 
-        public static GUIStyle GetHierarchyLabelStyle(GameObject go) {
-            using(ProfilerSample.Get()) {
+        public static GUIStyle GetHierarchyLabelStyle(GameObject go)
+        {
+            using (ProfilerSample.Get())
+            {
                 if (!go)
                     return EditorStyles.label;
 
-                var active = go.activeInHierarchy;
+                bool active = go.activeInHierarchy;
 
-                #if UNITY_2018_3_OR_NEWER
-                var prefabType = PrefabUtility.GetPrefabInstanceStatus(go);
+#if UNITY_2018_3_OR_NEWER
+                PrefabInstanceStatus prefabType = PrefabUtility.GetPrefabInstanceStatus(go);
 
-                switch (prefabType) {
+                switch (prefabType)
+                {
                     case PrefabInstanceStatus.Connected:
                         return active ? Styles.labelPrefab : Styles.labelPrefabDisabled;
 
@@ -223,7 +272,7 @@ namespace EnhancedHierarchy {
                     default:
                         return active ? Styles.labelNormal : Styles.labelDisabled;
                 }
-                #else
+#else
                 var prefabType = PrefabUtility.GetPrefabType(PrefabUtility.FindPrefabRoot(go));
 
                 switch (prefabType) {
@@ -237,14 +286,16 @@ namespace EnhancedHierarchy {
                     default:
                         return active ? Styles.labelNormal : Styles.labelDisabled;
                 }
-                #endif
+#endif
             }
         }
 
-        public static Color OverlayColors(Color src, Color dst) {
-            using(ProfilerSample.Get()) {
-                var alpha = dst.a + src.a * (1f - dst.a);
-                var result = (dst * dst.a + src * src.a * (1f - dst.a)) / alpha;
+        public static Color OverlayColors(Color src, Color dst)
+        {
+            using (ProfilerSample.Get())
+            {
+                float alpha = dst.a + src.a * (1f - dst.a);
+                Color result = (dst * dst.a + src * src.a * (1f - dst.a)) / alpha;
 
                 result.a = alpha;
 
@@ -252,8 +303,10 @@ namespace EnhancedHierarchy {
             }
         }
 
-        public static bool TransformIsLastChild(Transform t) {
-            using(ProfilerSample.Get()) {
+        public static bool TransformIsLastChild(Transform t)
+        {
+            using (ProfilerSample.Get())
+            {
                 if (!t)
                     return true;
 
@@ -261,36 +314,41 @@ namespace EnhancedHierarchy {
             }
         }
 
-        public static void ApplyHideFlagsToPrefab(UnityEngine.Object obj) {
-            var handle = PrefabUtility.GetPrefabInstanceHandle(obj);
+        public static void ApplyHideFlagsToPrefab(UnityEngine.Object obj)
+        {
+            Object handle = PrefabUtility.GetPrefabInstanceHandle(obj);
 
             if (handle)
                 handle.hideFlags = obj.hideFlags;
         }
 
-        public static void LockObject(GameObject go) {
-            using(ProfilerSample.Get()) {
+        public static void LockObject(GameObject go)
+        {
+            using (ProfilerSample.Get())
+            {
                 go.hideFlags |= HideFlags.NotEditable;
                 ApplyHideFlagsToPrefab(go);
 
-                #if UNITY_2019_3_OR_NEWER
+#if UNITY_2019_3_OR_NEWER
                 if (!Preferences.AllowPickingLockedObjects)
                     SceneVisibilityManager.instance.DisablePicking(go, false);
-                #endif
+#endif
 
                 EditorUtility.SetDirty(go);
             }
         }
 
-        public static void UnlockObject(GameObject go) {
-            using(ProfilerSample.Get()) {
+        public static void UnlockObject(GameObject go)
+        {
+            using (ProfilerSample.Get())
+            {
                 go.hideFlags &= ~HideFlags.NotEditable;
                 ApplyHideFlagsToPrefab(go);
 
-                #if UNITY_2019_3_OR_NEWER
+#if UNITY_2019_3_OR_NEWER
                 if (!Preferences.AllowPickingLockedObjects)
                     SceneVisibilityManager.instance.EnablePicking(go, false);
-                #endif
+#endif
 
                 EditorUtility.SetDirty(go);
             }
@@ -305,35 +363,41 @@ namespace EnhancedHierarchy {
         //     }
         // }
 
-        public static void ApplyPrefabModifications(GameObject go, bool allowCreatingNew) {
-            #if UNITY_2018_3_OR_NEWER
-            var isPrefab = PrefabUtility.IsPartOfAnyPrefab(go);
-            #else
+        public static void ApplyPrefabModifications(GameObject go, bool allowCreatingNew)
+        {
+#if UNITY_2018_3_OR_NEWER
+            bool isPrefab = PrefabUtility.IsPartOfAnyPrefab(go);
+#else
             var isPrefab = PrefabUtility.GetPrefabType(go) == PrefabType.PrefabInstance;
-            #endif
+#endif
 
-            if (isPrefab) {
+            if (isPrefab)
+            {
 
-                #if UNITY_2018_3_OR_NEWER
-                var prefab = PrefabUtility.GetNearestPrefabInstanceRoot(go);
-                #elif UNITY_2018_2_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
+                GameObject prefab = PrefabUtility.GetNearestPrefabInstanceRoot(go);
+#elif UNITY_2018_2_OR_NEWER
                 var prefab = PrefabUtility.GetCorrespondingObjectFromSource(go);
-                #else
+#else
                 var prefab = PrefabUtility.GetPrefabParent(go);
-                #endif
+#endif
 
-                if (!prefab) {
+                if (!prefab)
+                {
                     Debug.LogError("Prefab asset not valid!");
                     return;
                 }
 
-                #if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
                 if (PrefabUtility.GetPrefabInstanceStatus(prefab) == PrefabInstanceStatus.Connected)
                     PrefabUtility.ApplyPrefabInstance(prefab, InteractionMode.UserAction);
-                else if (EditorUtility.DisplayDialog("Apply disconnected prefab", "This is a disconnected game object, do you want to try to reconnect to the last prefab asset?", "Try to Reconnect", "Cancel"))
+                else if (EditorUtility.DisplayDialog("Apply disconnected prefab",
+                             "This is a disconnected game object, do you want to try to reconnect to the last prefab asset?",
+                             "Try to Reconnect", "Cancel"))
                     PrefabUtility.RevertPrefabInstance(prefab, InteractionMode.UserAction);
+
                 EditorUtility.SetDirty(prefab);
-                #else
+#else
                 var selection = Selection.instanceIDs;
                 Selection.activeGameObject = go;
 
@@ -342,95 +406,127 @@ namespace EnhancedHierarchy {
                     Selection.instanceIDs = selection;
                 } else
                     Debug.LogError("Failed to apply prefab modifications");
-                #endif
-            } else if (allowCreatingNew) {
-                var path = EditorUtility.SaveFilePanelInProject("Save prefab", "New Prefab", "prefab", "Save the selected prefab");
+#endif
+            }
+            else if (allowCreatingNew)
+            {
+                string path = EditorUtility.SaveFilePanelInProject("Save prefab", "New Prefab", "prefab",
+                    "Save the selected prefab");
 
                 if (!string.IsNullOrEmpty(path))
-                    #if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
                     PrefabUtility.SaveAsPrefabAssetAndConnect(go, path, InteractionMode.UserAction);
-                #else
+#else
                 PrefabUtility.CreatePrefab(path, go, ReplacePrefabOptions.ConnectToPrefab);
-                #endif
+#endif
             }
         }
 
-        public static string EnumFlagsToString(Enum value) {
-            using(ProfilerSample.Get())
-            try {
-                if ((int)(object)value == -1)
-                    return "Everything";
+        public static string EnumFlagsToString(Enum value)
+        {
+            using (ProfilerSample.Get())
+            {
+                try
+                {
+                    if ((int)(object)value == -1)
+                        return "Everything";
 
-                var str = new StringBuilder();
-                var separator = ", ";
+                    StringBuilder str = new StringBuilder();
+                    string separator = ", ";
 
-                foreach (var enumValue in Enum.GetValues(value.GetType())) {
-                    var i = (int)enumValue;
-                    if (i != 0 && (i & (i - 1)) == 0 && Enum.IsDefined(value.GetType(), i) && (Convert.ToInt32(value) & i) != 0) {
-                        str.Append(ObjectNames.NicifyVariableName(enumValue.ToString()));
-                        str.Append(separator);
+                    foreach (object enumValue in Enum.GetValues(value.GetType()))
+                    {
+                        int i = (int)enumValue;
+
+                        if (i != 0 && (i & i - 1) == 0 && Enum.IsDefined(value.GetType(), i) &&
+                            (Convert.ToInt32(value) & i) != 0)
+                        {
+                            str.Append(ObjectNames.NicifyVariableName(enumValue.ToString()));
+                            str.Append(separator);
+                        }
                     }
+
+                    if (str.Length > 0)
+                        str.Length -= separator.Length;
+
+                    return str.ToString();
                 }
+                catch (Exception e)
+                {
+                    if (Preferences.DebugEnabled)
+                        Debug.LogException(e);
 
-                if (str.Length > 0)
-                    str.Length -= separator.Length;
-
-                return str.ToString();
-            } catch (Exception e) {
-                if (Preferences.DebugEnabled)
-                    Debug.LogException(e);
-                return string.Empty;
+                    return string.Empty;
+                }
             }
         }
 
-        public static GUIContent GetTempGUIContent(string text, string tooltip = null, Texture2D image = null) {
+        public static GUIContent GetTempGUIContent(string text, string tooltip = null, Texture2D image = null)
+        {
             tempContent.text = text;
             tempContent.tooltip = tooltip;
             tempContent.image = image;
             return tempContent;
         }
 
-        public static string SafeGetName(this IconBase icon) {
-            try {
+        public static string SafeGetName(this IconBase icon)
+        {
+            try
+            {
                 return icon.Name;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(icon);
                 return string.Empty;
             }
         }
 
-        public static float SafeGetWidth(this IconBase icon) {
-            try {
+        public static float SafeGetWidth(this IconBase icon)
+        {
+            try
+            {
                 return icon.Width + (Preferences.IconsSize - 15) / 2;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(icon);
                 return 0f;
             }
         }
 
-        public static void SafeInit(this IconBase icon) {
-            try {
+        public static void SafeInit(this IconBase icon)
+        {
+            try
+            {
                 icon.Init();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(icon);
             }
         }
 
-        public static void SafeDoGUI(this IconBase icon, Rect rect) {
-            try {
+        public static void SafeDoGUI(this IconBase icon, Rect rect)
+        {
+            try
+            {
                 rect.yMin -= (Preferences.IconsSize - 15) / 2;
                 rect.xMin -= (Preferences.IconsSize - 15) / 2;
                 icon.DoGUI(rect);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Debug.LogException(e);
                 Preferences.ForceDisableButton(icon);
             }
         }
 
-        public static Rect FlipRectHorizontally(Rect rect) {
+        public static Rect FlipRectHorizontally(Rect rect)
+        {
             return Rect.MinMaxRect(
                 rect.xMax,
                 rect.yMin,
@@ -438,6 +534,5 @@ namespace EnhancedHierarchy {
                 rect.yMax
             );
         }
-
     }
 }

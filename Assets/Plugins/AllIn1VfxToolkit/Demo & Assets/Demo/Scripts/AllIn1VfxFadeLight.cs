@@ -5,23 +5,25 @@ namespace AllIn1VfxToolkit.Demo.Scripts
     [RequireComponent(typeof(Light))]
     public class AllIn1VfxFadeLight : MonoBehaviour
     {
-        [SerializeField] private float fadeDuration = 0.1f;
-        [SerializeField] private bool destroyWhenFaded = true;
-        private Light targetLight;
-        private float animationRatioRemaining = 1f;
-        private float iniLightIntensity;
+        [SerializeField]
+        float fadeDuration = 0.1f;
+        [SerializeField]
+        bool destroyWhenFaded = true;
+        Light targetLight;
+        float animationRatioRemaining = 1f;
+        float iniLightIntensity;
 
-        private void Start()
+        void Start()
         {
             targetLight = GetComponent<Light>();
             iniLightIntensity = targetLight.intensity;
         }
 
-        private void Update()
+        void Update()
         {
             targetLight.intensity = Mathf.Lerp(0f, iniLightIntensity, animationRatioRemaining);
             animationRatioRemaining -= Time.deltaTime / fadeDuration;
-            if(destroyWhenFaded && animationRatioRemaining <= 0f) Destroy(gameObject);
+            if (destroyWhenFaded && animationRatioRemaining <= 0f) Destroy(gameObject);
         }
     }
 }

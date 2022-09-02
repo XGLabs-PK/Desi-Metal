@@ -11,8 +11,8 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void OnEnable()
         {
-            _rectTransform = this.gameObject.GetComponent<RectTransform>();
-            _boxCollider2D = this.gameObject.GetComponent<BoxCollider2D>();
+            _rectTransform = gameObject.GetComponent<RectTransform>();
+            _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
 
             _boxCollider2D.size = new Vector2(_rectTransform.rect.size.x, _rectTransform.rect.size.y);
         }

@@ -6,7 +6,6 @@ namespace Lofelt.NiceVibrations
 {
     public class RegularPresetsDemoManager : DemoManager
     {
-
         [Header("Image")]
         public Image IconImage;
         public Animator IconImageAnimator;

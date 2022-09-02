@@ -4,58 +4,69 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace EnhancedHierarchy {
-    public class SortingLayerMiniLabel : MiniLabelProvider {
+namespace EnhancedHierarchy
+{
+    public class SortingLayerMiniLabel : MiniLabelProvider
+    {
+        const string DEFAULT_SORTING_LAYER = "Default";
 
-        private const string DEFAULT_SORTING_LAYER = "Default";
+        string layerName;
+        int sortingOrder;
 
-        private string layerName;
-        private int sortingOrder;
+        public override void FillContent(GUIContent content)
+        {
 
-        public override void FillContent(GUIContent content) {
+            SortingGroup sortingGroup =
+                EnhancedHierarchy.Components.FirstOrDefault(c => c is SortingGroup) as SortingGroup;
 
-            var sortingGroup = EnhancedHierarchy.Components.FirstOrDefault(c => c is SortingGroup)as SortingGroup;
-            var spriteRenderer = EnhancedHierarchy.Components.FirstOrDefault(c => c is SpriteRenderer)as SpriteRenderer;
-            var particleSystem = EnhancedHierarchy.Components.FirstOrDefault(c => c is ParticleSystemRenderer)as ParticleSystemRenderer;
+            SpriteRenderer spriteRenderer =
+                EnhancedHierarchy.Components.FirstOrDefault(c => c is SpriteRenderer) as SpriteRenderer;
+
+            ParticleSystemRenderer particleSystem =
+                EnhancedHierarchy.Components.FirstOrDefault(c => c is ParticleSystemRenderer) as ParticleSystemRenderer;
 
             Type comp = null;
-            var hasSortingLayer = true;
+            bool hasSortingLayer = true;
 
             // Gambiarra ahead
-            if (sortingGroup) {
+            if (sortingGroup)
+            {
                 layerName = sortingGroup.sortingLayerName;
                 sortingOrder = sortingGroup.sortingOrder;
                 comp = sortingGroup.GetType();
-            } else if (spriteRenderer) {
+            }
+            else if (spriteRenderer)
+            {
                 layerName = spriteRenderer.sortingLayerName;
                 sortingOrder = spriteRenderer.sortingOrder;
                 comp = spriteRenderer.GetType();
-            } else if (particleSystem) {
+            }
+            else if (particleSystem)
+            {
                 layerName = particleSystem.sortingLayerName;
                 sortingOrder = particleSystem.sortingOrder;
                 comp = typeof(ParticleSystem);
-            } else {
-                hasSortingLayer = false;
             }
+            else
+                hasSortingLayer = false;
 
-            content.text = hasSortingLayer ?
-                string.Format("{0}:{1}", layerName, sortingOrder) :
-                string.Empty;
+            content.text = hasSortingLayer ? string.Format("{0}:{1}", layerName, sortingOrder) : string.Empty;
 
-            content.tooltip = comp != null && Preferences.Tooltips ?
-                string.Format("Sorting layer from {0}", comp.Name) :
-                string.Empty;
+            content.tooltip = comp != null && Preferences.Tooltips
+                ? string.Format("Sorting layer from {0}", comp.Name)
+                : string.Empty;
 
             // content.image = AssetPreview.GetMiniTypeThumbnail(comp);
         }
 
-        public override bool Faded() {
+        public override bool Faded()
+        {
             return layerName == DEFAULT_SORTING_LAYER && sortingOrder == 0;
         }
 
-        public override void OnClick() {
+        public override void OnClick()
+        {
 
         }
-
     }
 }

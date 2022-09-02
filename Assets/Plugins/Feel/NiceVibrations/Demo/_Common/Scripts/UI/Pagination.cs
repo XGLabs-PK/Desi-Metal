@@ -15,13 +15,15 @@ namespace Lofelt.NiceVibrations
         public virtual void InitializePagination(int numberOfPages)
         {
             _images = new List<Image>();
+
             for (int i = 0; i < numberOfPages; i++)
             {
                 GameObject dotPrefab = Instantiate(PaginationDotPrefab);
-                dotPrefab.transform.SetParent(this.transform);
+                dotPrefab.transform.SetParent(transform);
                 dotPrefab.name = "PaginationDot" + i;
                 _images.Add(dotPrefab.GetComponent<Image>());
             }
+
             foreach (Image image in _images)
             {
                 image.color = InactiveColor;
@@ -34,16 +36,10 @@ namespace Lofelt.NiceVibrations
         public virtual void SetCurrentPage(int numberOfPages, int currentPage)
         {
             for (int i = 0; i < numberOfPages; i++)
-            {
                 if (i == currentPage)
-                {
                     _images[i].color = ActiveColor;
-                }
                 else
-                {
                     _images[i].color = InactiveColor;
-                }
-            }
         }
     }
 }

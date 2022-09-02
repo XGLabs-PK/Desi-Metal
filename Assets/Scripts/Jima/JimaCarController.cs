@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JimaCarController : MonoBehaviour
@@ -32,21 +30,21 @@ public class JimaCarController : MonoBehaviour
     public Vector3 cameraRelativeOffset = Vector3.zero;
     public float cameraLerpFactor = 8.0f;
 
-    private float vertical = 0.0f;
-    private float horizontal = 0.0f;
-    private bool respawn = false;
+    float dt;
+    float fdt;
+    float horizontal;
 
-    private float velocity = 0.0f;
-    private float turning = 0.0f;
+    bool onGround;
+    bool respawn;
+    float turning;
 
-    private float dt;
-    private float fdt;
+    float velocity;
 
-    private bool onGround = false;
+    float vertical;
 
     void Start()
     {
-        if(rb == null) rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
 
         dt = Time.deltaTime;
         fdt = Time.fixedDeltaTime;
@@ -62,26 +60,24 @@ public class JimaCarController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         respawn = Input.GetButtonDown("Jump");
 
-        if(vertical != 0.0f && onGround)
-        {
-            velocity += (vertical * (vertical > 0.0f ? acceleration : deceleration)) * dt;
-        }
+        if (vertical != 0.0f && onGround)
+            velocity += vertical * (vertical > 0.0f ? acceleration : deceleration) * dt;
         else
         {
             velocity += (velocity > 0.0f ? -1.0f : 1.0f) * slowDownFactor * dt;
-            if(Mathf.Abs(velocity) < 1.0f) velocity = 0.0f;
+            if (Mathf.Abs(velocity) < 1.0f) velocity = 0.0f;
         }
+
         velocity = Mathf.Clamp(velocity, -negativeSpeed, speed);
 
-        if(horizontal != 0.0f && Mathf.Abs(velocity) > minTurnVelocity && onGround)
-        {
+        if (horizontal != 0.0f && Mathf.Abs(velocity) > minTurnVelocity && onGround)
             turning += horizontal * turningAcceleration * dt;
-        }
         else
         {
             turning += (turning > 0.0f ? -1.0f : 1.0f) * turningSlowDownFactor * dt;
-            if(Mathf.Abs(turning) < 1.0f) turning = 0.0f;
+            if (Mathf.Abs(turning) < 1.0f) turning = 0.0f;
         }
+
         turning = Mathf.Clamp(turning, -negativeTurningSpeed, turningSpeed);
 
         transform.position = Vector3.Lerp(transform.position, rb.position, transformSyncLerpFactor * dt);
@@ -93,19 +89,13 @@ public class JimaCarController : MonoBehaviour
         flatTransform.rotation = Quaternion.Euler(flatRotation);
     }
 
-    void LateUpdate()
-    {
-        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + (transform.right * cameraRelativeOffset.x) + (transform.up * cameraRelativeOffset.y) + (transform.forward * cameraRelativeOffset.z), cameraLerpFactor * dt);
-        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, transform.rotation, cameraLerpFactor * dt);
-    }
-
     void FixedUpdate()
     {
         fdt = Mathf.Lerp(fdt, Time.fixedDeltaTime, 0.05f);
 
-        if(!onGround && Mathf.Abs(rb.velocity.y) < 50.0f) rb.velocity += Vector3.down * gravity * fdt;
-        
-        rb.MovePosition(rb.position + ((onGround ? flatTransform.forward : rb.transform.forward) * velocity * fdt));
+        if (!onGround && Mathf.Abs(rb.velocity.y) < 50.0f) rb.velocity += Vector3.down * gravity * fdt;
+
+        rb.MovePosition(rb.position + (onGround ? flatTransform.forward : rb.transform.forward) * velocity * fdt);
 
         rb.drag = Mathf.Lerp(rb.drag, onGround ? 0.5f : 0.0f, 4.0f * fdt);
         rb.angularDrag = Mathf.Lerp(rb.angularDrag, onGround ? 1.0f : 0.05f, 4.0f * fdt);
@@ -114,7 +104,7 @@ public class JimaCarController : MonoBehaviour
         rotation.y += turning * fdt;
         rb.MoveRotation(Quaternion.Euler(rotation));
 
-        if(respawn)
+        if (respawn)
         {
             rb.position += Vector3.up * 4.0f;
             rb.rotation = Quaternion.identity;
@@ -123,18 +113,30 @@ public class JimaCarController : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    void LateUpdate()
     {
-        foreach(var t in groundCheckTransforms)
-            if(Physics.CheckSphere(t.position + (Vector3.down * groundCheckDistance), groundCheckRadius, groundCheckLayer))
-                return true;
-        return false;
+        cam.transform.position = Vector3.Lerp(cam.transform.position,
+            transform.position + transform.right * cameraRelativeOffset.x + transform.up * cameraRelativeOffset.y +
+            transform.forward * cameraRelativeOffset.z, cameraLerpFactor * dt);
+
+        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, transform.rotation, cameraLerpFactor * dt);
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        foreach(var t in groundCheckTransforms)
-            Gizmos.DrawWireSphere(t.position + (Vector3.down * groundCheckDistance), groundCheckRadius);
+
+        foreach (Transform t in groundCheckTransforms)
+            Gizmos.DrawWireSphere(t.position + Vector3.down * groundCheckDistance, groundCheckRadius);
+    }
+
+    bool IsGrounded()
+    {
+        foreach (Transform t in groundCheckTransforms)
+            if (Physics.CheckSphere(t.position + Vector3.down * groundCheckDistance, groundCheckRadius,
+                    groundCheckLayer))
+                return true;
+
+        return false;
     }
 }

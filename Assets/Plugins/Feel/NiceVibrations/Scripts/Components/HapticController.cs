@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using System.Threading;
 using System.Timers;
+using Timer = System.Timers.Timer;
 
 #if (UNITY_ANDROID && !UNITY_EDITOR)
 using System.Text;
@@ -67,8 +69,8 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         public static HapticPatterns.PresetType fallbackPreset
         {
-            get { return _fallbackPreset; }
-            set { _fallbackPreset = value; }
+            get => _fallbackPreset;
+            set => _fallbackPreset = value;
         }
 
         internal static bool _hapticsEnabled = true;
@@ -78,13 +80,12 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         public static bool hapticsEnabled
         {
-            get { return _hapticsEnabled; }
+            get => _hapticsEnabled;
             set
             {
                 if (_hapticsEnabled)
-                {
                     Stop();
-                }
+
                 _hapticsEnabled = value;
             }
         }
@@ -122,9 +123,7 @@ namespace Lofelt.NiceVibrations
                 _outputLevel = value;
 
                 if (Init())
-                {
                     LofeltHaptics.SetAmplitudeMultiplication(_outputLevel * _clipLevel);
-                }
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
                 GamepadRumbler.lowFrequencyMotorSpeedMultiplication = _outputLevel * _clipLevel;
                 GamepadRumbler.highFrequencyMotorSpeedMultiplication = _outputLevel * _clipLevel;
@@ -173,9 +172,7 @@ namespace Lofelt.NiceVibrations
                 _clipLevel = value;
 
                 if (Init())
-                {
                     LofeltHaptics.SetAmplitudeMultiplication(_outputLevel * _clipLevel);
-                }
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
                 GamepadRumbler.lowFrequencyMotorSpeedMultiplication = _outputLevel * _clipLevel;
                 GamepadRumbler.highFrequencyMotorSpeedMultiplication = _outputLevel * _clipLevel;
@@ -225,15 +222,13 @@ namespace Lofelt.NiceVibrations
             {
                 lofeltHapticsInitalized = true;
 
-                var syncContext = System.Threading.SynchronizationContext.Current;
-                playbackFinishedTimer.Elapsed += (object obj, System.Timers.ElapsedEventArgs args) =>
+                SynchronizationContext syncContext = System.Threading.SynchronizationContext.Current;
+
+                playbackFinishedTimer.Elapsed += (object obj, ElapsedEventArgs args) =>
                 {
                     // Timer elapsed events are called from a separate thread, so use
                     // SynchronizationContext to handle it in the main thread.
-                    syncContext.Post(_ =>
-                    {
-                        HandleFinishedPlayback();
-                    }, null);
+                    syncContext.Post(_ => { HandleFinishedPlayback(); }, null);
                 };
 
                 if (DeviceCapabilities.isVersionSupported)
@@ -245,6 +240,7 @@ namespace Lofelt.NiceVibrations
 
                 GamepadRumbler.Init();
             }
+
             return deviceMeetsAdvancedRequirements;
         }
 
@@ -265,10 +261,10 @@ namespace Lofelt.NiceVibrations
             lastSeekTime = 0.0f;
             clipLoaded = true;
             clipLoadedDurationSecs = 0.0f;
+
             if (Init())
-            {
                 LofeltHaptics.Load(data);
-            }
+
             clipLevel = 1.0f;
             LoadedClipChanged?.Invoke();
         }
@@ -308,9 +304,7 @@ namespace Lofelt.NiceVibrations
             // on other platforms. For the other platforms, set a clip duration based on the
             // GamepadRumble here.
             if (clipLoadedDurationSecs == 0.0f && rumble.IsValid())
-            {
                 clipLoadedDurationSecs = rumble.totalDurationMs / 1000.0f;
-            }
         }
 
         static void HandleFinishedPlayback()
@@ -335,12 +329,11 @@ namespace Lofelt.NiceVibrations
         public static void Play()
         {
             if (!_hapticsEnabled)
-            {
                 return;
-            }
 
             float remainingPlayDuration = 0.0f;
             bool canLoop = false;
+
             if (GamepadRumbler.CanPlay())
             {
                 remainingPlayDuration = clipLoadedDurationSecs;
@@ -371,7 +364,6 @@ namespace Lofelt.NiceVibrations
                 playbackFinishedTimer.Enabled = !isPlaybackLooping;
             }
             else
-            {
                 // Setting playbackFinishedTimer.Interval needs an interval > 0, otherwise it will
                 // throw an exception.
                 // Even if the remaining play duration is 0, we still want to trigger everything
@@ -379,7 +371,6 @@ namespace Lofelt.NiceVibrations
                 // A playback duration of 0 happens in the Unity editor, when loading the clip
                 // failed or when seeking to the end of a clip.
                 HandleFinishedPlayback();
-            }
         }
 
 
@@ -402,13 +393,10 @@ namespace Lofelt.NiceVibrations
         {
 
             if (Init())
-            {
                 LofeltHaptics.Stop();
-            }
             else
-            {
                 LofeltHaptics.StopPattern();
-            }
+
             GamepadRumbler.Stop();
             HandleFinishedPlayback();
         }
@@ -433,6 +421,7 @@ namespace Lofelt.NiceVibrations
                 LofeltHaptics.Stop();
                 LofeltHaptics.Seek(time);
             }
+
             GamepadRumbler.Stop();
             lastSeekTime = time;
         }
@@ -461,9 +450,7 @@ namespace Lofelt.NiceVibrations
             set
             {
                 if (Init())
-                {
                     LofeltHaptics.SetFrequencyShift(value);
-                }
             }
         }
 
@@ -484,9 +471,8 @@ namespace Lofelt.NiceVibrations
         public static void Loop(bool enabled)
         {
             if (Init())
-            {
                 LofeltHaptics.Loop(enabled);
-            }
+
             isLoopingEnabledByUser = enabled;
         }
 
@@ -498,13 +484,9 @@ namespace Lofelt.NiceVibrations
         public static bool IsPlaying()
         {
             if (playbackFinishedTimer.Enabled)
-            {
                 return true;
-            }
             else
-            {
                 return isPlaybackLooping;
-            }
         }
 
         /// <summary>
@@ -525,6 +507,7 @@ namespace Lofelt.NiceVibrations
                 clipFrequencyShift = 0.0f;
                 Loop(false);
             }
+
             fallbackPreset = HapticPatterns.PresetType.None;
         }
 
@@ -542,12 +525,10 @@ namespace Lofelt.NiceVibrations
         public static void ProcessApplicationFocus(bool hasFocus)
         {
             if (!hasFocus)
-            {
                 // While LofeltHaptics stops playback when the app loses focus,
                 // calling Stop() here handles additional things such as invoking
                 // the PlaybackStopped Action.
                 Stop();
-            }
         }
     }
 }

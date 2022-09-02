@@ -2,33 +2,39 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EnhancedHierarchy {
+namespace EnhancedHierarchy
+{
     [Serializable]
-    public sealed class IconList : List<IconBase>, ISerializationCallbackReceiver {
-
+    public sealed class IconList : List<IconBase>, ISerializationCallbackReceiver
+    {
         [SerializeField]
-        private IconData[] data;
+        IconData[] data;
 
-        public IconList() { }
+        public IconList()
+        {
+        }
 
-        public IconList(IEnumerable<IconBase> collection) : base(collection) { }
+        public IconList(IEnumerable<IconBase> collection) : base(collection)
+        {
+        }
 
-        public void OnAfterDeserialize() {
+        public void OnAfterDeserialize()
+        {
             if (data == null)
                 return;
 
             Clear();
 
-            for (var i = 0; i < data.Length; i++)
+            for (int i = 0; i < data.Length; i++)
                 Add(data[i].Icon);
         }
 
-        public void OnBeforeSerialize() {
+        public void OnBeforeSerialize()
+        {
             data = new IconData[Count];
 
-            for (var i = 0; i < data.Length; i++)
+            for (int i = 0; i < data.Length; i++)
                 data[i] = new IconData() { Icon = this[i] };
         }
-
     }
 }

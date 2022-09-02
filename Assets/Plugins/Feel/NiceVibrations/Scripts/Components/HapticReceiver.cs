@@ -32,9 +32,9 @@ namespace Lofelt.NiceVibrations
         // back to HapticController.
         [SerializeField]
         [Range(0.0f, 5.0f)]
-        private float _outputLevel = 1.0f;
+        float _outputLevel = 1.0f;
         [SerializeField]
-        private bool _hapticsEnabled = true;
+        bool _hapticsEnabled = true;
 
         /// <summary>
         /// Loads all fields from HapticController.
@@ -60,8 +60,8 @@ namespace Lofelt.NiceVibrations
         [System.ComponentModel.DefaultValue(1.0f)]
         public float outputLevel
         {
-            get { return HapticController.outputLevel; }
-            set { HapticController.outputLevel = value; }
+            get => HapticController.outputLevel;
+            set => HapticController.outputLevel = value;
         }
 
 
@@ -71,8 +71,8 @@ namespace Lofelt.NiceVibrations
         [System.ComponentModel.DefaultValue(true)]
         public bool hapticsEnabled
         {
-            get { return HapticController.hapticsEnabled; }
-            set { HapticController.hapticsEnabled = value; }
+            get => HapticController.hapticsEnabled;
+            set => HapticController.hapticsEnabled = value;
         }
 
         /// <summary>

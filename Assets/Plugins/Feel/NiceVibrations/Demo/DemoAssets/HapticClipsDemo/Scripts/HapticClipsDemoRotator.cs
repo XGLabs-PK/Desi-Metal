@@ -18,7 +18,7 @@ namespace Lofelt.NiceVibrations
         /// </summary>
         protected void Update()
         {
-            this.transform.Rotate(RotationSpeed * Time.deltaTime, Space.Self);
+            transform.Rotate(RotationSpeed * Time.deltaTime, Space.Self);
         }
     }
 }

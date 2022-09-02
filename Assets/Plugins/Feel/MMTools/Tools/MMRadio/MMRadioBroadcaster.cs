@@ -4,109 +4,105 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to broadcast a level to MMRadioReceiver(s), either directly or via events
-	/// It can read from pretty much any value on any class
-	/// </summary>
-	[MMRequiresConstantRepaint]
-	public class MMRadioBroadcaster : MMMonoBehaviour
-	{
-		[Header("Source")]
-		/// the emitter to read the level on
-		public MMPropertyEmitter Emitter;
+    /// <summary>
+    /// A class used to broadcast a level to MMRadioReceiver(s), either directly or via events
+    /// It can read from pretty much any value on any class
+    /// </summary>
+    [MMRequiresConstantRepaint]
+    public class MMRadioBroadcaster : MMMonoBehaviour
+    {
+        [Header("Source")]
+        /// the emitter to read the level on
+        public MMPropertyEmitter Emitter;
 
-		[Header("Destinations")]
-		/// a list of receivers hardwired to this broadcaster, that will receive the level at runtime
-		public MMRadioReceiver[] Receivers;
+        [Header("Destinations")]
+        /// a list of receivers hardwired to this broadcaster, that will receive the level at runtime
+        public MMRadioReceiver[] Receivers;
 
-		[Header("Channel Broadcasting")]
-		/// whether or not this broadcaster should use events to broadcast its level on the specified channel
-		public bool BroadcastOnChannel = true;
-		/// the channel to broadcast on, has to match the Channel on the target receivers
-		[MMCondition("BroadcastOnChannel", true)]
-		public int Channel = 0;
-		/// whether to broadcast all the time, or only when the value changes (lighter on performance, but won't "lock" the value)
-		[MMCondition("BroadcastOnChannel", true)]
-		public bool OnlyBroadcastOnValueChange = true;
-        
-		/// a delegate to handle value changes
-		public delegate void OnValueChangeDelegate();
-		/// what to do on value change
-		public OnValueChangeDelegate OnValueChange;
+        [Header("Channel Broadcasting")]
+        /// whether or not this broadcaster should use events to broadcast its level on the specified channel
+        public bool BroadcastOnChannel = true;
+        /// the channel to broadcast on, has to match the Channel on the target receivers
+        [MMCondition("BroadcastOnChannel", true)]
+        public int Channel = 0;
+        /// whether to broadcast all the time, or only when the value changes (lighter on performance, but won't "lock" the value)
+        [MMCondition("BroadcastOnChannel", true)]
+        public bool OnlyBroadcastOnValueChange = true;
 
-		protected float _levelLastFrame = 0f;
+        /// a delegate to handle value changes
+        public delegate void OnValueChangeDelegate();
 
-		/// <summary>
-		/// On Awake we initialize our emitter
-		/// </summary>
-		protected virtual void Awake()
-		{
-			Emitter.Initialization(this.gameObject);
-		}
+        /// what to do on value change
+        public OnValueChangeDelegate OnValueChange;
 
-		/// <summary>
-		/// On Update we process our broadcast
-		/// </summary>
-		protected virtual void Update()
-		{
-			ProcessBroadcast();
-		}
+        protected float _levelLastFrame = 0f;
 
-		/// <summary>
-		/// Broadcasts the value if needed
-		/// </summary>
-		protected virtual void ProcessBroadcast()
-		{
-			if (Emitter == null)
-			{
-				return;
-			}
+        /// <summary>
+        /// On Awake we initialize our emitter
+        /// </summary>
+        protected virtual void Awake()
+        {
+            Emitter.Initialization(gameObject);
+        }
 
-			float level = Emitter.GetLevel();
+        /// <summary>
+        /// On Update we process our broadcast
+        /// </summary>
+        protected virtual void Update()
+        {
+            ProcessBroadcast();
+        }
 
-			if (level != _levelLastFrame)
-			{
-				// we trigger a value change event
-				OnValueChange?.Invoke();
+        /// <summary>
+        /// Broadcasts the value if needed
+        /// </summary>
+        protected virtual void ProcessBroadcast()
+        {
+            if (Emitter == null)
+                return;
 
-				// for each of our receivers, we set the level manually
-				foreach (MMRadioReceiver receiver in Receivers)
-				{
-					receiver?.SetLevel(level);
-				}
+            float level = Emitter.GetLevel();
 
-				// we broadcast an event
-				if (BroadcastOnChannel)
-				{
-					MMRadioLevelEvent.Trigger(Channel, level);
-				}
-			}           
+            if (level != _levelLastFrame)
+            {
+                // we trigger a value change event
+                OnValueChange?.Invoke();
 
-			_levelLastFrame = level;
-		}
-	}
+                // for each of our receivers, we set the level manually
+                foreach (MMRadioReceiver receiver in Receivers)
+                    receiver?.SetLevel(level);
 
-	/// <summary>
-	/// A struct event used to broadcast the level to channels
-	/// </summary>
-	public struct MMRadioLevelEvent
-	{
-		public delegate void Delegate(int channel, float level);
-		static private event Delegate OnEvent;
+                // we broadcast an event
+                if (BroadcastOnChannel)
+                    MMRadioLevelEvent.Trigger(Channel, level);
+            }
 
-		static public void Register(Delegate callback)
-		{
-			OnEvent += callback;
-		}
+            _levelLastFrame = level;
+        }
+    }
 
-		static public void Unregister(Delegate callback)
-		{
-			OnEvent -= callback;
-		}
+    /// <summary>
+    /// A struct event used to broadcast the level to channels
+    /// </summary>
+    public struct MMRadioLevelEvent
+    {
+        public delegate void Delegate(int channel, float level);
 
-		static public void Trigger(int channel, float level)
-		{
-			OnEvent?.Invoke(channel, level);
-		}
-	}
+        static event Delegate OnEvent;
+
+        public static void Register(Delegate callback)
+        {
+            OnEvent += callback;
+        }
+
+        public static void Unregister(Delegate callback)
+        {
+            OnEvent -= callback;
+        }
+
+        public static void Trigger(int channel, float level)
+        {
+            OnEvent?.Invoke(channel, level);
+        }
+    }
 }

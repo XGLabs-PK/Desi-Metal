@@ -122,8 +122,10 @@ namespace Lofelt.NiceVibrations
                     stopMethodId = AndroidJNIHelper.GetMethodID(lofeltHaptics.GetRawClass(), "stop", "()V", false);
                     seekMethodId = AndroidJNIHelper.GetMethodID(lofeltHaptics.GetRawClass(), "seek", "(F)V", false);
                     loopMethodId = AndroidJNIHelper.GetMethodID(lofeltHaptics.GetRawClass(), "loop", "(Z)V", false);
-                    setAmplitudeMultiplicationMethodId = AndroidJNIHelper.GetMethodID(lofeltHaptics.GetRawClass(), "setAmplitudeMultiplication", "(F)V", false);
-                    playMaximumAmplitudePattern = AndroidJNIHelper.GetMethodID(hapticPatterns.GetRawClass(), "playMaximumAmplitudePattern", "([F)V", false);
+                    setAmplitudeMultiplicationMethodId =
+ AndroidJNIHelper.GetMethodID(lofeltHaptics.GetRawClass(), "setAmplitudeMultiplication", "(F)V", false);
+                    playMaximumAmplitudePattern =
+ AndroidJNIHelper.GetMethodID(hapticPatterns.GetRawClass(), "playMaximumAmplitudePattern", "([F)V", false);
                 }
             }
             catch (Exception ex)

@@ -47,14 +47,8 @@ namespace Lofelt.NiceVibrations
         /// will check \ref meetsAdvancedRequirements before calling into <c>LofeltHaptics</c>.
         /// In case the device does not support advanced haptics there is a possibility of fallback
         /// haptics based on presets.
-        public static bool meetsAdvancedRequirements
-        {
-            get
-            {
-                return _meetsAdvancedRequirements;
-            }
-        }
-        private static bool _meetsAdvancedRequirements;
+        public static bool meetsAdvancedRequirements => _meetsAdvancedRequirements;
+        static bool _meetsAdvancedRequirements;
 
         /// <summary>
         /// Indicates if the OS version is high enough to play haptics with Nice Vibrations.
@@ -73,86 +67,44 @@ namespace Lofelt.NiceVibrations
         /// Indicates if the device is capable of amplitude control in order to recreate
         /// advanced haptics.
         /// </summary>
-        public static bool hasAmplitudeControl
-        {
-            get
-            {
-                return _hasAmplitudeControl;
-            }
-        }
-        private static bool _hasAmplitudeControl;
+        public static bool hasAmplitudeControl => _hasAmplitudeControl;
+        static bool _hasAmplitudeControl;
 
         /// <summary>
         /// Indicates if the device is capable of changing the frequency of haptic signals
         /// </summary>
-        public static bool hasFrequencyControl
-        {
-            get
-            {
-                return _hasFrequencyControl;
-            }
-        }
-        private static bool _hasFrequencyControl;
+        public static bool hasFrequencyControl => _hasFrequencyControl;
+        static bool _hasFrequencyControl;
 
         /// <summary>
         /// Indicates if the device is capable of real-time amplitude modulation of haptic signals
         /// </summary>
-        public static bool hasAmplitudeModulation
-        {
-            get
-            {
-                return _hasAmplitudeModulation;
-            }
-        }
-        private static bool _hasAmplitudeModulation;
+        public static bool hasAmplitudeModulation => _hasAmplitudeModulation;
+        static bool _hasAmplitudeModulation;
 
         /// <summary>
         /// Indicates if the device is capable of real-time frequency modulation of haptic signals
         /// </summary>
-        public static bool hasFrequencyModulation
-        {
-            get
-            {
-                return _hasFrequencyModulation;
-            }
-        }
-        private static bool _hasFrequencyModulation;
+        public static bool hasFrequencyModulation => _hasFrequencyModulation;
+        static bool _hasFrequencyModulation;
 
         /// <summary>
         /// Indicates if the device is capable of natively reproducing emphasized haptics
         /// </summary>
-        public static bool hasEmphasis
-        {
-            get
-            {
-                return _hasEmphasis;
-            }
-        }
-        private static bool _hasEmphasis;
+        public static bool hasEmphasis => _hasEmphasis;
+        static bool _hasEmphasis;
 
         /// <summary>
         /// Indicates if the device is capable of emulating emphasized haptics
         /// </summary>
-        public static bool canEmulateEmphasis
-        {
-            get
-            {
-                return _canEmulateEmphasis;
-            }
-        }
-        private static bool _canEmulateEmphasis;
+        public static bool canEmulateEmphasis => _canEmulateEmphasis;
+        static bool _canEmulateEmphasis;
 
         /// <summary>
         /// Indicates if the device is capable of looping haptic clips
         /// </summary>
-        public static bool canLoop
-        {
-            get
-            {
-                return _canLoop;
-            }
-        }
-        private static bool _canLoop;
+        public static bool canLoop => _canLoop;
+        static bool _canLoop;
 
         /// <summary>
         /// Constructor that fills in the only the DeviceCapabilities platform version properties.
@@ -166,7 +118,8 @@ namespace Lofelt.NiceVibrations
             isVersionSupported = false;
 
 #if (UNITY_ANDROID && !UNITY_EDITOR)
-            platformVersion = int.Parse(SystemInfo.operatingSystem.Substring(SystemInfo.operatingSystem.IndexOf("-") + 1, 3));
+            platformVersion =
+ int.Parse(SystemInfo.operatingSystem.Substring(SystemInfo.operatingSystem.IndexOf("-") + 1, 3));
             const int minimumSupportedAndroidSDKVersion = 17;
             isVersionSupported = platformVersion >= minimumSupportedAndroidSDKVersion;
 #elif (UNITY_IOS && !UNITY_EDITOR)

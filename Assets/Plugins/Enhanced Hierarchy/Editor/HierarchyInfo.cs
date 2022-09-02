@@ -4,14 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace EnhancedHierarchy {
-    public static partial class EnhancedHierarchy {
-
+namespace EnhancedHierarchy
+{
+    public static partial class EnhancedHierarchy
+    {
         public const int UNLAYERED = 0;
         public const string UNTAGGED = "Untagged";
         public const float ALPHA_THRESHOLD = 0.01f;
 
-        private static readonly GUIContent trailingContent = new GUIContent("...");
+        static readonly GUIContent trailingContent = new GUIContent("...");
 
         public static string GameObjectName { get; private set; }
         public static string GameObjectTag { get; private set; }
@@ -36,54 +37,65 @@ namespace EnhancedHierarchy {
         public static readonly List<Component> Components = new List<Component>(100);
         public static EventType LastEventType { get; private set; }
 
-        public static void SetItemInformation(int id, Rect rect) {
+        public static void SetItemInformation(int id, Rect rect)
+        {
             if (!Preferences.Enabled)
                 return;
 
-            using(ProfilerSample.Get("Enhanced Hierarchy"))
-            using(ProfilerSample.Get())
-            try {
-                CurrentGameObject = EditorUtility.InstanceIDToObject(id)as GameObject;
+            using (ProfilerSample.Get("Enhanced Hierarchy"))
+            using (ProfilerSample.Get())
+            {
+                try
+                {
+                    CurrentGameObject = EditorUtility.InstanceIDToObject(id) as GameObject;
 
-                IsGameObject = CurrentGameObject;
-                IsRepaintEvent = Event.current.type == EventType.Repaint;
-                IsFirstVisible = Event.current.type != LastEventType;
-                LastEventType = Event.current.type;
+                    IsGameObject = CurrentGameObject;
+                    IsRepaintEvent = Event.current.type == EventType.Repaint;
+                    IsFirstVisible = Event.current.type != LastEventType;
+                    LastEventType = Event.current.type;
 
-                if (IsGameObject) {
-                    GameObjectName = CurrentGameObject.name;
+                    if (IsGameObject)
+                    {
+                        GameObjectName = CurrentGameObject.name;
 
-                    try {
-                        GameObjectTag = CurrentGameObject.tag;
-                    } catch { // I couldn't reproduce this, but it can happen
-                        if (Preferences.DebugEnabled)
-                            Debug.LogWarning("Invalid gameobject tag", CurrentGameObject);
-                        GameObjectTag = "Untagged";
+                        try
+                        {
+                            GameObjectTag = CurrentGameObject.tag;
+                        }
+                        catch
+                        {
+                            // I couldn't reproduce this, but it can happen
+                            if (Preferences.DebugEnabled)
+                                Debug.LogWarning("Invalid gameobject tag", CurrentGameObject);
+
+                            GameObjectTag = "Untagged";
+                        }
+
+                        LabelSize = EditorStyles.label.CalcSize(Utility.GetTempGUIContent(GameObjectName)).x;
+                        LabelSize += Reflected.IconWidth + 5f; // Icon size 
+                        Rect labelOnlyRect = rect;
+                        labelOnlyRect.xMax = labelOnlyRect.xMin + LabelSize;
+                        LabelOnlyRect = labelOnlyRect;
+                        HasTag = !CurrentGameObject.CompareTag(UNTAGGED) || !Preferences.HideDefaultTag;
+                        HasLayer = CurrentGameObject.layer != UNLAYERED || !Preferences.HideDefaultLayer;
+                        CurrentStyle = Utility.GetHierarchyLabelStyle(CurrentGameObject);
+                        CurrentColor = CurrentStyle.normal.textColor;
+                        CurrentGameObject.GetComponents(Components);
                     }
 
-                    LabelSize = EditorStyles.label.CalcSize(Utility.GetTempGUIContent(GameObjectName)).x;
-                    LabelSize += Reflected.IconWidth + 5f; // Icon size 
-                    var labelOnlyRect = rect;
-                    labelOnlyRect.xMax = labelOnlyRect.xMin + LabelSize;
-                    LabelOnlyRect = labelOnlyRect;
-                    HasTag = !CurrentGameObject.CompareTag(UNTAGGED) || !Preferences.HideDefaultTag;
-                    HasLayer = CurrentGameObject.layer != UNLAYERED || !Preferences.HideDefaultLayer;
-                    CurrentStyle = Utility.GetHierarchyLabelStyle(CurrentGameObject);
-                    CurrentColor = CurrentStyle.normal.textColor;
-                    CurrentGameObject.GetComponents(Components);
+                    if (IsFirstVisible)
+                        FinalRect = RawRect;
+
+                    RawRect = rect;
+                    rect.xMin = 0f;
+                    //rect.xMax = EditorGUIUtility.currentViewWidth;
+                    FullSizeRect = rect;
                 }
-
-                if (IsFirstVisible)
-                    FinalRect = RawRect;
-
-                RawRect = rect;
-                rect.xMin = 0f;
-                //rect.xMax = EditorGUIUtility.currentViewWidth;
-                FullSizeRect = rect;
-            } catch (Exception e) {
-                Utility.LogException(e);
+                catch (Exception e)
+                {
+                    Utility.LogException(e);
+                }
             }
         }
-
     }
 }

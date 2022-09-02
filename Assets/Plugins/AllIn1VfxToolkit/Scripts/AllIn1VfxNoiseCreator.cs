@@ -14,34 +14,25 @@ namespace AllIn1VfxToolkit
             Random.InitState(randomSeed);
             float randomOffset = Random.Range(-100f, 100f);
 
-            for(int i = 0; i < texHeight; i++)
-            {
-                for(int j = 0; j < texWidth; j++)
-                {
-                    tex.SetPixel(j, i, CalculatePerlinColor(j, i, scale, randomOffset, texWidth, texHeight));
-                }
-            }
+            for (int i = 0; i < texHeight; i++)
+            for (int j = 0; j < texWidth; j++)
+                tex.SetPixel(j, i, CalculatePerlinColor(j, i, scale, randomOffset, texWidth, texHeight));
+
             tex.Apply();
-            
+
             Texture2D finalPerlin = new Texture2D(texHeight, texWidth);
             finalPerlin.SetPixels(tex.GetPixels());
 
-            if(tileable)
-            {
-                for(int i = 0; i < texHeight; i++)
-                {
-                    for(int j = 0; j < texWidth; j++)
-                    {
-                        finalPerlin.SetPixel(j, i, PerlinBorderless(j, i, scale, randomOffset, texWidth, texHeight, tex));
-                    }
-                }   
-            }
+            if (tileable)
+                for (int i = 0; i < texHeight; i++)
+                for (int j = 0; j < texWidth; j++)
+                    finalPerlin.SetPixel(j, i, PerlinBorderless(j, i, scale, randomOffset, texWidth, texHeight, tex));
 
             finalPerlin.Apply();
             return finalPerlin;
         }
 
-        private static Color CalculatePerlinColor(int x, int y, float scale, float offset, int width, int height)
+        static Color CalculatePerlinColor(int x, int y, float scale, float offset, int width, int height)
         {
             float xCoord = (x + offset) / width * scale;
             float yCoord = (y + offset) / height * scale;
@@ -49,17 +40,18 @@ namespace AllIn1VfxToolkit
             float perlin = Mathf.PerlinNoise(xCoord, yCoord);
             return new Color(perlin, perlin, perlin, 1);
         }
-        
-        private static Color PerlinBorderless(int x, int y, float scale, float offset, int width, int height, Texture2D previousPerlin)
+
+        static Color PerlinBorderless(int x, int y, float scale, float offset, int width, int height,
+            Texture2D previousPerlin)
         {
             int iniX = x;
             int iniY = y;
             float u = (float)x / width;
             float v = (float)y / height;
 
-            if(u > 0.5f) x = width - x;
-            if(v > 0.5f) y = height - y;
-            
+            if (u > 0.5f) x = width - x;
+            if (v > 0.5f) y = height - y;
+
             offset += 23.43f;
             float xCoord = (x + offset) / width * scale;
             float yCoord = (y + offset) / height * scale;

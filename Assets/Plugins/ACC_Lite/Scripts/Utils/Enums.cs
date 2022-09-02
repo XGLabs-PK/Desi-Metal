@@ -1,12 +1,12 @@
 ﻿public enum SpeedType
 {
-	KPH,
-	MPH
+    KPH,
+    MPH
 }
 
 public enum DriveType
 {
-	AWD,                    //All wheels drive
-	FWD,                    //Forward wheels drive
-	RWD                     //Rear wheels drive
+    AWD, //All wheels drive
+    FWD, //Forward wheels drive
+    RWD //Rear wheels drive
 }

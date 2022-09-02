@@ -2,29 +2,35 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace EnhancedHierarchy.Icons {
-    public sealed class RendererToggle : IconBase {
+namespace EnhancedHierarchy.Icons
+{
+    public sealed class RendererToggle : IconBase
+    {
+        Renderer renderer;
 
-        private Renderer renderer;
+        public override IconPosition Side => IconPosition.All;
+        public override string Name => "Renderer";
 
-        public override IconPosition Side { get { return IconPosition.All; } }
-        public override string Name { get { return "Renderer"; } }
-
-        public override Texture2D PreferencesPreview { get { return Utility.GetBackground(Styles.rendererToggleStyle, true); } }
+        public override Texture2D PreferencesPreview => Utility.GetBackground(Styles.rendererToggleStyle, true);
 
         //public override string PreferencesTooltip { get { return "Some tag for the tooltip here"; } }
 
-        public override void Init() {
-            renderer = EnhancedHierarchy.Components.FirstOrDefault(c => c is Renderer)as Renderer;
+        public override void Init()
+        {
+            renderer = EnhancedHierarchy.Components.FirstOrDefault(c => c is Renderer) as Renderer;
         }
 
-        public override float Width { get { return renderer ? base.Width : 0; } }
+        public override float Width => renderer ? base.Width : 0;
 
-        public override void DoGUI(Rect rect) {
+        public override void DoGUI(Rect rect)
+        {
             if (!renderer)
                 return;
 
-            using(new GUIBackgroundColor(renderer.enabled ? Styles.backgroundColorEnabled : Styles.backgroundColorDisabled)) {
+            using (new GUIBackgroundColor(renderer.enabled
+                       ? Styles.backgroundColorEnabled
+                       : Styles.backgroundColorDisabled))
+            {
                 GUI.changed = false;
                 GUI.Toggle(rect, renderer, Styles.rendererContent, Styles.rendererToggleStyle);
 
@@ -32,14 +38,13 @@ namespace EnhancedHierarchy.Icons {
                     return;
 
                 var objs = GetSelectedObjectsAndCurrent().SelectMany(go => go.GetComponents<Renderer>());
-                var active = !renderer.enabled;
+                bool active = !renderer.enabled;
 
                 Undo.RecordObjects(objs.ToArray(), renderer.enabled ? "Disabled renderer" : "Enabled renderer");
 
-                foreach (var obj in objs)
+                foreach (Renderer obj in objs)
                     obj.enabled = active;
             }
         }
-
     }
 }

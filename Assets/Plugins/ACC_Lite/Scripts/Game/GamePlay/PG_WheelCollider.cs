@@ -4,175 +4,191 @@ using UnityEngine;
 
 namespace PG_Physics.Wheel
 {
+    [RequireComponent(typeof(WheelCollider))]
+    public class PG_WheelCollider : MonoBehaviour
+    {
+        [SerializeField]
+        [FullField]
+        PG_WheelColliderConfig WheelConfig;
 
-	[RequireComponent (typeof (WheelCollider))]
-	public class PG_WheelCollider : MonoBehaviour
-	{
-		[SerializeField, FullField] PG_WheelColliderConfig WheelConfig;
+        [SerializeField]
+        [HideInInspector]
+        WheelCollider m_WheelCollider;
+        [SerializeField]
+        [HideInInspector]
+        Rigidbody m_RB;
 
-		[SerializeField, HideInInspector] WheelCollider m_WheelCollider;
-		[SerializeField, HideInInspector] Rigidbody m_RB;
+        public WheelCollider WheelCollider
+        {
+            get
+            {
+                if (m_WheelCollider == null)
+                    m_WheelCollider = GetComponent<WheelCollider>();
 
-		public WheelCollider WheelCollider
-		{
-			get
-			{
-				if (m_WheelCollider == null)
-				{
-					m_WheelCollider = GetComponent<WheelCollider> ();
-				}
-				return m_WheelCollider;
-			}
-		}
+                return m_WheelCollider;
+            }
+        }
 
-		public Rigidbody RB
-		{
-			get
-			{
-				if (m_RB == null)
-				{
-					m_RB = WheelCollider.attachedRigidbody;
-				}
-				return m_RB;
-			}
-		}
+        public Rigidbody RB
+        {
+            get
+            {
+                if (m_RB == null)
+                    m_RB = WheelCollider.attachedRigidbody;
 
-		public void UpdateStiffness (float forward, float sideways)
-		{
-			var forwardFriction = WheelCollider.forwardFriction;
-			var sidewaysFriction = WheelCollider.sidewaysFriction;
+                return m_RB;
+            }
+        }
 
-			forwardFriction.stiffness = forward;
-			sidewaysFriction.stiffness = sideways;
+        public void UpdateStiffness(float forward, float sideways)
+        {
+            WheelFrictionCurve forwardFriction = WheelCollider.forwardFriction;
+            WheelFrictionCurve sidewaysFriction = WheelCollider.sidewaysFriction;
 
-			WheelCollider.forwardFriction = forwardFriction;
-			WheelCollider.sidewaysFriction = sidewaysFriction;
-		}
+            forwardFriction.stiffness = forward;
+            sidewaysFriction.stiffness = sideways;
 
-		public void UpdateConfig ()
-		{
-			UpdateConfig (WheelConfig);
-		}
+            WheelCollider.forwardFriction = forwardFriction;
+            WheelCollider.sidewaysFriction = sidewaysFriction;
+        }
 
-		public void UpdateConfig (PG_WheelColliderConfig newConfig)
-		{
-			if (RB == null)
-			{
-				Debug.LogError ("WheelCollider without attached RigidBody");
-				return;		
-			}
-			WheelConfig.ForwardFriction = newConfig.ForwardFriction;
-			WheelConfig.SidewaysFriction = newConfig.SidewaysFriction;
+        public void UpdateConfig()
+        {
+            UpdateConfig(WheelConfig);
+        }
 
-			if (newConfig.IsFullConfig)
-			{
-				float springValue = Mathf.Lerp(minSpring, maxSpring, newConfig.Spring);
-				float damperValue = Mathf.Lerp(minDamper, maxDamper, newConfig.Damper);
+        public void UpdateConfig(PG_WheelColliderConfig newConfig)
+        {
+            if (RB == null)
+            {
+                Debug.LogError("WheelCollider without attached RigidBody");
+                return;
+            }
 
-				JointSpring spring = new JointSpring();
-				spring.spring = springValue;
-				spring.damper = damperValue;
-				spring.targetPosition = newConfig.TargetPoint;
+            WheelConfig.ForwardFriction = newConfig.ForwardFriction;
+            WheelConfig.SidewaysFriction = newConfig.SidewaysFriction;
 
-				WheelCollider.mass = newConfig.Mass;
-				WheelCollider.radius = newConfig.Radius;
-				WheelCollider.wheelDampingRate = newConfig.WheelDampingRate;
-				WheelCollider.suspensionDistance = newConfig.SuspensionDistance;
-				WheelCollider.forceAppPointDistance = newConfig.ForceAppPointDistance;
-				WheelCollider.center = newConfig.Center;
-				WheelCollider.suspensionSpring = spring;
-			}
+            if (newConfig.IsFullConfig)
+            {
+                float springValue = Mathf.Lerp(minSpring, maxSpring, newConfig.Spring);
+                float damperValue = Mathf.Lerp(minDamper, maxDamper, newConfig.Damper);
 
-			WheelFrictionCurve forwardFriction = new WheelFrictionCurve();
-			forwardFriction.extremumSlip = Mathf.Lerp (minExtremumSlip, maxExtremumSlip, newConfig.ForwardFriction);
-			forwardFriction.extremumValue = Mathf.Lerp (minExtremumValue, maxExtremumValue, newConfig.ForwardFriction);
-			forwardFriction.asymptoteSlip = Mathf.Lerp (minAsymptoteSlip, maxAsymptoteSlip, newConfig.ForwardFriction);
-			forwardFriction.asymptoteValue = Mathf.Lerp (minAsymptoteValue, maxAsymptoteValue, newConfig.ForwardFriction);
-			forwardFriction.stiffness = 1;
+                JointSpring spring = new JointSpring();
+                spring.spring = springValue;
+                spring.damper = damperValue;
+                spring.targetPosition = newConfig.TargetPoint;
 
-			WheelFrictionCurve sidewaysFriction = new WheelFrictionCurve();
-			sidewaysFriction.extremumSlip = Mathf.Lerp (minExtremumSlip, maxExtremumSlip, newConfig.SidewaysFriction);
-			sidewaysFriction.extremumValue = Mathf.Lerp (minExtremumValue, maxExtremumValue, newConfig.SidewaysFriction);
-			sidewaysFriction.asymptoteSlip = Mathf.Lerp (minAsymptoteSlip, maxAsymptoteSlip, newConfig.SidewaysFriction);
-			sidewaysFriction.asymptoteValue = Mathf.Lerp (minAsymptoteValue, maxAsymptoteValue, newConfig.SidewaysFriction);
-			sidewaysFriction.stiffness = 1;
+                WheelCollider.mass = newConfig.Mass;
+                WheelCollider.radius = newConfig.Radius;
+                WheelCollider.wheelDampingRate = newConfig.WheelDampingRate;
+                WheelCollider.suspensionDistance = newConfig.SuspensionDistance;
+                WheelCollider.forceAppPointDistance = newConfig.ForceAppPointDistance;
+                WheelCollider.center = newConfig.Center;
+                WheelCollider.suspensionSpring = spring;
+            }
 
-			WheelCollider.forwardFriction = forwardFriction;
-			WheelCollider.sidewaysFriction = sidewaysFriction;
-		}
+            WheelFrictionCurve forwardFriction = new WheelFrictionCurve();
+            forwardFriction.extremumSlip = Mathf.Lerp(minExtremumSlip, maxExtremumSlip, newConfig.ForwardFriction);
+            forwardFriction.extremumValue = Mathf.Lerp(minExtremumValue, maxExtremumValue, newConfig.ForwardFriction);
+            forwardFriction.asymptoteSlip = Mathf.Lerp(minAsymptoteSlip, maxAsymptoteSlip, newConfig.ForwardFriction);
+
+            forwardFriction.asymptoteValue =
+                Mathf.Lerp(minAsymptoteValue, maxAsymptoteValue, newConfig.ForwardFriction);
+
+            forwardFriction.stiffness = 1;
+
+            WheelFrictionCurve sidewaysFriction = new WheelFrictionCurve();
+            sidewaysFriction.extremumSlip = Mathf.Lerp(minExtremumSlip, maxExtremumSlip, newConfig.SidewaysFriction);
+            sidewaysFriction.extremumValue = Mathf.Lerp(minExtremumValue, maxExtremumValue, newConfig.SidewaysFriction);
+            sidewaysFriction.asymptoteSlip = Mathf.Lerp(minAsymptoteSlip, maxAsymptoteSlip, newConfig.SidewaysFriction);
+
+            sidewaysFriction.asymptoteValue =
+                Mathf.Lerp(minAsymptoteValue, maxAsymptoteValue, newConfig.SidewaysFriction);
+
+            sidewaysFriction.stiffness = 1;
+
+            WheelCollider.forwardFriction = forwardFriction;
+            WheelCollider.sidewaysFriction = sidewaysFriction;
+        }
 
 
-		public bool CheckFirstEnable ()
-		{
-			if (m_WheelCollider != null) return false;
+        public bool CheckFirstEnable()
+        {
+            if (m_WheelCollider != null) return false;
 
-			var sprigValue = (WheelCollider.suspensionSpring.spring - minSpring) / (maxSpring - minSpring);
-			var damper = (WheelCollider.suspensionSpring.damper - minDamper) / (maxDamper - minDamper);
-			var forwardFriction = (WheelCollider.forwardFriction.extremumValue - minExtremumValue) / (maxExtremumValue - minExtremumValue);
-			var sidewaysFriction = (WheelCollider.sidewaysFriction.extremumValue - minExtremumValue) / (maxExtremumValue - minExtremumValue);
+            float sprigValue = (WheelCollider.suspensionSpring.spring - minSpring) / (maxSpring - minSpring);
+            float damper = (WheelCollider.suspensionSpring.damper - minDamper) / (maxDamper - minDamper);
 
-			WheelConfig = new PG_WheelColliderConfig ();
-			WheelConfig.Mass = WheelCollider.mass;
-			WheelConfig.Radius = WheelCollider.radius;
-			WheelConfig.WheelDampingRate = WheelCollider.wheelDampingRate;
-			WheelConfig.SuspensionDistance = WheelCollider.suspensionDistance;
-			WheelConfig.ForceAppPointDistance = WheelCollider.forceAppPointDistance;
-			WheelConfig.Center = WheelCollider.center;
-			WheelConfig.TargetPoint = WheelCollider.suspensionSpring.targetPosition;
-			WheelConfig.Spring = sprigValue;
-			WheelConfig.Damper = damper;
-			WheelConfig.ForwardFriction = forwardFriction;
-			WheelConfig.SidewaysFriction = sidewaysFriction;
+            float forwardFriction = (WheelCollider.forwardFriction.extremumValue - minExtremumValue) /
+                                    (maxExtremumValue - minExtremumValue);
 
-			return true;
-		}
+            float sidewaysFriction = (WheelCollider.sidewaysFriction.extremumValue - minExtremumValue) /
+                                     (maxExtremumValue - minExtremumValue);
 
-		//Spring constants
-		const float minSpring = 0;
-		const float maxSpring = 60000;
-		const float minDamper = 0;
-		const float maxDamper = 10000;
+            WheelConfig = new PG_WheelColliderConfig();
+            WheelConfig.Mass = WheelCollider.mass;
+            WheelConfig.Radius = WheelCollider.radius;
+            WheelConfig.WheelDampingRate = WheelCollider.wheelDampingRate;
+            WheelConfig.SuspensionDistance = WheelCollider.suspensionDistance;
+            WheelConfig.ForceAppPointDistance = WheelCollider.forceAppPointDistance;
+            WheelConfig.Center = WheelCollider.center;
+            WheelConfig.TargetPoint = WheelCollider.suspensionSpring.targetPosition;
+            WheelConfig.Spring = sprigValue;
+            WheelConfig.Damper = damper;
+            WheelConfig.ForwardFriction = forwardFriction;
+            WheelConfig.SidewaysFriction = sidewaysFriction;
 
-		//Minimum friction constants
-		const float minExtremumSlip = 0.4f;
-		const float minExtremumValue = 0.7f;
-		const float minAsymptoteSlip = 0.6f;
-		const float minAsymptoteValue = 0.65f;
+            return true;
+        }
 
-		//Maximum friction constants
-		const float maxExtremumSlip = 0.4f;
-		const float maxExtremumValue = 4.5f;
-		const float maxAsymptoteSlip = 0.6f;
-		const float maxAsymptoteValue = 4f;
-	}
+        //Spring constants
+        const float minSpring = 0;
+        const float maxSpring = 60000;
+        const float minDamper = 0;
+        const float maxDamper = 10000;
 
-	[System.Serializable]
-	public struct PG_WheelColliderConfig
-	{
-		[SerializeField] bool IsFoldout;
-		public bool IsFullConfig;
+        //Minimum friction constants
+        const float minExtremumSlip = 0.4f;
+        const float minExtremumValue = 0.7f;
+        const float minAsymptoteSlip = 0.6f;
+        const float minAsymptoteValue = 0.65f;
 
-		public float Mass;
-		public float Radius;
-		public float WheelDampingRate;
-		public float SuspensionDistance;
-		public float ForceAppPointDistance;
-		public Vector3 Center;
-		
-		//Suspension spring
-		public float Spring;
-		public float Damper;
-		public float TargetPoint;
+        //Maximum friction constants
+        const float maxExtremumSlip = 0.4f;
+        const float maxExtremumValue = 4.5f;
+        const float maxAsymptoteSlip = 0.6f;
+        const float maxAsymptoteValue = 4f;
+    }
 
-		//Frictions;
-		public float ForwardFriction;
-		public float SidewaysFriction;
-	}
+    [System.Serializable]
+    public struct PG_WheelColliderConfig
+    {
+        [SerializeField]
+        bool IsFoldout;
+        public bool IsFullConfig;
 
-	/// <summary>
-	/// Custom FullField Attribute 
-	/// </summary>
-	[System.AttributeUsage (System.AttributeTargets.Field)]
-	public class FullField :PropertyAttribute { }
+        public float Mass;
+        public float Radius;
+        public float WheelDampingRate;
+        public float SuspensionDistance;
+        public float ForceAppPointDistance;
+        public Vector3 Center;
 
+        //Suspension spring
+        public float Spring;
+        public float Damper;
+        public float TargetPoint;
+
+        //Frictions;
+        public float ForwardFriction;
+        public float SidewaysFriction;
+    }
+
+    /// <summary>
+    /// Custom FullField Attribute 
+    /// </summary>
+    [System.AttributeUsage(System.AttributeTargets.Field)]
+    public class FullField : PropertyAttribute
+    {
+    }
 }

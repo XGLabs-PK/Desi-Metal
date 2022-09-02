@@ -7,27 +7,26 @@ namespace XGStudios
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        
+
+        static readonly int IsPaused = Animator.StringToHash("isPaused");
+        static readonly int IsResumed = Animator.StringToHash("isResumed");
+        static readonly int DeathStart = Animator.StringToHash("DeathStart");
+
         [Header("Pause Mode")]
         public GameObject pauseUI;
         public Animator pauseAnimator;
-        
+
         [Space(5f)]
-        
         [Header("Death Mode")]
         public Animator deathAnim;
-        
-        TheCamera _camScript;
-        TheWeapon _weaponScript;
 
         [HideInInspector]
         public bool gamePaused;
         [HideInInspector]
         public bool carDestroyed;
-        
-        static readonly int IsPaused = Animator.StringToHash("isPaused");
-        static readonly int IsResumed = Animator.StringToHash("isResumed");
-        static readonly int DeathStart = Animator.StringToHash("DeathStart");
+
+        TheCamera _camScript;
+        TheWeapon _weaponScript;
 
         void Awake()
         {
@@ -41,8 +40,10 @@ namespace XGStudios
         {
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
+
             if (pauseUI != null)
                 pauseUI.SetActive(false);
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -50,18 +51,14 @@ namespace XGStudios
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused && !carDestroyed)
-            {
                 PauseGame();
-            }
             else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused && !carDestroyed)
-            {
-                ResumeGame(); 
-            }
+                ResumeGame();
 
             if (carDestroyed)
             {
                 CarDestroyed();
-                
+
                 if (Input.GetKeyDown(KeyCode.F1))
                 {
                     Time.timeScale = 1f;
@@ -73,9 +70,7 @@ namespace XGStudios
                     SceneManager.LoadScene("Main Menu");
                 }
                 else if (Input.GetKeyDown(KeyCode.F3))
-                {
                     Application.Quit();
-                }
             }
         }
 
@@ -84,8 +79,10 @@ namespace XGStudios
             gamePaused = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
             if (pauseAnimator != null)
                 pauseAnimator.SetTrigger(IsPaused);
+
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
@@ -96,8 +93,10 @@ namespace XGStudios
             gamePaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
             if (pauseAnimator != null)
                 pauseAnimator.SetTrigger(IsResumed);
+
             Time.timeScale = 1f;
             _camScript.enabled = true;
             _weaponScript.enabled = true;
@@ -107,6 +106,7 @@ namespace XGStudios
         {
             if (deathAnim != null)
                 deathAnim.SetTrigger(DeathStart);
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;

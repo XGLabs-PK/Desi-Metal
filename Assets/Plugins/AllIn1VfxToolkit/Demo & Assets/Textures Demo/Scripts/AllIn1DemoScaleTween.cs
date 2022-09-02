@@ -5,35 +5,38 @@ namespace AllIn1VfxToolkit.DemoAssets.TexturesDemo.Scripts
 {
     public class AllIn1DemoScaleTween : MonoBehaviour
     {
-        [SerializeField] private float maxTweenScale = 2.0f;
-        [SerializeField] private float minTweenScale = 0.8f;
-        [SerializeField] private float tweenSpeed = 15f;
-        
-        private bool isTweening = false;
-        private float currentScale = 1f, iniScale;
-        private Vector3 scaleToApply = Vector3.one;
+        [SerializeField]
+        float maxTweenScale = 2.0f;
+        [SerializeField]
+        float minTweenScale = 0.8f;
+        [SerializeField]
+        float tweenSpeed = 15f;
 
-        private void Start()
+        bool isTweening = false;
+        float currentScale = 1f, iniScale;
+        Vector3 scaleToApply = Vector3.one;
+
+        void Start()
         {
             iniScale = transform.localScale.x;
         }
 
-        private void Update()
+        void Update()
         {
-            if(!isTweening) return;
+            if (!isTweening) return;
             currentScale = Mathf.Lerp(currentScale, iniScale, Time.unscaledDeltaTime * tweenSpeed);
             UpdateScaleToApply();
             ApplyScale();
-            if(Mathf.Abs(currentScale - 1f) < 0.02f) isTweening = false;
+            if (Mathf.Abs(currentScale - 1f) < 0.02f) isTweening = false;
         }
 
-        private void UpdateScaleToApply()
+        void UpdateScaleToApply()
         {
             scaleToApply.x = currentScale;
             scaleToApply.y = currentScale;
         }
-        
-        private void ApplyScale()
+
+        void ApplyScale()
         {
             transform.localScale = scaleToApply;
         }
@@ -44,7 +47,7 @@ namespace AllIn1VfxToolkit.DemoAssets.TexturesDemo.Scripts
             currentScale = iniScale * maxTweenScale;
             UpdateScaleToApply();
         }
-        
+
         public void ScaleDownTween()
         {
             isTweening = true;

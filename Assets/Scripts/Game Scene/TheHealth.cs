@@ -32,7 +32,7 @@ namespace XGStudios
                 //smoke from car
                 //Screen Grey
             }
-            
+
             if (_maxHealth <= 15)
             {
                 //smoke from car
@@ -57,7 +57,7 @@ namespace XGStudios
         public void TakeDamage(int damage)
         {
             if (_maxHealth == 0) return;
-            
+
             FeelManager.Instance.carDamage.PlayFeedbacks();
             _maxHealth -= damage;
 

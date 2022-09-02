@@ -5,7 +5,6 @@ namespace XGStudios
 {
     public class TheWeapon : MonoBehaviour
     {
-        Camera _cam;
         public Transform weapon;
         public GameObject bulletPrefab;
         public Transform firePoint;
@@ -13,6 +12,7 @@ namespace XGStudios
         [Space]
         public float delay = 0.1f;
         public AudioSource weaponAudio;
+        Camera _cam;
 
         float _timer;
 
@@ -24,7 +24,8 @@ namespace XGStudios
         void Update()
         {
             weapon.transform.rotation = _cam.transform.rotation;
-            if(Input.GetButton("Fire1") && _timer <= 0f)
+
+            if (Input.GetButton("Fire1") && _timer <= 0f)
                 Shoot();
             else
                 _timer -= Time.deltaTime;
@@ -39,8 +40,10 @@ namespace XGStudios
 
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
                 return;
+
             Instantiate(impactEffect, hit.point, Quaternion.identity);
             if (hit.transform.CompareTag("Car")) return;
+
             if (hit.transform.CompareTag("AI"))
             {
                 FeelManager.Instance.enemyDamage.PlayFeedbacks();
@@ -48,7 +51,7 @@ namespace XGStudios
                 //Particles
                 //Sound
             }
-            
+
         }
     }
 }

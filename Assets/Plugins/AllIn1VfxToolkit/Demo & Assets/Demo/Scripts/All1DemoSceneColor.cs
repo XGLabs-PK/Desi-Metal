@@ -6,17 +6,23 @@ namespace AllIn1VfxToolkit.Demo.Scripts
     [RequireComponent(typeof(Dropdown))]
     public class All1DemoSceneColor : MonoBehaviour
     {
-        [SerializeField] private Color[] sceneColors;
-        [SerializeField] private Camera targetCamera;
-        [SerializeField] private float cameraColorMult = 1f;
-        [SerializeField] private MeshRenderer floorMeshRenderer;
-        [SerializeField] private float floorColorMult = 1f;
-        [SerializeField] private float fogColorMult = 1f;
-        
-        private Dropdown sceneColorDropdown;
-        private Material floorMaterial;
-        
-        private void Start()
+        [SerializeField]
+        Color[] sceneColors;
+        [SerializeField]
+        Camera targetCamera;
+        [SerializeField]
+        float cameraColorMult = 1f;
+        [SerializeField]
+        MeshRenderer floorMeshRenderer;
+        [SerializeField]
+        float floorColorMult = 1f;
+        [SerializeField]
+        float fogColorMult = 1f;
+
+        Dropdown sceneColorDropdown;
+        Material floorMaterial;
+
+        void Start()
         {
             sceneColorDropdown = GetComponent<Dropdown>();
             floorMaterial = floorMeshRenderer.material;
@@ -28,7 +34,7 @@ namespace AllIn1VfxToolkit.Demo.Scripts
             SetSceneColor(sceneColorDropdown.value);
         }
 
-        private void SetSceneColor(int nIndex)
+        void SetSceneColor(int nIndex)
         {
             targetCamera.backgroundColor = sceneColors[nIndex] * cameraColorMult;
             floorMaterial.color = sceneColors[nIndex] * floorColorMult;

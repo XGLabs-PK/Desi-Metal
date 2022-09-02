@@ -7,6 +7,8 @@ using UnityEditor;
 #endif
 
 namespace MoreMountains.Tools
-{	
-	public class MMHiddenAttribute : PropertyAttribute { }
+{
+    public class MMHiddenAttribute : PropertyAttribute
+    {
+    }
 }

@@ -65,7 +65,7 @@ namespace Lofelt.NiceVibrations
             ParentCanvasRenderMode = GetComponentInParent<Canvas>().renderMode;
             _canvas = GetComponentInParent<Canvas>();
             _initialZPosition = transform.position.z;
-            _rectTransform = this.gameObject.GetComponent<RectTransform>();
+            _rectTransform = gameObject.GetComponent<RectTransform>();
             SetNeutralPosition();
         }
 
@@ -78,13 +78,13 @@ namespace Lofelt.NiceVibrations
         {
             if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, testPosition, _canvas.worldCamera, out _workPosition);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+                    testPosition, _canvas.worldCamera, out _workPosition);
+
                 return _canvas.transform.TransformPoint(_workPosition);
             }
             else
-            {
                 return testPosition;
-            }
         }
 
         protected virtual void Update()
@@ -96,23 +96,15 @@ namespace Lofelt.NiceVibrations
                 float distance = (_newTargetPosition - _neutralPosition).magnitude;
 
                 if (distance < MaxRange)
-                {
                     _dragging = true;
-                }
                 else
-                {
                     _dragging = false;
-                }
             }
 
             if (_dragging)
-            {
                 StickToPointer();
-            }
             else
-            {
                 GoBackToInitialPosition();
-            }
         }
 
         protected virtual void StickToPointer()
@@ -133,9 +125,7 @@ namespace Lofelt.NiceVibrations
         protected virtual void GoBackToInitialPosition()
         {
             if (!_draggedOnce)
-            {
                 return;
-            }
 
             if (Time.time - _dragEndedAt < DragResetDuration)
             {
@@ -149,6 +139,7 @@ namespace Lofelt.NiceVibrations
                 _newTargetPosition = _neutralPosition;
                 _newTargetPosition.z = _initialZPosition;
             }
+
             transform.position = _newTargetPosition;
         }
 
@@ -186,4 +177,3 @@ namespace Lofelt.NiceVibrations
         }
     }
 }
-

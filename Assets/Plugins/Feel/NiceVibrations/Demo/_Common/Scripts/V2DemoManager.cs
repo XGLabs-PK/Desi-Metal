@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace Lofelt.NiceVibrations
 {
     public class V2DemoManager : MonoBehaviour
@@ -28,11 +29,13 @@ namespace Lofelt.NiceVibrations
         {
             Application.targetFrameRate = 60;
             _paginations = new List<Pagination>();
+
             foreach (RectTransform page in Pages)
             {
                 _paginations.Add(page.GetComponentInChildren<Pagination>());
                 page.gameObject.SetActive(false);
             }
+
             foreach (Pagination pagination in _paginations)
             {
                 pagination.InitializePagination(Pages.Count);
@@ -40,7 +43,9 @@ namespace Lofelt.NiceVibrations
                 pagination.InactiveColor = InactiveColor;
                 pagination.SetCurrentPage(Pages.Count, 0);
             }
+
             Pages[0].gameObject.SetActive(true);
+
             if (SoundActive)
             {
                 AudioListener.volume = 1f;
@@ -76,9 +81,7 @@ namespace Lofelt.NiceVibrations
         protected virtual void SetCurrentPage()
         {
             foreach (Pagination pagination in _paginations)
-            {
                 pagination.SetCurrentPage(Pages.Count, CurrentPage);
-            }
         }
 
         protected virtual void Transition(int previous, int next, bool goingRight)
@@ -86,9 +89,8 @@ namespace Lofelt.NiceVibrations
             HapticController.Reset();
 
             if (_transitionCoroutine != null)
-            {
                 StopCoroutine(_transitionCoroutine);
-            }
+
             _transitionCoroutine = StartCoroutine(TransitionCoroutine(previous, next, goingRight));
         }
 
@@ -106,20 +108,35 @@ namespace Lofelt.NiceVibrations
             Pages[next].gameObject.SetActive(true);
 
             float timeSpent = 0f;
+
             while (timeSpent < PageTransitionDuration)
             {
                 if (goingRight)
                 {
-                    _position.x = Mathf.Lerp(0f, -1200f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(0f, -1200f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
+
                     Pages[previous].localPosition = _position;
-                    _position.x = Mathf.Lerp(1200f, 0f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+
+                    _position.x = Mathf.Lerp(1200f, 0f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
+
                     Pages[next].localPosition = _position;
                 }
                 else
                 {
-                    _position.x = Mathf.Lerp(0f, 1200f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(0f, 1200f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
+
                     Pages[previous].localPosition = _position;
-                    _position.x = Mathf.Lerp(-1200f, 0f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+
+                    _position.x = Mathf.Lerp(-1200f, 0f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
+
                     Pages[next].localPosition = _position;
                 }
 
