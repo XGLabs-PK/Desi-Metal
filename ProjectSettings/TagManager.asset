@@ -9,6 +9,7 @@ TagManager:
   - AI
   - Body
   - Enemy
+  - Spawner
   layers:
   - Default
   - TransparentFX
