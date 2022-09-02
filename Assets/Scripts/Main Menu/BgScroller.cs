@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.MainMenu
+namespace XGStudios
 {
     public class BgScroller : MonoBehaviour
     {

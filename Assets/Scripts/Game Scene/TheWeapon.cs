@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.GameScene
+namespace XGStudios
 {
     public class TheWeapon : MonoBehaviour
     {
@@ -41,10 +41,10 @@ namespace XGStudios.GameScene
                 return;
             Instantiate(impactEffect, hit.point, Quaternion.identity);
             if (hit.transform.CompareTag("Car")) return;
-            if (hit.transform.CompareTag("Enemy"))
+            if (hit.transform.CompareTag("AI"))
             {
                 FeelManager.Instance.enemyDamage.PlayFeedbacks();
-                //Decrease Enemy Health
+                EnemyHealth.Instance.TakeDamage(15);
                 //Particles
                 //Sound
             }

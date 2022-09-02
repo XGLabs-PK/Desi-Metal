@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace XGStudios.MainMenu
+namespace XGStudios
 {
     public class SettingsMenu : MonoBehaviour
     {

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.SplashScreen
+namespace XGStudios
 {
     public class SplashScreen : MonoBehaviour
     {

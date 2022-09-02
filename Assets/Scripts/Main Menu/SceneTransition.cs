@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.MainMenu
+namespace XGStudios
 {
     public class SceneTransition : MonoBehaviour
         {

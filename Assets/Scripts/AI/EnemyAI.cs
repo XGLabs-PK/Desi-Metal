@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-    
+namespace XGStudios
+{
     public class EnemyAI : MonoBehaviour
     {
         [HideInInspector] [SerializeField] public GameObject followObject;
@@ -24,16 +24,16 @@ using UnityEngine;
         [Header("Shooting")]
         bool shooting;
         [SerializeField]AiBullet bullet;
-    //[SerializeField]GameObject enemy;
-    [SerializeField] Transform shootPoint;
-    [SerializeField]GameObject bulletPrefab;
+        //[SerializeField]GameObject enemy;
+        [SerializeField] Transform shootPoint;
+        [SerializeField]GameObject bulletPrefab;
 
         private void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Car");
-       // bullet = fin
+            // bullet = fin
         
-        shooting = true;
+            shooting = true;
             StartCoroutine(fov());
         }
         private IEnumerator fov() {
@@ -79,7 +79,7 @@ using UnityEngine;
             if (distance >= stoppingDistance)
             {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
-                 transform.LookAt(followObject.transform);
+                transform.LookAt(followObject.transform);
             }
             else
             {
@@ -87,44 +87,45 @@ using UnityEngine;
                 transform.RotateAround(followObject.transform.position, -transform.up, rotationSpeed*Time.deltaTime);
             
             }
-        if (canSeePlayers && shooting) {
-            StartCoroutine(shoot());
+            if (canSeePlayers && shooting) {
+                StartCoroutine(shoot());
         
-        }
+            }
           
         }
        
-       void moveToPoint(Transform target,float radius)
+        void moveToPoint(Transform target,float radius)
         {
             float angle = Random.Range(0, 360);
             Vector3 myPoint = new Vector3(target.position.x + (radius * Mathf.Cos(angle)), target.position.y, target.position.z + (radius * Mathf.Sin(angle)));
             Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
         }
-    float findDisplacement() {
-        float bulletDistance = Vector3.Distance(shootPoint.position, followObject.transform.position);
-        if (bulletDistance > 20)
-        {
-            return Random.Range(0.2f, 0.25f);
+        float findDisplacement() {
+            float bulletDistance = Vector3.Distance(shootPoint.position, followObject.transform.position);
+            if (bulletDistance > 20)
+            {
+                return Random.Range(0.2f, 0.25f);
+            }
+            else if (bulletDistance > 10)
+            {
+                return Random.Range(0.1f, 0.15f);
+            }
+            else if (bulletDistance > 5) {
+                return Random.Range(0.05f,0.025f);
+            }
+            return 0;
         }
-        else if (bulletDistance > 10)
-        {
-            return Random.Range(0.1f, 0.15f);
+        IEnumerator shoot() {
+            bullet.SendData(followObject,findDisplacement(),shootPoint);
+            shooting = false;
+            Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f);
+            shooting = true;
+
         }
-        else if (bulletDistance > 5) {
-            return Random.Range(0.05f,0.025f);
-        }
-        return 0;
-    }
-    IEnumerator shoot() {
-        bullet.sendData(followObject,findDisplacement(),shootPoint);
-        shooting = false;
-        Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-        shooting = true;
 
     }
-
-    }
+}
    
 
 

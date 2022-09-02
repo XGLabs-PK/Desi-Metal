@@ -932,7 +932,7 @@ Transform:
   - {fileID: 1881742644}
   - {fileID: 2082105084}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451118539
 GameObject:
@@ -1427,7 +1427,7 @@ PrefabInstance:
     - target: {fileID: 39811632139610733, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 39811632139610733, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
@@ -1478,6 +1478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553639379256068642, guid: 84e55b8171c385c46b163c57e227268f,
+        type: 3}
+      propertyPath: m_TagString
+      value: AI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e55b8171c385c46b163c57e227268f, type: 3}
@@ -3303,7 +3308,7 @@ Transform:
   - {fileID: 2061504560}
   - {fileID: 1086742672}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1285072052
 GameObject:
@@ -4509,7 +4514,7 @@ Transform:
   - {fileID: 943695776}
   - {fileID: 980942497}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640572504
 GameObject:
@@ -5194,6 +5199,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1718352465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f,
+    type: 3}
+  m_PrefabInstance: {fileID: 669072215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1718352474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718352465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0058a52a4aacf7e4190212695d26f50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticles: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
+    type: 3}
+  health: 100
 --- !u!1 &1754035884
 GameObject:
   m_ObjectHideFlags: 0
@@ -6516,15 +6542,25 @@ PrefabInstance:
       propertyPath: weaponAudio
       value: 
       objectReference: {fileID: 1708218288}
+    - target: {fileID: 5767164049449013031, guid: f5a70605d70852d4aaec6114f1eab9fe,
+        type: 3}
+      propertyPath: bulletsParent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name
       value: Swift Car
       objectReference: {fileID: 0}
+    - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
+        type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827425, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827425, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}

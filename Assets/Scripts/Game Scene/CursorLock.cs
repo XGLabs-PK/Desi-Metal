@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XGStudios.GameScene
+namespace XGStudios
 {
     public class CursorLock : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.GameScene
+namespace XGStudios
 {
     public class UIStuff : MonoBehaviour
     {

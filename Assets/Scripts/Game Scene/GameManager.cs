@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.GameScene
+namespace XGStudios
 {
     public class GameManager : MonoBehaviour
     {
@@ -57,10 +57,6 @@ namespace XGStudios.GameScene
             {
                 ResumeGame(); 
             }
-            
-            //DEBUG REMOVE IT
-            if (Input.GetKeyDown(KeyCode.C))
-                TheHealth.Instance.TakeDamage(5);
 
             if (carDestroyed)
             {

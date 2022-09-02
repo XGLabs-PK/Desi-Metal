@@ -3,7 +3,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.GameScene
+namespace XGStudios
 {
     public class FeelManager : MonoBehaviour
     {

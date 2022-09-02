@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
-namespace XGStudios.MainMenu
+namespace XGStudios
 {
     public class MainMenu : MonoBehaviour
     {
