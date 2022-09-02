@@ -130,11 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 835281448448302421, guid: 7936b634f14bef74c8ec6ad1cf8f51f3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5556437111876849752, guid: 7936b634f14bef74c8ec6ad1cf8f51f3,
         type: 3}
       propertyPath: m_Name
@@ -143,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 5556437111876849752, guid: 7936b634f14bef74c8ec6ad1cf8f51f3,
         type: 3}
       propertyPath: m_TagString
-      value: Car
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5556437111876849753, guid: 7936b634f14bef74c8ec6ad1cf8f51f3,
         type: 3}

@@ -62,7 +62,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   canSeePlayers: 0
-  bulletPrefab: {fileID: 3707170685528506107, guid: d5dc3976f90ddfa4a9b06874e4180863,
+  bullet: {fileID: 6335429409518992389, guid: 2647d9d31f77ed4409620c798b32d2cb, type: 3}
+  enemy: {fileID: 39811632139610723}
+  bulletPrefab: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
     type: 3}
 --- !u!114 &7318205257919216396
 MonoBehaviour:

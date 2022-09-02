@@ -21,13 +21,18 @@ using UnityEngine;
         public LayerMask playerMask;
         public LayerMask obstructions;
         public bool canSeePlayers;
+        bool shooting;
+        [SerializeField]AiBullet bullet;
+        [SerializeField]GameObject enemy;
    
     [SerializeField]GameObject bulletPrefab;
 
         private void Start()
         {
-            followObject = GameObject.FindGameObjectWithTag("Car");
+            followObject = GameObject.FindGameObjectWithTag("Body");
+       // bullet = fin
         
+        shooting = true;
             StartCoroutine(fov());
         }
         private IEnumerator fov() {
@@ -67,6 +72,7 @@ using UnityEngine;
         // Update is called once per frame
         void Update()
         {
+        
             float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
             if (distance >= stoppingDistance)
@@ -80,7 +86,7 @@ using UnityEngine;
                 transform.RotateAround(followObject.transform.position, -transform.up, rotationSpeed*Time.deltaTime);
             
             }
-        if (canSeePlayers) {
+        if (canSeePlayers && shooting) {
             StartCoroutine(shoot());
         
         }
@@ -93,11 +99,27 @@ using UnityEngine;
             Vector3 myPoint = new Vector3(target.position.x + (radius * Mathf.Cos(angle)), target.position.y, target.position.z + (radius * Mathf.Sin(angle)));
             Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
         }
+    float findDisplacement() {
+        float bulletDistance = Vector3.Distance(transform.position, followObject.transform.position);
+        if (bulletDistance > 20)
+        {
+            return Random.Range(0.5f, 0.8f);
+        }
+        else if (bulletDistance > 10)
+        {
+            return Random.Range(0.3f, 0.4f);
+        }
+        else if (bulletDistance > 5) {
+            return Random.Range(0.1f,0.2f);
+        }
+        return 0;
+    }
     IEnumerator shoot() {
-        canSeePlayers = false;
+        bullet.moveToTarget(followObject,findDisplacement());
+        shooting = false;
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.5f);
-        canSeePlayers = true;
+        yield return new WaitForSeconds(1f);
+        shooting = true;
 
     }
 
