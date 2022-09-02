@@ -21,15 +21,16 @@ using UnityEngine;
         public LayerMask playerMask;
         public LayerMask obstructions;
         public bool canSeePlayers;
+        [Header("Shooting")]
         bool shooting;
         [SerializeField]AiBullet bullet;
-        [SerializeField]GameObject enemy;
-   
+    //[SerializeField]GameObject enemy;
+    [SerializeField] Transform shootPoint;
     [SerializeField]GameObject bulletPrefab;
 
         private void Start()
         {
-            followObject = GameObject.FindGameObjectWithTag("Body");
+            followObject = GameObject.FindGameObjectWithTag("Car");
        // bullet = fin
         
         shooting = true;
@@ -100,24 +101,24 @@ using UnityEngine;
             Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
         }
     float findDisplacement() {
-        float bulletDistance = Vector3.Distance(transform.position, followObject.transform.position);
+        float bulletDistance = Vector3.Distance(shootPoint.position, followObject.transform.position);
         if (bulletDistance > 20)
         {
-            return Random.Range(0.5f, 0.8f);
+            return Random.Range(0.2f, 0.25f);
         }
         else if (bulletDistance > 10)
         {
-            return Random.Range(0.3f, 0.4f);
+            return Random.Range(0.1f, 0.15f);
         }
         else if (bulletDistance > 5) {
-            return Random.Range(0.1f,0.2f);
+            return Random.Range(0.05f,0.025f);
         }
         return 0;
     }
     IEnumerator shoot() {
-        bullet.moveToTarget(followObject,findDisplacement());
+        bullet.sendData(followObject,findDisplacement(),shootPoint);
         shooting = false;
-        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         shooting = true;
 

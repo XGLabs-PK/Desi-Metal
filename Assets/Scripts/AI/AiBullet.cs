@@ -5,29 +5,31 @@ using UnityEngine;
 
     public class AiBullet : MonoBehaviour
     {
-        [SerializeField] float bulletSpeed = 0.2f;
+    [SerializeField] float bulletSpeed = 0.2f;
     Vector3 finalPosition;
     public GameObject tar;
+    [SerializeField]Transform EnemyShootPoint;
     private void Start()
     {
-        Destroy(gameObject, 6f);
+        Destroy(gameObject, 4f);
     }
-    public void moveToTarget(GameObject target,float displacement) {
+    public void sendData(GameObject target,float displacement,Transform shotPoint) {
         tar = target;
-        Debug.Log(displacement);
          finalPosition = new Vector3(target.transform.position.x + displacement, target.transform.position.y, target.transform.position.z+displacement);
+        EnemyShootPoint = shotPoint;
         }
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, finalPosition, bulletSpeed * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position,finalPosition, bulletSpeed * Time.deltaTime);
+        transform.position += EnemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Car"))
+        if (other.gameObject.CompareTag("Car"))
         {
+
             Destroy(this.gameObject);
         }
-
     }
 }
 

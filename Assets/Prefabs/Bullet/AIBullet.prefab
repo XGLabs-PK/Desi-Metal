@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 6335429409518992389}
   m_Layer: 0
   m_Name: AIBullet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5057,8 +5057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efd2510d45e0f14b93ec1e1f47132bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 1.05
+  bulletSpeed: 120
   tar: {fileID: 0}
+  EnemyShootPoint: {fileID: 0}
 --- !u!1 &3847823952568732354
 GameObject:
   m_ObjectHideFlags: 0
