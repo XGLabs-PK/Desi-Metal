@@ -41,7 +41,8 @@ namespace XGStudios.GameScene
         {
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
-            pauseUI.SetActive(false);
+            if (pauseUI != null)
+                pauseUI.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -87,7 +88,8 @@ namespace XGStudios.GameScene
             gamePaused = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            pauseAnimator.SetTrigger(IsPaused);
+            if (pauseAnimator != null)
+                pauseAnimator.SetTrigger(IsPaused);
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
@@ -98,7 +100,8 @@ namespace XGStudios.GameScene
             gamePaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            pauseAnimator.SetTrigger(IsResumed);
+            if (pauseAnimator != null)
+                pauseAnimator.SetTrigger(IsResumed);
             Time.timeScale = 1f;
             _camScript.enabled = true;
             _weaponScript.enabled = true;
@@ -106,7 +109,8 @@ namespace XGStudios.GameScene
 
         void CarDestroyed()
         {
-            deathAnim.SetTrigger(DeathStart);
+            if (deathAnim != null)
+                deathAnim.SetTrigger(DeathStart);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;

@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Crate.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Models/Crate.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/PixelGlow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/PixelGlow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
-    </list>
+    <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +107,7 @@
       <workItem from="1661959704622" duration="1000" />
       <workItem from="1661961453991" duration="536000" />
       <workItem from="1661975598260" duration="8078000" />
-      <workItem from="1662063850399" duration="5005000" />
+      <workItem from="1662063850399" duration="5719000" />
     </task>
     <servers />
   </component>
