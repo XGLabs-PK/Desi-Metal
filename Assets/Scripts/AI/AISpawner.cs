@@ -7,8 +7,6 @@ namespace XGStudios
     public class AISpawner : MonoBehaviour
     {
         public GameObject enemy;
-        //GameObject[] enemies;
-        //EnemyAI[] AI;
         public List<GameObject> enemies;
         List<EnemyAI> AI;
         public int enemyCount = 2;
@@ -31,7 +29,7 @@ namespace XGStudios
         // Update is called once per frame
         void Update()
         {
-            if (enemies != null)
+            if (enemies.Count != 0)
             {
                 for (int i = 0; i < enemies.Count; ++i)
                 {
@@ -41,19 +39,22 @@ namespace XGStudios
                         Destroy(obj);
                         enemies.RemoveAt(i);
                         AI.RemoveAt(i);
+                        Debug.Log(enemies.Count);
                     }
 
                 }
             }
-            if (enemies == null) {
+            if (enemies.Count == 0) {
                 Debug.Log("Enemies empty");
+                enemies.Clear();
+                AI.Clear();
                 for (int i = 0; i < enemyCount; ++i) {
                     Vector2 pos = (Vector2)transform.position + Random.insideUnitCircle * 10;
                     enemies.Add(Instantiate(enemy, pos, Quaternion.identity));
                
                 }
                 for (int i = 0; i < enemyCount; ++i) {
-                    AI[i] = enemies[i].GetComponent<EnemyAI>();
+                    AI.Add(enemies[i].GetComponent<EnemyAI>());
                 }
 
             }

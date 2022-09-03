@@ -22,8 +22,6 @@ namespace XGStudios
         [SerializeField]
         float rotationSpeed = 1;
         [Header("Field of view")]
-        public LayerMask playerMask;
-        public LayerMask obstructions;
         [SerializeField] public float detectionRadius = 10;
         [Range(0, 360)]
         [SerializeField] public float viewAngle = 30f;
@@ -41,13 +39,17 @@ namespace XGStudios
         [SerializeField] Transform[] flipPointCheck;
         public float groundRadius;
         public LayerMask isGround;
+        public Rigidbody myBody;
 
         void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Car");
             shooting = true;
             StartCoroutine(fov());
-
+            for (int i = 0; i < 360; i = i + 30) { 
+                
+            }
+            myBody = GetComponent<Rigidbody>();
         }
 
 
@@ -77,7 +79,7 @@ namespace XGStudios
                         float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
 
-                        if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructions))
+                     
 
                             if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, occlusionLayers))
                             {
@@ -108,16 +110,20 @@ namespace XGStudios
             void Update()
             {
                 float distance = Vector3.Distance(transform.position, followObject.transform.position);
+            Debug.Log(distance);
 
                 if (distance >= stoppingDistance)
                 {
-                    transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
-                    transform.LookAt(followObject.transform);
+                transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
+                transform.LookAt(followObject.transform);
+               // Vector3 dir = (followObject.transform.position - transform.position).normalized;
+               // myBody.AddForce(dir * speed*Time.deltaTime);
+                
                 }
                 else
                 {
                     moveToPoint(followObject.transform, radiusAroundTarget);
-                    transform.RotateAround(followObject.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
+                    transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
                     transform.LookAt(followObject.transform);
 
                 }
@@ -133,10 +139,12 @@ namespace XGStudios
             {
                 float angle = Random.Range(0, 360);
 
-                Vector3 myPoint = new Vector3(target.position.x + radius * Mathf.Cos(angle), target.position.y,
+                Vector3 myPoint = new Vector3(target.position.x + radius * Mathf.Cos(angle), 0,
                     target.position.z + radius * Mathf.Sin(angle));
 
-                Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
+            Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
+            //Vector3 dir = (myPoint - transform.position).normalized;
+            //myBody.AddForce(dir * circleSpeed, ForceMode.Force);
             }
 
             float findDisplacement()
@@ -163,17 +171,17 @@ namespace XGStudios
                 shooting = true;
 
             }
-            private void OnCollisionEnter(Collision collision)
-            {
-                Rigidbody rigid = transform.GetComponent<Rigidbody>();
-                rigid.isKinematic = true;
+            //private void OnCollisionEnter(Collision collision)
+            //{
+            //    Rigidbody rigid = transform.GetComponent<Rigidbody>();
+            //    rigid.isKinematic = true;
 
-            }
-            private void OnCollisionExit(Collision collision)
-            {
-                Rigidbody rigid = transform.GetComponent<Rigidbody>();
-                rigid.isKinematic = false;
-            }
+            //}
+            //private void OnCollisionExit(Collision collision)
+            //{
+            //    Rigidbody rigid = transform.GetComponent<Rigidbody>();
+            //    rigid.isKinematic = false;
+            //}
         }
 
     } 
