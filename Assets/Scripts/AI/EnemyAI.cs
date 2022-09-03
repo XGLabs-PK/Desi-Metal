@@ -112,12 +112,12 @@ namespace XGStudios
                 float distance = Vector3.Distance(transform.position, followObject.transform.position);
             Debug.Log(distance);
 
-                if (distance >= stoppingDistance)
+                if (distance > stoppingDistance)
                 {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
                 transform.LookAt(followObject.transform);
-               // Vector3 dir = (followObject.transform.position - transform.position).normalized;
-               // myBody.AddForce(dir * speed*Time.deltaTime);
+                //Vector3 dir = (followObject.transform.position - transform.position).normalized;
+                //myBody.AddForce(dir * speed*Time.deltaTime);
                 
                 }
                 else
