@@ -1196,31 +1196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 39811632139610722, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: speed
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 39811632139610722, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: myBody
-      value: 
-      objectReference: {fileID: 1807504446}
-    - target: {fileID: 39811632139610722, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: circleSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 39811632139610722, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: rotationSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 39811632139610722, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: stoppingDistance
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
       propertyPath: m_Name
@@ -1281,21 +1256,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6227849825389399161, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227849825389399161, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227849825389399161, guid: 84e55b8171c385c46b163c57e227268f,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e55b8171c385c46b163c57e227268f, type: 3}
 --- !u!1 &1635815263
@@ -1348,9 +1308,3 @@ MonoBehaviour:
   carDamage: {fileID: 978365498}
   enemyDamage: {fileID: 1073900906}
   carDestroyed: {fileID: 501524742}
---- !u!54 &1807504446 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 6227849825389399161, guid: 84e55b8171c385c46b163c57e227268f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1599561448}
-  m_PrefabAsset: {fileID: 0}
