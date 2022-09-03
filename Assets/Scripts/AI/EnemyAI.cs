@@ -40,15 +40,20 @@ namespace XGStudios
         public float groundRadius;
         public LayerMask isGround;
         public Rigidbody myBody;
-
+        public Transform[] wheels;
+        Transform[] permWheels;
+ 
         void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Car");
             shooting = true;
-            StartCoroutine(fov());
-            for (int i = 0; i < 360; i = i + 30) { 
-                
+            permWheels = new Transform[4];
+            for (int i = 0; i < 4; i++) {
+                permWheels[i] = wheels[i];
+            
             }
+            StartCoroutine(fov());
+           
             myBody = GetComponent<Rigidbody>();
         }
 
@@ -109,21 +114,30 @@ namespace XGStudios
 
             void Update()
             {
-                float distance = Vector3.Distance(transform.position, followObject.transform.position);
-            Debug.Log(distance);
+            for (int i = 0; i < 4; i++)
+            {
+                wheels[i].LookAt(followObject.transform,Vector3.right);
+            }
+            float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
-                if (distance > stoppingDistance)
+                if (distance >= stoppingDistance)
                 {
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position, speed * Time.fixedDeltaTime);
                 transform.LookAt(followObject.transform);
+                //for (int i = 0; i < 4; i++) {
+                //    wheels[i].rotation = permWheels[i].rotation;
+                //}
                 //Vector3 dir = (followObject.transform.position - transform.position).normalized;
                 //myBody.AddForce(dir * speed*Time.deltaTime);
-                
-                }
-                else
+
+            }
+                else if(distance < stoppingDistance)
                 {
                     moveToPoint(followObject.transform, radiusAroundTarget);
                     transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+                //for (int i = 0; i < 4; i++) {
+                //    wheels[i].LookAt(followObject.transform);
+                //    }
                     transform.LookAt(followObject.transform);
 
                 }
@@ -171,12 +185,19 @@ namespace XGStudios
                 shooting = true;
 
             }
-            //private void OnCollisionEnter(Collision collision)
-            //{
-            //    Rigidbody rigid = transform.GetComponent<Rigidbody>();
-            //    rigid.isKinematic = true;
+            private void OnCollisionEnter(Collision collision)
+            {
+            Debug.Log("colliding : " + collision.gameObject.name);
+            if (collision.gameObject.layer.Equals("obstruction") ) {
+                Debug.Log("colliding OBSTRUCTION");
+                Vector3 dir = transform.position - collision.transform.position;
+                Vector3 aiDirection = (transform.position) + dir;
+                transform.position = Vector3.MoveTowards(transform.position, aiDirection, Time.fixedDeltaTime);
+            }
+            
 
-            //}
+
+        }
             //private void OnCollisionExit(Collision collision)
             //{
             //    Rigidbody rigid = transform.GetComponent<Rigidbody>();
