@@ -5783,14 +5783,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
   serializedVersion: 2
-  m_Mass: 2500
+  m_Mass: 2000
   m_Drag: 0.08
   m_AngularDrag: 0.08
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &3874898005659513405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5855,7 +5855,7 @@ MonoBehaviour:
   COM: {fileID: 3836972422016468745}
   BackFireParticles: []
   CarConfig:
-    MaxSteerAngle: 50
+    MaxSteerAngle: 55
     DriveType: 2
     AutomaticGearBox: 1
     MaxMotorTorque: 1000
@@ -5921,12 +5921,12 @@ MonoBehaviour:
     ReversGearRatio: 3
     MaxBrakeTorque: 25000
     EnableSteerAngleMultiplier: 1
-    MinSteerAngleMultiplier: 0.02
+    MinSteerAngleMultiplier: 0.1
     MaxSteerAngleMultiplier: 1
-    MaxSpeedForMinAngleMultiplier: 250
+    MaxSpeedForMinAngleMultiplier: 500
     SteerAngleChangeSpeed: 1000
-    MinSpeedForSteerHelp: 1000
-    HelpSteerPower: 0.8
+    MinSpeedForSteerHelp: 3000
+    HelpSteerPower: 1
     OppositeAngularVelocityHelpPower: 0.05
     PositiveAngularVelocityHelpPower: 0
     MaxAngularVelocityHelpAngle: 45
@@ -26046,7 +26046,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -26341,7 +26341,7 @@ GameObject:
   - component: {fileID: 8228446987530827425}
   m_Layer: 0
   m_Name: Swift Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -31,6 +31,7 @@ namespace XGStudios
 
             if (other.gameObject.CompareTag("Car"))
                 TheHealth.Instance.TakeDamage(5);
+
             Destroy(transform.gameObject);
         }
 
@@ -42,7 +43,7 @@ namespace XGStudios
                 target.transform.position.z + displacement);
 
             enemyShootPoint = shotPoint;
-                //Destroy(gameObject);
-            }
+            //Destroy(gameObject);
         }
     }
+}
