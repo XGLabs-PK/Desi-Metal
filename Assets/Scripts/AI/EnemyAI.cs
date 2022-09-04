@@ -20,6 +20,7 @@ namespace XGStudios
         float radiusAroundTarget;
         [SerializeField]
         float rotationSpeed = 1;
+        bool isCircling;
         [Header("Field of view")]
         [SerializeField]
         public float detectionRadius = 10;
@@ -47,18 +48,20 @@ namespace XGStudios
         public Rigidbody myBody;
         public Transform[] wheels;
         Transform[] permWheels;
+        public float yDegrees;
         [Header("Shooting")]
         bool shooting;
+        Quaternion[] wheelROtations;
 
         void Start()
         {
             followObject = GameObject.FindGameObjectWithTag("Car");
             shooting = true;
-            permWheels = new Transform[4];
-
-            for (int i = 0; i < 4; i++)
-                permWheels[i] = wheels[i];
-
+            wheelROtations = new Quaternion[4];
+            for (int i = 0; i < 4; i++) {
+                wheelROtations[i] = wheels[i].rotation;
+                
+            }
             StartCoroutine(fov());
 
             myBody = GetComponent<Rigidbody>();
@@ -67,17 +70,21 @@ namespace XGStudios
 
         void Update()
         {
-            for (int i = 0; i < 4; i++)
-                wheels[i].LookAt(followObject.transform, Vector3.right);
+            
 
             float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
             if (distance >= stoppingDistance)
             {
+                isCircling = false;
                 transform.position = Vector3.Lerp(transform.position, followObject.transform.position,
                     speed * Time.fixedDeltaTime);
 
                 transform.LookAt(followObject.transform);
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    wheels[i].rotation = Quaternion.Euler(new Vector3(wheels[i].rotation.x, wheels[i].rotation.y , wheels[i].rotation.z)); ;
+                //}
                 //for (int i = 0; i < 4; i++) {
                 //    wheels[i].rotation = permWheels[i].rotation;
                 //}
@@ -87,23 +94,38 @@ namespace XGStudios
             }
             else if (distance < stoppingDistance)
             {
+                isCircling = true;
                 moveToPoint(followObject.transform, radiusAroundTarget);
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-                //for (int i = 0; i < 4; i++) {
-                //    wheels[i].LookAt(followObject.transform);
-                //    }
+               
                 transform.LookAt(followObject.transform);
-
+                for (int i = 0; i < 4; i++) {
+                    wheels[i].gameObject.transform.eulerAngles = new Vector3(
+                        wheels[i].eulerAngles.x,
+                        wheels[i].eulerAngles.y + yDegrees,
+                        wheels[i].eulerAngles.z
+                        ) ;
+                
+                }
             }
 
+            if (isCircling) {
+                //Invoke("rotateWheel",0f);
+            }
             if (canSeePlayers && shooting)
                 StartCoroutine(shoot());
 
         }
+        void rotateWheel() {
+            for (int i = 0; i < 4; i++)
+            {
+                wheels[i].rotation = Quaternion.Euler(new Vector3(wheels[i].rotation.x, wheels[i].rotation.y + yDegrees, wheels[i].rotation.z)); ;
+            }
+        }
 
         void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("colliding : " + collision.gameObject.name);
+            
 
             if (collision.gameObject.layer.Equals("obstruction"))
             {
