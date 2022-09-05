@@ -9,19 +9,34 @@ namespace XGStudios
         public List<GameObject> enemies;
         public int enemyCount = 2;
         List<EnemyAI> AI;
+        [SerializeField] Terrain terrain;
+        [SerializeField] float yOffset;
+        float terrainWidth;
+        float terrainlength;
+        float xTerrainPos;
+        float zTerrainPos;
+        float randX, randZ, yVal;
+        private void Awake()
+        {
+            terrainWidth = terrain.terrainData.size.x;
+            terrainlength = terrain.terrainData.size.z;
+            xTerrainPos = terrain.transform.position.x;
+            zTerrainPos = terrain.transform.position.z;
+        }
         // Start is called before the first frame update
 
         void Start()
         {
+
             enemies = new List<GameObject>();
             AI = new List<EnemyAI>();
-
             for (int i = 0; i < enemyCount; ++i)
             {
-                Vector2 startPos = Random.insideUnitCircle * 10 +
-                                   new Vector2(transform.position.x, transform.position.z);
-
-                enemies.Add(Instantiate(enemy, startPos, Quaternion.identity));
+                randX = Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
+                randZ = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
+                yVal = terrain.SampleHeight(new Vector3(randX, 0, randZ));
+                yVal = yVal + yOffset;
+                enemies.Add(Instantiate(enemy, new Vector3(randX,yVal,randZ), Quaternion.identity));
             }
 
             for (int i = 0; i < enemies.Count; ++i)
@@ -51,8 +66,11 @@ namespace XGStudios
 
                 for (int i = 0; i < enemyCount; ++i)
                 {
-                    Vector2 pos = (Vector2)transform.position + Random.insideUnitCircle * 10;
-                    enemies.Add(Instantiate(enemy, pos, Quaternion.identity));
+                    randX = Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
+                    randZ = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
+                    yVal = terrain.SampleHeight(new Vector3(randX, 0, randZ));
+                    yVal = yVal + yOffset;
+                    enemies.Add(Instantiate(enemy, new Vector3(randX,yVal,randZ), Quaternion.identity));
 
                 }
 

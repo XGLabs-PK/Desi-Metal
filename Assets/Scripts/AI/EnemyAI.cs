@@ -70,7 +70,7 @@ namespace XGStudios
 
         void Update()
         {
-            
+
 
             float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
@@ -97,32 +97,12 @@ namespace XGStudios
                 isCircling = true;
                 moveToPoint(followObject.transform, radiusAroundTarget);
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-               
-                transform.LookAt(followObject.transform);
-                for (int i = 0; i < 4; i++) {
-                    wheels[i].gameObject.transform.eulerAngles = new Vector3(
-                        wheels[i].eulerAngles.x,
-                        wheels[i].eulerAngles.y + yDegrees,
-                        wheels[i].eulerAngles.z
-                        ) ;
-                
-                }
-            }
 
-            if (isCircling) {
-                //Invoke("rotateWheel",0f);
+                transform.LookAt(followObject.transform);
             }
             if (canSeePlayers && shooting)
                 StartCoroutine(shoot());
-
-        }
-        void rotateWheel() {
-            for (int i = 0; i < 4; i++)
-            {
-                wheels[i].rotation = Quaternion.Euler(new Vector3(wheels[i].rotation.x, wheels[i].rotation.y + yDegrees, wheels[i].rotation.z)); ;
-            }
-        }
-
+}
         void OnCollisionEnter(Collision collision)
         {
             
