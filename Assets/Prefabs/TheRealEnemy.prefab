@@ -85,6 +85,7 @@ MonoBehaviour:
   - {fileID: 8334374124716703919}
   - {fileID: 781730278753250451}
   - {fileID: 6869090986306510823}
+  yDegrees: 0
 --- !u!114 &7318205257919216396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39811632139610723}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 

@@ -9,8 +9,24 @@ namespace XGStudios
         public List<GameObject> enemies;
         public int enemyCount = 2;
         List<EnemyAI> AI;
+        private float terrainWidth;
+        [SerializeField]Terrain terrain;
+        [SerializeField] float yOffset;
+        float terrainlength;
+        float xTerrainPos;
+        float zTerrainPos;
+        float xRand;
+        float zRand;
+        float yVal;
+        
         // Start is called before the first frame update
-
+        private void Awake()
+        {
+            terrainWidth = terrain.terrainData.size.x;
+            terrainlength = terrain.terrainData.size.z;
+            xTerrainPos = terrain.transform.position.x;
+            zTerrainPos = terrain.transform.position.z;
+        }
         void Start()
         {
             enemies = new List<GameObject>();
@@ -18,10 +34,11 @@ namespace XGStudios
 
             for (int i = 0; i < enemyCount; ++i)
             {
-                Vector2 startPos = Random.insideUnitCircle * 10 +
-                                   new Vector2(transform.position.x, transform.position.z);
-
-                enemies.Add(Instantiate(enemy, startPos, Quaternion.identity));
+                xRand = Random.Range(xTerrainPos,xTerrainPos+terrainWidth);
+                zRand = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
+                yVal = terrain.SampleHeight(new Vector3(xRand, 0, zRand));
+                yVal = yVal + yOffset;
+                enemies.Add(Instantiate(enemy, new Vector3(xRand,yVal,zRand), Quaternion.identity));
             }
 
             for (int i = 0; i < enemies.Count; ++i)
