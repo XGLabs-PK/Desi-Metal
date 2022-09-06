@@ -6,12 +6,12 @@ namespace XGStudios
     public class enemySwarm : MonoBehaviour
     {
         [SerializeField]
-        [Range(0f, 4f)]
         float lerptime;
         [SerializeField]
         float spacing;
         [SerializeField]
         AISpawner mySpawner;
+        Rigidbody myBody;
         // Start is called before the first frame update
 
         List<GameObject> AIobjects;
@@ -20,6 +20,7 @@ namespace XGStudios
         {
             mySpawner = FindObjectOfType<AISpawner>();
             AIobjects = mySpawner.enemies;
+            myBody = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -40,8 +41,9 @@ namespace XGStudios
                         Vector3 dir = transform.position - go.transform.position;
                         Vector3 aiDirection = transform.position + dir;
 
-                        transform.position = Vector3.MoveTowards(transform.position, aiDirection,
-                            lerptime * Time.fixedDeltaTime);
+                        //transform.position = Vector3.MoveTowards(transform.position, aiDirection,
+                        //    lerptime * Time.fixedDeltaTime);
+                        myBody.velocity = dir * lerptime * Time.deltaTime;
 
                     }
                 }
