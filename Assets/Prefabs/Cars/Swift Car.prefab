@@ -5745,6 +5745,7 @@ GameObject:
   - component: {fileID: 3798983883190302145}
   - component: {fileID: 2095716685845707956}
   - component: {fileID: 2095716685845707955}
+  - component: {fileID: 484779826}
   m_Layer: 8
   m_Name: Swift
   m_TagString: Car
@@ -5783,14 +5784,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
   serializedVersion: 2
-  m_Mass: 2000
+  m_Mass: 1500
   m_Drag: 0.08
   m_AngularDrag: 0.08
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &3874898005659513405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5855,10 +5856,10 @@ MonoBehaviour:
   COM: {fileID: 3836972422016468745}
   BackFireParticles: []
   CarConfig:
-    MaxSteerAngle: 55
+    MaxSteerAngle: 50
     DriveType: 2
     AutomaticGearBox: 1
-    MaxMotorTorque: 1000
+    MaxMotorTorque: 5000
     MotorTorqueFromRpmCurve:
       serializedVersion: 2
       m_Curve:
@@ -5901,24 +5902,23 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    MaxRPM: 8000
-    MinRPM: 800
-    CutOffRPM: 7800
-    CutOffOffsetRPM: 600
+    MaxRPM: 7000
+    MinRPM: 5000
+    CutOffRPM: 8000
+    CutOffOffsetRPM: 1000
     CutOffTime: 0.1
     ProbabilityBackfire: 0
-    RpmToNextGear: 7500
-    RpmToPrevGear: 5500
+    RpmToNextGear: 5000
+    RpmToPrevGear: 4500
     MaxForwardSlipToBlockChangeGear: 0.5
     RpmEngineToRpmWheelsLerpSpeed: 15
     GearsRatio:
-    - 5
     - 4
     - 3
     - 2
     - 1
-    MainRatio: 5
-    ReversGearRatio: 3
+    MainRatio: 4
+    ReversGearRatio: 2
     MaxBrakeTorque: 25000
     EnableSteerAngleMultiplier: 1
     MinSteerAngleMultiplier: 0.1
@@ -5965,10 +5965,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 3836666097680766493}
-  MaxAngle: 6
-  AngleVelocityMultiplayer: 0.3
-  RearAngleVelocityMultiplayer: 0.5
-  MaxTiltOnSpeed: 40
+  MaxAngle: 5
+  AngleVelocityMultiplayer: 0.2
+  RearAngleVelocityMultiplayer: 0.4
+  MaxTiltOnSpeed: 30
 --- !u!114 &2095716685845707956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6002,6 +6002,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &484779826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831234768491391765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.98, y: 1.75, z: 4.51}
+  m_Center: {x: 0, y: 0.57, z: 0.21}
 --- !u!1 &3831327430227488139
 GameObject:
   m_ObjectHideFlags: 0
@@ -26341,7 +26354,7 @@ GameObject:
   - component: {fileID: 8228446987530827425}
   m_Layer: 0
   m_Name: Swift Car
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

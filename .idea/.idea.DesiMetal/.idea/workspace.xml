@@ -2,41 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/Brown.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/Brown.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/Dark Brown.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/Dark Brown.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/brown.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/dark brown.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Monument/dark brown.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Recordings/Desi Metal_005.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/Jima Car.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/Jima Car.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/JimaVolume.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/JimaVolume.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/JimaVolume2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DEBUG STUFF/JEEMA/JimaVolume2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Mehran/Mehran.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Mehran/Mehran.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JimaWeaponBullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/JimaWeaponBullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TheRealEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TheRealEnemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AISpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AISpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AiBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AiBullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/enemySwarm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/enemySwarm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Interactive Desert.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Interactive Desert.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/InteractiveDesert.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/InteractiveDesert.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Shader Graphs_InteractiveDesert.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Shader Graphs_InteractiveDesert.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/rtx painter.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/rtx painter.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recordings/Desi Metal_004.mp4" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +124,7 @@
       <workItem from="1662127881312" duration="4899000" />
       <workItem from="1662152079631" duration="2113000" />
       <workItem from="1662236650184" duration="687000" />
+      <workItem from="1662462380324" duration="1640000" />
     </task>
     <servers />
   </component>
