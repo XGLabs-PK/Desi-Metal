@@ -1281,6 +1281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6922790212096581292, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
+      propertyPath: m_Speed
+      value: 17.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922790212096581292, guid: 84e55b8171c385c46b163c57e227268f,
+        type: 3}
       propertyPath: m_BaseOffset
       value: 0.65
       objectReference: {fileID: 0}
@@ -1297,7 +1302,7 @@ PrefabInstance:
     - target: {fileID: 7033509343154234144, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
       propertyPath: rotationSpeed
-      value: 50
+      value: 63.37
       objectReference: {fileID: 0}
     - target: {fileID: 7033509343154234144, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
