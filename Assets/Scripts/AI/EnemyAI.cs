@@ -9,6 +9,7 @@ namespace XGStudios
         [SerializeField]
         public GameObject followObject;
         [Header("Normal AI Settings")]
+        bool isChasing;
         [SerializeField]
         float stoppingDistance;
         [SerializeField]
@@ -46,50 +47,42 @@ namespace XGStudios
         public float groundRadius;
         public LayerMask isGround;
         public Rigidbody myBody;
-        public Transform[] wheels;
-        Transform[] permWheels;
-        public float yDegrees;
         [Header("Shooting")]
         bool shooting;
-        Quaternion[] wheelROtations;
+
+        Vector3 direction;
+        [SerializeField] Terrain myTerrain;
 
         void Start()
         {
+            isChasing = true;
             followObject = GameObject.FindGameObjectWithTag("Car");
             shooting = true;
-            wheelROtations = new Quaternion[4];
-            for (int i = 0; i < 4; i++) {
-                wheelROtations[i] = wheels[i].rotation;
-                
-            }
             StartCoroutine(fov());
-
+            myTerrain = GameObject.FindObjectOfType<Terrain>();
             myBody = GetComponent<Rigidbody>();
         }
         // Update is called once per frame
 
+        private void FixedUpdate()
+        {
+           
+        }
         void Update()
         {
             
 
             float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
-            if (distance >= stoppingDistance)
+            if (distance >= stoppingDistance && isChasing)
             {
                 isCircling = false;
-                transform.position = Vector3.Lerp(transform.position, followObject.transform.position,
-                    speed * Time.fixedDeltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, followObject.transform.position,
+                //   speed * Time.fixedDeltaTime);
+                direction = (followObject.transform.position - transform.position);
+                myBody.velocity = direction * speed * Time.deltaTime;
 
                 transform.LookAt(followObject.transform);
-                //for (int i = 0; i < 4; i++)
-                //{
-                //    wheels[i].rotation = Quaternion.Euler(new Vector3(wheels[i].rotation.x, wheels[i].rotation.y , wheels[i].rotation.z)); ;
-                //}
-                //for (int i = 0; i < 4; i++) {
-                //    wheels[i].rotation = permWheels[i].rotation;
-                //}
-                //Vector3 dir = (followObject.transform.position - transform.position).normalized;
-                //myBody.AddForce(dir * speed*Time.deltaTime);
 
             }
             else if (distance < stoppingDistance)
@@ -99,14 +92,6 @@ namespace XGStudios
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
                
                 transform.LookAt(followObject.transform);
-                for (int i = 0; i < 4; i++) {
-                    wheels[i].gameObject.transform.eulerAngles = new Vector3(
-                        wheels[i].eulerAngles.x,
-                        wheels[i].eulerAngles.y + yDegrees,
-                        wheels[i].eulerAngles.z
-                        ) ;
-                
-                }
             }
 
             if (isCircling) {
@@ -116,23 +101,33 @@ namespace XGStudios
                 StartCoroutine(shoot());
 
         }
-        void rotateWheel() {
-            for (int i = 0; i < 4; i++)
-            {
-                wheels[i].rotation = Quaternion.Euler(new Vector3(wheels[i].rotation.x, wheels[i].rotation.y + yDegrees, wheels[i].rotation.z)); ;
-            }
-        }
+        IEnumerator stopChasing()
+        {
+            isChasing = false;
+            float xRand;
+            float yVal;
+            float zRand;
+            xRand = Random.Range(myTerrain.transform.position.x, myTerrain.transform.position.x + myTerrain.terrainData.size.x);
+            zRand = Random.Range(myTerrain.transform.position.z, myTerrain.transform.position.z + myTerrain.terrainData.size.z);
+            yVal = myTerrain.SampleHeight(new Vector3(xRand, 0, zRand));
+            //yVal = yVal + yOffset;
+            //transform.position = Vector3.MoveTowards(transform.position, aiDirection, Time.fixedDeltaTime);
+            Vector3 point = new Vector3(xRand, followObject.transform.position.y, zRand);
+            Vector3 dir = point - transform.position;
+            myBody.velocity = dir * (speed ) * Time.deltaTime;
+            yield return new WaitForSeconds(1.3f);
+            isChasing = true;
 
+        }
         void OnCollisionEnter(Collision collision)
         {
             
 
-            if (collision.gameObject.layer.Equals("obstruction"))
+            if (collision.gameObject.tag.Equals("obstruction"))
             {
                 Debug.Log("colliding OBSTRUCTION");
-                Vector3 dir = transform.position - collision.transform.position;
-                Vector3 aiDirection = transform.position + dir;
-                transform.position = Vector3.MoveTowards(transform.position, aiDirection, Time.fixedDeltaTime);
+                StartCoroutine(stopChasing());
+
             }
 
 
@@ -198,9 +193,9 @@ namespace XGStudios
             Vector3 myPoint = new Vector3(target.position.x + radius * Mathf.Cos(angle), 0,
                 target.position.z + radius * Mathf.Sin(angle));
 
-            Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
-            //Vector3 dir = (myPoint - transform.position).normalized;
-            //myBody.AddForce(dir * circleSpeed, ForceMode.Force);
+            //Vector3.Lerp(transform.position, myPoint, circleSpeed * Time.deltaTime);
+            Vector3 dir = (myPoint - transform.position).normalized;
+            myBody.velocity = (dir * circleSpeed);
         }
 
         float findDisplacement()
