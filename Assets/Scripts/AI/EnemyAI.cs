@@ -80,7 +80,7 @@ namespace XGStudios
                 //transform.position = Vector3.MoveTowards(transform.position, followObject.transform.position,
                 //   speed * Time.fixedDeltaTime);
                 direction = (followObject.transform.position - transform.position);
-                myBody.velocity = direction * speed * Time.deltaTime;
+                myBody.AddForce(direction * speed * Time.deltaTime);
 
                 transform.LookAt(followObject.transform);
 
@@ -92,10 +92,6 @@ namespace XGStudios
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
                
                 transform.LookAt(followObject.transform);
-            }
-
-            if (isCircling) {
-                //Invoke("rotateWheel",0f);
             }
             if (canSeePlayers && shooting)
                 StartCoroutine(shoot());
