@@ -38,11 +38,13 @@ namespace XGStudios
         [Header("Misc")]
         public GameObject particles;
         public Animator carAnim;
+        public Animator creditsAnim;
+        static readonly int CreditsMoving = Animator.StringToHash("CreditsMoving");
 
         void Start()
         {
             leaderBoardTxt.SetText("LEADERBOARD");
-
+            creditsAnim.enabled = false;
             if (playButton != null)
                 playButton.onClick.AddListener(() =>
                 {
@@ -64,6 +66,8 @@ namespace XGStudios
             if (creditsButton != null)
                 creditsButton.onClick.AddListener(() =>
                 {
+                    creditsAnim.enabled = true;
+                    creditsAnim.SetTrigger(CreditsMoving);
                     creditsCanvas.alpha = 0;
                     creditsCanvas.interactable = true;
                     creditsCanvas.blocksRaycasts = true;
@@ -114,6 +118,7 @@ namespace XGStudios
 
             if (creditsCanvas.alpha != 0)
             {
+                creditsAnim.enabled = false;
                 creditsCanvas.alpha = 1;
                 creditsCanvas.interactable = false;
                 creditsCanvas.blocksRaycasts = false;
