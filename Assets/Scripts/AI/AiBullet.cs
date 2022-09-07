@@ -6,12 +6,11 @@ namespace XGStudios
     public class AiBullet : MonoBehaviour
     {
         [SerializeField]
-        float bulletSpeed = 0.2f;
-        public GameObject tar;
+        public float bulletSpeed = 0.2f;
+        public Transform tar;
         [FormerlySerializedAs("EnemyShootPoint")]
         [SerializeField]
         Transform enemyShootPoint;
-        Vector3 _finalPosition;
 
         void Start()
         {
@@ -32,21 +31,17 @@ namespace XGStudios
             if (other.gameObject.CompareTag("Car"))
             {
                 TheHealth.Instance.TakeDamage(2);
+                Debug.Log("Tiuched CAr");
             }
 
 
             Destroy(transform.gameObject);
         }
 
-        public void SendData(GameObject target, float displacement, Transform shotPoint)
+        public void SendData(Transform shotPoint)
         {
-            tar = target;
-
-            _finalPosition = new Vector3(target.transform.position.x + displacement, target.transform.position.y,
-                target.transform.position.z + displacement);
-
             enemyShootPoint = shotPoint;
-            //Destroy(gameObject);
+            
         }
     }
 }

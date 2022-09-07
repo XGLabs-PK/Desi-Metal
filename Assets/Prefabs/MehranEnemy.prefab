@@ -120,8 +120,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f82cc757470bb6488418a00e71190ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   rotationSpeed: 50
   rammingTime: 0
+  detectionRadius: 25
+  viewAngle: 100
+  searchDelay: 0
+  Layers:
+    serializedVersion: 2
+    m_Bits: 256
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  canSeePlayers: 0
+  bullet: {fileID: 6335429409518992389, guid: 2647d9d31f77ed4409620c798b32d2cb, type: 3}
+  bulletPrefab: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
+    type: 3}
+  shootPoint: {fileID: 6928697891062643033}
+  Carpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2205916446730388813
 GameObject:
   m_ObjectHideFlags: 0

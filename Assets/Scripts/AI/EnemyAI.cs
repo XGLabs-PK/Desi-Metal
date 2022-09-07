@@ -212,12 +212,10 @@ namespace XGStudios
 
         IEnumerator shoot()
         {
-            bullet.SendData(followObject, findDisplacement(), shootPoint);
             shooting = false;
             Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(1f);
             shooting = true;
-
         }
         //private void OnCollisionExit(Collision collision)
         //{

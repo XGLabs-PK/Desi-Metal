@@ -2,12 +2,12 @@ using UnityEditor;
 using UnityEngine;
 using XGStudios;
 
-[CustomEditor(typeof(EnemyAI))]
+[CustomEditor(typeof(NavmeshAi))]
 public class fovGizmoEditor : Editor
 {
     void OnSceneGUI()
     {
-        EnemyAI enemy = (EnemyAI)target;
+        NavmeshAi enemy = (NavmeshAi)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(enemy.transform.position, Vector3.up, Vector3.forward, 360, enemy.detectionRadius);
 
@@ -20,7 +20,7 @@ public class fovGizmoEditor : Editor
         if (enemy.canSeePlayers)
         {
             Handles.color = Color.green;
-            Handles.DrawLine(enemy.transform.position, enemy.followObject.transform.position);
+            Handles.DrawLine(enemy.transform.position, enemy._player.position);
         }
     }
 
