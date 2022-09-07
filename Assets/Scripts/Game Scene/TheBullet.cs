@@ -17,14 +17,5 @@ namespace XGStudios
         {
             transform.position += transform.forward * (speed * Time.deltaTime);
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.tag.Equals("AI")) {
-
-                other.GetComponent<NavmeshAi>().TakeDamage(damage);
-                Debug.Log("HIT");
-                
-            }
-        }
     }
 }

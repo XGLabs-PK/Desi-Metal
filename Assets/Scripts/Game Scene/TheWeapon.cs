@@ -47,7 +47,7 @@ namespace XGStudios
             if (hit.transform.CompareTag("AI"))
             {
                 FeelManager.Instance.enemyDamage.PlayFeedbacks();
-                //EnemyHealth.Instance.TakeDamage(15);
+                hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
                 //Particles
                 //Sound
             }
