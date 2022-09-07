@@ -31,7 +31,6 @@ namespace XGStudios
             if (other.gameObject.CompareTag("Car"))
             {
                 TheHealth.Instance.TakeDamage(2);
-                Debug.Log("Tiuched CAr");
             }
 
 

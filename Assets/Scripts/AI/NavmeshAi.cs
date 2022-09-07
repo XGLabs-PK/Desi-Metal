@@ -30,6 +30,9 @@ namespace XGStudios
         [SerializeField]Transform shootPoint;
         [SerializeField]GameObject[] Carpoints;
         float rateOfFire = 0;
+        [Header("Health")]
+        [SerializeField] int health = 100;
+        [SerializeField] GameObject deathParticle;
 
         void Awake()
         {
@@ -64,7 +67,11 @@ namespace XGStudios
         }
         private void Update()
         {
-       
+            if (health <= 0) {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity),1.5f);
+                Destroy(gameObject);
+            
+            }
         }
         IEnumerator Ramming() {
             //float stop = agent.stoppingDistance;
@@ -110,7 +117,6 @@ namespace XGStudios
         }
         IEnumerator shoot() {
             isShooting = false;
-            Debug.Log(_distanceBetweenPlayer);
             if (_distanceBetweenPlayer > 20)
             {
                 bullet.bulletSpeed = 150;
@@ -132,6 +138,9 @@ namespace XGStudios
             Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(rateOfFire);
             isShooting = true;
+        }
+        public void TakeDamage(int damageAmount) {
+            health -= damageAmount;
         }
 
     }
