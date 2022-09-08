@@ -5462,7 +5462,7 @@ GameObject:
   - component: {fileID: 1325554511}
   - component: {fileID: 1325554510}
   - component: {fileID: 1325554509}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10285,30 +10285,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
-      propertyPath: blitRender
-      value: 
-      objectReference: {fileID: 7657033332097895066, guid: c40be3174f62c4acf8c1216858c64956,
-        type: 2}
-    - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1934673284}
-    - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: lowHealthIndicator
-      value: 
-      objectReference: {fileID: 2100000, guid: 4b391e84cd2ba12499f25bb66dec9d2a, type: 2}
-    - target: {fileID: 3799615657948712197, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: CarConfig.MaxRPM
-      value: 8000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3799615657948712197, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: CarConfig.MinRPM
-      value: 4000
-      objectReference: {fileID: 0}
     - target: {fileID: 3799615657948712197, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: airMultiplierPopup
@@ -10316,33 +10295,18 @@ PrefabInstance:
       objectReference: {fileID: 657256989}
     - target: {fileID: 3799615657948712197, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
-      propertyPath: CarConfig.MaxSteerAngle
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 3799615657948712197, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: CarConfig.MaxMotorTorque
-      value: 4000
-      objectReference: {fileID: 0}
+      propertyPath: airMultiplierScore
+      value: 
+      objectReference: {fileID: 228052498}
     - target: {fileID: 5767164049449013031, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: weaponAudio
       value: 
       objectReference: {fileID: 1708218288}
-    - target: {fileID: 6445317712514530928, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name
       value: Swift Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827425, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}

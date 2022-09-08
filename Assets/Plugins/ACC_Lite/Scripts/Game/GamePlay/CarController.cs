@@ -10,6 +10,10 @@ public class CarController : MonoBehaviour
 {
     [Header("Lights & Effects")]
     [SerializeField]
+    LayerMask groundLayer;
+    [SerializeField]
+    TextMeshProUGUI airMultiplierScore;
+    [SerializeField]
     GameObject airMultiplierPopup;
     [SerializeField]
     GameObject Headlights;
@@ -17,6 +21,8 @@ public class CarController : MonoBehaviour
     GameObject Backlights;
     [SerializeField]
     GameObject smokeEffect;
+    [SerializeField]
+    GameObject topCheck;
     [SerializeField]
     GameObject groundCheck;
     [Space(10f)]
@@ -485,26 +491,40 @@ public class CarController : MonoBehaviour
 
     bool IsGrounded()
     {
-        float height = .01f;
+        float height = .008f;
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
 
         Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
             Color.green);
 
-        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
+    }
+    
+    bool UpsideDown()
+    {
+        float height = .008f;
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
+
+        Debug.DrawRay(topCheck.transform.position, transform.up * (boxCollider.bounds.extents.y + height),
+            Color.red);
+
+        return Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
     }
 
     void AirMultiplier()
     {
-        _airMultiplier = Mathf.Round(_airMultiplier * 100f) / 100f;
+        //_airMultiplier = Mathf.Round(_airMultiplier * 100f) / 100f;
+        int floor = Mathf.FloorToInt(_airMultiplier);
+        airMultiplierScore.SetText(floor.ToString());
 
-        if (!IsGrounded())
+        if (!IsGrounded() || !UpsideDown())
         {
             Invoke(nameof(ShowPopup), 1f);
-            _airMultiplier += 5 * Time.deltaTime;
+            _airMultiplier += 1 * .25f;
         }
-        else if (IsGrounded())
+        else if (IsGrounded() || UpsideDown())
         {
             airMultiplierPopup.SetActive(false);
             CancelInvoke(nameof(ShowPopup));
