@@ -109,6 +109,8 @@ public class CarController : MonoBehaviour
     bool _headLights;
     bool _backLights;
 
+    float _airMultiplier;
+
     void Awake()
     {
         smokeEffect.SetActive(false);
@@ -178,6 +180,8 @@ public class CarController : MonoBehaviour
     {
         Headlights.SetActive(_headLights);
         Backlights.SetActive(_backLights);
+
+        AirMultiplier();
 
         if (Input.GetButtonDown("HeadLights") && !_headLights)
             _headLights = true;
@@ -486,6 +490,21 @@ public class CarController : MonoBehaviour
             Color.green);
 
         return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+    }
+
+    void AirMultiplier()
+    {
+        if (!IsGrounded())
+            _airMultiplier += 5 * Time.deltaTime;
+        else if (IsGrounded())
+            Invoke(nameof(ResetAirMultiplier), 2f);
+
+        Debug.Log(_airMultiplier);
+    }
+
+    void ResetAirMultiplier()
+    {
+        _airMultiplier = 0;
     }
 }
 

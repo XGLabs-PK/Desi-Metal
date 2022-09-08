@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios
@@ -7,10 +11,12 @@ namespace XGStudios
     {
         public static TheHealth Instance;
         public GameObject deathParticles;
+        public ScriptableRendererFeature blitRender;
 
         public int health = 100;
+        public Slider healthSlider;
 
-        int _maxHealth;
+        float _maxHealth;
 
         void Awake()
         {
@@ -22,44 +28,34 @@ namespace XGStudios
 
         void Start()
         {
+            BlitEffect(false);
             _maxHealth = health;
         }
 
         void Update()
         {
-            if (_maxHealth <= 25)
-            {
-                //smoke from car
-                //Screen Grey
-            }
-
-            if (_maxHealth <= 15)
-            {
-                //smoke from car
-                //Screen Dark Grey
-            }
+            BlitEffect(_maxHealth <= 25f);
+            
+            StartCoroutine(RepairCar());
+            
+            if (GameManager.Instance.carDestroyed)
+                BlitEffect(false);
         }
 
-        public void RepairCar()
+        IEnumerator RepairCar()
         {
-            switch (_maxHealth)
-            {
-                case 100:
-                    //Car is already at Full Text
-                    break;
-                case < 100:
-                    _maxHealth += 10;
-                    break;
-            }
-
+            if (!(_maxHealth < health))yield break;
+            yield return new WaitForSeconds(5f);
+            _maxHealth += 0.75f * Time.deltaTime;
+            UpdateHealthBar(_maxHealth);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             if (_maxHealth == 0) return;
-
             FeelManager.Instance.carDamage.PlayFeedbacks();
             _maxHealth -= damage;
+            UpdateHealthBar(_maxHealth);
 
             if (_maxHealth <= 0)
             {
@@ -67,6 +63,16 @@ namespace XGStudios
                 FeelManager.Instance.carDestroyed.PlayFeedbacks();
                 GameManager.Instance.carDestroyed = true;
             }
+        }
+        
+        void UpdateHealthBar(float currentHealth)
+        {
+            healthSlider.value = currentHealth;
+        }
+        
+        void BlitEffect(bool boolean)
+        {
+            blitRender.SetActive(boolean);
         }
     }
 }
