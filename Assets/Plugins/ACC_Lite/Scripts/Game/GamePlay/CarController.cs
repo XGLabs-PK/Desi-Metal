@@ -10,11 +10,19 @@ public class CarController : MonoBehaviour
 {
     [Header("Lights & Effects")]
     [SerializeField]
+    LayerMask groundLayer;
+    [SerializeField]
+    TextMeshProUGUI airMultiplierScore;
+    [SerializeField]
+    GameObject airMultiplierPopup;
+    [SerializeField]
     GameObject Headlights;
     [SerializeField]
     GameObject Backlights;
     [SerializeField]
     GameObject smokeEffect;
+    [SerializeField]
+    GameObject topCheck;
     [SerializeField]
     GameObject groundCheck;
     [Space(10f)]
@@ -113,6 +121,7 @@ public class CarController : MonoBehaviour
 
     void Awake()
     {
+        airMultiplierPopup.SetActive(false);
         smokeEffect.SetActive(false);
         Headlights.SetActive(false);
         Backlights.SetActive(false);
@@ -482,24 +491,52 @@ public class CarController : MonoBehaviour
 
     bool IsGrounded()
     {
-        float height = .01f;
+        float height = .008f;
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
 
         Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
             Color.green);
 
-        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height);
+        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
+    }
+    
+    bool UpsideDown()
+    {
+        float height = .008f;
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
+
+        Debug.DrawRay(topCheck.transform.position, transform.up * (boxCollider.bounds.extents.y + height),
+            Color.red);
+
+        return Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
     }
 
     void AirMultiplier()
     {
-        if (!IsGrounded())
-            _airMultiplier += 5 * Time.deltaTime;
-        else if (IsGrounded())
+        //_airMultiplier = Mathf.Round(_airMultiplier * 100f) / 100f;
+        int floor = Mathf.FloorToInt(_airMultiplier);
+        airMultiplierScore.SetText(floor.ToString());
+
+        if (!IsGrounded() || !UpsideDown())
+        {
+            Invoke(nameof(ShowPopup), 1f);
+            _airMultiplier += 1 * .25f;
+        }
+        else if (IsGrounded() || UpsideDown())
+        {
+            airMultiplierPopup.SetActive(false);
+            CancelInvoke(nameof(ShowPopup));
             Invoke(nameof(ResetAirMultiplier), 2f);
+        }
 
         Debug.Log(_airMultiplier);
+    }
+
+    void ShowPopup()
+    {
+        airMultiplierPopup.SetActive(true);
     }
 
     void ResetAirMultiplier()

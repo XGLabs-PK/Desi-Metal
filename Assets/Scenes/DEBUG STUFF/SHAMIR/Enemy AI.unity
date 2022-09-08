@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 3.22
+    agentHeight: 2.61
+    agentSlope: 44.86
+    agentClimb: 1.03
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 1.0733334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1033,7 +1033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1364901961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,11 +1046,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4ff77d7c7a4974d9546fdeaec3bc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f, type: 3}
+  Menemy: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f, type: 3}
+  Renemy: {fileID: 1406901802678006206, guid: 7057e7f9387633144a7b19aee20fee4b, type: 3}
+  TEnemy: {fileID: 39811632139610723, guid: 6ebb3958496f65b469449ad148e7fb47, type: 3}
   enemies: []
   enemyCount: 2
   terrain: {fileID: 1185669720}
   yOffset: 10
+  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
+    type: 3}
 --- !u!4 &1364901962
 Transform:
   m_ObjectHideFlags: 0
@@ -1255,6 +1259,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MehranEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 39811632139610733, guid: 84e55b8171c385c46b163c57e227268f,
         type: 3}
