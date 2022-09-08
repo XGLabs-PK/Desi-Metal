@@ -507,6 +507,7 @@ public class CarController : MonoBehaviour
         else if (IsGrounded())
         {
             airMultiplierPopup.SetActive(false);
+            CancelInvoke(nameof(ShowPopup));
             Invoke(nameof(ResetAirMultiplier), 2f);
         }
 
