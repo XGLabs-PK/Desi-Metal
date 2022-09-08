@@ -10,6 +10,8 @@ public class CarController : MonoBehaviour
 {
     [Header("Lights & Effects")]
     [SerializeField]
+    GameObject airMultiplierPopup;
+    [SerializeField]
     GameObject Headlights;
     [SerializeField]
     GameObject Backlights;
@@ -113,6 +115,7 @@ public class CarController : MonoBehaviour
 
     void Awake()
     {
+        airMultiplierPopup.SetActive(false);
         smokeEffect.SetActive(false);
         Headlights.SetActive(false);
         Backlights.SetActive(false);
@@ -494,12 +497,25 @@ public class CarController : MonoBehaviour
 
     void AirMultiplier()
     {
+        _airMultiplier = Mathf.Round(_airMultiplier * 100f) / 100f;
+
         if (!IsGrounded())
+        {
+            Invoke(nameof(ShowPopup), 1f);
             _airMultiplier += 5 * Time.deltaTime;
+        }
         else if (IsGrounded())
+        {
+            airMultiplierPopup.SetActive(false);
             Invoke(nameof(ResetAirMultiplier), 2f);
+        }
 
         Debug.Log(_airMultiplier);
+    }
+
+    void ShowPopup()
+    {
+        airMultiplierPopup.SetActive(true);
     }
 
     void ResetAirMultiplier()
