@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace XGStudios
 {
@@ -21,6 +22,7 @@ namespace XGStudios
         float xRand;
         float zRand;
         int wave = 0;
+          
         
         
         // Start is called before the first frame update
@@ -40,8 +42,11 @@ namespace XGStudios
             for (int i = 0; i < enemyCount; ++i)
             {
                 xRand = Random.Range(xTerrainPos,xTerrainPos+terrainWidth);
-                zRand = Random.Range(zTerrainPos, zTerrainPos + terrainlength);   
-                enemies.Add(Instantiate(Renemy, new Vector3(xRand,yOffset,zRand), Quaternion.identity));
+                zRand = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(new Vector3(xRand,0,zRand),out hit, 100f, NavMesh.AllAreas)){
+                    enemies.Add(Instantiate(Renemy, hit.position, Quaternion.identity));
+                }
                 
             }
 
@@ -103,7 +108,11 @@ namespace XGStudios
             {
                 xRand = Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
                 zRand = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
-                enemies.Add(Instantiate(enemy, new Vector3(xRand, yOffset, zRand), Quaternion.identity));
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(new Vector3(xRand, 0, zRand), out hit, 100f, NavMesh.AllAreas))
+                {
+                    enemies.Add(Instantiate(Renemy, hit.position, Quaternion.identity));
+                }
             }
             for (int i = 0; i < enemyCount +moreEnemy; ++i)
                 AI.Add(enemies[i].GetComponent<NavmeshAi>());
@@ -114,13 +123,21 @@ namespace XGStudios
                 xRand = Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
                 zRand = Random.Range(zTerrainPos, zTerrainPos + terrainlength);
                 new Vector3(xRand, yOffset, zRand);
+                NavMeshHit hit;
                 if (randomBoolean())
                 {
-                    enemies.Add(Instantiate(enemy, new Vector3(xRand, yOffset, zRand), Quaternion.identity));
+                    
+                    if (NavMesh.SamplePosition(new Vector3(xRand, 0, zRand), out hit, 100f, NavMesh.AllAreas))
+                    {
+                        enemies.Add(Instantiate(Renemy, hit.position, Quaternion.identity));
+                    }
                 }
                 else
                 {
-                    enemies.Add(Instantiate(enemy2, new Vector3(xRand, yOffset, zRand), Quaternion.identity));
+                    if (NavMesh.SamplePosition(new Vector3(xRand, 0, zRand), out hit, 100f, NavMesh.AllAreas))
+                    {
+                        enemies.Add(Instantiate(Renemy, hit.position, Quaternion.identity));
+                    }
                 }
             }
             for (int i = 0; i < enemyCount +moreEnemy; ++i)
