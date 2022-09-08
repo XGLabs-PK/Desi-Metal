@@ -33,7 +33,10 @@ namespace XGStudios
         [Header("Health")]
         [SerializeField] int health = 100;
         [SerializeField] GameObject deathParticle;
-
+        public LayerMask isGround;
+        [SerializeField]
+        GameObject[] flipPointCheck;
+        public float groundRadius;
         void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -44,7 +47,22 @@ namespace XGStudios
             Carpoints = new GameObject[3];
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(fov());
+            flipPointCheck = new GameObject[3];
+            flipPointCheck = GameObject.FindGameObjectsWithTag("Flip");
 
+        }
+        public bool isFlipped()
+        {
+            if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
+                return true;
+
+            if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
+                return true;
+
+            if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
+                return true;
+
+            return false;
         }
         void FixedUpdate()
         {
@@ -72,6 +90,7 @@ namespace XGStudios
                 Destroy(gameObject);
             
             }
+
         }
         IEnumerator Ramming() {
             //float stop = agent.stoppingDistance;

@@ -12,6 +12,7 @@ TagManager:
   - Spawner
   - obstruction
   - ShotPoint
+  - Flip
   layers:
   - Default
   - TransparentFX

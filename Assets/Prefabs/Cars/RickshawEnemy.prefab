@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 4798978967691358856}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1406901802678006206}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2
+  m_Radius: 0.5
   m_Speed: 20
   m_Acceleration: 15
   avoidancePriority: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
     m_Bits: 256
   occlusionLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   canSeePlayers: 0
   bullet: {fileID: 6335429409518992389, guid: 2647d9d31f77ed4409620c798b32d2cb, type: 3}
   bulletPrefab: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
@@ -406,6 +406,11 @@ MonoBehaviour:
   health: 100
   deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
     type: 3}
+  isGround:
+    serializedVersion: 2
+    m_Bits: 512
+  flipPointCheck: []
+  groundRadius: 0.45
 --- !u!1 &4763394006350663097
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +780,7 @@ GameObject:
   - component: {fileID: 3258408824483782987}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,7 +843,7 @@ GameObject:
   - component: {fileID: 4990125620024427782}
   m_Layer: 0
   m_Name: top
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

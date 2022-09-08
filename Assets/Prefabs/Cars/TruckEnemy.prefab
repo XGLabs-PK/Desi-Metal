@@ -9,12 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 39811632139610733}
-  - component: {fileID: 39811632139610722}
-  - component: {fileID: 7318205257919216396}
-  - component: {fileID: 970264951}
   - component: {fileID: 3559543838066097353}
   - component: {fileID: 6227849825389399161}
   - component: {fileID: 3640018458231281313}
+  - component: {fileID: 4456258878694582394}
+  - component: {fileID: 583097662387433072}
   m_Layer: 0
   m_Name: TruckEnemy
   m_TagString: AI
@@ -38,83 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -95.759, z: 0}
---- !u!114 &39811632139610722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39811632139610723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3f8c00ad760ec34599096bf43dd3bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followObject: {fileID: 0}
-  stoppingDistance: 12
-  speed: 100
-  circleSpeed: 0.3
-  radiusAroundTarget: 30
-  rotationSpeed: 60
-  detectionRadius: 50
-  viewAngle: 100
-  searchDelay: 0
-  scanFrequency: 30
-  Layers:
-    serializedVersion: 2
-    m_Bits: 256
-  occlusionLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  canSeePlayers: 0
-  bullet: {fileID: 6335429409518992389, guid: 2647d9d31f77ed4409620c798b32d2cb, type: 3}
-  enemy: {fileID: 39811632139610723}
-  shootPoint: {fileID: 6928697891062643033}
-  bulletPrefab: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
-    type: 3}
-  flipPointCheck:
-  - {fileID: 6218166084009680603}
-  - {fileID: 5877835480715159893}
-  - {fileID: 4481943939711777430}
-  groundRadius: 0.44
-  isGround:
-    serializedVersion: 2
-    m_Bits: 512
-  myBody: {fileID: 6227849825389399161}
-  myTerrain: {fileID: 0}
---- !u!114 &7318205257919216396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39811632139610723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca23dead7fd129a4d9d699829a990ec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerptime: 4
-  spacing: 7
-  mySpawner: {fileID: 0}
---- !u!114 &970264951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39811632139610723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 4
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!65 &3559543838066097353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +86,66 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &4456258878694582394
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39811632139610723}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 12
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0.65
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &583097662387433072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39811632139610723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f82cc757470bb6488418a00e71190ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  rotationSpeed: 100
+  rammingTime: 0
+  detectionRadius: 30
+  viewAngle: 70
+  searchDelay: 0
+  Layers:
+    serializedVersion: 2
+    m_Bits: 256
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  canSeePlayers: 0
+  bullet: {fileID: 6335429409518992389, guid: 2647d9d31f77ed4409620c798b32d2cb, type: 3}
+  bulletPrefab: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
+    type: 3}
+  shootPoint: {fileID: 6928697891062643033}
+  Carpoints: []
+  health: 100
+  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
+    type: 3}
+  isGround:
+    serializedVersion: 2
+    m_Bits: 512
+  flipPointCheck: []
+  groundRadius: 0.45
 --- !u!1 &676170668525789269
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +361,7 @@ GameObject:
   - component: {fileID: 5877835480715159893}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,7 +622,7 @@ GameObject:
   - component: {fileID: 4481943939711777430}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -927,7 +909,7 @@ GameObject:
   - component: {fileID: 6218166084009680603}
   m_Layer: 0
   m_Name: top
-  m_TagString: Untagged
+  m_TagString: Flip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
