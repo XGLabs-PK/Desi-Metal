@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,6 +15,10 @@ public class CarController : MonoBehaviour
     TextMeshProUGUI airMultiplierScore;
     [SerializeField]
     GameObject airMultiplierPopup;
+    [SerializeField]
+    Slider airMultiplierSlider;
+    [SerializeField]
+    GameObject abilityText;
     [SerializeField]
     GameObject Headlights;
     [SerializeField]
@@ -118,6 +122,7 @@ public class CarController : MonoBehaviour
     bool _backLights;
 
     float _airMultiplier;
+    bool _airMultiplierFilled;
 
     void Awake()
     {
@@ -201,12 +206,6 @@ public class CarController : MonoBehaviour
             Wheels[i].UpdateVisual();
 
         smokeEffect.SetActive(_rb.velocity.magnitude > 5 && IsGrounded());
-
-        if (Input.GetKeyDown(KeyCode.R) && IsGrounded())
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
-            transform.rotation = Quaternion.Euler(0f, transform.rotation.y, 0f);
-        }
     }
 
     void FixedUpdate()
@@ -501,17 +500,16 @@ public class CarController : MonoBehaviour
         return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
     }
     
-    bool UpsideDown()
+    /*bool UpsideDown()
     {
         float height = .008f;
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
+        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
+        Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
+            Color.green);
 
-        Debug.DrawRay(topCheck.transform.position, transform.up * (boxCollider.bounds.extents.y + height),
-            Color.red);
-
-        return Physics.Raycast(topCheck.transform.position, transform.up, boxCollider.bounds.extents.y + height, groundLayer);
-    }
+        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
+    }*/
 
     void AirMultiplier()
     {
@@ -519,28 +517,46 @@ public class CarController : MonoBehaviour
         int floor = Mathf.FloorToInt(_airMultiplier);
         airMultiplierScore.SetText(floor.ToString());
 
-        if (!IsGrounded() || !UpsideDown())
+        if (!IsGrounded())
         {
-            Invoke(nameof(ShowPopup), 1f);
-            _airMultiplier += 1 * .25f;
+            Invoke(nameof(ShowPopup), 0.75f);
         }
-        else if (IsGrounded() || UpsideDown())
+        else if (IsGrounded())
         {
             airMultiplierPopup.SetActive(false);
             CancelInvoke(nameof(ShowPopup));
-            Invoke(nameof(ResetAirMultiplier), 2f);
-        }
 
-        Debug.Log(_airMultiplier);
+            switch (_airMultiplierFilled)
+            {
+                case false:
+                    Invoke(nameof(ResetAirMultiplier), 1f);
+                    break;
+            }
+
+        }
+        
+        switch (airMultiplierSlider.value)
+        {
+            case >= 100:
+                abilityText.SetActive(true);
+                _airMultiplierFilled = true;
+                break;
+            case <= 100:
+                _airMultiplierFilled = false;
+                break;
+        }
     }
 
     void ShowPopup()
     {
+        _airMultiplier += 1 * .35f;
+        airMultiplierSlider.value = _airMultiplier;
         airMultiplierPopup.SetActive(true);
     }
 
     void ResetAirMultiplier()
     {
+        airMultiplierSlider.value = 0;
         _airMultiplier = 0;
     }
 }
