@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,8 @@ public class CarController : MonoBehaviour
     [Header("Lights & Effects")]
     [SerializeField]
     LayerMask groundLayer;
+    [SerializeField]
+    ScriptableRendererFeature blitRender;
     [SerializeField]
     TextMeshProUGUI airMultiplierScore;
     [SerializeField]
@@ -499,17 +502,6 @@ public class CarController : MonoBehaviour
 
         return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
     }
-    
-    /*bool UpsideDown()
-    {
-        float height = .008f;
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
-        Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
-        Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
-            Color.green);
-
-        return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
-    }*/
 
     void AirMultiplier()
     {
@@ -539,16 +531,24 @@ public class CarController : MonoBehaviour
             case >= 100:
                 abilityText.SetActive(true);
                 _airMultiplierFilled = true;
+                BlitEffect(true);
+
+                if (Input.GetButtonDown("Ability"))
+                {
+                    airMultiplierSlider.value = 0;
+                    abilityText.SetActive(false);
+                    BlitEffect(false);
+                }
                 break;
             case <= 100:
-                _airMultiplierFilled = false;
+                _airMultiplierFilled = true;
                 break;
         }
     }
 
     void ShowPopup()
     {
-        _airMultiplier += 1 * 1;
+        _airMultiplier += 1 * 0.25f;
         airMultiplierSlider.value = _airMultiplier;
         airMultiplierPopup.SetActive(true);
     }
@@ -557,6 +557,11 @@ public class CarController : MonoBehaviour
     {
         airMultiplierSlider.value = 0;
         _airMultiplier = 0;
+    }
+    
+    void BlitEffect(bool boolean)
+    {
+        blitRender.SetActive(boolean);
     }
 }
 
