@@ -226,7 +226,6 @@ public class CarController : MonoBehaviour
     void FixedUpdate()
     {
             if (flipped()) {
-                Debug.Log("f");
                 StartCoroutine(flip());
                
             }
