@@ -9,6 +9,8 @@ namespace XGStudios
         public float sensitivity = 5f;
         public GameObject theCar;
         public GameObject camHolder;
+        [SerializeField]
+        Vector3 minValue, maxValue;
         Camera _cam;
 
         void Start()
@@ -22,8 +24,11 @@ namespace XGStudios
             Vector3 camLocalPos = _cam.transform.localPosition;
             Quaternion camHolderRot = camHolder.transform.rotation;
 
-            camHolder.transform.position = new Vector3(carPos.x, carPos.y, carPos.z);
-
+            camHolder.transform.position = new Vector3(
+                carPos.x,
+                carPos.y,
+                carPos.z);
+            
             Quaternion rot = Quaternion.Euler(camHolderRot.eulerAngles.x - Input.GetAxis("Mouse Y") * sensitivity / 2,
                 camHolderRot.eulerAngles.y + Input.GetAxis("Mouse X") * sensitivity,
                 camHolderRot.eulerAngles.z);

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
@@ -9,10 +10,14 @@ namespace XGStudios
 
         void Update()
         {
-            /*Vector3 rot = UnityEditor.TransformUtils.GetInspectorRotation(gameObject.transform);
+#if UNITY_EDITOR
+            Vector3 rot = TransformUtils.GetInspectorRotation(gameObject.transform);
 
             if (rot.x < clampingAngleX)
-                UnityEditor.TransformUtils.SetInspectorRotation(gameObject.transform, new Vector3(clampingAngleX, rot.y, rot.z));*/
+            {
+                TransformUtils.SetInspectorRotation(gameObject.transform, new Vector3(clampingAngleX, rot.y, rot.z));
+            }     
+#endif
         }
     }
 }
