@@ -3864,8 +3864,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980942495}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29238892, y: 2.6400895, z: -6.4885826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9448,6 +9448,11 @@ PrefabInstance:
       propertyPath: weaponAudio
       value: 
       objectReference: {fileID: 1708218288}
+    - target: {fileID: 8228446986427955935, guid: f5a70605d70852d4aaec6114f1eab9fe,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name
