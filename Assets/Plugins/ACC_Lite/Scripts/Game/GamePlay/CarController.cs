@@ -548,7 +548,7 @@ public class CarController : MonoBehaviour
 
     void ShowPopup()
     {
-        _airMultiplier += 1 * .35f;
+        _airMultiplier += 1 * 1;
         airMultiplierSlider.value = _airMultiplier;
         airMultiplierPopup.SetActive(true);
     }
