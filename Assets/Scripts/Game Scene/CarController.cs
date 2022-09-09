@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -32,6 +33,13 @@ public class CarController : MonoBehaviour
     GameObject smokeEffect;
     [SerializeField]
     GameObject topCheck;
+        [SerializeField]
+        float flipRadius;
+        [SerializeField]
+        float angle;
+        [SerializeField]
+        float rotationSpeed;
+        float desiredZ;
     [SerializeField]
     GameObject groundCheck;
     [Space(10f)]
@@ -137,6 +145,7 @@ public class CarController : MonoBehaviour
         Headlights.SetActive(false);
         Backlights.SetActive(false);
         Rb.centerOfMass = COM.localPosition;
+            desiredZ = transform.eulerAngles.z;
 
         Wheels = new[]
         {
@@ -216,6 +225,11 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
+            if (flipped()) {
+                Debug.Log("f");
+                StartCoroutine(flip());
+               
+            }
         CurrentSpeed = Rb.velocity.magnitude;
 
         UpdateSteerAngleLogic();
@@ -506,6 +520,7 @@ public class CarController : MonoBehaviour
         return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height, groundLayer);
     }
 
+
     void AirMultiplier()
     {
         if (GameManager.Instance.gamePaused) return;
@@ -568,7 +583,16 @@ public class CarController : MonoBehaviour
     {
         blitRender.SetActive(boolean);
     }
-}
+    private bool flipped() {
+            return Physics.CheckSphere(topCheck.transform.position, flipRadius, groundLayer);
+     }
+        IEnumerator flip()
+        {
+            yield return new WaitForSeconds(0.5f);
+            Quaternion desired = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desired, rotationSpeed * Time.deltaTime);
+        }
+    }
 
 [Serializable]
 public class CarConfig
