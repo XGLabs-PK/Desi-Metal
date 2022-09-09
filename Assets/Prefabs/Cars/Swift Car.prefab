@@ -5853,8 +5853,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9997439, w: -0.022632912}
+  m_LocalPosition: {x: 0.28107452, y: 4.892831, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5872,7 +5872,7 @@ Transform:
   - {fileID: 2016065168}
   m_Father: {fileID: 8228446987530827425}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 182.594}
 --- !u!54 &3886206880871249015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5939,6 +5939,9 @@ MonoBehaviour:
   Backlights: {fileID: 9010120248276598055}
   smokeEffect: {fileID: 8575064475025226875}
   topCheck: {fileID: 5941362431892554255}
+  flipRadius: 0.1
+  angle: -30
+  rotationSpeed: 10
   groundCheck: {fileID: 8752026049332456212}
   FrontLeftWheel:
     WheelCollider: {fileID: 3974270324504822581}
@@ -6771,7 +6774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941362431892554255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: -0.015, y: 2.173, z: -0.662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

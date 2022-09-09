@@ -22,6 +22,7 @@ namespace XGStudios
         float xRand;
         float zRand;
         int wave = 0;
+        List<GameObject> obj;
           
         
         
@@ -60,16 +61,17 @@ namespace XGStudios
         {
             if (enemies.Count != 0)
             {
-                for (int i = 0; i < enemies.Count; ++i)
+                for (int i = 0; i < enemies.Count; i++)
                 {
-                    if (AI[i].isFlipped())
+                    if (AI[i] != null)
                     {
-                        GameObject obj = enemies[i];
-                        Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                        Destroy(obj);
-                        enemies.RemoveAt(i);
-                        AI.RemoveAt(i);
-                        Debug.Log(enemies.Count);
+                        if ((AI[i].isFlipped() || AI[i].health <= 0))
+                        {
+                            
+                            enemies.RemoveAt(i);
+                            AI.RemoveAt(i);
+                            
+                        }
                     }
                 }
             }

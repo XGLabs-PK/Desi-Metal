@@ -31,7 +31,7 @@ namespace XGStudios
         [SerializeField]GameObject[] Carpoints;
         float rateOfFire = 0;
         [Header("Health")]
-        [SerializeField] int health = 100;
+        [SerializeField] public int health = 100;
         [SerializeField] GameObject deathParticle;
         public LayerMask isGround;
         [SerializeField]
@@ -54,13 +54,32 @@ namespace XGStudios
         public bool isFlipped()
         {
             if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
+            {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
                 return true;
+
+            }
+
 
             if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
+            {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
                 return true;
+            }
+
 
             if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
+            {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
                 return true;
+            }
+                
 
             return false;
         }
@@ -85,10 +104,12 @@ namespace XGStudios
         }
         private void Update()
         {
-            if (health <= 0) {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity),1.5f);
-                Destroy(gameObject);
-            
+            if (health <= 0)
+            {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
+
             }
 
         }
