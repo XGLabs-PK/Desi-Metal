@@ -2,15 +2,21 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 9_Sphere
   m_Shader: {fileID: 4800000, guid: 6eb86e4931b506a408fd1477edec61ea, type: 3}
-  m_ShaderKeywords: RIM_ON SHAKEUV_ON SHAPE1CONTRAST_ON SHAPE1DISTORT_ON SHAPE2DISTORT_ON
-    SHAPE2_ON
+  m_ValidKeywords:
+  - RIM_ON
+  - SHAKEUV_ON
+  - SHAPE1CONTRAST_ON
+  - SHAPE1DISTORT_ON
+  - SHAPE2DISTORT_ON
+  - SHAPE2_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -88,6 +94,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 48da24d771916524899d36e4bfe7f762, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Alpha: 1
     - _AlphaBrightness: 0
@@ -228,7 +235,7 @@ Material:
     - _ZoomAmount: 1.5
     m_Colors:
     - _BackFaceTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+    - _Color: {r: 0.033018887, g: 0.45703912, b: 1, a: 1}
     - _ColorGradingDark: {r: 1, g: 1, b: 1, a: 1}
     - _ColorGradingLight: {r: 1, g: 1, b: 1, a: 1}
     - _ColorGradingMiddle: {r: 1, g: 1, b: 1, a: 1}
@@ -237,7 +244,8 @@ Material:
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0.73057973, g: 0.46429366, b: 1.1880455, a: 1}
+    - _RimColor: {r: 0.5023812, g: 0.46651003, b: 1.1880455, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

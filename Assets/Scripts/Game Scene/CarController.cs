@@ -6,7 +6,9 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody))]
+namespace XGStudios
+{
+    [RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviour
 {
     [Header("Lights & Effects")]
@@ -506,6 +508,7 @@ public class CarController : MonoBehaviour
 
     void AirMultiplier()
     {
+        if (GameManager.Instance.gamePaused) return;
         int floor = Mathf.FloorToInt(_airMultiplier);
         airMultiplierScore.SetText(floor.ToString());
 
@@ -611,4 +614,5 @@ public class CarConfig
     public float MaxAngularVelocityHelpAngle;
     public float AngularVelucityInMaxAngle;
     public float AngularVelucityInMinAngle;
+}
 }

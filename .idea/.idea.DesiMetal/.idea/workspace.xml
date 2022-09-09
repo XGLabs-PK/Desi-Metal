@@ -2,7 +2,79 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Death Ball.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Death Ball.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Plasma Ball.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemy/Plasma Ball.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/CameraController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/CameraController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/Editor/PG_WheelColliderEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/Editor/PG_WheelColliderEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/GameController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/GameController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/PG_WheelCollider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/PG_WheelCollider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/UserControl.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/UserControl.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/Wheel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/Wheel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/BodyTilt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/BodyTilt.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/CarSoundController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/CarSoundController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/CarStateUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/CarStateUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/FXController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/VisualAndSounds/FXController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CameraController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Editor/PG_WheelColliderEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/GameController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/GameController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/PG_WheelCollider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/UserControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/UserControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/BodyTilt.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/BodyTilt.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarSoundController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarSoundController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarStateUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/CarStateUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/FXController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/VisualAndSounds/FXController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/CustomButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/CustomButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/MobileControlUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/MobileControlUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/UI/ShowHideMobileUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Utils.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/9_Ray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/9_Ray.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/9_Sphere.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AllIn1VfxToolkit/Demo &amp; Assets/Demo/Materials/9_Sphere.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Plasma Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Plasma Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Menu/XG.MainMenu.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Main Menu/XG.MainMenu.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/XG.SplashScreen.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/XG.SplashScreen.asmdef.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,10 +82,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/Wheel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/EnemyHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/Blit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/FeelManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/Game/GamePlay/GameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCameraClamping.cs" root0="FORCE_HIGHLIGHTING" />
@@ -26,6 +98,7 @@
   </component>
   <component name="ProjectId" id="2Dtz2huxNIZfWCqB5xzsHiBGn6d" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -121,6 +194,7 @@
       <workItem from="1662649544014" duration="9974000" />
       <workItem from="1662671777751" duration="5559000" />
       <workItem from="1662714443405" duration="4751000" />
+      <workItem from="1662733616947" duration="1434000" />
     </task>
     <servers />
   </component>

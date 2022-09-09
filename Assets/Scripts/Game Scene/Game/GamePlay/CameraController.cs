@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XGStudios;
 
 /// <summary>
 /// Move and rotation camera controller
