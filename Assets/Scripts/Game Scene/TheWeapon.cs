@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios
@@ -8,7 +9,8 @@ namespace XGStudios
         public Transform weapon;
         public GameObject bulletPrefab;
         public Transform firePoint;
-        public GameObject impactEffect;
+        public GameObject desertImpactEffect;
+        public GameObject carImpactEffect;
         [Space]
         public float delay = 0.1f;
         public AudioSource weaponAudio;
@@ -40,18 +42,16 @@ namespace XGStudios
 
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
                 return;
-
-            Instantiate(impactEffect, hit.point, Quaternion.identity);
+            
+            if (hit.transform.CompareTag("Ground"))
+                Instantiate(desertImpactEffect, hit.point, Quaternion.identity);
+            
             if (hit.transform.CompareTag("Car")) return;
-
-            if (hit.transform.CompareTag("AI"))
-            {
-                FeelManager.Instance.enemyDamage.PlayFeedbacks();
-                hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
-                //Particles
-                //Sound
-            }
-
+            if (!hit.transform.CompareTag("AI")) return;
+            Instantiate(carImpactEffect, hit.point, Quaternion.identity);
+            FeelManager.Instance.enemyDamage.PlayFeedbacks();
+            hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
+            //Sound
         }
     }
 }
