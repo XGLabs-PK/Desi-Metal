@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 5503092137345124693}
   - component: {fileID: 7762550363485601183}
   - component: {fileID: 5098826011162921784}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rusted Cultus
-  m_TagString: Untagged
+  m_TagString: obstruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8930975272560002800
 Transform:

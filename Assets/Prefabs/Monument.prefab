@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1932883222108135880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monument
-  m_TagString: Untagged
+  m_TagString: obstruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2114513080623647902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 989894829583805998}
   - component: {fileID: 8997344173432030568}
   - component: {fileID: 8997344173432030569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle BG Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1926264703629421965}
   - component: {fileID: 2584613823424142399}
   - component: {fileID: 4933436943990302268}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Curved Thing 2 Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 237490679405516655}
   - component: {fileID: 7682181879467061494}
   - component: {fileID: 7682181879467061495}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: That Thingy Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 5671761861603324025}
   - component: {fileID: 4985661462908472995}
   - component: {fileID: 7488669672777252410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle Thingy Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 1525379965331754620}
   - component: {fileID: 1481547790193378022}
   - component: {fileID: 8202368757627509176}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 816252431078420889}
   - component: {fileID: 5014692976512815027}
   - component: {fileID: 8925258280669215938}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 5385020515021711364}
   - component: {fileID: 4987123371265487472}
   - component: {fileID: 9090265573961714351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Idk Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 8226630027357932094}
   - component: {fileID: 2761833175089204367}
   - component: {fileID: 8226630027357932095}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Curved Thing Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

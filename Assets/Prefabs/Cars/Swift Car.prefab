@@ -5853,8 +5853,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5929,8 +5929,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
   airMultiplierScore: {fileID: 0}
   airMultiplierPopup: {fileID: 0}
+  airMultiplierSlider: {fileID: 0}
+  abilityText: {fileID: 0}
   Headlights: {fileID: 3500193561276069396}
   Backlights: {fileID: 9010120248276598055}
   smokeEffect: {fileID: 8575064475025226875}
@@ -6051,7 +6055,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3707170685528506107, guid: 82652893c849be244b73c90a6425d2b9,
     type: 3}
   firePoint: {fileID: 2119751526176776823}
-  impactEffect: {fileID: 9217968598369223018, guid: 0d40ec1d1de0edc43b5d67f8bf9da872,
+  desertImpactEffect: {fileID: 9217968598369223018, guid: 0d40ec1d1de0edc43b5d67f8bf9da872,
+    type: 3}
+  carImpactEffect: {fileID: 9217968598369223018, guid: f7208c1b1056af14bb172d43f08fe161,
     type: 3}
   delay: 0.1
   weaponAudio: {fileID: 0}

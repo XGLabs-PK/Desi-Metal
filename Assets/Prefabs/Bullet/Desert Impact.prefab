@@ -45,7 +45,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.44142342, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6691482, b: 0, a: 1}
   m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
@@ -356,15 +356,15 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.5456042, b: 1, a: 1}
-        key1: {r: 0, g: 1, b: 0.19104314, a: 1}
+        key0: {r: 1, g: 0.73987764, b: 0, a: 1}
+        key1: {r: 1, g: 0.47684106, b: 0, a: 1}
         key2: {r: 0, g: 0.9379053, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 32768
+        ctime0: 31997
         ctime1: 32960
         ctime2: 33056
         ctime3: 0
@@ -381,7 +381,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -11266,8 +11266,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.62896585, b: 1, a: 0}
-        key1: {r: 0.02352941, g: 0.1374687, b: 0.94509804, a: 1}
+        key0: {r: 0.9974991, g: 1, b: 0, a: 0}
+        key1: {r: 0.94509804, g: 0.2779495, b: 0.02352941, a: 1}
         key2: {r: 1, g: 0, b: 0.5481839, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -15011,15 +15011,15 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.4847312, b: 1, a: 1}
-        key1: {r: 0, g: 1, b: 0.19104314, a: 1}
+        key0: {r: 1, g: 0.73987764, b: 0, a: 1}
+        key1: {r: 1, g: 0.47684106, b: 0, a: 1}
         key2: {r: 0, g: 0.9379053, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 32768
+        ctime0: 31997
         ctime1: 32960
         ctime2: 33056
         ctime3: 0
@@ -15036,7 +15036,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -19899,7 +19899,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.19344974, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.65787435, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25921,8 +25921,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.63529414, g: 0.98783845, b: 1, a: 0}
-        key1: {r: 0.63529414, g: 0.7443501, b: 1, a: 1}
+        key0: {r: 1, g: 0.89294857, b: 0.63529414, a: 0}
+        key1: {r: 1, g: 0.92766446, b: 0.63529414, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.19607843}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -30812,8 +30812,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.786155, b: 1, a: 0}
-        key1: {r: 0.63529414, g: 0.765009, b: 1, a: 1}
+        key0: {r: 1, g: 0.6894004, b: 0, a: 0}
+        key1: {r: 1, g: 0.85321283, b: 0.63529414, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.3254902}
         key4: {r: 0, g: 0, b: 0, a: 0.19607843}
@@ -34343,7 +34343,7 @@ GameObject:
   - component: {fileID: 9170987790122023907}
   - component: {fileID: 4645751048405157503}
   m_Layer: 0
-  m_Name: Car Impact
+  m_Name: Desert Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

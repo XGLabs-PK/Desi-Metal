@@ -13,6 +13,7 @@ TagManager:
   - obstruction
   - ShotPoint
   - Flip
+  - Ground
   layers:
   - Default
   - TransparentFX

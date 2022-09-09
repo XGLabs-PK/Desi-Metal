@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052785656013407443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mazar e Quaid
-  m_TagString: Untagged
+  m_TagString: obstruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5384298826790829327}
   - component: {fileID: 1948628998718407138}
   - component: {fileID: 1686067431421410883}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 4742876780415729327}
   - component: {fileID: 3272349659070413346}
   - component: {fileID: 3272349659070413347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mazar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
