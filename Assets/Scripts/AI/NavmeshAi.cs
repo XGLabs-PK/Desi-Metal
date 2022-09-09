@@ -55,28 +55,19 @@ namespace XGStudios
         {
             if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
             {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
                 return true;
-
             }
 
 
             if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
             {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
+              
                 return true;
             }
 
 
             if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
             {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
                 return true;
             }
                 
@@ -110,6 +101,12 @@ namespace XGStudios
                 gameObject.SetActive(false);
                 Destroy(gameObject, 5f);
 
+            }
+            if (isFlipped())
+            {
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+                Destroy(gameObject, 5f);
             }
 
         }
