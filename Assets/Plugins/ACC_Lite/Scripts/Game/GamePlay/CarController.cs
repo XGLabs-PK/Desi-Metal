@@ -194,7 +194,7 @@ public class CarController : MonoBehaviour
     {
         Headlights.SetActive(_headLights);
         Backlights.SetActive(_backLights);
-
+         
         AirMultiplier();
 
         if (Input.GetButtonDown("HeadLights") && !_headLights)
@@ -513,7 +513,6 @@ public class CarController : MonoBehaviour
 
     void AirMultiplier()
     {
-        //_airMultiplier = Mathf.Round(_airMultiplier * 100f) / 100f;
         int floor = Mathf.FloorToInt(_airMultiplier);
         airMultiplierScore.SetText(floor.ToString());
 
