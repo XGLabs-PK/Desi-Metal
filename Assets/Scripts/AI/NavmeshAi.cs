@@ -36,6 +36,7 @@ namespace XGStudios
         public LayerMask isGround;
         [SerializeField]
         GameObject[] flipPointCheck;
+        public bool flipped;
         public float groundRadius;
         void Awake()
         {
@@ -66,7 +67,7 @@ namespace XGStudios
             }
 
 
-            if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
+           
             {
                 return true;
             }
@@ -102,12 +103,33 @@ namespace XGStudios
                 Destroy(gameObject, 5f);
 
             }
-            if (isFlipped())
-            {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
-            }
+            //if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
+            //{
+            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+            //    gameObject.SetActive(false);
+            //    flipped = true;
+            //    Destroy(gameObject, 5f);
+                
+            //}
+            //else if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
+            //{
+            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+            //    gameObject.SetActive(false);
+            //    flipped = true;
+            //    Destroy(gameObject, 5f);
+                
+            //}
+            //else if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
+            //{
+            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+            //    gameObject.SetActive(false);
+            //    flipped = true;
+            //    Destroy(gameObject, 5f);
+               
+            //}
+            //else {
+            //    flipped = false;
+            //}
 
         }
         IEnumerator Ramming() {
