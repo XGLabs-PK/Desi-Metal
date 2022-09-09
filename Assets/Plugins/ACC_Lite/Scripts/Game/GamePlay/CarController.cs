@@ -129,6 +129,7 @@ public class CarController : MonoBehaviour
 
     void Awake()
     {
+        BlitEffect(false);
         airMultiplierPopup.SetActive(false);
         smokeEffect.SetActive(false);
         Headlights.SetActive(false);
@@ -535,9 +536,10 @@ public class CarController : MonoBehaviour
 
                 if (Input.GetButtonDown("Ability"))
                 {
-                    airMultiplierSlider.value = 0;
                     abilityText.SetActive(false);
                     BlitEffect(false);
+                    airMultiplierSlider.value = 0;
+                    _airMultiplier = 0;
                 }
                 break;
             case <= 100:
