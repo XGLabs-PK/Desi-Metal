@@ -225,12 +225,12 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-            if (flipped()) {
-                StartCoroutine(flip());
-               
-            }
+        if (flipped())
+        {
+            StartCoroutine(flip());
+        }
+            
         CurrentSpeed = Rb.velocity.magnitude;
-
         UpdateSteerAngleLogic();
         UpdateRpmAndTorqueLogic();
 
