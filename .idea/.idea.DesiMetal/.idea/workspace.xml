@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Powerup Indicator.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Powerup Indicator.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/PowerupIndicator.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/PowerupIndicator.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/ACC_Lite/Scripts/Game/GamePlay/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Main Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Retro.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/Retro.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +131,7 @@
       <workItem from="1662543544950" duration="1423000" />
       <workItem from="1662649544014" duration="9974000" />
       <workItem from="1662671777751" duration="5559000" />
-      <workItem from="1662714443405" duration="318000" />
+      <workItem from="1662714443405" duration="1943000" />
     </task>
     <servers />
   </component>
