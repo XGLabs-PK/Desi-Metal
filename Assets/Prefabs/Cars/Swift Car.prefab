@@ -5884,7 +5884,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9997439, w: -0.022632912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.28107452, y: 4.892831, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -5903,7 +5903,7 @@ Transform:
   - {fileID: 2016065168}
   m_Father: {fileID: 8228446987530827425}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 182.594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3886206880871249015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5959,7 +5959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}
   airMultiplierScore: {fileID: 0}
