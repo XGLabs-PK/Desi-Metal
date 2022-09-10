@@ -551,7 +551,7 @@ public class CarController : MonoBehaviour
                 _airMultiplierFilled = true;
                 BlitEffect(true);
 
-                if (Input.GetButtonDown("Ability"))
+                if (Input.GetButtonDown("Fire2"))
                 {
                     abilityText.SetActive(false);
                     BlitEffect(false);
