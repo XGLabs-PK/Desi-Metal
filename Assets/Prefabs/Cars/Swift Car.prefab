@@ -5884,8 +5884,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3831234768491391765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9997439, w: -0.022632912}
+  m_LocalPosition: {x: 0.28107452, y: 4.892831, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5903,7 +5903,7 @@ Transform:
   - {fileID: 2016065168}
   m_Father: {fileID: 8228446987530827425}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 182.594}
 --- !u!54 &3886206880871249015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5959,7 +5959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 648
+    m_Bits: 8
   blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}
   airMultiplierScore: {fileID: 0}
@@ -5997,10 +5997,10 @@ MonoBehaviour:
   COM: {fileID: 3836972422016468745}
   BackFireParticles: []
   CarConfig:
-    MaxSteerAngle: 65
+    MaxSteerAngle: 55
     DriveType: 2
     AutomaticGearBox: 1
-    MaxMotorTorque: 3000
+    MaxMotorTorque: 3500
     MotorTorqueFromRpmCurve:
       serializedVersion: 2
       m_Curve:
@@ -6043,16 +6043,16 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    MaxRPM: 5000
-    MinRPM: 2500
-    CutOffRPM: 4000
-    CutOffOffsetRPM: 2000
-    CutOffTime: 0.08
+    MaxRPM: 6000
+    MinRPM: 4000
+    CutOffRPM: 8000
+    CutOffOffsetRPM: 1000
+    CutOffTime: 0.1
     ProbabilityBackfire: 0
-    RpmToNextGear: 3500
-    RpmToPrevGear: 1500
-    MaxForwardSlipToBlockChangeGear: 0.3
-    RpmEngineToRpmWheelsLerpSpeed: 10
+    RpmToNextGear: 5000
+    RpmToPrevGear: 4500
+    MaxForwardSlipToBlockChangeGear: 0.5
+    RpmEngineToRpmWheelsLerpSpeed: 15
     GearsRatio:
     - 4
     - 3
@@ -6062,17 +6062,17 @@ MonoBehaviour:
     ReversGearRatio: 2
     MaxBrakeTorque: 25000
     EnableSteerAngleMultiplier: 1
-    MinSteerAngleMultiplier: 0.2
-    MaxSteerAngleMultiplier: 1.2
+    MinSteerAngleMultiplier: 0.1
+    MaxSteerAngleMultiplier: 1
     MaxSpeedForMinAngleMultiplier: 500
-    SteerAngleChangeSpeed: 2000
-    MinSpeedForSteerHelp: 2000
-    HelpSteerPower: 0.8
-    OppositeAngularVelocityHelpPower: 0.08
+    SteerAngleChangeSpeed: 1000
+    MinSpeedForSteerHelp: 3000
+    HelpSteerPower: 1
+    OppositeAngularVelocityHelpPower: 0.05
     PositiveAngularVelocityHelpPower: 0
-    MaxAngularVelocityHelpAngle: 50
-    AngularVelucityInMaxAngle: 0.7
-    AngularVelucityInMinAngle: 3
+    MaxAngularVelocityHelpAngle: 45
+    AngularVelucityInMaxAngle: 0.5
+    AngularVelucityInMinAngle: 2
 --- !u!114 &5767164049449013031
 MonoBehaviour:
   m_ObjectHideFlags: 0

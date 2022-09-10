@@ -74,7 +74,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39811632139610723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -145,7 +145,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   flipPointCheck: []
-  flipped: 0
   groundRadius: 0.45
 --- !u!1 &676170668525789269
 GameObject:
