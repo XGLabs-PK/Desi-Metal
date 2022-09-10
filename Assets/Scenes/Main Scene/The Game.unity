@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0, g: 1, b: 0.78057027, a: 1}
+  m_FogColor: {r: 0, g: 1, b: 0.605881, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.002
+  m_FogDensity: 0.0007
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.6391955, g: 0.66512406, b: 0.7169812, a: 1}
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [F] To Use the ABILITY
+  m_text: Right Click To Use the ABILITY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
   m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
@@ -4847,6 +4847,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rusted Cultus.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8123053495051672650, guid: abc1358889535cc4596c664a729786f1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8930975272560002800, guid: abc1358889535cc4596c664a729786f1,
         type: 3}
       propertyPath: m_RootOrder
@@ -7023,6 +7028,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mazar e Quaid
       objectReference: {fileID: 0}
+    - target: {fileID: 421067140934540905, guid: c600b210dabcaac4b95d5bbb07f5a96d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1052785656013407443, guid: c600b210dabcaac4b95d5bbb07f5a96d,
         type: 3}
       propertyPath: m_RootOrder
@@ -7077,6 +7087,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686067431421410882, guid: c600b210dabcaac4b95d5bbb07f5a96d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208244025335242326, guid: c600b210dabcaac4b95d5bbb07f5a96d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c600b210dabcaac4b95d5bbb07f5a96d, type: 3}
@@ -8462,6 +8482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monument
       objectReference: {fileID: 0}
+    - target: {fileID: 1268092737025031026, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1932883222108135880, guid: 8e3de270b9f265844a0ec8a2dc57a357,
         type: 3}
       propertyPath: m_RootOrder
@@ -8516,6 +8541,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114513080623647873, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123031071941385668, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341034055570724831, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619981731940645525, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488669672777252413, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202368757627509179, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925258280669215941, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090265573961714350, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099671013601384277, guid: 8e3de270b9f265844a0ec8a2dc57a357,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e3de270b9f265844a0ec8a2dc57a357, type: 3}
