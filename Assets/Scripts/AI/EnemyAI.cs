@@ -9,7 +9,7 @@ namespace XGStudios
         [SerializeField]
         public GameObject followObject;
         [Header("Normal AI Settings")]
-        bool isChasing;
+        bool _isChasing;
         [SerializeField]
         float stoppingDistance;
         [SerializeField]
@@ -21,7 +21,6 @@ namespace XGStudios
         float radiusAroundTarget;
         [SerializeField]
         float rotationSpeed = 1;
-        bool isCircling;
         [Header("Field of view")]
         [SerializeField]
         public float detectionRadius = 10;
@@ -48,117 +47,87 @@ namespace XGStudios
         public LayerMask isGround;
         public Rigidbody myBody;
         [Header("Shooting")]
-        bool shooting;
+        bool _shooting;
 
-        Vector3 direction;
+        Vector3 _direction;
         [SerializeField] Terrain myTerrain;
 
         void Start()
         {
-            isChasing = true;
+            _isChasing = true;
             followObject = GameObject.FindGameObjectWithTag("Car");
-            shooting = true;
-            StartCoroutine(fov());
+            _shooting = true;
+            StartCoroutine(FOV());
             myTerrain = GameObject.FindObjectOfType<Terrain>();
             myBody = GetComponent<Rigidbody>();
         }
-        // Update is called once per frame
-
-        private void FixedUpdate()
-        {
-           
-        }
+        
         void Update()
         {
-            
-
             float distance = Vector3.Distance(transform.position, followObject.transform.position);
 
-            if (distance >= stoppingDistance && isChasing)
+            if (distance >= stoppingDistance && _isChasing)
             {
-                isCircling = false;
-                //transform.position = Vector3.MoveTowards(transform.position, followObject.transform.position,
-                //   speed * Time.fixedDeltaTime);
-                direction = (followObject.transform.position - transform.position);
-                myBody.AddForce(direction * speed * Time.deltaTime);
-
+                _direction = (followObject.transform.position - transform.position);
+                myBody.AddForce(_direction * speed * Time.deltaTime);
                 transform.LookAt(followObject.transform);
-
             }
             else if (distance < stoppingDistance)
             {
-                isCircling = true;
-                moveToPoint(followObject.transform, radiusAroundTarget);
+                MoveToPoint(followObject.transform, radiusAroundTarget);
                 transform.RotateAround(followObject.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-               
                 transform.LookAt(followObject.transform);
             }
-            if (canSeePlayers && shooting)
-                StartCoroutine(shoot());
-
+            if (canSeePlayers && _shooting)
+                StartCoroutine(Shoot());
         }
-        IEnumerator stopChasing()
+        IEnumerator StopChasing()
         {
-            isChasing = false;
-            float xRand;
-            float yVal;
-            float zRand;
-            xRand = Random.Range(myTerrain.transform.position.x, myTerrain.transform.position.x + myTerrain.terrainData.size.x);
-            zRand = Random.Range(myTerrain.transform.position.z, myTerrain.transform.position.z + myTerrain.terrainData.size.z);
-            yVal = myTerrain.SampleHeight(new Vector3(xRand, 0, zRand));
+            _isChasing = false;
+            float xRand = Random.Range(myTerrain.transform.position.x, myTerrain.transform.position.x + myTerrain.terrainData.size.x);
+            float zRand = Random.Range(myTerrain.transform.position.z, myTerrain.transform.position.z + myTerrain.terrainData.size.z);
+            myTerrain.SampleHeight(new Vector3(xRand, 0, zRand));
             //yVal = yVal + yOffset;
             //transform.position = Vector3.MoveTowards(transform.position, aiDirection, Time.fixedDeltaTime);
             Vector3 point = new Vector3(xRand, followObject.transform.position.y, zRand);
             Vector3 dir = point - transform.position;
             myBody.velocity = dir * (speed ) * Time.deltaTime;
             yield return new WaitForSeconds(1.3f);
-            isChasing = true;
-
+            _isChasing = true;
         }
         void OnCollisionEnter(Collision collision)
         {
-            
-
             if (collision.gameObject.tag.Equals("obstruction"))
             {
                 Debug.Log("colliding OBSTRUCTION");
-                StartCoroutine(stopChasing());
-
+                StartCoroutine(StopChasing());
             }
-
-
         }
 
 
-        IEnumerator fov()
+        IEnumerator FOV()
         {
             while (true)
             {
                 yield return new WaitForSeconds(searchDelay);
-                fieldOfviewSerch();
+                FieldOfViewSearch();
             }
         }
 
 
-        void fieldOfviewSerch()
+        void FieldOfViewSearch()
         {
-            //var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, playerMask);
             var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, Layers);
 
             if (rangeChecks.Length != 0)
             {
                 Transform target = rangeChecks[0].transform;
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
-
                 if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-
-                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, occlusionLayers))
-                        canSeePlayers = true;
-                    else
-                        canSeePlayers = false;
+                    canSeePlayers = !Physics.Raycast(transform.position,
+                        directionToTarget, distanceToTarget, occlusionLayers);
                 }
                 else
                     canSeePlayers = false;
@@ -167,22 +136,17 @@ namespace XGStudios
                 canSeePlayers = false;
         }
 
-        public bool isFlipped()
+        public bool IsFlipped()
         {
             if (Physics.CheckSphere(flipPointCheck[0].position, groundRadius, isGround))
                 return true;
 
-            if (Physics.CheckSphere(flipPointCheck[1].position, groundRadius, isGround))
-                return true;
+            return Physics.CheckSphere(flipPointCheck[1].position, groundRadius, isGround) || Physics.CheckSphere(flipPointCheck[2].position, groundRadius, isGround);
 
-            if (Physics.CheckSphere(flipPointCheck[2].position, groundRadius, isGround))
-                return true;
-
-            return false;
         }
 
 
-        void moveToPoint(Transform target, float radius)
+        void MoveToPoint(Transform target, float radius)
         {
             float angle = Random.Range(0, 360);
 
@@ -194,33 +158,24 @@ namespace XGStudios
             myBody.velocity = (dir * circleSpeed);
         }
 
-        float findDisplacement()
+        float FindDisplacement()
         {
             float bulletDistance = Vector3.Distance(shootPoint.position, followObject.transform.position);
-
-            if (bulletDistance > 20)
-                return Random.Range(0.2f, 0.25f);
-
-            if (bulletDistance > 10)
-                return Random.Range(0.1f, 0.15f);
-
-            if (bulletDistance > 5)
-                return Random.Range(0.05f, 0.025f);
-
-            return 0;
+            return bulletDistance switch
+            {
+                > 20 => Random.Range(0.2f, 0.25f),
+                > 10 => Random.Range(0.1f, 0.15f),
+                > 5 => Random.Range(0.05f, 0.025f),
+                _ => 0
+            };
         }
 
-        IEnumerator shoot()
+        IEnumerator Shoot()
         {
-            shooting = false;
+            _shooting = false;
             Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(1f);
-            shooting = true;
+            _shooting = true;
         }
-        //private void OnCollisionExit(Collision collision)
-        //{
-        //    Rigidbody rigid = transform.GetComponent<Rigidbody>();
-        //    rigid.isKinematic = false;
-        //}
     }
 }

@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace XGStudios
 {
     public class NavmeshAi : MonoBehaviour
     {
         NavMeshAgent _agent;
-       public Transform _player;
+        [HideInInspector]
+        public Transform player;
         [SerializeField] float rotationSpeed;
         bool _isCircling;
         [SerializeField] float rammingTime;
         float  _distanceBetweenPlayer;
+        
+        [Space(5f)]
         [Header("Field of view")]
         [SerializeField]
         public float detectionRadius = 10;
@@ -26,10 +30,10 @@ namespace XGStudios
         [Header("Shooting")]
         [SerializeField]AiBullet bullet;
         [SerializeField]GameObject bulletPrefab;
-        bool isShooting;
-        [SerializeField]Transform shootPoint;
-        [SerializeField]GameObject[] Carpoints;
-        float rateOfFire = 0;
+        bool _isShooting;
+        [SerializeField] Transform shootPoint;
+        [SerializeField] GameObject[] Carpoints;
+        float _rateOfFire;
         [Header("Health")]
         [SerializeField] public int health = 100;
         [SerializeField] GameObject deathParticle;
@@ -38,113 +42,77 @@ namespace XGStudios
         GameObject[] flipPointCheck;
         public bool flipped;
         public float groundRadius;
+        
         void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
-            _player = GameObject.FindGameObjectWithTag("Car").transform;
+            player = GameObject.FindGameObjectWithTag("Car").transform;
             _isCircling = true;
             rammingTime = Random.Range(10, 31);
-            isShooting = true;
+            _isShooting = true;
             Carpoints = new GameObject[3];
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
-            StartCoroutine(fov());
+            StartCoroutine(FOV());
             flipPointCheck = new GameObject[3];
             flipPointCheck = GameObject.FindGameObjectsWithTag("Flip");
-
         }
-        public bool isFlipped()
+        
+        public bool IsFlipped()
         {
             if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
             {
                 return true;
             }
-
-
             if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
             {
-              
                 return true;
             }
-
-
-           
-            {
-                return true;
-            }
-                
-
-            return false;
+            return true;
         }
+        
         void FixedUpdate()
         {
-            if (canSeePlayers && isShooting)
+            if (canSeePlayers && _isShooting)
             {
-                StartCoroutine(shoot());
+                StartCoroutine(Shoot());
             }
-            _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, _player.position);
+            _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, player.position);
             rammingTime = rammingTime - Time.deltaTime;
             if (rammingTime <= 0) {
                 StartCoroutine(Ramming());
             }
             if (!(_distanceBetweenPlayer <= _agent.stoppingDistance) || !_isCircling)
-                _agent.SetDestination(_player.position);
+                _agent.SetDestination(player.position);
             else
             {
-                transform.RotateAround(_player.position, Vector3.up, rotationSpeed * Time.deltaTime);
-                transform.LookAt(_player);
+                transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
+                transform.LookAt(player);
             }
         }
-        private void Update()
+        
+        void Update()
         {
             if (health <= 0)
             {
                 Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
                 gameObject.SetActive(false);
-                Destroy(gameObject, 5f);
-
+                Destroy(gameObject, 3f);
+                FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
             }
-            //if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
-            //{
-            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-            //    gameObject.SetActive(false);
-            //    flipped = true;
-            //    Destroy(gameObject, 5f);
-                
-            //}
-            //else if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
-            //{
-            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-            //    gameObject.SetActive(false);
-            //    flipped = true;
-            //    Destroy(gameObject, 5f);
-                
-            //}
-            //else if (Physics.CheckSphere(flipPointCheck[2].transform.position, groundRadius, isGround))
-            //{
-            //    Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-            //    gameObject.SetActive(false);
-            //    flipped = true;
-            //    Destroy(gameObject, 5f);
-               
-            //}
-            //else {
-            //    flipped = false;
-            //}
-
         }
+        
         IEnumerator Ramming() {
-            //float stop = agent.stoppingDistance;
             _agent.stoppingDistance = 0;
-            Vector3 position = _player.position;
+            Vector3 position = player.position;
             _agent.SetDestination(position);
             yield return new WaitUntil(()=> _distanceBetweenPlayer<=5);
             _agent.stoppingDistance = 20;
             _agent.SetDestination(position);
             rammingTime = Random.Range(10, 31);
         }
-        void fieldOfviewSerch()
+        
+        void FieldOfViewSearch()
         {
-            //var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, playerMask);
             var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, Layers);
 
             if (rangeChecks.Length != 0)
@@ -155,10 +123,8 @@ namespace XGStudios
                 if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, occlusionLayers))
-                        canSeePlayers = true;
-                    else
-                        canSeePlayers = false;
+                    canSeePlayers = !Physics.Raycast(transform.position, directionToTarget,
+                        distanceToTarget,occlusionLayers);
                 }
                 else
                     canSeePlayers = false;
@@ -166,42 +132,44 @@ namespace XGStudios
             else if (canSeePlayers)
                 canSeePlayers = false;
         }
-        IEnumerator fov()
+        
+        IEnumerator FOV()
         {
             while (true)
             {
                 yield return new WaitForSeconds(searchDelay);
-                fieldOfviewSerch();
+                FieldOfViewSearch();
             }
         }
-        IEnumerator shoot() {
-            isShooting = false;
-            if (_distanceBetweenPlayer > 20)
+        
+        IEnumerator Shoot() {
+            _isShooting = false;
+            switch (_distanceBetweenPlayer)
             {
-                bullet.bulletSpeed = 150;
-                rateOfFire = 1f;
-                shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
+                case > 20:
+                    bullet.bulletSpeed = 150;
+                    _rateOfFire = 1f;
+                    shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
+                    break;
+                case > 10:
+                    bullet.bulletSpeed = 170;
+                    _rateOfFire = 0.8f;
+                    shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
+                    break;
+                default:
+                    bullet.bulletSpeed = 200;
+                    _rateOfFire = 0.5f;
+                    shootPoint.LookAt(player);
+                    break;
             }
-            else if (_distanceBetweenPlayer > 10)
-            {
-                bullet.bulletSpeed = 170;
-                rateOfFire = 0.8f;
-                shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
-            }
-            else {
-                bullet.bulletSpeed = 200;
-                rateOfFire = 0.5f;
-                shootPoint.LookAt(_player);
-            }
+            
             bullet.SendData(shootPoint);
             Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-            yield return new WaitForSeconds(rateOfFire);
-            isShooting = true;
+            yield return new WaitForSeconds(_rateOfFire);
+            _isShooting = true;
         }
         public void TakeDamage(int damageAmount) {
             health -= damageAmount;
         }
-
     }
-
 }

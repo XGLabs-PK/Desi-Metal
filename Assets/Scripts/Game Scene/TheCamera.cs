@@ -9,8 +9,6 @@ namespace XGStudios
         public float sensitivity = 5f;
         public GameObject theCar;
         public GameObject camHolder;
-        [SerializeField]
-        Vector3 minValue, maxValue;
         Camera _cam;
 
         void Start()

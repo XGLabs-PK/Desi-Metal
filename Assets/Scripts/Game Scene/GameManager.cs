@@ -55,23 +55,20 @@ namespace XGStudios
             else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused && !carDestroyed)
                 ResumeGame();
 
-            if (carDestroyed)
+            if (!carDestroyed) return;
+            CarDestroyed();
+            if (Input.GetKeyDown(KeyCode.F1))
             {
-                CarDestroyed();
-
-                if (Input.GetKeyDown(KeyCode.F1))
-                {
-                    Time.timeScale = 1f;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
-                else if (Input.GetKeyDown(KeyCode.F2))
-                {
-                    Time.timeScale = 1f;
-                    SceneManager.LoadScene("Main Menu");
-                }
-                else if (Input.GetKeyDown(KeyCode.F3))
-                    Application.Quit();
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+            else if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Main Menu");
+            }
+            else if (Input.GetKeyDown(KeyCode.F3))
+                Application.Quit();
         }
 
         void PauseGame()

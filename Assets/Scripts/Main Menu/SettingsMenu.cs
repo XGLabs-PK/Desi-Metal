@@ -7,7 +7,7 @@ namespace XGStudios
 {
     public class SettingsMenu : MonoBehaviour
     {
-        const string _resName = "resolutionOption";
+        const string ResName = "resolutionOption";
         public TMP_Dropdown resolutionDropdown;
         public Toggle fullScreenToggle;
 
@@ -25,7 +25,7 @@ namespace XGStudios
 
             resolutionDropdown.onValueChanged.AddListener(index =>
             {
-                PlayerPrefs.SetInt(_resName, resolutionDropdown.value);
+                PlayerPrefs.SetInt(ResName, resolutionDropdown.value);
                 PlayerPrefs.Save();
             });
         }
@@ -52,7 +52,7 @@ namespace XGStudios
             }
 
             resolutionDropdown.AddOptions(options);
-            resolutionDropdown.value = PlayerPrefs.GetInt(_resName, currResIndex);
+            resolutionDropdown.value = PlayerPrefs.GetInt(ResName, currResIndex);
             resolutionDropdown.RefreshShownValue();
         }
 

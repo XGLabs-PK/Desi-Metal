@@ -7,7 +7,7 @@ namespace XGStudios
     public class TheCameraClamping : MonoBehaviour
     {
         public float clampingAngleX = -20f;
-
+        
         void Update()
         {
 #if UNITY_EDITOR

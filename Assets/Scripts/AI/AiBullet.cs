@@ -19,7 +19,6 @@ namespace XGStudios
 
         void Update()
         {
-            //transform.position = Vector3.Lerp(transform.position,finalPosition, bulletSpeed * Time.deltaTime);
             if (enemyShootPoint != null)
                 transform.position += enemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
         }
@@ -27,20 +26,15 @@ namespace XGStudios
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("AI")) return;
-
             if (other.gameObject.CompareTag("Car"))
-            {
                 TheHealth.Instance.TakeDamage(2);
-            }
-
-
+            
             Destroy(transform.gameObject);
         }
 
         public void SendData(Transform shotPoint)
         {
             enemyShootPoint = shotPoint;
-            
         }
     }
 }

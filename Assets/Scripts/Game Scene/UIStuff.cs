@@ -39,7 +39,7 @@ namespace XGStudios
                 PlayerPrefs.Save();
             });
         }
-
+        
         void Start()
         {
             qualityDropdown.value = QualitySettings.GetQualityLevel();

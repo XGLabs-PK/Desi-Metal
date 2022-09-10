@@ -13,7 +13,7 @@ namespace XGStudios
         Material screenTransitionMat;
 
         [SerializeField]
-        float transitionTime = 1f;
+        float transitionTime = 2f;
 
         [SerializeField]
         string propertyName = "_Progress";

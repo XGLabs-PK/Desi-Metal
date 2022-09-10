@@ -10,13 +10,15 @@ namespace XGStudios
         public Transform firePoint;
         public GameObject desertImpactEffect;
         public GameObject carImpactEffect;
+        
         [Space]
+        
         public float delay = 0.1f;
         public AudioSource weaponAudio;
+        
         Camera _cam;
-
         float _timer;
-
+        
         void Start()
         {
             _cam = Camera.main;
@@ -25,7 +27,7 @@ namespace XGStudios
         void Update()
         {
             weapon.transform.rotation = _cam.transform.rotation;
-
+            
             if (Input.GetButton("Fire1") && _timer <= 0f)
                 Shoot();
             else
@@ -38,7 +40,7 @@ namespace XGStudios
             Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
             weaponAudio.Play();
             _timer = delay;
-
+            
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
                 return;
             

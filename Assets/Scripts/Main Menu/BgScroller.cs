@@ -7,9 +7,9 @@ namespace XGStudios
     public class BgScroller : MonoBehaviour
     {
         [SerializeField]
-        float xSpeed = 0.08f;
+        float xSpeed;
         [SerializeField]
-        float ySpeed = 0.08f;
+        float ySpeed;
         RawImage _img;
 
         void Start()

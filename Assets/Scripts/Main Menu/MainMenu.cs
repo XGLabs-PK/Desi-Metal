@@ -101,7 +101,7 @@ namespace XGStudios
                     Invoke(nameof(QuitGame), 1f);
                 });
         }
-
+        
         void Update()
         {
             if (!Input.GetKeyDown(KeyCode.Escape)) return;

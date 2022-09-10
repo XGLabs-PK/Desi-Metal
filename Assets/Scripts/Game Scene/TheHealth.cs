@@ -59,7 +59,6 @@ namespace XGStudios
 
             if (_maxHealth <= 0)
             {
-                Instantiate(deathParticles, transform.position, Quaternion.identity);
                 FeelManager.Instance.carDestroyed.PlayFeedbacks();
                 GameManager.Instance.carDestroyed = true;
             }

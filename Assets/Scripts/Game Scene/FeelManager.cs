@@ -8,8 +8,9 @@ namespace XGStudios
     {
         public static FeelManager Instance;
         public MMFeedbacks carDamage;
-        public MMFeedbacks enemyDamage;
         public MMFeedbacks carDestroyed;
+        public MMFeedbacks enemyDamage;
+        public MMFeedbacks enemyDestroyed;
 
         void Awake()
         {

@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace Cyan {
+namespace XGStudios {
 	public class Blit : ScriptableRendererFeature {
-
 		public class BlitPass : ScriptableRenderPass {
 
 			public Material blitMaterial = null;

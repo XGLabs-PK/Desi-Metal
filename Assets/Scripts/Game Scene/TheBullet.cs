@@ -6,7 +6,6 @@ namespace XGStudios
     public class TheBullet : MonoBehaviour
     {
         public float speed = 800.0f;
-        public int damage = 10;
 
         void Start()
         {

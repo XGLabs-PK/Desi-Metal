@@ -12,7 +12,7 @@ namespace XGStudios
             yield return new WaitForSeconds(4f);
             SceneManager.LoadScene("Main Menu");
         }
-
+        
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))

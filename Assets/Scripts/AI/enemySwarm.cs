@@ -1,52 +1,40 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace XGStudios
 {
-    public class enemySwarm : MonoBehaviour
+    public class EnemySwarm : MonoBehaviour
     {
         [SerializeField]
-        float lerptime;
+        float lerpTime;
         [SerializeField]
         float spacing;
         [SerializeField]
         AISpawner mySpawner;
-        Rigidbody myBody;
-        // Start is called before the first frame update
+        Rigidbody _myBody;
 
-        List<GameObject> AIobjects;
+        List<GameObject> _aiObjects;
 
         void Start()
         {
             mySpawner = FindObjectOfType<AISpawner>();
-            AIobjects = mySpawner.enemies;
-            myBody = GetComponent<Rigidbody>();
+            _aiObjects = mySpawner.enemies;
+            _myBody = GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            func();
+            Func();
         }
 
-        void func()
+        void Func()
         {
-            foreach (GameObject go in AIobjects)
-                if (go != gameObject && go != null)
-                {
-                    float distance = Vector3.Distance(go.transform.position, transform.position);
-
-                    if (distance <= spacing)
-                    {
-                        Vector3 dir = transform.position - go.transform.position;
-                        Vector3 aiDirection = transform.position + dir;
-
-                        //transform.position = Vector3.MoveTowards(transform.position, aiDirection,
-                        //    lerptime * Time.fixedDeltaTime);
-                        myBody.velocity = dir * lerptime * Time.deltaTime;
-
-                    }
-                }
+            foreach (Vector3 dir in from go in _aiObjects where go != gameObject && go != null let distance =
+                         Vector3.Distance(go.transform.position, transform.position) where distance <= spacing select transform.position
+                         - go.transform.position into dir let aiDirection = transform.position + dir select dir) 
+                _myBody.velocity = dir * lerpTime * Time.deltaTime;
         }
     }
 }
