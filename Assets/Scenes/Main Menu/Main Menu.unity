@@ -11563,6 +11563,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 402834706}
+  - {fileID: 967169473}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13681,6 +13682,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914149682}
   m_CullTransparentMesh: 1
+--- !u!1 &967169472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967169473}
+  - component: {fileID: 967169474}
+  m_Layer: 0
+  m_Name: LEADERBOARD MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &967169473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967169472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448229655}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &967169474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967169472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1851ca3c11d81459e8bdd373861bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6956
+  names:
+  - {fileID: 914149684}
+  - {fileID: 1706389261}
+  - {fileID: 445402779}
+  - {fileID: 553878391}
+  - {fileID: 1689894652}
+  - {fileID: 2074466639}
+  - {fileID: 43265599}
+  entries:
+  - {fileID: 1123444865}
+  - {fileID: 182325007}
+  - {fileID: 573158826}
+  - {fileID: 1980351112}
+  - {fileID: 398983858}
+  - {fileID: 1160172705}
+  - {fileID: 1090508896}
 --- !u!1 &969406686
 GameObject:
   m_ObjectHideFlags: 0
@@ -16188,6 +16250,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1993360195}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 967169474}
+        m_TargetAssemblyTypeName: XG.Studios.PlayerLogin, Assembly-CSharp
+        m_MethodName: ShowScores
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
