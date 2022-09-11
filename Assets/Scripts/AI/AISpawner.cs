@@ -10,10 +10,10 @@ namespace XGStudios
         public GameObject rickshawEnemy;
         public GameObject truckEnemy;
         public List<GameObject> enemies;
+        public float yOffset;
         public int enemyCount = 2;
         List<NavmeshAi> _ai;
         [SerializeField]Terrain terrain;
-        [SerializeField] float yOffset;
         float _terrainLength;
         float _terrainWidth;
         float _xTerrainPos;
@@ -34,7 +34,7 @@ namespace XGStudios
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
 
-            for (int i = 0; i < enemyCount; ++i)
+            for (int i = 0; i <enemyCount; i++)
             {
                 _xRand = Random.Range(_xTerrainPos,_xTerrainPos+_terrainWidth);
                 _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
@@ -42,7 +42,7 @@ namespace XGStudios
                     enemies.Add(Instantiate(rickshawEnemy, hit.position, Quaternion.identity));
                 }
             }
-            for (int i = 0; i < enemyCount; ++i)
+            for (int i = 0; i <enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
 
@@ -53,7 +53,7 @@ namespace XGStudios
             
             if (enemies.Count != 0)
             {
-                for (int i = 0; i < enemies.Count; i++)
+                for (int i = 0; i <enemies.Count; i++)
                 {
                     if (_ai[i] == null) continue;
                     if (_ai[i].health > 0) continue;
@@ -89,36 +89,36 @@ namespace XGStudios
         }
         
         void InstantiateEnemies(GameObject enemy,int moreEnemy, int enemyPlus) {
-            for (int i = 0; i < moreEnemy+ enemyPlus; ++i)
+            for (int i = 0; i<moreEnemy+ enemyPlus; i++)
             {
                 _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
                 _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-                if (NavMesh.SamplePosition(new Vector3(_xRand, 0, _zRand), out NavMeshHit hit, 100f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out NavMeshHit hit, 100f, NavMesh.AllAreas))
                     enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
             }
-            for (int i = 0; i < moreEnemy +enemyPlus; ++i)
+            for (int i = 0; i <enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
         
         void InstantiateEnemies(GameObject enemy, GameObject enemy2,int moreEnemy, int enemyPlus) {
-            for (int i = 0; i < moreEnemy +enemyPlus; ++i)
+            for (int i = 0; i <moreEnemy +enemyPlus; i++)
             {
                 _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
                 _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-                new Vector3(_xRand, yOffset, _zRand);
+                new Vector3(_xRand, 0, _zRand);
                 NavMeshHit hit;
                 if (RandomBoolean())
                 {
-                    if (NavMesh.SamplePosition(new Vector3(_xRand, 0, _zRand), out hit, 100f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out hit, 100f, NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(new Vector3(_xRand, 0, _zRand), out hit, 100f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out hit, 100f, NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy2, hit.position, Quaternion.identity));
                 }
             }
-            for (int i = 0; i < moreEnemy +enemyPlus; ++i)
+            for (int i = 0; i < enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
 

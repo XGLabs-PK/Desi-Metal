@@ -335,7 +335,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406901802678006206}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 918a84895cd183a4bb56734baaa0182a, type: 2}
   m_CullingMode: 0
@@ -366,7 +366,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8257115377931122941
@@ -381,7 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f82cc757470bb6488418a00e71190ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  killCounterTxt: {fileID: 0}
+  player: {fileID: 0}
   rotationSpeed: 50
   rammingTime: 0
   detectionRadius: 25
@@ -409,8 +410,10 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 512
-  flipPointCheck: []
   groundRadius: 0.45
+  rayCastOffset: {x: 0, y: 5, z: 0}
+  maxRay: 20
+  slopSpeed: 4
 --- !u!1 &4763394006350663097
 GameObject:
   m_ObjectHideFlags: 0

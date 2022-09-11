@@ -182,6 +182,8 @@ namespace XGStudios
         }
         public void TakeDamage(int damageAmount) {
             health -= damageAmount;
+
+            Debug.Log(health);
         }
     }
 }
