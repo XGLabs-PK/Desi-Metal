@@ -43,13 +43,18 @@ namespace XGStudios
         [SerializeField] public int health = 100;
         [SerializeField] GameObject deathParticle;
         public LayerMask isGround;
-        [SerializeField]
-        GameObject[] flipPointCheck;
-        public bool flipped;
         public float groundRadius;
         static int _addScore;
         int _killCounter;
-        
+        [Header("Slope")]
+        [SerializeField]
+        Vector3 rayCastOffset;
+        [SerializeField]
+        float maxRay;
+        [SerializeField]
+        float slopSpeed = 10f;
+        RaycastHit slopeHit;
+
         void Awake()
         {
             _addScore = 0;
@@ -61,22 +66,8 @@ namespace XGStudios
             Carpoints = new GameObject[3];
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(FOV());
-            flipPointCheck = new GameObject[3];
-            flipPointCheck = GameObject.FindGameObjectsWithTag("Flip");
         }
-        
-        public bool IsFlipped()
-        {
-            if (Physics.CheckSphere(flipPointCheck[0].transform.position, groundRadius, isGround))
-            {
-                return true;
-            }
-            if (Physics.CheckSphere(flipPointCheck[1].transform.position, groundRadius, isGround))
-            {
-                return true;
-            }
-            return true;
-        }
+      
         
         void FixedUpdate()
         {
@@ -96,10 +87,18 @@ namespace XGStudios
                 transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
                 transform.LookAt(player);
             }
+            
+        
         }
         
         void Update()
         {
+            if (Physics.Raycast(transform.position + rayCastOffset, Vector3.down, out slopeHit, maxRay, isGround))
+            {
+                Debug.DrawLine(transform.position + rayCastOffset, slopeHit.point, Color.red);
+                Quaternion newRot = Quaternion.FromToRotation(transform.up, slopeHit.normal) * transform.rotation;
+                transform.rotation = Quaternion.Lerp(transform.rotation, newRot,slopSpeed);
+            }
             if (health > 0) return;
             
             _addScore++;

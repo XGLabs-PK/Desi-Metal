@@ -14,8 +14,6 @@ namespace XGStudios
         List<NavmeshAi> _ai;
         [SerializeField]Terrain terrain;
         [SerializeField] float yOffset;
-        [SerializeField] GameObject deathParticle;
-        List<GameObject> _obj;
         float _terrainLength;
         float _terrainWidth;
         float _xTerrainPos;
@@ -44,7 +42,7 @@ namespace XGStudios
                     enemies.Add(Instantiate(rickshawEnemy, hit.position, Quaternion.identity));
                 }
             }
-            for (int i = 0; i < enemies.Count; ++i)
+            for (int i = 0; i < enemyCount; ++i)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
 
