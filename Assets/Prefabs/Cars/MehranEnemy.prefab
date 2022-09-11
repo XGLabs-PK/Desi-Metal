@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f82cc757470bb6488418a00e71190ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  killCounterTxt: {fileID: 0}
+  player: {fileID: 0}
   rotationSpeed: 50
   rammingTime: 0
   detectionRadius: 25
@@ -149,6 +150,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 520
   flipPointCheck: []
+  flipped: 0
   groundRadius: 0.45
 --- !u!1 &2205916446730388813
 GameObject:
