@@ -101,11 +101,13 @@ namespace XGStudios
         void Update()
         {
             if (health > 0) return;
+            
             _addScore++;
             if (killCounterTxt != null)
                 killCounterTxt.text = _addScore.ToString();
-            _killCounter = Convert.ToInt32(killCounterTxt.text);
+            int.TryParse(killCounterTxt.text, out _killCounter);
             PlayerPrefs.SetInt("KillCounter", _killCounter);
+            
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
             Destroy(gameObject, 3f);

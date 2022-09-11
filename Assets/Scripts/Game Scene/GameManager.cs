@@ -32,6 +32,7 @@ namespace XGStudios
         TheCamera _camScript;
         TheWeapon _weaponScript;
         int _killCounter;
+        int _inGameKillCounter;
 
         void Awake()
         {
@@ -78,11 +79,13 @@ namespace XGStudios
             else if (Input.GetKeyDown(KeyCode.F3))
                 Application.Quit();
 
-            if (killCountText != null)
-                killCountText.text = inGameKillCountText.ToString();
-
-            _killCounter = Convert.ToInt32(killCountText.text);
+            int.TryParse(killCountText.text, out _killCounter);
             _killCounter = PlayerPrefs.GetInt("KillCounter");
+            int.TryParse(inGameKillCountText.text, out _inGameKillCounter);
+            
+            if (killCountText != null)
+                killCountText.text = _inGameKillCounter.ToString();
+
         }
 
         void PauseGame()
