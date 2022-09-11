@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -7,6 +8,8 @@ namespace XGStudios
 {
     public class NavmeshAi : MonoBehaviour
     {
+        [SerializeField]
+        TextMeshProUGUI killCounterTxt;
         NavMeshAgent _agent;
         [HideInInspector]
         public Transform player;
@@ -42,9 +45,11 @@ namespace XGStudios
         GameObject[] flipPointCheck;
         public bool flipped;
         public float groundRadius;
+        static int _addScore;
         
         void Awake()
         {
+            _addScore = 0;
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
             _isCircling = true;
@@ -92,13 +97,14 @@ namespace XGStudios
         
         void Update()
         {
-            if (health <= 0)
-            {
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-                Destroy(gameObject, 3f);
-                FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
-            }
+            if (health > 0) return;
+            _addScore++;
+            if (killCounterTxt != null)
+                killCounterTxt.text = _addScore.ToString();
+            Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+            gameObject.SetActive(false);
+            Destroy(gameObject, 3f);
+            FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
         
         IEnumerator Ramming() {
