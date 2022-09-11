@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace XGStudios
 {
@@ -46,6 +48,7 @@ namespace XGStudios
         public bool flipped;
         public float groundRadius;
         static int _addScore;
+        int _killCounter;
         
         void Awake()
         {
@@ -101,6 +104,8 @@ namespace XGStudios
             _addScore++;
             if (killCounterTxt != null)
                 killCounterTxt.text = _addScore.ToString();
+            _killCounter = Convert.ToInt32(killCounterTxt.text);
+            PlayerPrefs.SetInt("KillCounter", _killCounter);
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
             Destroy(gameObject, 3f);

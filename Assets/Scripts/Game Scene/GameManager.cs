@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +20,8 @@ namespace XGStudios
 
         [Space(5f)]
         [Header("Death Mode")]
+        public TextMeshProUGUI inGameKillCountText;
+        public TextMeshProUGUI killCountText;
         public Animator deathAnim;
 
         [HideInInspector]
@@ -27,6 +31,7 @@ namespace XGStudios
 
         TheCamera _camScript;
         TheWeapon _weaponScript;
+        int _killCounter;
 
         void Awake()
         {
@@ -50,6 +55,9 @@ namespace XGStudios
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.I))
+                TheHealth.Instance.TakeDamage(50);
+            
             if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused && !carDestroyed)
                 PauseGame();
             else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused && !carDestroyed)
@@ -69,6 +77,12 @@ namespace XGStudios
             }
             else if (Input.GetKeyDown(KeyCode.F3))
                 Application.Quit();
+
+            if (killCountText != null)
+                killCountText.text = inGameKillCountText.ToString();
+
+            _killCounter = Convert.ToInt32(killCountText.text);
+            _killCounter = PlayerPrefs.GetInt("KillCounter");
         }
 
         void PauseGame()
