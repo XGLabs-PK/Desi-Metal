@@ -133,7 +133,7 @@ namespace XGStudios
             {
                 findPoint();
             }
-            else
+            
                 return point;
 
         }
