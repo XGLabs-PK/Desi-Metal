@@ -139,7 +139,7 @@ MonoBehaviour:
   shootPoint: {fileID: 6928697891062643033}
   Carpoints: []
   health: 100
-  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
+  deathParticle: {fileID: 9080665737154347074, guid: 1d1d546e3f7b1fa46821f843d14deaf0,
     type: 3}
   isGround:
     serializedVersion: 2

@@ -104,7 +104,7 @@ namespace XGStudios
             PlayerPrefs.SetInt("KillCounter", _killCounter);
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, 5f);
             FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
         
