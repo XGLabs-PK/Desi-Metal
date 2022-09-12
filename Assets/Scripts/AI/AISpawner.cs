@@ -12,6 +12,7 @@ namespace XGStudios
         public List<GameObject> enemies;
         public float yOffset;
         public int enemyCount = 2;
+        GameObject target;
         List<NavmeshAi> _ai;
         [SerializeField]Terrain terrain;
         float _terrainLength;
@@ -31,14 +32,14 @@ namespace XGStudios
         }
         void Start()
         {
+            _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
+            target = GameObject.FindGameObjectWithTag("Car");
 
             for (int i = 0; i <enemyCount; i++)
             {
-                _xRand = Random.Range(_xTerrainPos,_xTerrainPos+_terrainWidth);
-                _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-                if (NavMesh.SamplePosition(new Vector3(_xRand,0,_zRand),out NavMeshHit hit, 100f, NavMesh.AllAreas)){
+                if (NavMesh.SamplePosition(findPoint(),out NavMeshHit hit, 300f, NavMesh.AllAreas)){
                     enemies.Add(Instantiate(rickshawEnemy, hit.position, Quaternion.identity));
                 }
             }
@@ -48,8 +49,6 @@ namespace XGStudios
 
         void Update()
         {
-            if (_wave > 5)
-                _wave = 0;
             
             if (enemies.Count != 0)
             {
@@ -63,7 +62,7 @@ namespace XGStudios
             }
 
             if (enemies.Count != 0) return;
-            _wave++;
+            
             Debug.Log("Enemies empty");
             Debug.Log(_wave);
             enemies.Clear();
@@ -71,18 +70,23 @@ namespace XGStudios
             switch (_wave) {
                 case 1:
                     InstantiateEnemies(mehranEnemy, rickshawEnemy,2,0);
+                    _wave++;
                     break;
                 case 2:
                     InstantiateEnemies(rickshawEnemy,2, 5);
+                    _wave++;
                     break;
                 case 3:
                     InstantiateEnemies(mehranEnemy, 3,2);
+                    _wave++;
                     break;
                 case 4:
                     InstantiateEnemies(mehranEnemy, rickshawEnemy, 5,2);
+                    _wave++;
                     break;
                 case 5:
                     InstantiateEnemies(truckEnemy,0,1);
+                    _wave = 1;
                     break;
             }
 
@@ -91,9 +95,7 @@ namespace XGStudios
         void InstantiateEnemies(GameObject enemy,int moreEnemy, int enemyPlus) {
             for (int i = 0; i<moreEnemy+ enemyPlus; i++)
             {
-                _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
-                _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-                if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out NavMeshHit hit, 100f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
                     enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
             }
             for (int i = 0; i <enemies.Count; i++)
@@ -103,18 +105,15 @@ namespace XGStudios
         void InstantiateEnemies(GameObject enemy, GameObject enemy2,int moreEnemy, int enemyPlus) {
             for (int i = 0; i <moreEnemy +enemyPlus; i++)
             {
-                _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
-                _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-                new Vector3(_xRand, 0, _zRand);
                 NavMeshHit hit;
                 if (RandomBoolean())
                 {
-                    if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out hit, 100f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(new Vector3(_xRand, yOffset, _zRand), out hit, 100f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy2, hit.position, Quaternion.identity));
                 }
             }
@@ -125,6 +124,18 @@ namespace XGStudios
         static bool RandomBoolean()
         {
             return Random.value > 0.5;
+        }
+        Vector3 findPoint() {
+            _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
+            _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
+            Vector3 point = new Vector3(_xRand, yOffset, _zRand);
+            if (Vector3.Distance(target.transform.position, point) > 200)
+            {
+                findPoint();
+            }
+            else
+                return point;
+
         }
     }
    
