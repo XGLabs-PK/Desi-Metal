@@ -55,7 +55,7 @@ namespace XGStudios
 
         void Awake()
         {
-            killCounterTxt = GameObject.Find("KillCount").GetComponent<TextMeshProUGUI>();
+            killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
             _isCircling = true;

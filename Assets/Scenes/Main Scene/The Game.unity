@@ -1249,7 +1249,7 @@ GameObject:
   - component: {fileID: 115874027}
   - component: {fileID: 115874026}
   m_Layer: 5
-  m_Name: EnemiesLeftText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 120392750}
   - component: {fileID: 120392749}
   m_Layer: 5
-  m_Name: Counter
+  m_Name: EnemiesCounter
   m_TagString: KillCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3873,7 +3873,7 @@ GameObject:
   - component: {fileID: 328738762}
   - component: {fileID: 328738761}
   m_Layer: 5
-  m_Name: KillCountTxt
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25011,7 +25011,7 @@ GameObject:
   - component: {fileID: 2088114819}
   - component: {fileID: 2088114818}
   m_Layer: 5
-  m_Name: Counter
+  m_Name: KillCounter
   m_TagString: KillCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
