@@ -60,7 +60,7 @@ namespace XGStudios
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.I))
-                TheHealth.Instance.TakeDamage(50);
+                TheHealth.Instance.TakeDamage(15);
             
             if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused && !carDestroyed)
                 PauseGame();

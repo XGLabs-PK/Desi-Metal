@@ -10,7 +10,8 @@ namespace XGStudios
     public class TheHealth : MonoBehaviour
     {
         public static TheHealth Instance;
-        public GameObject deathParticles;
+        public GameObject smokeEffect;
+        public GameObject fireSmoke;
         public ScriptableRendererFeature blitRender;
 
         public int health = 100;
@@ -34,7 +35,9 @@ namespace XGStudios
 
         void Update()
         {
-            BlitEffect(_maxHealth <= 25f);
+            SmokeEffect(_maxHealth <= 25f);
+            BlitEffect(_maxHealth <= 20f);
+            FireEffect(_maxHealth <= 15f);
             
             StartCoroutine(RepairCar());
             
@@ -45,8 +48,8 @@ namespace XGStudios
         IEnumerator RepairCar()
         {
             if (!(_maxHealth < health))yield break;
-            yield return new WaitForSeconds(5f);
-            _maxHealth += 0.75f * Time.deltaTime;
+            yield return new WaitForSeconds(10f);
+            _maxHealth += 0.25f * Time.deltaTime;
             UpdateHealthBar(_maxHealth);
         }
 
@@ -72,6 +75,16 @@ namespace XGStudios
         void BlitEffect(bool boolean)
         {
             blitRender.SetActive(boolean);
+        }
+
+        void SmokeEffect(bool boolean)
+        {
+            smokeEffect.SetActive(boolean);
+        }
+
+        void FireEffect(bool boolean)
+        {
+            fireSmoke.SetActive(boolean);
         }
     }
 }

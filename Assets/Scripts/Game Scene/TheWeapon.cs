@@ -44,12 +44,12 @@ namespace XGStudios
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
                 return;
             
-            if (hit.transform.CompareTag("Ground"))
-                Instantiate(desertImpactEffect, hit.point, Quaternion.identity);
-            
+            if (hit.transform.CompareTag("Ground") || hit.transform.CompareTag("obstruction"))
+                Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
+
             if (hit.transform.CompareTag("Car")) return;
             if (!hit.transform.CompareTag("AI")) return;
-            Instantiate(carImpactEffect, hit.point, Quaternion.identity);
+            Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
             FeelManager.Instance.enemyDamage.PlayFeedbacks();
             hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
             //Sound
