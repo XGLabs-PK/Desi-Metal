@@ -9,7 +9,7 @@ namespace XG.Studios
     {
         public int id;
         readonly int _maxScores = 7;
-        static PlayerLogin _instance;
+        static PlayerLogin _instance = null;
         public TextMeshProUGUI[] names;
         public TextMeshProUGUI[] entries;
 
