@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using TMPro;
 
 namespace XGStudios
 {
@@ -15,20 +15,12 @@ namespace XGStudios
         public GameObject target;
         List<NavmeshAi> _ai;
         [SerializeField]Terrain terrain;
-        float _terrainLength;
-        float _terrainWidth;
-        float _xTerrainPos;
-        float _zTerrainPos;
-        float _xRand;
-        float _zRand;
+        TextMeshProUGUI enemiesLeft;
         int _wave;
           
         void Awake()
         {
-            _terrainWidth = terrain.terrainData.size.x;
-            _terrainLength = terrain.terrainData.size.z;
-            _xTerrainPos = terrain.transform.position.x;
-            _zTerrainPos = terrain.transform.position.z;
+            enemiesLeft = GameObject.FindGameObjectWithTag("LeftCounter").GetComponent<TextMeshProUGUI>();
         }
         void Start()
         {
@@ -39,7 +31,7 @@ namespace XGStudios
 
             for (int i = 0; i <enemyCount; i++)
             {
-                if (NavMesh.SamplePosition(findPoint(),out NavMeshHit hit, 300f, NavMesh.AllAreas)){
+                if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(),out UnityEngine.AI.NavMeshHit hit, 300f, UnityEngine.AI.NavMesh.AllAreas)){
                     enemies.Add(Instantiate(rickshawEnemy, hit.position, Quaternion.identity));
                 }
             }
@@ -49,6 +41,9 @@ namespace XGStudios
 
         void Update()
         {
+            if (enemiesLeft != null) {
+                enemiesLeft.text = enemies.Count.ToString();
+            }
             
             if (enemies.Count != 0)
             {
@@ -95,7 +90,7 @@ namespace XGStudios
         void InstantiateEnemies(GameObject enemy,int moreEnemy, int enemyPlus) {
             for (int i = 0; i<moreEnemy+ enemyPlus; i++)
             {
-                if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
+                if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out UnityEngine.AI.NavMeshHit hit, 300f, UnityEngine.AI.NavMesh.AllAreas))
                     enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
             }
             for (int i = 0; i <enemies.Count; i++)
@@ -105,15 +100,15 @@ namespace XGStudios
         void InstantiateEnemies(GameObject enemy, GameObject enemy2,int moreEnemy, int enemyPlus) {
             for (int i = 0; i <moreEnemy +enemyPlus; i++)
             {
-                NavMeshHit hit;
+                UnityEngine.AI.NavMeshHit hit;
                 if (RandomBoolean())
                 {
-                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                    if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hit, 300f, UnityEngine.AI.NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                    if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hit, 300f, UnityEngine.AI.NavMesh.AllAreas))
                         enemies.Add(Instantiate(enemy2, hit.position, Quaternion.identity));
                 }
             }
@@ -126,8 +121,6 @@ namespace XGStudios
             return Random.value > 0.5;
         }
         Vector3 findPoint() {
-            _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
-            _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
             Vector3 point = new Vector3(target.transform.position.x + Random.Range(100,300), yOffset,target.transform.position.z +Random.Range(100,300));
                 return point;
 
