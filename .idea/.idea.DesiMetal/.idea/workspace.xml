@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a94a22b-4252-4643-806b-1477fca72a1a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DesiMetal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Tire.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Tire.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/MehranEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/MehranEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RickshawEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RickshawEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/TruckEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/TruckEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mazaar.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mazaar.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game/NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +143,7 @@
       <workItem from="1662739493283" duration="1745000" />
       <workItem from="1662845837863" duration="3720000" />
       <workItem from="1662915253460" duration="9124000" />
+      <workItem from="1662971690620" duration="1696000" />
     </task>
     <servers />
   </component>

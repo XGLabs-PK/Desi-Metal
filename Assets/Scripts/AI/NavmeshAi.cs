@@ -10,7 +10,6 @@ namespace XGStudios
 {
     public class NavmeshAi : MonoBehaviour
     {
-        [SerializeField]
         TextMeshProUGUI killCounterTxt;
         NavMeshAgent _agent;
         [HideInInspector]
@@ -57,6 +56,7 @@ namespace XGStudios
 
         void Awake()
         {
+            killCounterTxt = GameObject.Find("KillCount").GetComponent<TextMeshProUGUI>();
             _addScore = 0;
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
@@ -182,8 +182,6 @@ namespace XGStudios
         }
         public void TakeDamage(int damageAmount) {
             health -= damageAmount;
-
-            Debug.Log(health);
         }
     }
 }
