@@ -100,7 +100,6 @@ namespace XGStudios
             GameManager._score++;
             if (killCounterTxt != null) 
                 killCounterTxt.text = GameManager._score.ToString();
-            Debug.Log(GameManager._score);
             int.TryParse(killCounterTxt.text, out _killCounter);
             PlayerPrefs.SetInt("KillCounter", _killCounter);
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
