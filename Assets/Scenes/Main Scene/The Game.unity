@@ -19731,7 +19731,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 238d874ce7655e546a2e491caedb6144,
         type: 3}
       propertyPath: m_Name
-      value: Clock Tower
+      value: --- CLOCK TOWER
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 238d874ce7655e546a2e491caedb6144,
         type: 3}
@@ -20743,7 +20743,7 @@ PrefabInstance:
     - target: {fileID: 1268092737025031026, guid: 8e3de270b9f265844a0ec8a2dc57a357,
         type: 3}
       propertyPath: m_Name
-      value: Monument
+      value: --- MONUMENT
       objectReference: {fileID: 0}
     - target: {fileID: 1932883222108135880, guid: 8e3de270b9f265844a0ec8a2dc57a357,
         type: 3}
@@ -25167,7 +25167,7 @@ PrefabInstance:
     - target: {fileID: 7391264812298985543, guid: e8ec0eab62414ed4d89ea573a3fb45a1,
         type: 3}
       propertyPath: m_Name
-      value: Mazar E Quaid
+      value: --- MAZAR E QUAID
       objectReference: {fileID: 0}
     - target: {fileID: 7915318801164188413, guid: e8ec0eab62414ed4d89ea573a3fb45a1,
         type: 3}
