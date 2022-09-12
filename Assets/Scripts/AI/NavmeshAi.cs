@@ -18,7 +18,6 @@ namespace XGStudios
         bool _isCircling;
         [SerializeField] float rammingTime;
         float  _distanceBetweenPlayer;
-        
         [Space(5f)]
         [Header("Field of view")]
         [SerializeField]
@@ -57,7 +56,6 @@ namespace XGStudios
         void Awake()
         {
             killCounterTxt = GameObject.Find("KillCount").GetComponent<TextMeshProUGUI>();
-            _addScore = 0;
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
             _isCircling = true;
@@ -67,7 +65,6 @@ namespace XGStudios
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(FOV());
         }
-      
         
         void FixedUpdate()
         {
@@ -76,7 +73,7 @@ namespace XGStudios
                 StartCoroutine(Shoot());
             }
             _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, player.position);
-            rammingTime = rammingTime - Time.deltaTime;
+            rammingTime -= Time.deltaTime;
             if (rammingTime <= 0) {
                 StartCoroutine(Ramming());
             }
@@ -87,8 +84,6 @@ namespace XGStudios
                 transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
                 transform.LookAt(player);
             }
-            
-        
         }
         
         void Update()
@@ -99,14 +94,15 @@ namespace XGStudios
                 Quaternion newRot = Quaternion.FromToRotation(transform.up, slopeHit.normal) * transform.rotation;
                 transform.rotation = Quaternion.Lerp(transform.rotation, newRot,slopSpeed);
             }
-            if (health > 0) return;
             
-            _addScore++;
-            if (killCounterTxt != null)
-                killCounterTxt.text = _addScore.ToString();
+            
+            if (health > 0) return;
+            GameManager._score++;
+            if (killCounterTxt != null) 
+                killCounterTxt.text = GameManager._score.ToString();
+            Debug.Log(GameManager._score);
             int.TryParse(killCounterTxt.text, out _killCounter);
             PlayerPrefs.SetInt("KillCounter", _killCounter);
-            
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
             Destroy(gameObject, 3f);

@@ -34,6 +34,8 @@ namespace XGStudios
         int _killCounter;
         int _inGameKillCounter;
 
+        public static int _score;
+
         void Awake()
         {
             if (Instance == null)
@@ -44,6 +46,7 @@ namespace XGStudios
 
         void Start()
         {
+            _score = 0;
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
 

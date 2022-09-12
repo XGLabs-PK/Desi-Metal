@@ -21,7 +21,9 @@ namespace XG.Studios
                 DontDestroyOnLoad(gameObject);
             }
             else
+            {
                 Destroy(gameObject);
+            }
         }
 
         void Start()
