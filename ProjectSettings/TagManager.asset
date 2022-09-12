@@ -15,6 +15,7 @@ TagManager:
   - Flip
   - Ground
   - KillCounter
+  - LeftCounter
   layers:
   - Default
   - TransparentFX
