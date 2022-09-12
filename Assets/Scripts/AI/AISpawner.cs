@@ -128,7 +128,7 @@ namespace XGStudios
         Vector3 findPoint() {
             _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
             _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-            Vector3 point = new Vector3(target.transform.position.x + Random.Range(100,200), yOffset,target.transform.position.z +Random.Range(100,200));
+            Vector3 point = new Vector3(target.transform.position.x + Random.Range(100,300), yOffset,target.transform.position.z +Random.Range(100,300));
                 return point;
 
         }
