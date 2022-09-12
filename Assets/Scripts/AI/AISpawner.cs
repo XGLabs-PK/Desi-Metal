@@ -12,7 +12,7 @@ namespace XGStudios
         public List<GameObject> enemies;
         public float yOffset;
         public int enemyCount = 2;
-        GameObject target;
+        public GameObject target;
         List<NavmeshAi> _ai;
         [SerializeField]Terrain terrain;
         float _terrainLength;
@@ -129,6 +129,7 @@ namespace XGStudios
             _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
             _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
             Vector3 point = new Vector3(_xRand, yOffset, _zRand);
+           
             if (Vector3.Distance(target.transform.position, point) > 120)
             {
                 findPoint();
