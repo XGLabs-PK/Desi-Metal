@@ -128,13 +128,7 @@ namespace XGStudios
         Vector3 findPoint() {
             _xRand = Random.Range(_xTerrainPos, _xTerrainPos + _terrainWidth);
             _zRand = Random.Range(_zTerrainPos, _zTerrainPos + _terrainLength);
-            Vector3 point = new Vector3(_xRand, yOffset, _zRand);
-           
-            if (Vector3.Distance(target.transform.position, point) > 120)
-            {
-                findPoint();
-            }
-            
+            Vector3 point = new Vector3(target.transform.position.x + 200, yOffset,target.transform.position.z + 200);
                 return point;
 
         }
