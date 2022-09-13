@@ -6,7 +6,6 @@ namespace XGStudios
     public class TheBullet : MonoBehaviour
     {
         public float speed = 800.0f;
-
         void Start()
         {
             Destroy(transform.gameObject, 4.0f);

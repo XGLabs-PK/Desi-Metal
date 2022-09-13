@@ -52,9 +52,11 @@ namespace XGStudios
         [SerializeField]
         float slopSpeed = 10f;
         RaycastHit slopeHit;
+        AudioSource carDestructionSound;
 
         void Awake()
         {
+            carDestructionSound = GameObject.Find("Car Destruction").GetComponent<AudioSource>();
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
@@ -105,6 +107,7 @@ namespace XGStudios
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
             Destroy(gameObject, 5f);
+            carDestructionSound.Play();
             FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
         

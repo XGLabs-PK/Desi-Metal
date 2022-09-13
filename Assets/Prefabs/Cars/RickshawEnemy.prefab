@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   health: 100
-  deathParticle: {fileID: 9080665737154347074, guid: 1d1d546e3f7b1fa46821f843d14deaf0,
+  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
     type: 3}
   isGround:
     serializedVersion: 2

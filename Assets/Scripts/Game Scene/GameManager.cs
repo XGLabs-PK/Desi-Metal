@@ -17,6 +17,10 @@ namespace XGStudios
         [Header("Pause Mode")]
         public GameObject pauseUI;
         public Animator pauseAnimator;
+        
+        [Header("Audio Sources")]
+        public AudioSource carEngine;
+        public AudioSource carDestructionSound;
 
         [Space(5f)]
         [Header("Death Mode")]
@@ -96,6 +100,7 @@ namespace XGStudios
             gamePaused = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            carEngine.Pause();
 
             if (pauseAnimator != null)
                 pauseAnimator.SetTrigger(IsPaused);
@@ -110,6 +115,7 @@ namespace XGStudios
             gamePaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            carEngine.Play();
 
             if (pauseAnimator != null)
                 pauseAnimator.SetTrigger(IsResumed);
@@ -129,6 +135,7 @@ namespace XGStudios
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
+            carDestructionSound.Play();
         }
     }
 }

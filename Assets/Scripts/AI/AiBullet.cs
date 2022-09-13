@@ -7,14 +7,15 @@ namespace XGStudios
     {
         [SerializeField]
         public float bulletSpeed = 0.2f;
-        public Transform tar;
         [FormerlySerializedAs("EnemyShootPoint")]
         [SerializeField]
         Transform enemyShootPoint;
+        AudioSource _hitImpactOnCarSound;
 
         void Start()
         {
             Destroy(gameObject, 1.5f);
+            _hitImpactOnCarSound = GameObject.Find("HitImpactOnCar").GetComponent<AudioSource>();
         }
 
         void Update()
@@ -26,8 +27,12 @@ namespace XGStudios
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("AI")) return;
+
             if (other.gameObject.CompareTag("Car"))
+            {
                 TheHealth.Instance.TakeDamage(2);
+                _hitImpactOnCarSound.Play();
+            }
             
             Destroy(transform.gameObject);
         }

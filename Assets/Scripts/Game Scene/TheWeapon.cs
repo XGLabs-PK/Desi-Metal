@@ -10,6 +10,9 @@ namespace XGStudios
         public Transform firePoint;
         public GameObject desertImpactEffect;
         public GameObject carImpactEffect;
+        public AudioSource hitImpactOnCarSound;
+        public AudioSource hitImpactOnGroundSound;
+        public AudioSource hitImpactOnObstructionSound;
         
         [Space]
         
@@ -46,9 +49,16 @@ namespace XGStudios
             
             if (hit.transform.CompareTag("Ground") || hit.transform.CompareTag("obstruction"))
                 Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
+            
+            if (hit.transform.CompareTag("Ground"))
+                hitImpactOnGroundSound.Play();
+            
+            if (hit.transform.CompareTag("obstruction"))
+                hitImpactOnObstructionSound.Play();
 
             if (hit.transform.CompareTag("Car")) return;
             if (!hit.transform.CompareTag("AI")) return;
+            hitImpactOnCarSound.Play();
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
             FeelManager.Instance.enemyDamage.PlayFeedbacks();
             hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
