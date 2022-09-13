@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using XG.Studios;
 using Random = UnityEngine.Random;
 
 namespace XGStudios
@@ -52,11 +53,9 @@ namespace XGStudios
         [SerializeField]
         float slopSpeed = 10f;
         RaycastHit slopeHit;
-        AudioSource carDestructionSound;
 
         void Awake()
         {
-            carDestructionSound = GameObject.Find("Car Destruction").GetComponent<AudioSource>();
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("Car").transform;
@@ -107,7 +106,7 @@ namespace XGStudios
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
             Destroy(gameObject, 5f);
-            carDestructionSound.Play();
+            AudioManager.Instance.Play("CarDestruction");
             FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
         

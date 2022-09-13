@@ -1,4 +1,5 @@
 using UnityEngine;
+using XG.Studios;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios
@@ -10,14 +11,10 @@ namespace XGStudios
         public Transform firePoint;
         public GameObject desertImpactEffect;
         public GameObject carImpactEffect;
-        public AudioSource hitImpactOnCarSound;
-        public AudioSource hitImpactOnGroundSound;
-        public AudioSource hitImpactOnObstructionSound;
         
         [Space]
         
         public float delay = 0.1f;
-        public AudioSource weaponAudio;
         
         Camera _cam;
         float _timer;
@@ -41,7 +38,7 @@ namespace XGStudios
         {
             Transform firingTransform = firePoint.transform;
             Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
-            weaponAudio.Play();
+            AudioManager.Instance.Play("WeaponFiring");
             _timer = delay;
             
             if (!Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, 3000))
@@ -51,14 +48,14 @@ namespace XGStudios
                 Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
             
             if (hit.transform.CompareTag("Ground"))
-                hitImpactOnGroundSound.Play();
+                AudioManager.Instance.Play("GroundHitImpact");
             
             if (hit.transform.CompareTag("obstruction"))
-                hitImpactOnObstructionSound.Play();
+                AudioManager.Instance.Play("ObsHitImpact");
 
             if (hit.transform.CompareTag("Car")) return;
             if (!hit.transform.CompareTag("AI")) return;
-            hitImpactOnCarSound.Play();
+            AudioManager.Instance.Play("CarHitImpact");
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
             FeelManager.Instance.enemyDamage.PlayFeedbacks();
             hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);

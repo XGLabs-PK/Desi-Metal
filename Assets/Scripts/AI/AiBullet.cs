@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using XG.Studios;
 
 namespace XGStudios
 {
@@ -10,12 +11,10 @@ namespace XGStudios
         [FormerlySerializedAs("EnemyShootPoint")]
         [SerializeField]
         Transform enemyShootPoint;
-        AudioSource _hitImpactOnCarSound;
 
         void Start()
         {
             Destroy(gameObject, 1.5f);
-            _hitImpactOnCarSound = GameObject.Find("HitImpactOnCar").GetComponent<AudioSource>();
         }
 
         void Update()
@@ -31,7 +30,7 @@ namespace XGStudios
             if (other.gameObject.CompareTag("Car"))
             {
                 TheHealth.Instance.TakeDamage(2);
-                _hitImpactOnCarSound.Play();
+                AudioManager.Instance.Play("CarHitImpact");
             }
             
             Destroy(transform.gameObject);

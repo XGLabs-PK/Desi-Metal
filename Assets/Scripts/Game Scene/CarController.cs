@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using XG.Studios;
 using Random = UnityEngine.Random;
 
 namespace XGStudios
@@ -13,8 +14,6 @@ namespace XGStudios
     public class CarController : MonoBehaviour
     {
         [Header("Lights & Effects")]
-        [SerializeField]
-        AudioSource laserBeamSound;
         [SerializeField]
         LayerMask groundLayer;
         [SerializeField]
@@ -138,11 +137,9 @@ namespace XGStudios
 
         float _airMultiplier;
         bool _airMultiplierFilled;
-        AudioSource _carEngineSound;
 
         void Awake()
         {
-            _carEngineSound = GetComponent<AudioSource>();
             BlitEffect(false);
             airMultiplierPopup.SetActive(false);
             smokeEffect.SetActive(false);
@@ -210,11 +207,6 @@ namespace XGStudios
                 Wheels[i].UpdateVisual();
 
             smokeEffect.SetActive(_rb.velocity.magnitude > 5 && IsGrounded());
-            
-            if (_rb.velocity.magnitude > 5)
-                _carEngineSound.volume = Mathf.Lerp(_carEngineSound.volume, 0.1f, 1f * Time.deltaTime);
-            else if (_rb.velocity.magnitude < 5)
-                _carEngineSound.volume = Mathf.Lerp(_carEngineSound.volume, 0f, 1f * Time.deltaTime);
         }
 
         void FixedUpdate()
@@ -239,7 +231,6 @@ namespace XGStudios
                     RearRightWheel.WheelCollider.brakeTorque = MaxBrakeTorque;
                     FrontLeftWheel.WheelCollider.brakeTorque = 0;
                     FrontRightWheel.WheelCollider.brakeTorque = 0;
-                    _carEngineSound.volume = Mathf.Lerp(_carEngineSound.volume, 0f, 0.75f * Time.deltaTime);
                     _backLights = true;
                     break;
                 case false:
@@ -586,7 +577,7 @@ namespace XGStudios
             _airMultiplier = 0;
             
             //Ability code here
-            laserBeamSound.Play();
+            AudioManager.Instance.Play("LaserBeam");
         }
 
         void ShowPopup()

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +9,9 @@ namespace XGStudios
 {
     public class SettingsMenu : MonoBehaviour
     {
+        public Button controlsBtn;
+        public CanvasGroup controlsCanvas;
+        public RectTransform controlsRect;
         const string ResName = "resolutionOption";
         public TMP_Dropdown resolutionDropdown;
         public Toggle fullScreenToggle;
@@ -54,6 +59,33 @@ namespace XGStudios
             resolutionDropdown.AddOptions(options);
             resolutionDropdown.value = PlayerPrefs.GetInt(ResName, currResIndex);
             resolutionDropdown.RefreshShownValue();
+            
+            //Control Btn
+            if (controlsBtn != null)
+                controlsBtn.onClick.AddListener(() =>
+                {
+                    controlsCanvas.alpha = 0;
+                    controlsCanvas.interactable = true;
+                    controlsCanvas.blocksRaycasts = true;
+                    controlsRect.transform.localPosition = new Vector3(0, -1000f, 0);
+                    controlsRect.DOAnchorPos(new Vector2(0, 0), 0.2f).SetEase(Ease.OutExpo);
+                    controlsCanvas.DOFade(1, 0.2f);
+                });
+        }
+
+        void Update()
+        {
+            if (!Input.GetKeyDown(KeyCode.Escape)) return;
+
+            if (controlsCanvas.alpha != 0)
+            {
+                controlsCanvas.alpha = 1;
+                controlsCanvas.interactable = false;
+                controlsCanvas.blocksRaycasts = false;
+                controlsRect.transform.localPosition = new Vector3(0, 0, 0);
+                controlsRect.DOAnchorPos(new Vector2(0, -1000f), 0.2f).SetEase(Ease.OutExpo);
+                controlsCanvas.DOFade(0, 0.2f);
+            }
         }
 
         public void SetFullScreen(bool isFullScreen)
