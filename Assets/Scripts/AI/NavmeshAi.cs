@@ -53,6 +53,7 @@ namespace XGStudios
         float slopSpeed = 10f;
         RaycastHit slopeHit;
         float yOffset = 23.7f;
+        [SerializeField] float stopDist = 0;
 
         void Awake()
         {
@@ -124,7 +125,7 @@ namespace XGStudios
             //else {
             //    _agent.acceleration = acce;
             //}
-            _agent.stoppingDistance = 5;
+            _agent.stoppingDistance = stopDist;
             Vector3 position = player.position;
             _agent.SetDestination(position);
             yield return new WaitUntil(()=> _distanceBetweenPlayer<=8);

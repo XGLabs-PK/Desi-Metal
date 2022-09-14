@@ -29,6 +29,7 @@ namespace XGStudios
             _ai = new List<NavmeshAi>();
             target = GameObject.FindGameObjectWithTag("RealCar");
 
+            StartCoroutine(Delay());
             for (int i = 0; i <enemyCount; i++)
             {
                 if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(),out UnityEngine.AI.NavMeshHit hit, 300f, UnityEngine.AI.NavMesh.AllAreas)){
@@ -125,6 +126,10 @@ namespace XGStudios
                 return point;
 
         }
+    }
+    IEnumerator Delay() {
+        yield return new WaitForSeconds(5);
+    
     }
    
 }
