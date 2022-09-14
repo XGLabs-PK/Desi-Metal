@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -126,10 +127,12 @@ namespace XGStudios
                 return point;
 
         }
+        IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(5);
+
+        }
     }
-    IEnumerator Delay() {
-        yield return new WaitForSeconds(5);
     
-    }
    
 }
