@@ -9,7 +9,7 @@ namespace XG.Studios
         public TMP_InputField memberID;
         public TextMeshProUGUI playerScore;
         public TextMeshProUGUI scoreSubmitted;
-        public int id = 6979;
+        public int id;
         int _playerScore;
 
         void Start()

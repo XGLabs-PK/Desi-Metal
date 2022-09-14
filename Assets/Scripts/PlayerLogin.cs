@@ -16,9 +16,14 @@ namespace XG.Studios
         void Awake()
         {
             if (_instance == null)
+            {
                 _instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
+            {
                 Destroy(gameObject);
+            }
         }
 
         void Start()
@@ -30,6 +35,7 @@ namespace XG.Studios
                     Debug.Log("error starting LootLocker session");
                     return;
                 }
+
                 Debug.Log("successfully started LootLocker session");
             });
         }

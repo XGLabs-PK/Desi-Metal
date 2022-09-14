@@ -2,23 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Media/desi-metal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/desi-metal.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Settings/Low.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Settings/Low.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Settings/Normal.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Settings/Normal.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Timeline.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/MainMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/MainMixer.mixer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Scene Transition.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Scene Transition.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Splash.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Media/Splash.mp4.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Lighting.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/Lighting.lighting" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerLogin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/High.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/High.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Low Quality.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Low Quality.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Normal Quality.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Normal Quality.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,10 +110,6 @@
       <workItem from="1663014385084" duration="2903000" />
       <workItem from="1663030862623" duration="9657000" />
       <workItem from="1663133591520" duration="631000" />
-      <workItem from="1663164291058" duration="273000" />
-      <workItem from="1663164752582" duration="1130000" />
-      <workItem from="1663166889534" duration="13000" />
-      <workItem from="1663167000066" duration="449000" />
     </task>
     <servers />
   </component>
