@@ -240,8 +240,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 2.56, z: 4.5}
-  m_Center: {x: -0.02, y: 0.76, z: 0.5}
+  m_Size: {x: 2.2, y: 1.8, z: 4.5}
+  m_Center: {x: -0.02, y: 0.2, z: 0.5}
 --- !u!95 &2416410221218565500
 Animator:
   serializedVersion: 4
@@ -328,7 +328,6 @@ MonoBehaviour:
   rayCastOffset: {x: 0, y: 5, z: 0}
   maxRay: 20
   slopSpeed: 4
-  stopDist: 0
 --- !u!1 &2139558733623984026
 GameObject:
   m_ObjectHideFlags: 0
