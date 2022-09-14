@@ -112,10 +112,8 @@ namespace XGStudios
             gamePaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
             if (pauseAnimator != null)
                 pauseAnimator.SetTrigger(IsResumed);
-
             Time.timeScale = 1f;
             _camScript.enabled = true;
             _weaponScript.enabled = true;
@@ -125,13 +123,11 @@ namespace XGStudios
         {
             if (deathAnim != null)
                 deathAnim.SetTrigger(DeathStart);
-
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
-            AudioManager.Instance.Play("CarDestruction");
         }
     }
 }
