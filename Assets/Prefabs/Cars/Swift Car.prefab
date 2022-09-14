@@ -90,7 +90,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 5000
+  far clip plane: 500
   field of view: 70
   orthographic: 0
   orthographic size: 10
@@ -25451,7 +25451,7 @@ GameObject:
   - component: {fileID: 484779826}
   m_Layer: 8
   m_Name: Swift
-  m_TagString: Car
+  m_TagString: RealCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50849,7 +50849,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 5000
+  far clip plane: 1000
   field of view: 70
   orthographic: 0
   orthographic size: 10
