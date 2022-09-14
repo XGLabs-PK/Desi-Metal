@@ -135,7 +135,6 @@ MonoBehaviour:
   rayCastOffset: {x: 0, y: 5, z: 0}
   maxRay: 20
   slopSpeed: 4
-  stopDist: 4.7
 --- !u!1 &725348139487181479
 GameObject:
   m_ObjectHideFlags: 0
