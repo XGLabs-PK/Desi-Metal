@@ -16,6 +16,7 @@ TagManager:
   - Ground
   - KillCounter
   - LeftCounter
+  - RealCar
   layers:
   - Default
   - TransparentFX

@@ -53,7 +53,7 @@ namespace XGStudios
             if (hit.transform.CompareTag("obstruction"))
                 AudioManager.Instance.Play("ObsHitImpact");
 
-            if (hit.transform.CompareTag("Car")) return;
+            if (hit.transform.CompareTag("RealCar")) return;
             if (!hit.transform.CompareTag("AI")) return;
             AudioManager.Instance.Play("CarHitImpact");
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);

@@ -16,7 +16,6 @@ namespace XGStudios
         [HideInInspector]
         public Transform player;
         [SerializeField] float rotationSpeed;
-        bool _isCircling;
         [SerializeField] float rammingTime;
         float  _distanceBetweenPlayer;
         [Space(5f)]
@@ -53,13 +52,14 @@ namespace XGStudios
         [SerializeField]
         float slopSpeed = 10f;
         RaycastHit slopeHit;
+        float yOffset = 23.7f;
 
         void Awake()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
-            player = GameObject.FindGameObjectWithTag("Car").transform;
-            _isCircling = true;
+            player = GameObject.FindGameObjectWithTag("RealCar").GetComponent<Transform>();
+         
             rammingTime = Random.Range(10, 31);
             _isShooting = true;
             Carpoints = new GameObject[3];
@@ -78,8 +78,11 @@ namespace XGStudios
             if (rammingTime <= 0) {
                 StartCoroutine(Ramming());
             }
-            if (!(_distanceBetweenPlayer <= _agent.stoppingDistance) || !_isCircling)
+            if (!(_distanceBetweenPlayer <= _agent.stoppingDistance)) {
                 _agent.SetDestination(player.position);
+                
+            }
+            
             else
             {
                 transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
@@ -111,13 +114,25 @@ namespace XGStudios
         }
         
         IEnumerator Ramming() {
-            _agent.stoppingDistance = 0;
+            float acce = _agent.acceleration;
+            //if (_distanceBetweenPlayer <= _agent.stoppingDistance)
+            //{
+
+            //    _agent.acceleration = 3f;
+
+            //}
+            //else {
+            //    _agent.acceleration = acce;
+            //}
+            _agent.stoppingDistance = 5;
             Vector3 position = player.position;
             _agent.SetDestination(position);
-            yield return new WaitUntil(()=> _distanceBetweenPlayer<=5);
+            yield return new WaitUntil(()=> _distanceBetweenPlayer<=8);
+            StartCoroutine(_MoveAway());
             _agent.stoppingDistance = 20;
             _agent.SetDestination(position);
             rammingTime = Random.Range(10, 31);
+            _agent.stoppingDistance = 20;
         }
         
         void FieldOfViewSearch()
@@ -179,6 +194,22 @@ namespace XGStudios
         }
         public void TakeDamage(int damageAmount) {
             health -= damageAmount;
+        }
+        Vector3 findPoint()
+        {
+            Vector3 point = new Vector3(player.transform.position.x + Random.Range(100, 300), yOffset, player.transform.position.z + Random.Range(100, 300));
+            return point;
+
+        }
+         IEnumerator _MoveAway() {
+            //NavMeshHit hitit;
+            //if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hitit, 300f, UnityEngine.AI.NavMesh.AllAreas)) {
+            //    _agent.SetDestination(hitit.position);
+            //}
+            Vector3 myPoint = findPoint();
+            _agent.SetDestination(myPoint);
+            yield return new WaitForSeconds(5);
+
         }
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 543450653481411623}
   - component: {fileID: 3469287837465684866}
   - component: {fileID: 1711813855818637128}
+  - component: {fileID: 7028836499829106020}
+  - component: {fileID: 8422025940528103114}
   m_Layer: 0
   m_Name: CarBody
   m_TagString: Untagged
@@ -99,6 +101,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &7028836499829106020
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149272477341}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!64 &8422025940528103114
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149272477341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6416302070336371891, guid: a9aeff691d2ee544fa255b3d65aa2fa9, type: 3}
 --- !u!1 &925820356262617822
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1406901802678006192}
   - component: {fileID: 2480686838364940052}
-  - component: {fileID: 5000936914907748260}
   - component: {fileID: 2416410221218565500}
   - component: {fileID: 8293819409113793905}
   - component: {fileID: 8257115377931122941}
@@ -211,22 +242,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 1.8, z: 4.5}
   m_Center: {x: -0.02, y: 0.2, z: 0.5}
---- !u!54 &5000936914907748260
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406901802678006206}
-  serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!95 &2416410221218565500
 Animator:
   serializedVersion: 4
@@ -256,18 +271,18 @@ NavMeshAgent:
   m_GameObject: {fileID: 1406901802678006206}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 15
   m_Speed: 20
   m_Acceleration: 15
-  avoidancePriority: 0
-  m_AngularSpeed: 120
-  m_StoppingDistance: 15
+  avoidancePriority: 50
+  m_AngularSpeed: 80
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.55
-  m_WalkableMask: 4294967295
+  m_BaseOffset: 0.67
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8257115377931122941
 MonoBehaviour:
@@ -284,7 +299,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rotationSpeed: 50
   rammingTime: 0
-  detectionRadius: 25
+  detectionRadius: 100
   viewAngle: 100
   searchDelay: 0
   Layers:
@@ -480,6 +495,7 @@ GameObject:
   - component: {fileID: 8856699207094426992}
   - component: {fileID: 1994777892413784723}
   - component: {fileID: 1437051457706492668}
+  - component: {fileID: 6539588591407737865}
   m_Layer: 0
   m_Name: Tire
   m_TagString: Untagged
@@ -554,6 +570,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6539588591407737865
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997561619307800626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 548590712551798673, guid: 6404f94777c8a754db65f2c9aaea5e5f, type: 3}
 --- !u!1 &5128983696045947183
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,6 +595,7 @@ GameObject:
   - component: {fileID: 6730878330806453971}
   - component: {fileID: 4028650569903057994}
   - component: {fileID: 2728266653616679719}
+  - component: {fileID: 1936874544602787319}
   m_Layer: 0
   m_Name: Tire
   m_TagString: Untagged
@@ -639,6 +670,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1936874544602787319
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128983696045947183}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 548590712551798673, guid: 6404f94777c8a754db65f2c9aaea5e5f, type: 3}
 --- !u!1 &6161273828175043271
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +892,7 @@ GameObject:
   - component: {fileID: 3849131565092488458}
   - component: {fileID: 5392443755587601151}
   - component: {fileID: 1800812693140565786}
+  - component: {fileID: 3555799922419995598}
   m_Layer: 0
   m_Name: Tire
   m_TagString: Untagged
@@ -921,6 +967,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3555799922419995598
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871482056073685633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 548590712551798673, guid: 6404f94777c8a754db65f2c9aaea5e5f, type: 3}
 --- !u!1 &8603297752220054115
 GameObject:
   m_ObjectHideFlags: 0

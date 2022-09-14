@@ -27,7 +27,7 @@ namespace XGStudios
             _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
-            target = GameObject.FindGameObjectWithTag("Car");
+            target = GameObject.FindGameObjectWithTag("RealCar");
 
             for (int i = 0; i <enemyCount; i++)
             {

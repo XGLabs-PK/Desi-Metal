@@ -27,7 +27,7 @@ namespace XGStudios
         {
             if (other.gameObject.CompareTag("AI")) return;
 
-            if (other.gameObject.CompareTag("Car"))
+            if (other.gameObject.CompareTag("RealCar"))
             {
                 TheHealth.Instance.TakeDamage(2);
                 AudioManager.Instance.Play("CarHitImpact");
