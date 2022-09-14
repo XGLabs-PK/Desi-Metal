@@ -102,7 +102,8 @@ namespace XGStudios
                 pauseAnimator.SetTrigger(IsPaused);
 
             Time.timeScale = 0f;
-            _camScript.enabled = false;
+            if (_camScript != null)
+                _camScript.enabled = false;
             _weaponScript.enabled = false;
         }
 
