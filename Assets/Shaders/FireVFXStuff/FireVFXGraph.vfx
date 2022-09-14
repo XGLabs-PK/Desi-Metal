@@ -24,19 +24,7 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614555}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614556}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614558}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614569}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614614}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614580}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614583}
@@ -49,15 +37,6 @@ MonoBehaviour:
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614585}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614589}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614622}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614591}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614636}
@@ -135,9 +114,6 @@ MonoBehaviour:
       isStickyNote: 0
     - model: {fileID: 8926484042661614835}
       id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614638}
-      id: 3
       isStickyNote: 0
   stickyNoteInfos: []
   categories: []
@@ -2601,13 +2577,6 @@ MonoBehaviour:
     position: {x: 1916, y: -102}
     expandedSlots: []
     expanded: 0
-  - m_Id: 3
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661614639}
-      inputSlot: {fileID: 8926484042661614781}
-    position: {x: 3227, y: -80}
-    expandedSlots: []
-    expanded: 0
 --- !u!114 &8926484042661614639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2644,7 +2613,6 @@ MonoBehaviour:
   m_LinkedSlots:
   - {fileID: 8926484042661614557}
   - {fileID: 8926484042661614649}
-  - {fileID: 8926484042661614781}
 --- !u!114 &8926484042661614640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4903,8 +4871,7 @@ MonoBehaviour:
       m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
   m_Direction: 0
-  m_LinkedSlots:
-  - {fileID: 8926484042661614639}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661614782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5436,7 +5403,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":-0.10000000149011612,"y":0.20000000298023225,"z":-0.10000000149011612}}'
+      m_SerializableObject: '{"vector":{"x":-0.10000000149011612,"y":0.4000000059604645,"z":-0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: A
@@ -5606,7 +5573,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.10000000149011612,"y":1.0,"z":0.10000000149011612}}'
+      m_SerializableObject: '{"vector":{"x":0.10000000149011612,"y":1.600000023841858,"z":0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: B
@@ -6305,7 +6272,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: _DissolveScale
