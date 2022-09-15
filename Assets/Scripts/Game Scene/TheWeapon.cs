@@ -8,10 +8,10 @@ namespace XGStudios
     public class TheWeapon : MonoBehaviour
     {
         public Transform weapon;
-        public GameObject bulletPrefab;
         public Transform firePoint;
         public GameObject desertImpactEffect;
         public GameObject carImpactEffect;
+        PoolManager _poolManager;
 
         [Space]
         public float delay = 0.1f;
@@ -22,6 +22,7 @@ namespace XGStudios
         void Start()
         {
             _cam = Camera.main;
+            _poolManager = FindObjectOfType<PoolManager>();
         }
 
         void Update()
@@ -37,7 +38,26 @@ namespace XGStudios
         void Shoot()
         {
             Transform firingTransform = firePoint.transform;
-            Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation);
+
+            for (int i = 0; i < _poolManager.bulletsList.Count; i++)
+            {
+                if (_poolManager.bulletsList[i].activeInHierarchy == false)
+                {
+                    _poolManager.bulletsList[i].SetActive(true);
+                    _poolManager.bulletsList[i].transform.localPosition = firingTransform.position;
+                    _poolManager.bulletsList[i].transform.localRotation = firingTransform.rotation;
+                    break;
+                }
+                
+                if (i == _poolManager.bulletsList.Count - 1)
+                {
+                    //Last Bullet
+                    GameObject newBullet = Instantiate(_poolManager.bulletPrefab);
+                    newBullet.SetActive(false);
+                    newBullet.transform.parent = _poolManager.transform.parent;
+                    _poolManager.bulletsList.Add(newBullet);
+                }
+            }
 
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("WeaponFiring");
@@ -48,15 +68,11 @@ namespace XGStudios
                 return;
 
             if (hit.transform.CompareTag("Ground") || hit.transform.CompareTag("obstruction"))
-                Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
-
-            if (hit.transform.CompareTag("Ground"))
+            {
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.Play("GroundHitImpact");
-
-            if (hit.transform.CompareTag("obstruction"))
-                if (AudioManager.Instance != null)
-                    AudioManager.Instance.Play("ObsHitImpact");
+                Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
+            }
 
             if (hit.transform.CompareTag("RealCar")) return;
             if (!hit.transform.CompareTag("AI")) return;

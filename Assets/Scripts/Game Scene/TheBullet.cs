@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
@@ -7,9 +9,13 @@ namespace XGStudios
     {
         public float speed = 800.0f;
 
-        void Start()
+        void OnEnable()
         {
-            Destroy(transform.gameObject, 4.0f);
+            Invoke(nameof(OnDisable), 3f);
+        }
+        void OnDisable()
+        {
+            transform.gameObject.SetActive(false);
         }
 
         void Update()

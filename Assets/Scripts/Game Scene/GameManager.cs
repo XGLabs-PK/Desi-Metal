@@ -49,6 +49,8 @@ namespace XGStudios
             _score = 0;
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
+            
+            Invoke(nameof(EnableWeapon), 4.7f);
 
             if (pauseUI != null)
                 pauseUI.SetActive(false);
@@ -90,6 +92,11 @@ namespace XGStudios
             if (killCountText != null)
                 killCountText.text = _inGameKillCounter.ToString();
 
+        }
+
+        void EnableWeapon()
+        {
+            _weaponScript.enabled = true;
         }
 
         void PauseGame()
