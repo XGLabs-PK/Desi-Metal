@@ -1,28 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using PG_Physics.Wheel;
+using UnityEngine;
 
 /// <summary>
-/// Wheel settings and update logic.
+///     Wheel settings and update logic.
 /// </summary>
-[System.Serializable]
+[Serializable]
 public struct Wheel
 {
+    const int SmoothValuesCount = 3;
     public WheelCollider WheelCollider;
     public Transform WheelView;
     public float SlipForGenerateParticle;
     public Vector3 TrailOffset;
 
+    WheelHit Hit;
+
+    //FXController FXController { get { return FXController.Instance; } }
+    Vector3 HitPoint;
+
+    PG_WheelCollider m_PGWC;
+    TrailRenderer Trail;
+
     public float CurrentMaxSlip => Mathf.Max(CurrentForwardSleep, CurrentSidewaysSleep);
     public float CurrentForwardSleep { get; private set; }
     public float CurrentSidewaysSleep { get; private set; }
     public WheelHit GetHit => Hit;
-
-    WheelHit Hit;
-    TrailRenderer Trail;
-
-    PG_WheelCollider m_PGWC;
     public PG_WheelCollider PG_WheelCollider
     {
         get
@@ -40,13 +43,8 @@ public struct Wheel
         }
     }
 
-    //FXController FXController { get { return FXController.Instance; } }
-    Vector3 HitPoint;
-
-    const int SmoothValuesCount = 3;
-
     /// <summary>
-    /// Update gameplay logic.
+    ///     Update gameplay logic.
     /// </summary>
     public void FixedUpdate()
     {
@@ -67,7 +65,7 @@ public struct Wheel
     }
 
     /// <summary>
-    /// Update visual logic (Transform, FX).
+    ///     Update visual logic (Transform, FX).
     /// </summary>
     public void UpdateVisual()
     {

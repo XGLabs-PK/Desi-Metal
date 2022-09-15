@@ -1,31 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using XGStudios;
 
 /// <summary>
-/// Only visual on UI logic.
-/// Speedometer, tachometer and current gear information.
+///     Only visual on UI logic.
+///     Speedometer, tachometer and current gear information.
 /// </summary>
 public class CarStateUI : MonoBehaviour
 {
     [SerializeField]
     int UpdateFrameCount = 3;
-    [SerializeField]
-    TextMeshProUGUI SpeedText;
-    [SerializeField]
-    TextMeshProUGUI CurrentGearText;
 
     [SerializeField]
     RectTransform TahometerArrow;
     [SerializeField]
-    float MinArrowAngle = 0;
+    float MinArrowAngle;
     [SerializeField]
     float MaxArrowAngle = -315f;
 
     int CurrentFrame;
+    [SerializeField]
+    TextMeshProUGUI CurrentGearText;
+    [SerializeField]
+    TextMeshProUGUI SpeedText;
     CarController SelectedCar => GameController.PlayerCar;
 
     void Update()

@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_text: CARS LEFT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
-  m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
+  m_sharedMaterial: {fileID: 8711085480125440383, guid: 7b011bf9d217e344f8b90478323c3e65,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
-  m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
+  m_sharedMaterial: {fileID: 8711085480125440383, guid: 7b011bf9d217e344f8b90478323c3e65,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -8982,7 +8982,7 @@ MonoBehaviour:
   m_text: KILL COUNT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
-  m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
+  m_sharedMaterial: {fileID: 8711085480125440383, guid: 7b011bf9d217e344f8b90478323c3e65,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -17246,24 +17246,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce30c7a4ccb54f49a5545c222ca21fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 1923892299}
-  musicVolSlider: {fileID: 49432389}
-  sfxVolSlider: {fileID: 1056355999}
-  motionBlurSlider: {fileID: 984719402}
-  filmGrainSlider: {fileID: 835281523}
-  qualityDropdown: {fileID: 1930297823}
-  motionBlurText: {fileID: 723924197}
-  warningTxt: {fileID: 1177083770}
-  filmGrainText: {fileID: 1389426122}
   qualityLevels:
   - {fileID: 11400000, guid: 5d18edd8f0fb0aa4cb4e05f43e12c5a3, type: 2}
   - {fileID: 11400000, guid: ae0418e06251d624ea1ebc628f3c5fe1, type: 2}
   - {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd, type: 2}
-  resumeButton: {fileID: 1697283869}
-  restartButton: {fileID: 1967643028}
-  quitButton: {fileID: 1461400454}
+  filmGrainSlider: {fileID: 835281523}
+  filmGrainText: {fileID: 1389426122}
+  motionBlurSlider: {fileID: 984719402}
+  motionBlurText: {fileID: 723924197}
+  musicVolSlider: {fileID: 49432389}
   musicVolumeText: {fileID: 522692046}
+  qualityDropdown: {fileID: 1930297823}
+  quitButton: {fileID: 1461400454}
+  restartButton: {fileID: 1967643028}
+  resumeButton: {fileID: 1697283869}
+  sfxVolSlider: {fileID: 1056355999}
   soundEffectsVolumeText: {fileID: 132535464}
+  volume: {fileID: 1923892299}
+  warningTxt: {fileID: 1177083770}
 --- !u!114 &657083436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18068,11 +18068,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 2059432935}
   pauseAnimator: {fileID: 657083439}
-  inGameKillCountText: {fileID: 2088114818}
-  killCountText: {fileID: 2037209299}
   deathAnim: {fileID: 1851528987}
   gamePaused: 0
   carDestroyed: 0
+  inGameKillCountText: {fileID: 2088114818}
+  killCountText: {fileID: 2037209299}
 --- !u!114 &747517273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18085,10 +18085,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41879a81ff54544fbecb485ec897984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 6956
   memberID: {fileID: 438293898}
   playerScore: {fileID: 2037209299}
   scoreSubmitted: {fileID: 907088166}
-  id: 6956
 --- !u!1 &750327918
 GameObject:
   m_ObjectHideFlags: 0
@@ -29051,14 +29051,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1136380625, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: far clip plane
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1136380625, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: near clip plane
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: healthSlider
@@ -29084,16 +29076,6 @@ PrefabInstance:
       propertyPath: airMultiplierSlider
       value: 
       objectReference: {fileID: 1471554069}
-    - target: {fileID: 8228446986427955935, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: far clip plane
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228446986427955935, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name
@@ -43053,7 +43035,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
-  m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
+  m_sharedMaterial: {fileID: 8711085480125440383, guid: 7b011bf9d217e344f8b90478323c3e65,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -44198,7 +44180,7 @@ MonoBehaviour:
   m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b011bf9d217e344f8b90478323c3e65, type: 2}
-  m_sharedMaterial: {fileID: -6240350899508551268, guid: 7b011bf9d217e344f8b90478323c3e65,
+  m_sharedMaterial: {fileID: 8711085480125440383, guid: 7b011bf9d217e344f8b90478323c3e65,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 /// <summary>
-/// FX and sounds effects.
+///     FX and sounds effects.
 /// </summary>
 public class FXController : Singleton<FXController>
 {
@@ -19,6 +17,12 @@ public class FXController : Singleton<FXController>
     [SerializeField]
     Transform TrailsHolder; //Parent for copy of TrailRef.
 
+    #region Particles
+
+    public ParticleSystem GetAspahaltParticles => AsphaltSmokeParticles;
+
+    #endregion //Particles
+
 
     protected override void AwakeSingleton()
     {
@@ -26,18 +30,12 @@ public class FXController : Singleton<FXController>
         TrailRef.gameObject.SetActive(false);
     }
 
-    #region Particles
-
-    public ParticleSystem GetAspahaltParticles => AsphaltSmokeParticles;
-
-    #endregion //Particles
-
     #region Trail
 
-    Queue<TrailRenderer> FreeTrails = new Queue<TrailRenderer>();
+    readonly Queue<TrailRenderer> FreeTrails = new Queue<TrailRenderer>();
 
     /// <summary>
-    /// Get first free trail and set start position.
+    ///     Get first free trail and set start position.
     /// </summary>
     public TrailRenderer GetTrail(Vector3 startPos)
     {
@@ -55,7 +53,7 @@ public class FXController : Singleton<FXController>
     }
 
     /// <summary>
-    /// Set trail as free and wait life time.
+    ///     Set trail as free and wait life time.
     /// </summary>
     public void SetFreeTrail(TrailRenderer trail)
     {
@@ -63,7 +61,7 @@ public class FXController : Singleton<FXController>
     }
 
     /// <summary>
-    /// The trail is considered busy until it disappeared.
+    ///     The trail is considered busy until it disappeared.
     /// </summary>
     IEnumerator WaitVisibleTrail(TrailRenderer trail)
     {

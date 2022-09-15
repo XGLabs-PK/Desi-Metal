@@ -5,24 +5,24 @@ using UnityEngine;
 using XGStudios;
 
 /// <summary>
-/// Move and rotation camera controller
+///     Move and rotation camera controller
 /// </summary>
 public class CameraController : Singleton<CameraController>
 {
     [SerializeField]
     KeyCode SetCameraKey = KeyCode.C; //Set next camore on PC hotkey.
     [SerializeField]
-    UnityEngine.UI.Button NextCameraButton;
-    [SerializeField]
     List<CameraPreset> CamerasPreset = new List<CameraPreset>(); //Camera presets
-
-    int ActivePresetIndex = 0;
     CameraPreset ActivePreset;
+
+    int ActivePresetIndex;
+    [SerializeField]
+    UnityEngine.UI.Button NextCameraButton;
+
+    float SqrMinDistance;
 
     CarController TargetCar => GameController.PlayerCar;
     GameController GameController => GameController.Instance;
-
-    float SqrMinDistance;
 
     //The target point is calculated from velocity of car.
     Vector3 TargetPoint
@@ -37,15 +37,6 @@ public class CameraController : Singleton<CameraController>
             result.y = 0;
             return result;
         }
-    }
-
-    protected override void AwakeSingleton()
-    {
-        CamerasPreset.ForEach(c => c.CameraHolder.SetActive(false));
-        UpdateActiveCamera();
-
-        if (NextCameraButton)
-            NextCameraButton.onClick.AddListener(SetNextCamera);
     }
 
     IEnumerator Start()
@@ -71,6 +62,15 @@ public class CameraController : Singleton<CameraController>
 
         if (Input.GetKeyDown(SetCameraKey))
             SetNextCamera();
+    }
+
+    protected override void AwakeSingleton()
+    {
+        CamerasPreset.ForEach(c => c.CameraHolder.SetActive(false));
+        UpdateActiveCamera();
+
+        if (NextCameraButton)
+            NextCameraButton.onClick.AddListener(SetNextCamera);
     }
 
     public void SetNextCamera()

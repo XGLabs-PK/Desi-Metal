@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using XGStudios;
 
 /// <summary>
-/// To tilt the car body (Visually only).
+///     To tilt the car body (Visually only).
 /// </summary>
 [RequireComponent(typeof(CarController))]
 public class BodyTilt : MonoBehaviour
@@ -19,9 +17,9 @@ public class BodyTilt : MonoBehaviour
     float RearAngleVelocityMultiplayer = 0.4f; //Rotation angle multiplier when moving backwards.
     [SerializeField]
     float MaxTiltOnSpeed = 60; //The speed at which the maximum tilt is reached.
+    float Angle;
 
     CarController Car;
-    float Angle;
 
     void Awake()
     {

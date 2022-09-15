@@ -1,27 +1,25 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using XGStudios;
 
 /// <summary>
-/// Base class game controller.
+///     Base class game controller.
 /// </summary>
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance;
     [SerializeField]
     KeyCode NextCarKey = KeyCode.N;
+    List<CarController> Cars = new List<CarController>();
+    int CurrentCarIndex;
+
+    CarController m_PlayerCar;
     [SerializeField]
     UnityEngine.UI.Button NextCarButton;
-    public static GameController Instance;
     public static CarController PlayerCar => Instance.m_PlayerCar;
     public static bool RaceIsStarted => true;
     public static bool RaceIsEnded => false;
-
-    CarController m_PlayerCar;
-    List<CarController> Cars = new List<CarController>();
-    int CurrentCarIndex = 0;
 
     protected virtual void Awake()
     {

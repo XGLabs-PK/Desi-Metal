@@ -12,31 +12,33 @@ namespace XGStudios
     public class UIStuff : MonoBehaviour
     {
         const string QualityKey = "quality";
-        
-        [Header("Misc")]
-        public Volume volume;
-        public Slider musicVolSlider;
-        public Slider sfxVolSlider;
-        public Slider motionBlurSlider;
-        public Slider filmGrainSlider;
-        public TMP_Dropdown qualityDropdown;
-        public TextMeshProUGUI motionBlurText;
-        public TextMeshProUGUI warningTxt;
-        public TextMeshProUGUI filmGrainText;
         public RenderPipelineAsset[] qualityLevels;
-        
-        [Header("Pause UI Buttons")]
-        public Button resumeButton;
-        public Button restartButton;
-        public Button quitButton;
-        
-        MotionBlur _motionBlur;
         FilmGrain _filmGrain;
 
+        MotionBlur _motionBlur;
+        public Slider filmGrainSlider;
+        public TextMeshProUGUI filmGrainText;
+        public Slider motionBlurSlider;
+        public TextMeshProUGUI motionBlurText;
+        public Slider musicVolSlider;
+
         [Header("Audio Stuff")]
-        [SerializeField] TextMeshProUGUI musicVolumeText;
-        [SerializeField] TextMeshProUGUI soundEffectsVolumeText;
-        
+        [SerializeField]
+        TextMeshProUGUI musicVolumeText;
+        public TMP_Dropdown qualityDropdown;
+        public Button quitButton;
+        public Button restartButton;
+
+        [Header("Pause UI Buttons")]
+        public Button resumeButton;
+        public Slider sfxVolSlider;
+        [SerializeField]
+        TextMeshProUGUI soundEffectsVolumeText;
+
+        [Header("Misc")]
+        public Volume volume;
+        public TextMeshProUGUI warningTxt;
+
         public static float MusicVolume { get; private set; }
         public static float SoundEffectsVolume { get; private set; }
 
@@ -48,13 +50,13 @@ namespace XGStudios
                 PlayerPrefs.Save();
             });
         }
-        
+
         void Start()
         {
             qualityDropdown.value = QualitySettings.GetQualityLevel();
             volume.profile.TryGet(out _motionBlur);
             volume.profile.TryGet(out _filmGrain);
-            
+
             musicVolSlider.value = PlayerPrefs.GetFloat("musicVol", 0.15f);
             sfxVolSlider.value = PlayerPrefs.GetFloat("sfxVol", 0.15f);
             motionBlurSlider.value = PlayerPrefs.GetFloat("motionBlur", 0.15f);
@@ -82,15 +84,15 @@ namespace XGStudios
         public void OnMusicSliderValueChange(float value)
         {
             MusicVolume = value;
-            musicVolumeText.text = $"{((int)(value * 100))}%";
+            musicVolumeText.text = $"{(int)(value * 100)}%";
             AudioManager.Instance.UpdateMixerVolume();
             PlayerPrefs.SetFloat("musicVol", value);
         }
-        
+
         public void OnSoundEffectsSliderValueChange(float value)
         {
             SoundEffectsVolume = value;
-            soundEffectsVolumeText.text = $"{((int)(value * 100))}%";
+            soundEffectsVolumeText.text = $"{(int)(value * 100)}%";
             AudioManager.Instance.UpdateMixerVolume();
             PlayerPrefs.SetFloat("sfxVol", value);
         }
@@ -98,7 +100,7 @@ namespace XGStudios
         public void MotionBlurIntensity(float value)
         {
             _motionBlur.intensity.value = value;
-            motionBlurText.text = $"{((int)(value * 100))}%";
+            motionBlurText.text = $"{(int)(value * 100)}%";
             PlayerPrefs.SetFloat("motionBlur", value);
 
             switch (value)
@@ -111,14 +113,14 @@ namespace XGStudios
                     break;
             }
         }
-        
+
         public void FilmGrainIntensity(float value)
         {
             _filmGrain.intensity.value = value;
-            filmGrainText.text = $"{((int)(value * 100))}%";
+            filmGrainText.text = $"{(int)(value * 100)}%";
             PlayerPrefs.SetFloat("filmGrain", value);
         }
-        
+
         public void GraphicsQuality(int value)
         {
             QualitySettings.SetQualityLevel(value);

@@ -1,23 +1,20 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 using XG.Studios;
-using Random = UnityEngine.Random;
 
 namespace XGStudios
 {
     public class NavmeshAi : MonoBehaviour
     {
-        TextMeshProUGUI killCounterTxt;
-        NavMeshAgent _agent;
+        static int _addScore;
         [HideInInspector]
         public Transform player;
-        [SerializeField] float rotationSpeed;
-        [SerializeField] float rammingTime;
-        float  _distanceBetweenPlayer;
+        [SerializeField]
+        float rotationSpeed;
+        [SerializeField]
+        float rammingTime;
         [Space(5f)]
         [Header("Field of view")]
         [SerializeField]
@@ -31,19 +28,21 @@ namespace XGStudios
         public LayerMask occlusionLayers;
         public bool canSeePlayers;
         [Header("Shooting")]
-        [SerializeField]AiBullet bullet;
-        [SerializeField]GameObject bulletPrefab;
-        bool _isShooting;
-        [SerializeField] Transform shootPoint;
-        [SerializeField] GameObject[] Carpoints;
-        float _rateOfFire;
+        [SerializeField]
+        AiBullet bullet;
+        [SerializeField]
+        GameObject bulletPrefab;
+        [SerializeField]
+        Transform shootPoint;
+        [SerializeField]
+        GameObject[] Carpoints;
         [Header("Health")]
-        [SerializeField] public int health = 100;
-        [SerializeField] GameObject deathParticle;
+        [SerializeField]
+        public int health = 100;
+        [SerializeField]
+        GameObject deathParticle;
         public LayerMask isGround;
         public float groundRadius;
-        static int _addScore;
-        int _killCounter;
         [Header("Slope")]
         [SerializeField]
         Vector3 rayCastOffset;
@@ -51,60 +50,46 @@ namespace XGStudios
         float maxRay;
         [SerializeField]
         float slopSpeed = 10f;
+        [SerializeField]
+        float stopDist;
+        NavMeshAgent _agent;
+        float _distanceBetweenPlayer;
+        bool _isShooting;
+        int _killCounter;
+        float _rateOfFire;
+        TextMeshProUGUI killCounterTxt;
         RaycastHit slopeHit;
-        float yOffset = 23.7f;
-        [SerializeField] float stopDist = 0;
+        readonly float yOffset = 23.7f;
 
         void Awake()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("RealCar").GetComponent<Transform>();
-         
+
             rammingTime = Random.Range(10, 31);
             _isShooting = true;
             Carpoints = new GameObject[3];
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(FOV());
         }
-        
-        void FixedUpdate()
-        {
-            if (canSeePlayers && _isShooting)
-            {
-                StartCoroutine(Shoot());
-            }
-            _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, player.position);
-            rammingTime -= Time.deltaTime;
-            if (rammingTime <= 0) {
-                StartCoroutine(Ramming());
-            }
-            if (!(_distanceBetweenPlayer <= _agent.stoppingDistance)) {
-                _agent.SetDestination(player.position);
-                
-            }
-            
-            else
-            {
-                transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
-                transform.LookAt(player);
-            }
-        }
-        
+
         void Update()
         {
             if (Physics.Raycast(transform.position + rayCastOffset, Vector3.down, out slopeHit, maxRay, isGround))
             {
                 Debug.DrawLine(transform.position + rayCastOffset, slopeHit.point, Color.red);
                 Quaternion newRot = Quaternion.FromToRotation(transform.up, slopeHit.normal) * transform.rotation;
-                transform.rotation = Quaternion.Lerp(transform.rotation, newRot,slopSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, newRot, slopSpeed);
             }
-            
-            
+
+
             if (health > 0) return;
             GameManager._score++;
-            if (killCounterTxt != null) 
+
+            if (killCounterTxt != null)
                 killCounterTxt.text = GameManager._score.ToString();
+
             int.TryParse(killCounterTxt.text, out _killCounter);
             PlayerPrefs.SetInt("KillCounter", _killCounter);
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
@@ -113,8 +98,30 @@ namespace XGStudios
             AudioManager.Instance.Play("CarDestruction");
             FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
-        
-        IEnumerator Ramming() {
+
+        void FixedUpdate()
+        {
+            if (canSeePlayers && _isShooting)
+                StartCoroutine(Shoot());
+
+            _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, player.position);
+            rammingTime -= Time.deltaTime;
+
+            if (rammingTime <= 0)
+                StartCoroutine(Ramming());
+
+            if (!(_distanceBetweenPlayer <= _agent.stoppingDistance))
+                _agent.SetDestination(player.position);
+
+            else
+            {
+                transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
+                transform.LookAt(player);
+            }
+        }
+
+        IEnumerator Ramming()
+        {
             float acce = _agent.acceleration;
             //if (_distanceBetweenPlayer <= _agent.stoppingDistance)
             //{
@@ -128,14 +135,14 @@ namespace XGStudios
             _agent.stoppingDistance = stopDist;
             Vector3 position = player.position;
             _agent.SetDestination(position);
-            yield return new WaitUntil(()=> _distanceBetweenPlayer<=8);
+            yield return new WaitUntil(() => _distanceBetweenPlayer <= 8);
             StartCoroutine(_MoveAway());
             _agent.stoppingDistance = 20;
             _agent.SetDestination(position);
             rammingTime = Random.Range(10, 31);
             _agent.stoppingDistance = 20;
         }
-        
+
         void FieldOfViewSearch()
         {
             var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, Layers);
@@ -148,8 +155,9 @@ namespace XGStudios
                 if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
                 {
                     float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
                     canSeePlayers = !Physics.Raycast(transform.position, directionToTarget,
-                        distanceToTarget,occlusionLayers);
+                        distanceToTarget, occlusionLayers);
                 }
                 else
                     canSeePlayers = false;
@@ -157,7 +165,7 @@ namespace XGStudios
             else if (canSeePlayers)
                 canSeePlayers = false;
         }
-        
+
         IEnumerator FOV()
         {
             while (true)
@@ -166,9 +174,11 @@ namespace XGStudios
                 FieldOfViewSearch();
             }
         }
-        
-        IEnumerator Shoot() {
+
+        IEnumerator Shoot()
+        {
             _isShooting = false;
+
             switch (_distanceBetweenPlayer)
             {
                 case > 20:
@@ -187,22 +197,29 @@ namespace XGStudios
                     shootPoint.LookAt(player);
                     break;
             }
-            
+
             bullet.SendData(shootPoint);
             Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(_rateOfFire);
             _isShooting = true;
         }
-        public void TakeDamage(int damageAmount) {
+
+        public void TakeDamage(int damageAmount)
+        {
             health -= damageAmount;
         }
+
         Vector3 findPoint()
         {
-            Vector3 point = new Vector3(player.transform.position.x + Random.Range(100, 300), yOffset, player.transform.position.z + Random.Range(100, 300));
+            Vector3 point = new Vector3(player.transform.position.x + Random.Range(100, 300), yOffset,
+                player.transform.position.z + Random.Range(100, 300));
+
             return point;
 
         }
-         IEnumerator _MoveAway() {
+
+        IEnumerator _MoveAway()
+        {
             //NavMeshHit hitit;
             //if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hitit, 300f, UnityEngine.AI.NavMesh.AllAreas)) {
             //    _agent.SetDestination(hitit.position);

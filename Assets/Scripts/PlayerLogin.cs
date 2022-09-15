@@ -1,34 +1,30 @@
+using System.IO;
 using LootLocker.Requests;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
-namespace XG.Studios
+namespace XGStudios
 {
     public class PlayerLogin : MonoBehaviour
     {
-        public int id;
+        static PlayerLogin _instance;
+        public int id = 6979;
         readonly int _maxScores = 7;
-        static PlayerLogin _instance = null;
         public TextMeshProUGUI[] names;
-        public TextMeshProUGUI[] entries;
+        public TextMeshProUGUI[] killCounter;
 
         void Awake()
         {
             if (_instance == null)
-            {
                 _instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
             else
-            {
                 Destroy(gameObject);
-            }
         }
 
         void Start()
         {
-            LootLockerSDKManager.StartGuestSession((response) =>
+            LootLockerSDKManager.StartGuestSession(response =>
             {
                 if (!response.success)
                 {
@@ -42,37 +38,31 @@ namespace XG.Studios
 
         public void ShowScores()
         {
-            LootLockerSDKManager.GetScoreList(id, _maxScores, (response) =>
+            LootLockerSDKManager.GetScoreList(id, _maxScores, response =>
             {
                 if (response.statusCode == 200)
                 {
                     Debug.Log("Successful " + response.text);
-                    JsonTextReader reader = new JsonTextReader(new System.IO.StringReader(response.text));
+                    JsonTextReader reader = new JsonTextReader(new StringReader(response.text));
                     string prevValue = "";
                     int i = 0;
 
                     while (reader.Read())
-                    {
                         if (reader.Value != null)
                         {
                             if (prevValue == "name")
                             {
-                                names[i].text = (reader.Value.ToString());
+                                names[i].text = reader.Value.ToString();
                                 i++;
                             }
                             else if (prevValue == "score")
-                            {
-                                entries[i].text = (reader.Value.ToString());
-                            }
+                                killCounter[i].text = reader.Value.ToString();
 
                             prevValue = reader.Value.ToString();
                         }
-                    }
                 }
                 else
-                {
                     Debug.Log("failed: " + response.Error);
-                }
             });
         }
     }

@@ -26,7 +26,7 @@ namespace XGStudios
                 carPos.x,
                 carPos.y,
                 carPos.z);
-            
+
             Quaternion rot = Quaternion.Euler(camHolderRot.eulerAngles.x - Input.GetAxis("Mouse Y") * sensitivity / 2,
                 camHolderRot.eulerAngles.y + Input.GetAxis("Mouse X") * sensitivity,
                 camHolderRot.eulerAngles.z);

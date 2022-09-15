@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using XGStudios;
 
 /// <summary>
-/// Car sound controller, for play car sound effects
+///     Car sound controller, for play car sound effects
 /// </summary>
 [RequireComponent(typeof(CarController))]
 public class CarSoundController : MonoBehaviour

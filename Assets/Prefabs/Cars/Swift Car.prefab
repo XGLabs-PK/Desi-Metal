@@ -89,8 +89,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
-  far clip plane: 400
+  near clip plane: 0.5
+  far clip plane: 500
   field of view: 70
   orthographic: 0
   orthographic size: 10
@@ -25541,11 +25541,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 136
-  blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
-    type: 2}
-  airMultiplierScore: {fileID: 0}
   airMultiplierPopup: {fileID: 0}
-  airMultiplierSlider: {fileID: 0}
   abilityText: {fileID: 0}
   Headlights: {fileID: 3500193561276069396}
   Backlights: {fileID: 9010120248276598055}
@@ -25654,6 +25650,10 @@ MonoBehaviour:
     MaxAngularVelocityHelpAngle: 45
     AngularVelucityInMaxAngle: 0.5
     AngularVelucityInMinAngle: 2
+  airMultiplierScore: {fileID: 0}
+  airMultiplierSlider: {fileID: 0}
+  blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
 --- !u!114 &5767164049449013031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25706,9 +25706,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeEffect: {fileID: 4597162699246637102}
   fireSmoke: {fileID: 1836500953603702109}
+  health: 100
   blitRender: {fileID: 7657033332097895066, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}
-  health: 100
   healthSlider: {fileID: 0}
 --- !u!65 &484779826
 BoxCollider:
@@ -50848,8 +50848,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
-  far clip plane: 400
+  near clip plane: 0.5
+  far clip plane: 1000
   field of view: 70
   orthographic: 0
   orthographic size: 10

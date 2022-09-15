@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace PG_Physics.Wheel
@@ -7,6 +6,23 @@ namespace PG_Physics.Wheel
     [RequireComponent(typeof(WheelCollider))]
     public class PG_WheelCollider : MonoBehaviour
     {
+        //Spring constants
+        const float minSpring = 0;
+        const float maxSpring = 60000;
+        const float minDamper = 0;
+        const float maxDamper = 10000;
+
+        //Minimum friction constants
+        const float minExtremumSlip = 0.4f;
+        const float minExtremumValue = 0.7f;
+        const float minAsymptoteSlip = 0.6f;
+        const float minAsymptoteValue = 0.65f;
+
+        //Maximum friction constants
+        const float maxExtremumSlip = 0.4f;
+        const float maxExtremumValue = 4.5f;
+        const float maxAsymptoteSlip = 0.6f;
+        const float maxAsymptoteValue = 4f;
         [SerializeField]
         [FullField]
         PG_WheelColliderConfig WheelConfig;
@@ -140,27 +156,9 @@ namespace PG_Physics.Wheel
 
             return true;
         }
-
-        //Spring constants
-        const float minSpring = 0;
-        const float maxSpring = 60000;
-        const float minDamper = 0;
-        const float maxDamper = 10000;
-
-        //Minimum friction constants
-        const float minExtremumSlip = 0.4f;
-        const float minExtremumValue = 0.7f;
-        const float minAsymptoteSlip = 0.6f;
-        const float minAsymptoteValue = 0.65f;
-
-        //Maximum friction constants
-        const float maxExtremumSlip = 0.4f;
-        const float maxExtremumValue = 4.5f;
-        const float maxAsymptoteSlip = 0.6f;
-        const float maxAsymptoteValue = 4f;
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct PG_WheelColliderConfig
     {
         [SerializeField]
@@ -185,9 +183,9 @@ namespace PG_Physics.Wheel
     }
 
     /// <summary>
-    /// Custom FullField Attribute 
+    ///     Custom FullField Attribute
     /// </summary>
-    [System.AttributeUsage(System.AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Field)]
     public class FullField : PropertyAttribute
     {
     }

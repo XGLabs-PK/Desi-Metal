@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -17,13 +17,7 @@ namespace XGStudios
         [SerializeField]
         LayerMask groundLayer;
         [SerializeField]
-        ScriptableRendererFeature blitRender;
-        [SerializeField]
-        TextMeshProUGUI airMultiplierScore;
-        [SerializeField]
         GameObject airMultiplierPopup;
-        [SerializeField]
-        Slider airMultiplierSlider;
         [SerializeField]
         GameObject abilityText;
         [SerializeField]
@@ -40,7 +34,6 @@ namespace XGStudios
         float angle;
         [SerializeField]
         float rotationSpeed;
-        float _desiredZ;
         [SerializeField]
         GameObject groundCheck;
         [Space(10f)]
@@ -60,52 +53,34 @@ namespace XGStudios
         [SerializeField]
         CarConfig CarConfig;
 
-        #region Properties of car parameters
+        float _airMultiplier;
+        bool _airMultiplierFilled;
 
-        float _maxMotorTorque;
-        float MaxSteerAngle => CarConfig.MaxSteerAngle;
-        DriveType DriveType => CarConfig.DriveType;
-        bool AutomaticGearBox => CarConfig.AutomaticGearBox;
-        AnimationCurve MotorTorqueFromRpmCurve => CarConfig.MotorTorqueFromRpmCurve;
-        float MaxRpm => CarConfig.MaxRPM;
-        float MinRpm => CarConfig.MinRPM;
-        float CutOffRpm => CarConfig.CutOffRPM;
-        float CutOffOffsetRpm => CarConfig.CutOffOffsetRPM;
-        float RpmToNextGear => CarConfig.RpmToNextGear;
-        float RpmToPrevGear => CarConfig.RpmToPrevGear;
-        float MaxForwardSlipToBlockChangeGear => CarConfig.MaxForwardSlipToBlockChangeGear;
-        float RpmEngineToRpmWheelsLerpSpeed => CarConfig.RpmEngineToRpmWheelsLerpSpeed;
-        float[] GearsRatio => CarConfig.GearsRatio;
-        float MainRatio => CarConfig.MainRatio;
-        float ReversGearRatio => CarConfig.ReversGearRatio;
-        float MaxBrakeTorque => CarConfig.MaxBrakeTorque;
+        float[] _allGearsRatio;
+        bool _backLights;
+        float _currentAcceleration;
+        float _currentBrake;
 
-        #endregion
+        float _currentSteerAngle;
+        float _desiredZ;
 
-        #region Properties of drift Settings
+        int _firstDriveWheel;
 
-        bool EnableSteerAngleMultiplier => CarConfig.EnableSteerAngleMultiplier;
-        float MinSteerAngleMultiplier => CarConfig.MinSteerAngleMultiplier;
-        float MaxSteerAngleMultiplier => CarConfig.MaxSteerAngleMultiplier;
-        float MaxSpeedForMinAngleMultiplier => CarConfig.MaxSpeedForMinAngleMultiplier;
-        float SteerAngleChangeSpeed => CarConfig.SteerAngleChangeSpeed;
-        float MinSpeedForSteerHelp => CarConfig.MinSpeedForSteerHelp;
-        float HelpSteerPower => CarConfig.HelpSteerPower;
-        float OppositeAngularVelocityHelpPower => CarConfig.OppositeAngularVelocityHelpPower;
-        float PositiveAngularVelocityHelpPower => CarConfig.PositiveAngularVelocityHelpPower;
-        float MaxAngularVelocityHelpAngle => CarConfig.MaxAngularVelocityHelpAngle;
-        float AngularVelocityInMaxAngle => CarConfig.AngularVelucityInMaxAngle;
-        float AngularVelocityInMinAngle => CarConfig.AngularVelucityInMinAngle;
+        bool _headLights;
+        bool _inHandBrake;
+        int _lastDriveWheel;
 
-        #endregion
+        Rigidbody _rb;
+        [SerializeField]
+        TextMeshProUGUI airMultiplierScore;
+        [SerializeField]
+        Slider airMultiplierSlider;
+        public Action BackFireAction;
+        [SerializeField]
+        ScriptableRendererFeature blitRender;
 
         CarConfig GetCarConfig => CarConfig;
         Wheel[] Wheels { get; set; }
-        public Action BackFireAction;
-
-        float[] _allGearsRatio;
-
-        Rigidbody _rb;
         public Rigidbody Rb
         {
             get
@@ -123,20 +98,6 @@ namespace XGStudios
         float CurrentSpeed { get; set; }
         public float SpeedInHour => CurrentSpeed * C.KPHMult;
         public int CarDirection => CurrentSpeed < 1 ? 0 : VelocityAngle < 90 && VelocityAngle > -90 ? 1 : -1;
-
-        float _currentSteerAngle;
-        float _currentAcceleration;
-        float _currentBrake;
-        bool _inHandBrake;
-
-        int _firstDriveWheel;
-        int _lastDriveWheel;
-
-        bool _headLights;
-        bool _backLights;
-
-        float _airMultiplier;
-        bool _airMultiplierFilled;
 
         void Awake()
         {
@@ -212,9 +173,7 @@ namespace XGStudios
         void FixedUpdate()
         {
             if (Flipped())
-            {
                 StartCoroutine(Flip());
-            }
 
             CurrentSpeed = Rb.velocity.magnitude;
             UpdateSteerAngleLogic();
@@ -252,6 +211,27 @@ namespace XGStudios
 
         }
 
+        void OnDrawGizmosSelected()
+        {
+            Vector3 centerPos = transform.position;
+            Vector3 velocity = transform.position + Vector3.ClampMagnitude(Rb.velocity, 4);
+            Vector3 forwardPos = transform.TransformPoint(Vector3.forward * 4);
+
+            Gizmos.color = Color.green;
+
+            Gizmos.DrawWireSphere(centerPos, 0.2f);
+            Gizmos.DrawLine(centerPos, velocity);
+            Gizmos.DrawLine(centerPos, forwardPos);
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(forwardPos, 0.2f);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(velocity, 0.2f);
+
+            Gizmos.color = Color.white;
+        }
+
         public void UpdateControls(float horizontal, float vertical, bool handBrake)
         {
             float targetSteerAngle = horizontal * MaxSteerAngle;
@@ -267,6 +247,141 @@ namespace XGStudios
             _currentAcceleration = vertical;
             _inHandBrake = handBrake;
         }
+
+        bool IsGrounded()
+        {
+            float height = .008f;
+            BoxCollider boxCollider = GetComponent<BoxCollider>();
+
+            Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height,
+                groundLayer);
+
+            Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
+                Color.green);
+
+            return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height,
+                groundLayer);
+        }
+
+
+        void AirMultiplier()
+        {
+            if (GameManager.Instance.gamePaused) return;
+            int floor = Mathf.FloorToInt(_airMultiplier);
+            airMultiplierScore.SetText(floor.ToString());
+
+            if (!IsGrounded())
+                Invoke(nameof(ShowPopup), 0.75f);
+            else if (IsGrounded())
+            {
+                airMultiplierPopup.SetActive(false);
+                CancelInvoke(nameof(ShowPopup));
+
+                switch (_airMultiplierFilled)
+                {
+                    case false:
+                        Invoke(nameof(ResetAirMultiplier), 1f);
+                        break;
+                }
+            }
+
+            switch (airMultiplierSlider.value)
+            {
+                case >= 100:
+                    abilityText.SetActive(true);
+                    _airMultiplierFilled = true;
+                    BlitEffect(true);
+
+                    if (Input.GetButtonDown("Fire2"))
+                        Ability();
+
+                    break;
+                case <= 100:
+                    _airMultiplierFilled = true;
+                    break;
+            }
+        }
+
+        void Ability()
+        {
+            abilityText.SetActive(false);
+            BlitEffect(false);
+            airMultiplierSlider.value = 0;
+            _airMultiplier = 0;
+
+            //Ability code here
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.Play("LaserBeam");
+        }
+
+        void ShowPopup()
+        {
+            _airMultiplier += 1 * 0.2f;
+            airMultiplierSlider.value = _airMultiplier;
+            airMultiplierPopup.SetActive(true);
+        }
+
+        void ResetAirMultiplier()
+        {
+            airMultiplierSlider.value = 0;
+            _airMultiplier = 0;
+        }
+
+        void BlitEffect(bool boolean)
+        {
+            blitRender.SetActive(boolean);
+        }
+
+        bool Flipped()
+        {
+            return Physics.CheckSphere(topCheck.transform.position, flipRadius, groundLayer);
+        }
+
+        IEnumerator Flip()
+        {
+            yield return new WaitForSeconds(0.5f);
+            Quaternion desired = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desired, rotationSpeed * Time.deltaTime);
+        }
+
+        #region Properties of car parameters
+
+        float _maxMotorTorque;
+        float MaxSteerAngle => CarConfig.MaxSteerAngle;
+        DriveType DriveType => CarConfig.DriveType;
+        bool AutomaticGearBox => CarConfig.AutomaticGearBox;
+        AnimationCurve MotorTorqueFromRpmCurve => CarConfig.MotorTorqueFromRpmCurve;
+        float MaxRpm => CarConfig.MaxRPM;
+        float MinRpm => CarConfig.MinRPM;
+        float CutOffRpm => CarConfig.CutOffRPM;
+        float CutOffOffsetRpm => CarConfig.CutOffOffsetRPM;
+        float RpmToNextGear => CarConfig.RpmToNextGear;
+        float RpmToPrevGear => CarConfig.RpmToPrevGear;
+        float MaxForwardSlipToBlockChangeGear => CarConfig.MaxForwardSlipToBlockChangeGear;
+        float RpmEngineToRpmWheelsLerpSpeed => CarConfig.RpmEngineToRpmWheelsLerpSpeed;
+        float[] GearsRatio => CarConfig.GearsRatio;
+        float MainRatio => CarConfig.MainRatio;
+        float ReversGearRatio => CarConfig.ReversGearRatio;
+        float MaxBrakeTorque => CarConfig.MaxBrakeTorque;
+
+        #endregion
+
+        #region Properties of drift Settings
+
+        bool EnableSteerAngleMultiplier => CarConfig.EnableSteerAngleMultiplier;
+        float MinSteerAngleMultiplier => CarConfig.MinSteerAngleMultiplier;
+        float MaxSteerAngleMultiplier => CarConfig.MaxSteerAngleMultiplier;
+        float MaxSpeedForMinAngleMultiplier => CarConfig.MaxSpeedForMinAngleMultiplier;
+        float SteerAngleChangeSpeed => CarConfig.SteerAngleChangeSpeed;
+        float MinSpeedForSteerHelp => CarConfig.MinSpeedForSteerHelp;
+        float HelpSteerPower => CarConfig.HelpSteerPower;
+        float OppositeAngularVelocityHelpPower => CarConfig.OppositeAngularVelocityHelpPower;
+        float PositiveAngularVelocityHelpPower => CarConfig.PositiveAngularVelocityHelpPower;
+        float MaxAngularVelocityHelpAngle => CarConfig.MaxAngularVelocityHelpAngle;
+        float AngularVelocityInMaxAngle => CarConfig.AngularVelucityInMaxAngle;
+        float AngularVelocityInMinAngle => CarConfig.AngularVelucityInMinAngle;
+
+        #endregion
 
         #region Steer help logic
 
@@ -493,122 +608,6 @@ namespace XGStudios
         }
 
         #endregion
-
-        void OnDrawGizmosSelected()
-        {
-            Vector3 centerPos = transform.position;
-            Vector3 velocity = transform.position + Vector3.ClampMagnitude(Rb.velocity, 4);
-            Vector3 forwardPos = transform.TransformPoint(Vector3.forward * 4);
-
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawWireSphere(centerPos, 0.2f);
-            Gizmos.DrawLine(centerPos, velocity);
-            Gizmos.DrawLine(centerPos, forwardPos);
-
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(forwardPos, 0.2f);
-
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(velocity, 0.2f);
-
-            Gizmos.color = Color.white;
-        }
-
-        bool IsGrounded()
-        {
-            float height = .008f;
-            BoxCollider boxCollider = GetComponent<BoxCollider>();
-
-            Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height,
-                groundLayer);
-
-            Debug.DrawRay(groundCheck.transform.position, Vector3.down * (boxCollider.bounds.extents.y + height),
-                Color.green);
-
-            return Physics.Raycast(groundCheck.transform.position, Vector3.down, boxCollider.bounds.extents.y + height,
-                groundLayer);
-        }
-
-
-        void AirMultiplier()
-        {
-            if (GameManager.Instance.gamePaused) return;
-            int floor = Mathf.FloorToInt(_airMultiplier);
-            airMultiplierScore.SetText(floor.ToString());
-
-            if (!IsGrounded())
-            {
-                Invoke(nameof(ShowPopup), 0.75f);
-            }
-            else if (IsGrounded())
-            {
-                airMultiplierPopup.SetActive(false);
-                CancelInvoke(nameof(ShowPopup));
-
-                switch (_airMultiplierFilled)
-                {
-                    case false:
-                        Invoke(nameof(ResetAirMultiplier), 1f);
-                        break;
-                }
-            }
-
-            switch (airMultiplierSlider.value)
-            {
-                case >= 100:
-                    abilityText.SetActive(true);
-                    _airMultiplierFilled = true;
-                    BlitEffect(true);
-                    if (Input.GetButtonDown("Fire2"))
-                        Ability();
-                    break;
-                case <= 100:
-                    _airMultiplierFilled = true;
-                    break;
-            }
-        }
-
-        void Ability()
-        {
-            abilityText.SetActive(false);
-            BlitEffect(false);
-            airMultiplierSlider.value = 0;
-            _airMultiplier = 0;
-            
-            //Ability code here
-            AudioManager.Instance.Play("LaserBeam");
-        }
-
-        void ShowPopup()
-        {
-            _airMultiplier += 1 * 0.2f;
-            airMultiplierSlider.value = _airMultiplier;
-            airMultiplierPopup.SetActive(true);
-        }
-
-        void ResetAirMultiplier()
-        {
-            airMultiplierSlider.value = 0;
-            _airMultiplier = 0;
-        }
-
-        void BlitEffect(bool boolean)
-        {
-            blitRender.SetActive(boolean);
-        }
-
-        bool Flipped()
-        {
-            return Physics.CheckSphere(topCheck.transform.position, flipRadius, groundLayer);
-        }
-
-        IEnumerator Flip()
-        {
-            yield return new WaitForSeconds(0.5f);
-            Quaternion desired = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle);
-            transform.rotation = Quaternion.Lerp(transform.rotation, desired, rotationSpeed * Time.deltaTime);
-        }
     }
 
 

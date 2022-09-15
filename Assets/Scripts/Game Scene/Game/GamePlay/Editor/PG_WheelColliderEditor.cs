@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
 
 namespace PG_Physics.Wheel
 {
@@ -9,6 +7,16 @@ namespace PG_Physics.Wheel
     [CanEditMultipleObjects]
     public class PG_WheelColliderEditor : Editor
     {
+        void OnEnable()
+        {
+            for (int i = 0; i < targets.Length; i++)
+                if ((targets[i] as PG_WheelCollider).CheckFirstEnable())
+                {
+                    serializedObject.SetIsDifferentCacheDirty();
+                    serializedObject.Update();
+                }
+        }
+
         public override void OnInspectorGUI()
         {
 
@@ -19,16 +27,6 @@ namespace PG_Physics.Wheel
             if (EditorGUI.EndChangeCheck())
                 for (int i = 0; i < targets.Length; i++)
                     (targets[i] as PG_WheelCollider).UpdateConfig();
-        }
-
-        void OnEnable()
-        {
-            for (int i = 0; i < targets.Length; i++)
-                if ((targets[i] as PG_WheelCollider).CheckFirstEnable())
-                {
-                    serializedObject.SetIsDifferentCacheDirty();
-                    serializedObject.Update();
-                }
         }
     }
 
@@ -41,13 +39,12 @@ namespace PG_Physics.Wheel
     [CustomPropertyDrawer(typeof(PG_WheelColliderConfig))]
     public class PG_WheelColliderConfigDrawer : PropertyDrawer
     {
-        protected virtual bool IsFullProperty => false;
-
-        float LineHeight = 18;
-        float Space = 4;
-        float LineIndent = 8;
+        readonly float LineHeight = 18;
+        readonly float LineIndent = 8;
 
         Rect Rect;
+        readonly float Space = 4;
+        protected virtual bool IsFullProperty => false;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

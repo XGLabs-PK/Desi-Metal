@@ -4,24 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// ReSharper disable once CheckNamespace
 namespace XGStudios
 {
-    public class MainMenu : MonoBehaviour
+    public class MenuManager : MonoBehaviour
     {
         static readonly int StartGame = Animator.StringToHash("StartGame");
+        static readonly int CreditsMoving = Animator.StringToHash("CreditsMoving");
         [Header("Strings")]
         public string gameScene;
-
-        [Header("Texts")]
-        public TextMeshProUGUI leaderBoardTxt;
-
-        [Header("Menu Buttons")]
-        public Button playButton;
-        public Button settingsButton;
-        public Button creditsButton;
-        public Button leaderBoardBtn;
-        public Button quitButton;
 
         [Space(5f)]
         [Header("UI Panels")]
@@ -36,20 +26,29 @@ namespace XGStudios
 
         [Space(5f)]
         [Header("Misc")]
-        public GameObject particles;
         public Animator carAnim;
         public Animator creditsAnim;
-        static readonly int CreditsMoving = Animator.StringToHash("CreditsMoving");
+
+        [Header("Texts")]
+        public TextMeshProUGUI leaderBoardTxt;
+
+        [Header("Menu Buttons")]
+        public Button playButton;
+        public Button settingsButton;
+        public Button creditsButton;
+        public Button leaderBoardBtn;
+        public Button quitButton;
 
         void Start()
         {
             leaderBoardTxt.SetText("LEADERBOARD");
             creditsAnim.enabled = false;
+
             if (playButton != null)
                 playButton.onClick.AddListener(() =>
                 {
                     carAnim.SetTrigger(StartGame);
-                    Invoke(nameof(StartTheGame), 4f);
+                    Invoke(nameof(StartTheGame), 1f);
                 });
 
             if (settingsButton != null)
@@ -97,11 +96,10 @@ namespace XGStudios
                     menuRect.transform.localPosition = new Vector3(0, 0, 0);
                     menuRect.DOAnchorPos(new Vector2(0, -1000f), 0.2f).SetEase(Ease.OutExpo);
                     menuCanvas.DOFade(0, 0.2f);
-                    particles.SetActive(false);
                     Invoke(nameof(QuitGame), 1f);
                 });
         }
-        
+
         void Update()
         {
             if (!Input.GetKeyDown(KeyCode.Escape)) return;

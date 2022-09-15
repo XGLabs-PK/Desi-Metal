@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using XGStudios;
 
 /// <summary>
-/// For user multiplatform control.
+///     For user multiplatform control.
 /// </summary>
 [RequireComponent(typeof(CarController))]
 public class UserControl : MonoBehaviour
@@ -23,11 +21,11 @@ public class UserControl : MonoBehaviour
     void Update()
     {
         //Standart input control (Keyboard or gamepad).
-            Horizontal = Input.GetAxis("Horizontal");
-            Vertical = Input.GetAxis("Vertical");
-            Brake = Input.GetButton("Jump");
+        Horizontal = Input.GetAxis("Horizontal");
+        Vertical = Input.GetAxis("Vertical");
+        Brake = Input.GetButton("Jump");
 
-            //Apply control for controlled car.
+        //Apply control for controlled car.
         ControlledCar.UpdateControls(Horizontal, Vertical, Brake);
     }
 }

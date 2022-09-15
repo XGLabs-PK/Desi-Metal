@@ -8,7 +8,7 @@ namespace XG.Studios
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
-        
+
         [SerializeField]
         AudioMixerGroup musicMixerGroup;
         [SerializeField]
@@ -36,38 +36,44 @@ namespace XG.Studios
                         s.source.outputAudioMixerGroup = musicMixerGroup;
                         break;
                 }
-                
+
                 if (s.playOnAwake)
                     s.source.Play();
             }
         }
-        
+
         public void Play(string clipName)
         {
             Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
+
             if (s == null)
             {
                 Debug.LogError("Sound: " + clipName + " not found!");
                 return;
             }
+
             s.source.Play();
         }
 
         public void Stop(string clipName)
         {
             Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
+
             if (s == null)
             {
                 Debug.LogError("Sound: " + clipName + " not found!");
                 return;
             }
+
             s.source.Stop();
         }
 
         public void UpdateMixerVolume()
         {
             musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(UIStuff.MusicVolume) * 20);
-            soundEffectsMixerGroup.audioMixer.SetFloat("SoundEffectsVolume", Mathf.Log10(UIStuff.SoundEffectsVolume) * 20);
+
+            soundEffectsMixerGroup.audioMixer.SetFloat("SoundEffectsVolume",
+                Mathf.Log10(UIStuff.SoundEffectsVolume) * 20);
         }
     }
 }

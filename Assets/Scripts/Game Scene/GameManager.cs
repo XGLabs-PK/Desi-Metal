@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,14 +14,11 @@ namespace XGStudios
         static readonly int IsResumed = Animator.StringToHash("isResumed");
         static readonly int DeathStart = Animator.StringToHash("DeathStart");
 
+        public static int _score;
+
         [Header("Pause Mode")]
         public GameObject pauseUI;
         public Animator pauseAnimator;
-
-        [Space(5f)]
-        [Header("Death Mode")]
-        public TextMeshProUGUI inGameKillCountText;
-        public TextMeshProUGUI killCountText;
         public Animator deathAnim;
 
         [HideInInspector]
@@ -31,11 +27,14 @@ namespace XGStudios
         public bool carDestroyed;
 
         TheCamera _camScript;
-        TheWeapon _weaponScript;
-        int _killCounter;
         int _inGameKillCounter;
+        int _killCounter;
+        TheWeapon _weaponScript;
 
-        public static int _score;
+        [Space(5f)]
+        [Header("Death Mode")]
+        public TextMeshProUGUI inGameKillCountText;
+        public TextMeshProUGUI killCountText;
 
         void Awake()
         {
@@ -62,7 +61,7 @@ namespace XGStudios
         {
             if (Input.GetKeyDown(KeyCode.I))
                 TheHealth.Instance.TakeDamage(15);
-            
+
             if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused && !carDestroyed)
                 PauseGame();
             else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused && !carDestroyed)
@@ -70,6 +69,7 @@ namespace XGStudios
 
             if (!carDestroyed) return;
             CarDestroyed();
+
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 Time.timeScale = 1f;
@@ -86,7 +86,7 @@ namespace XGStudios
             int.TryParse(killCountText.text, out _killCounter);
             _killCounter = PlayerPrefs.GetInt("KillCounter");
             int.TryParse(inGameKillCountText.text, out _inGameKillCounter);
-            
+
             if (killCountText != null)
                 killCountText.text = _inGameKillCounter.ToString();
 
@@ -102,8 +102,10 @@ namespace XGStudios
                 pauseAnimator.SetTrigger(IsPaused);
 
             Time.timeScale = 0f;
+
             if (_camScript != null)
                 _camScript.enabled = false;
+
             _weaponScript.enabled = false;
         }
 
@@ -131,7 +133,9 @@ namespace XGStudios
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
-            AudioManager.Instance.Play("CarDestruction");
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.Play("CarDestruction");
         }
     }
 }
