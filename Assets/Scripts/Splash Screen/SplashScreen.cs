@@ -10,13 +10,13 @@ namespace XGStudios
         IEnumerator Start()
         {
             yield return new WaitForSeconds(4f);
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("MainMenu");
         }
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                SceneManager.LoadScene("Main Menu");
+                SceneManager.LoadScene("MainMenu");
         }
     }
 }

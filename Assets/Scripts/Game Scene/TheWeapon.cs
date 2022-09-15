@@ -71,15 +71,34 @@ namespace XGStudios
             {
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.Play("GroundHitImpact");
-                Destroy(Instantiate(desertImpactEffect, hit.point, Quaternion.identity), 2f);
+                for (int i = 0; i < _poolManager.bulletImpactList.Count; i++)
+                {
+                    if (_poolManager.bulletImpactList[i].activeInHierarchy == false)
+                    {
+                        _poolManager.bulletImpactList[i].SetActive(true);
+                        _poolManager.bulletImpactList[i].transform.position = hit.point;
+                        _poolManager.bulletImpactList[i].transform.rotation = Quaternion.LookRotation(hit.normal);
+                        break;
+                    }
+                
+                    if (i == _poolManager.bulletImpactList.Count - 1)
+                    {
+                        //Last Bullet
+                        GameObject newBulletImpact = Instantiate(_poolManager.bulletImpactPrefab);
+                        newBulletImpact.SetActive(false);
+                        newBulletImpact.transform.parent = _poolManager.transform.parent;
+                        _poolManager.bulletImpactList.Add(newBulletImpact);
+                    }
+                }
             }
 
             if (hit.transform.CompareTag("RealCar")) return;
             if (!hit.transform.CompareTag("AI")) return;
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("CarHitImpact");
-
+            
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
+
             FeelManager.Instance.enemyDamage.PlayFeedbacks();
             int randomDamage = Random.Range(10, 20);
             hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(randomDamage);

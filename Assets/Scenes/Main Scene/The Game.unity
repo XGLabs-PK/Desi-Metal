@@ -2691,8 +2691,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3707170685528506107, guid: 82652893c849be244b73c90a6425d2b9,
     type: 3}
-  spawnCount: 20
+  bulletSpawnCount: 25
   bulletsList: []
+  bulletImpactPrefab: {fileID: 519327617811173363, guid: 477ee378c097b084f9c069b937d710d9,
+    type: 3}
+  impactSpawnCount: 25
+  bulletImpactList: []
 --- !u!1 &265900400
 GameObject:
   m_ObjectHideFlags: 0
@@ -36230,6 +36234,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632943650}
   m_Mesh: {fileID: 5883765753899416711, guid: cc6af26dcf930d844913d00968b4e8be, type: 3}
+--- !u!1 &1643717699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3831234768491391765, guid: f5a70605d70852d4aaec6114f1eab9fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1278260057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1643717709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643717699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1673476133
 GameObject:
   m_ObjectHideFlags: 0

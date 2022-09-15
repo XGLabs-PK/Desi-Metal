@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Player Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Player Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Swift/Swift.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Swift/Swift.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/Tire.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Tire.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/gun.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/gun.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Car Impact.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Car Impact.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DAMAGE POPUP.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DAMAGE POPUP.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Obstruction Impact.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Obstruction Impact.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Desert Impact.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Desert Impact.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Timeline/Cutscene.playable" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Debugging.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/DamageIndicator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -103,6 +107,7 @@
       <workItem from="1663190314760" duration="3878000" />
       <workItem from="1663213724051" duration="5144000" />
       <workItem from="1663252199322" duration="8887000" />
+      <workItem from="1663273570682" duration="2654000" />
     </task>
     <servers />
   </component>

@@ -25667,14 +25667,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 8276656893453110256}
-  bulletPrefab: {fileID: 3707170685528506107, guid: 82652893c849be244b73c90a6425d2b9,
-    type: 3}
   firePoint: {fileID: 2119751526176776823}
   desertImpactEffect: {fileID: 519327617811173363, guid: 477ee378c097b084f9c069b937d710d9,
     type: 3}
   carImpactEffect: {fileID: 9217968598369223018, guid: f7208c1b1056af14bb172d43f08fe161,
     type: 3}
-  delay: 0.15
+  delay: 0.1
 --- !u!114 &3798983883190302145
 MonoBehaviour:
   m_ObjectHideFlags: 0
