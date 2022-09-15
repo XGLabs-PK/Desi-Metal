@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using XG.Studios;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios
@@ -11,6 +12,7 @@ namespace XGStudios
         public static TheHealth Instance;
         public GameObject smokeEffect;
         public GameObject fireSmoke;
+        public GameObject damageText;
 
         public int health = 100;
 
@@ -57,6 +59,8 @@ namespace XGStudios
             if (_maxHealth == 0) return;
             FeelManager.Instance.carDamage.PlayFeedbacks();
             _maxHealth -= damage;
+            DamageIndicator indicator = Instantiate(damageText, transform.position, Quaternion.identity).GetComponent<DamageIndicator>();
+            indicator.SetDamageInt(damage);
             UpdateHealthBar(_maxHealth);
 
             if (_maxHealth <= 0)

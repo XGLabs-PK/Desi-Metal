@@ -25674,6 +25674,8 @@ MonoBehaviour:
     type: 3}
   carImpactEffect: {fileID: 9217968598369223018, guid: f7208c1b1056af14bb172d43f08fe161,
     type: 3}
+  damageText: {fileID: 5547412608515954666, guid: 21c8b32aa749bcc40802f574359d7fb3,
+    type: 3}
   delay: 0.1
 --- !u!114 &3798983883190302145
 MonoBehaviour:
@@ -25706,6 +25708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeEffect: {fileID: 4597162699246637102}
   fireSmoke: {fileID: 1836500953603702109}
+  damageText: {fileID: 5547412608515954666, guid: 21c8b32aa749bcc40802f574359d7fb3,
+    type: 3}
   health: 100
   blitRender: {fileID: 7657033332097895066, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}

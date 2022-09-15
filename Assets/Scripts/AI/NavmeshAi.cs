@@ -123,15 +123,6 @@ namespace XGStudios
         IEnumerator Ramming()
         {
             float acce = _agent.acceleration;
-            //if (_distanceBetweenPlayer <= _agent.stoppingDistance)
-            //{
-
-            //    _agent.acceleration = 3f;
-
-            //}
-            //else {
-            //    _agent.acceleration = acce;
-            //}
             _agent.stoppingDistance = stopDist;
             Vector3 position = player.position;
             _agent.SetDestination(position);

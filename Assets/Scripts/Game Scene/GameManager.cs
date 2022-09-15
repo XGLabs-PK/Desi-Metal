@@ -133,9 +133,6 @@ namespace XGStudios
             Time.timeScale = 0f;
             _camScript.enabled = false;
             _weaponScript.enabled = false;
-
-            if (AudioManager.Instance != null)
-                AudioManager.Instance.Play("CarDestruction");
         }
     }
 }

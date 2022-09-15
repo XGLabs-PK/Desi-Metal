@@ -29,7 +29,8 @@ namespace XGStudios
 
             if (other.gameObject.CompareTag("RealCar"))
             {
-                TheHealth.Instance.TakeDamage(2);
+                float randomDamage = Random.Range(1, 10);
+                TheHealth.Instance.TakeDamage(randomDamage);
 
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.Play("CarHitImpact");

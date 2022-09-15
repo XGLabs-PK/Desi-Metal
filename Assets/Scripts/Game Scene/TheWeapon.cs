@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using XG.Studios;
 
@@ -59,13 +60,13 @@ namespace XGStudios
 
             if (hit.transform.CompareTag("RealCar")) return;
             if (!hit.transform.CompareTag("AI")) return;
-
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("CarHitImpact");
 
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
             FeelManager.Instance.enemyDamage.PlayFeedbacks();
-            hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(15);
+            int randomDamage = Random.Range(10, 20);
+            hit.transform.gameObject.GetComponent<NavmeshAi>().TakeDamage(randomDamage);
             //Sound
         }
     }

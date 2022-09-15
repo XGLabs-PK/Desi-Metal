@@ -6,7 +6,7 @@ namespace XG.Studios
 {
     public class PlayerManager : MonoBehaviour
     {
-        public int id;
+        public int id = 6979;
         int _playerScore;
         public TMP_InputField memberID;
         public TextMeshProUGUI playerScore;
