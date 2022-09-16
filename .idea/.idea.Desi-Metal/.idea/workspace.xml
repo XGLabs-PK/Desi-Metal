@@ -2,23 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Documentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Documentation/Documentation (Prometeo).pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Documentation/Documentation (Prometeo).pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Editor/PrometeoEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Editor/PrometeoEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Materials/Sphere_Material.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Materials/Sphere_Material.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Meshes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Meshes/Sphere.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Meshes/Sphere.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Prefabs/TireSmoke_PS.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Particle Systems/Prefabs/TireSmoke_PS.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Trails.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Trails/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Trails/Prefabs/TireSkid.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Effects/Trails/Prefabs/TireSkid.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Fonts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Fonts/Licence.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Fonts/Licence.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Fonts/Teko-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Fonts/Teko-Bold.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_Col_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_Col_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_Light_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_Light_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_ParkingZone_Mat.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/PCC_ParkingZone_Mat.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/Walls.physicMaterial" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Materials/Walls.physicMaterial.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Parking_Zone.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Parking_Zone.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Prometheus - Collider.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Prometheus - Collider.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Prometheus.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Meshes/Prometheus.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/More Cars.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/More Cars.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Prefabs/Button Template.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Prefabs/Button Template.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Prefabs/Prometheus.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Prefabs/Prometheus.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/Demo.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/Demo.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/Mobile Devices Demo.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/Mobile Devices Demo.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/More Cars.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scenes/More Cars.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/CameraFollow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/PrometeoTouchInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Sounds.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Sounds/CarEngine.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Sounds/CarEngine.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Sounds/TireScreech.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Sounds/TireScreech.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/Mobile Devices.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/Mobile Devices/Button_Blank_Tex.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/Mobile Devices/Button_Blank_Tex.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/Mobile Devices/Button_Tex.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/Mobile Devices/Button_Tex.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/PCC_TextureAtlas.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Textures/PCC_TextureAtlas.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/BulletImpact.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/BulletImpact.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Leaderboard.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Leaderboard/PlayerLogin.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Leaderboard/PlayerLogin.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Leaderboard/PlayerManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Leaderboard/PlayerManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Swift/Swift.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Swift/Swift.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Tire.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Tire.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/gun.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/gun.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Car Impact.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Car Impact.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Desert Impact.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shader Effects/Desert Impact.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerLogin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerLogin.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +103,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletImpact.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Arcade_Car_Physics/Scripts/WheelVehicle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PROMETEO - Car Controller/Scripts/PrometeoCarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Debugging.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game Scene/DamageIndicator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,6 +186,7 @@
       <workItem from="1663213724051" duration="5144000" />
       <workItem from="1663252199322" duration="8887000" />
       <workItem from="1663273570682" duration="2654000" />
+      <workItem from="1663296050984" duration="1506000" />
     </task>
     <servers />
   </component>

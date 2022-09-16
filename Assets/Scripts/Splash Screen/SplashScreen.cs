@@ -9,7 +9,7 @@ namespace XGStudios
     {
         IEnumerator Start()
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(0f);
             SceneManager.LoadScene("MainMenu");
         }
 
