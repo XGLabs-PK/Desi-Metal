@@ -77,7 +77,7 @@ namespace XGStudios
                 quitButton.onClick.AddListener(() =>
                 {
                     Time.timeScale = 1f;
-                    SceneManager.LoadScene("Main Menu");
+                    SceneManager.LoadScene("MainMenu");
                 });
         }
 
