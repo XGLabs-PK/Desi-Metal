@@ -20,7 +20,7 @@ public class PrometeoCarController : MonoBehaviour
     //CAR SETUP
 
       [Space(20)]
-      //[Header("CAR SETUP")]
+      [Header("CAR SETUP")]
       [Space(10)]
       [Range(20, 220)]
       public int maxSpeed = 90; //The maximum speed that the car can reach in km/h.
