@@ -64,15 +64,18 @@ namespace XGStudios
                     if (_ai[i] == null) continue;
                     if (_ai[i].health > 0) continue;
                     enemies.RemoveAt(i);
+                    _ai[i].health = 100;
                     _ai.RemoveAt(i);
                 }
 
             if (enemies.Count != 0) return;
+            
 
-            Debug.Log("Enemies empty");
-            Debug.Log(_wave);
-            enemies.Clear();
-            _ai.Clear();
+                Debug.Log("Enemies empty");
+                Debug.Log(_wave);
+                enemies.Clear();
+                _ai.Clear();
+            
 
             switch (_wave)
             {

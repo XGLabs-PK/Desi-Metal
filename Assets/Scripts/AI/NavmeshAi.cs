@@ -86,29 +86,36 @@ namespace XGStudios
             }
 
 
-            if (health > 0) return;
-            GameManager._score++;
-
-            if (killCounterTxt != null)
-                killCounterTxt.text = GameManager._score.ToString();
-
-            int.TryParse(killCounterTxt.text, out _killCounter);
-            PlayerPrefs.SetInt("KillCounter", _killCounter);
-            Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
-            gameObject.SetActive(false);
-            if (gameObject.name.Contains("Mehran"))
+            if (health <= 0)
             {
-                pool.mehranQueue.Enqueue(gameObject);
+                GameManager._score++;
+
+                if (killCounterTxt != null)
+                    killCounterTxt.text = GameManager._score.ToString();
+
+                int.TryParse(killCounterTxt.text, out _killCounter);
+                PlayerPrefs.SetInt("KillCounter", _killCounter);
+                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                gameObject.SetActive(false);
+
+                if (gameObject.name.Contains("Mehran"))
+                {
+                    pool.mehranQueue.Enqueue(gameObject);
+                    
+
+                }
+                else if (gameObject.name.Contains("Rickshaw"))
+                {
+                    pool.RickshawQueue.Enqueue(gameObject);
+                  
+                }
+                else
+                {
+                    pool.truck.SetActive(false);
+                }
+                AudioManager.Instance.Play("CarDestruction");
+                FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
             }
-            else if (gameObject.name.Contains("Rickshaw"))
-            {
-                pool.RickshawQueue.Enqueue(gameObject);
-            }
-            else {
-                pool.truck.SetActive(false);
-            }
-            AudioManager.Instance.Play("CarDestruction");
-            FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }
 
         void FixedUpdate()
