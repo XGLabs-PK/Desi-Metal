@@ -13,7 +13,7 @@ namespace XGStudios
     [RequireComponent(typeof(Rigidbody))]
     public class CarController : MonoBehaviour
     {
-        [Header("Lights & Effects")]
+        [Header("Misc")]
         [SerializeField]
         LayerMask groundLayer;
         [SerializeField]
@@ -21,9 +21,9 @@ namespace XGStudios
         [SerializeField]
         GameObject abilityText;
         [SerializeField]
-        GameObject Headlights;
+        GameObject headlights;
         [SerializeField]
-        GameObject Backlights;
+        GameObject backlights;
         [SerializeField]
         GameObject smokeEffect;
         [SerializeField]
@@ -104,8 +104,8 @@ namespace XGStudios
             BlitEffect(false);
             airMultiplierPopup.SetActive(false);
             smokeEffect.SetActive(false);
-            Headlights.SetActive(false);
-            Backlights.SetActive(false);
+            headlights.SetActive(false);
+            backlights.SetActive(false);
             Rb.centerOfMass = COM.localPosition;
             _desiredZ = transform.eulerAngles.z;
 
@@ -154,8 +154,8 @@ namespace XGStudios
 
         void Update()
         {
-            Headlights.SetActive(_headLights);
-            Backlights.SetActive(_backLights);
+            headlights.SetActive(_headLights);
+            backlights.SetActive(_backLights);
 
             AirMultiplier();
 

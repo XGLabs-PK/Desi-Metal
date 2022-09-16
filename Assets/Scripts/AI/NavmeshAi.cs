@@ -88,10 +88,10 @@ namespace XGStudios
 
             if (health <= 0)
             {
-                GameManager._score++;
+                GameManager.Score++;
 
                 if (killCounterTxt != null)
-                    killCounterTxt.text = GameManager._score.ToString();
+                    killCounterTxt.text = GameManager.Score.ToString();
 
                 int.TryParse(killCounterTxt.text, out _killCounter);
                 PlayerPrefs.SetInt("KillCounter", _killCounter);
@@ -99,20 +99,12 @@ namespace XGStudios
                 gameObject.SetActive(false);
 
                 if (gameObject.name.Contains("Mehran"))
-                {
                     pool.mehranQueue.Enqueue(gameObject);
-                    
-
-                }
                 else if (gameObject.name.Contains("Rickshaw"))
-                {
                     pool.RickshawQueue.Enqueue(gameObject);
-                  
-                }
                 else
-                {
                     pool.truck.SetActive(false);
-                }
+
                 AudioManager.Instance.Play("CarDestruction");
                 FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
             }

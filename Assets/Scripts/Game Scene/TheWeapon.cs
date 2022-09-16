@@ -48,7 +48,7 @@ namespace XGStudios
                     _poolManager.bulletsList[i].transform.localRotation = firingTransform.rotation;
                     break;
                 }
-                
+
                 if (i == _poolManager.bulletsList.Count - 1)
                 {
                     //Last Bullet
@@ -71,6 +71,7 @@ namespace XGStudios
             {
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.Play("GroundHitImpact");
+
                 for (int i = 0; i < _poolManager.bulletImpactList.Count; i++)
                 {
                     if (_poolManager.bulletImpactList[i].activeInHierarchy == false)
@@ -80,7 +81,7 @@ namespace XGStudios
                         _poolManager.bulletImpactList[i].transform.rotation = Quaternion.LookRotation(hit.normal);
                         break;
                     }
-                
+
                     if (i == _poolManager.bulletImpactList.Count - 1)
                     {
                         //Last Bullet
@@ -94,9 +95,10 @@ namespace XGStudios
 
             if (hit.transform.CompareTag("RealCar")) return;
             if (!hit.transform.CompareTag("AI")) return;
+
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("CarHitImpact");
-            
+
             Destroy(Instantiate(carImpactEffect, hit.point, Quaternion.identity), 2f);
 
             FeelManager.Instance.enemyDamage.PlayFeedbacks();

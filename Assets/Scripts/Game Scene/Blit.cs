@@ -126,7 +126,7 @@ namespace XGStudios
 
                 // Set Source / Destination
 #if UNITY_2020_2_OR_NEWER // v10+
-                var renderer = renderingData.cameraData.renderer;
+                ScriptableRenderer renderer = renderingData.cameraData.renderer;
 #else // v8
 				// For older versions, cameraData.renderer is internal so can't be accessed. Will pass it through from AddRenderPasses instead
 				var renderer = this.renderer;

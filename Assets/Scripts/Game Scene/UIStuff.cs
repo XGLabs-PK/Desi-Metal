@@ -58,8 +58,8 @@ namespace XGStudios
             volume.profile.TryGet(out _filmGrain);
 
             musicVolSlider.value = PlayerPrefs.GetFloat("musicVol", 0.15f);
-            sfxVolSlider.value = PlayerPrefs.GetFloat("sfxVol", 0.15f);
-            motionBlurSlider.value = PlayerPrefs.GetFloat("motionBlur", 0.15f);
+            sfxVolSlider.value = PlayerPrefs.GetFloat("sfxVol", 0.25f);
+            motionBlurSlider.value = PlayerPrefs.GetFloat("motionBlur", 0.1f);
             filmGrainSlider.value = PlayerPrefs.GetFloat("filmGrain", 0.25f);
             qualityDropdown.value = PlayerPrefs.GetInt(QualityKey, 2);
 

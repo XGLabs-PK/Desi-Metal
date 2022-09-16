@@ -9,12 +9,12 @@ namespace XGStudios
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-
+        public GameObject cutsceneCam;
         static readonly int IsPaused = Animator.StringToHash("isPaused");
         static readonly int IsResumed = Animator.StringToHash("isResumed");
         static readonly int DeathStart = Animator.StringToHash("DeathStart");
 
-        public static int _score;
+        public static int Score;
 
         [Header("Pause Mode")]
         public GameObject pauseUI;
@@ -46,10 +46,11 @@ namespace XGStudios
 
         void Start()
         {
-            _score = 0;
+            Destroy(cutsceneCam, 6f);
+            Score = 0;
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
-            
+
             Invoke(nameof(EnableWeapon), 4.7f);
 
             if (pauseUI != null)

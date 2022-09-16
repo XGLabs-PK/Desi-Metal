@@ -35,14 +35,16 @@ namespace XGStudios
             target = GameObject.FindGameObjectWithTag("RealCar");
 
             StartCoroutine(Delay());
-            List<NavMeshHit> hitListO = new List<NavMeshHit>();
+            var hitListO = new List<NavMeshHit>();
+
             for (int i = 0; i < enemyCount; i++)
                 if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
                 {
                     enemies.Add(pool.RickshawQueue.Dequeue());
                     hitListO.Add(hit);
-                    
+
                 }
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].transform.position = hitListO[i].position;
@@ -69,13 +71,13 @@ namespace XGStudios
                 }
 
             if (enemies.Count != 0) return;
-            
 
-                Debug.Log("Enemies empty");
-                Debug.Log(_wave);
-                enemies.Clear();
-                _ai.Clear();
-            
+
+            Debug.Log("Enemies empty");
+            Debug.Log(_wave);
+            enemies.Clear();
+            _ai.Clear();
+
 
             switch (_wave)
             {
@@ -96,17 +98,18 @@ namespace XGStudios
                     _wave++;
                     break;
                 case 5:
-                    if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas)) {
+                    if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
+                    {
                         enemies.Add(pool.truck);
                         enemies[0].transform.position = hit.position;
                         enemies[0].SetActive(true);
 
                     }
-                    for (int i = 0; i < enemies.Count; i++) {
+
+                    for (int i = 0; i < enemies.Count; i++)
                         _ai.Add(enemies[i].GetComponent<NavmeshAi>());
-                    
-                    }
-                        _wave = 1;
+
+                    _wave = 1;
                     break;
             }
 
@@ -115,29 +118,34 @@ namespace XGStudios
         void InstantiateEnemies(Queue<GameObject> enemy, int moreEnemy, int enemyPlus)
         {
             NavMeshHit hit;
-            List<NavMeshHit> hitList = new List<NavMeshHit>();
+            var hitList = new List<NavMeshHit>();
+
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
-                if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                {
                     enemies.Add(enemy.Dequeue());
                     hitList.Add(hit);
-                    
+
                 }
-            for (int i = 0; i < enemies.Count; i++) {
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
                 enemies[i].transform.position = hitList[i].position;
                 enemies[i].SetActive(true);
-            }         
+            }
 
             for (int i = 0; i < enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
 
-        void InstantiateEnemies(Queue<GameObject>enemy, Queue<GameObject> enemy2, int moreEnemy, int enemyPlus)
+        void InstantiateEnemies(Queue<GameObject> enemy, Queue<GameObject> enemy2, int moreEnemy, int enemyPlus)
         {
-            List<NavMeshHit> hitList2 = new List<NavMeshHit>();
+            var hitList2 = new List<NavMeshHit>();
+
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
             {
                 NavMeshHit hit;
-                
+
                 if (RandomBoolean())
                 {
                     if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
@@ -145,7 +153,7 @@ namespace XGStudios
                         enemies.Add(enemy.Dequeue());
                         hitList2.Add(hit);
                     }
-                    
+
                 }
                 else
                 {
@@ -156,6 +164,7 @@ namespace XGStudios
                     }
                 }
             }
+
             for (int k = 0; k < enemies.Count; k++)
             {
                 enemies[k].transform.position = hitList2[k].position;

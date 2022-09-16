@@ -30,13 +30,13 @@ namespace XGStudios
             _vsyncInt = PlayerPrefs.GetInt("VsyncToggleState");
             fullScreenToggle.isOn = _screenInt == 1;
             vsyncToggle.isOn = _vsyncInt == 2;
-            
+
             resolutionDropdown.onValueChanged.AddListener(index =>
             {
                 PlayerPrefs.SetInt(ResName, resolutionDropdown.value);
                 PlayerPrefs.Save();
             });
-            
+
             qualityDropdown.onValueChanged.AddListener(i =>
             {
                 PlayerPrefs.SetInt(QualityKey, qualityDropdown.value);
@@ -50,15 +50,19 @@ namespace XGStudios
             resolutionDropdown.ClearOptions();
             var options = new List<string>();
             int currResIndex = 0;
+
             for (int i = 0; i < _resolutions.Length; i++)
             {
                 string option = _resolutions[i].width + " x " + _resolutions[i].height + " - " +
                                 _resolutions[i].refreshRate + " hz";
+
                 options.Add(option);
+
                 if (_resolutions[i].width == Screen.currentResolution.width &&
                     _resolutions[i].height == Screen.currentResolution.height)
                     currResIndex = i;
             }
+
             resolutionDropdown.AddOptions(options);
             resolutionDropdown.value = PlayerPrefs.GetInt(ResName, currResIndex);
             resolutionDropdown.RefreshShownValue();
@@ -117,7 +121,7 @@ namespace XGStudios
             Resolution resolution = _resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         }
-        
+
         public void GraphicsQuality(int value)
         {
             QualitySettings.SetQualityLevel(value);

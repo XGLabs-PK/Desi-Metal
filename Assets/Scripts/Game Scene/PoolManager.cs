@@ -10,7 +10,7 @@ namespace XGStudios
         public GameObject bulletPrefab;
         public int bulletSpawnCount;
         public List<GameObject> bulletsList;
-        
+
         [Header("For Bullet Impact")]
         public GameObject bulletImpactPrefab;
         public int impactSpawnCount;
@@ -27,12 +27,13 @@ namespace XGStudios
         public GameObject truckPrefab;
         public GameObject truck;
 
-        private void Awake()
+        void Awake()
         {
             mehranQueue = new Queue<GameObject>();
             RickshawQueue = new Queue<GameObject>();
 
         }
+
         void Start()
         {
             //Spawn "25" bullets, add them to the bulletsList
@@ -42,7 +43,7 @@ namespace XGStudios
                 bulletsList.Add(bullet);
                 bullet.SetActive(false);
             }
-            
+
             //Spawn "25" bullet Impacts, add them to the bulletsList
             for (int i = 0; i < impactSpawnCount; i++)
             {
@@ -51,17 +52,21 @@ namespace XGStudios
                 bulletImpact.SetActive(false);
             }
 
-            for (int i = 0; i < mehranCount; i++) {
+            for (int i = 0; i < mehranCount; i++)
+            {
                 GameObject mehran = Instantiate(mehranEnemyPrefab, transform, true);
                 mehran.SetActive(false);
                 mehranQueue.Enqueue(mehran);
             }
-            for (int i = 0; i < RickShawCount; i++) {
+
+            for (int i = 0; i < RickShawCount; i++)
+            {
                 GameObject rickshaw = Instantiate(RickshawPrefab, transform, true);
                 rickshaw.SetActive(false);
                 RickshawQueue.Enqueue(rickshaw);
-                
+
             }
+
             truck = Instantiate(truckPrefab, transform, true);
             truck.SetActive(false);
 

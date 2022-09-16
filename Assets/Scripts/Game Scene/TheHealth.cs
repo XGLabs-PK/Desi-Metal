@@ -59,7 +59,10 @@ namespace XGStudios
             if (_maxHealth == 0) return;
             FeelManager.Instance.carDamage.PlayFeedbacks();
             _maxHealth -= damage;
-            DamageIndicator indicator = Instantiate(damageText, transform.position, Quaternion.identity).GetComponent<DamageIndicator>();
+
+            DamageIndicator indicator = Instantiate(damageText, transform.position, Quaternion.identity)
+                .GetComponent<DamageIndicator>();
+
             indicator.SetDamageInt(damage);
             UpdateHealthBar(_maxHealth);
 

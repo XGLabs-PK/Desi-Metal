@@ -13,6 +13,7 @@ namespace XGStudios
         {
             Invoke(nameof(OnDisable), 3f);
         }
+
         void OnDisable()
         {
             transform.gameObject.SetActive(false);

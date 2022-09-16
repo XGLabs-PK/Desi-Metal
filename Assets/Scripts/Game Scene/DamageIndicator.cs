@@ -22,18 +22,19 @@ namespace XG.Studios
             float direction = Random.rotation.eulerAngles.x;
             intPos = transform.position;
             float dis = Random.Range(minDis, maxDis);
-            targetPos = intPos + (Quaternion.Euler(0, 0, direction) * new Vector3(dis, dis, 0f));
+            targetPos = intPos + Quaternion.Euler(0, 0, direction) * new Vector3(dis, dis, 0f);
             transform.localScale = Vector3.zero;
         }
 
         void Update()
         {
             timer += Time.deltaTime;
-            
+
             float fraction = lifeTime / 2;
-            
+
             if (timer > lifeTime) Destroy(gameObject);
-            else if (timer > fraction) text.color = Color.Lerp(text.color, Color.clear, (timer - fraction) / (lifeTime - fraction));
+            else if (timer > fraction)
+                text.color = Color.Lerp(text.color, Color.clear, (timer - fraction) / (lifeTime - fraction));
 
             transform.localPosition = Vector3.Lerp(intPos, targetPos, Mathf.Sin(timer / lifeTime));
             transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, Mathf.Sin(timer / lifeTime));
