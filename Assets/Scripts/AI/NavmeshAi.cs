@@ -60,6 +60,7 @@ namespace XGStudios
         TextMeshProUGUI killCounterTxt;
         RaycastHit slopeHit;
         readonly float yOffset = 23.7f;
+        PoolManager pool;
 
         void Awake()
         {
@@ -72,6 +73,7 @@ namespace XGStudios
             Carpoints = new GameObject[3];
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(FOV());
+            pool = FindObjectOfType<PoolManager>();
         }
 
         void Update()
@@ -94,7 +96,17 @@ namespace XGStudios
             PlayerPrefs.SetInt("KillCounter", _killCounter);
             Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
             gameObject.SetActive(false);
-            Destroy(gameObject, 5f);
+            if (gameObject.name.Contains("Mehran"))
+            {
+                pool.mehranQueue.Enqueue(gameObject);
+            }
+            else if (gameObject.name.Contains("Rickshaw"))
+            {
+                pool.RickshawQueue.Enqueue(gameObject);
+            }
+            else {
+                pool.truck.SetActive(false);
+            }
             AudioManager.Instance.Play("CarDestruction");
             FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
         }

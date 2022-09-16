@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XG.Studios
+namespace XGStudios
 {
     public class PoolManager : MonoBehaviour
     {
@@ -16,7 +16,23 @@ namespace XG.Studios
         public int impactSpawnCount;
         public List<GameObject> bulletImpactList;
 
+        [Header("For Mehran")]
+        public GameObject mehranEnemyPrefab;
+        public int mehranCount;
+        public Queue<GameObject> mehranQueue;
+        [Header("For Rickshaw")]
+        public GameObject RickshawPrefab;
+        public int RickShawCount;
+        public Queue<GameObject> RickshawQueue;
+        public GameObject truckPrefab;
+        public GameObject truck;
 
+        private void Awake()
+        {
+            mehranQueue = new Queue<GameObject>();
+            RickshawQueue = new Queue<GameObject>();
+
+        }
         void Start()
         {
             //Spawn "25" bullets, add them to the bulletsList
@@ -34,6 +50,21 @@ namespace XG.Studios
                 bulletImpactList.Add(bulletImpact);
                 bulletImpact.SetActive(false);
             }
+
+            for (int i = 0; i < mehranCount; i++) {
+                GameObject mehran = Instantiate(mehranEnemyPrefab, transform, true);
+                mehran.SetActive(false);
+                mehranQueue.Enqueue(mehran);
+            }
+            for (int i = 0; i < RickShawCount; i++) {
+                GameObject rickshaw = Instantiate(RickshawPrefab, transform, true);
+                rickshaw.SetActive(false);
+                RickshawQueue.Enqueue(rickshaw);
+                
+            }
+            truck = Instantiate(truckPrefab, transform, true);
+            truck.SetActive(false);
+
         }
     }
 }

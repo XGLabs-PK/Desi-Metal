@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 392204734}
-  m_IndirectSpecularColor: {r: 0.77233934, g: 0.9110369, b: 0.9959777, a: 1}
+  m_IndirectSpecularColor: {r: 0.77233493, g: 0.9110178, b: 0.9959777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2697,6 +2697,14 @@ MonoBehaviour:
     type: 3}
   impactSpawnCount: 25
   bulletImpactList: []
+  mehranEnemyPrefab: {fileID: 39811632139610723, guid: 84e55b8171c385c46b163c57e227268f,
+    type: 3}
+  mehranCount: 8
+  RickshawPrefab: {fileID: 1406901802678006206, guid: 7057e7f9387633144a7b19aee20fee4b,
+    type: 3}
+  RickShawCount: 10
+  truckPrefab: {fileID: 39811632139610723, guid: 6ebb3958496f65b469449ad148e7fb47,
+    type: 3}
 --- !u!1 &265900400
 GameObject:
   m_ObjectHideFlags: 0
@@ -17298,6 +17306,7 @@ MonoBehaviour:
   truckEnemy: {fileID: 39811632139610723, guid: 6ebb3958496f65b469449ad148e7fb47,
     type: 3}
   enemies: []
+  pool: {fileID: 260539496}
   yOffset: 23.71
   enemyCount: 2
   target: {fileID: 0}

@@ -12,6 +12,7 @@ namespace XGStudios
         public GameObject rickshawEnemy;
         public GameObject truckEnemy;
         public List<GameObject> enemies;
+        public PoolManager pool;
         public float yOffset;
         public int enemyCount = 2;
         public GameObject target;
@@ -34,10 +35,19 @@ namespace XGStudios
             target = GameObject.FindGameObjectWithTag("RealCar");
 
             StartCoroutine(Delay());
-
+            List<NavMeshHit> hitListO = new List<NavMeshHit>();
             for (int i = 0; i < enemyCount; i++)
                 if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
-                    enemies.Add(Instantiate(rickshawEnemy, hit.position, Quaternion.identity));
+                {
+                    enemies.Add(pool.RickshawQueue.Dequeue());
+                    hitListO.Add(hit);
+                    
+                }
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].transform.position = hitListO[i].position;
+                enemies[i].SetActive(true);
+            }
 
             for (int i = 0; i < enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
@@ -67,55 +77,86 @@ namespace XGStudios
             switch (_wave)
             {
                 case 1:
-                    InstantiateEnemies(mehranEnemy, rickshawEnemy, 2, 0);
+                    InstantiateEnemies(pool.RickshawQueue, pool.mehranQueue, 2, 0);
                     _wave++;
                     break;
                 case 2:
-                    InstantiateEnemies(rickshawEnemy, 2, 5);
+                    InstantiateEnemies(pool.RickshawQueue, 2, 5);
                     _wave++;
                     break;
                 case 3:
-                    InstantiateEnemies(mehranEnemy, 3, 2);
+                    InstantiateEnemies(pool.mehranQueue, 3, 2);
                     _wave++;
                     break;
                 case 4:
-                    InstantiateEnemies(mehranEnemy, rickshawEnemy, 5, 2);
+                    InstantiateEnemies(pool.mehranQueue, pool.RickshawQueue, 5, 2);
                     _wave++;
                     break;
                 case 5:
-                    InstantiateEnemies(truckEnemy, 0, 1);
-                    _wave = 1;
+                    if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas)) {
+                        enemies.Add(pool.truck);
+                        enemies[0].transform.position = hit.position;
+                        enemies[0].SetActive(true);
+
+                    }
+                    for (int i = 0; i < enemies.Count; i++) {
+                        _ai.Add(enemies[i].GetComponent<NavmeshAi>());
+                    
+                    }
+                        _wave = 1;
                     break;
             }
 
         }
 
-        void InstantiateEnemies(GameObject enemy, int moreEnemy, int enemyPlus)
+        void InstantiateEnemies(Queue<GameObject> enemy, int moreEnemy, int enemyPlus)
         {
+            NavMeshHit hit;
+            List<NavMeshHit> hitList = new List<NavMeshHit>();
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
-                if (NavMesh.SamplePosition(findPoint(), out NavMeshHit hit, 300f, NavMesh.AllAreas))
-                    enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
+                if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas)) {
+                    enemies.Add(enemy.Dequeue());
+                    hitList.Add(hit);
+                    
+                }
+            for (int i = 0; i < enemies.Count; i++) {
+                enemies[i].transform.position = hitList[i].position;
+                enemies[i].SetActive(true);
+            }         
 
             for (int i = 0; i < enemies.Count; i++)
                 _ai.Add(enemies[i].GetComponent<NavmeshAi>());
         }
 
-        void InstantiateEnemies(GameObject enemy, GameObject enemy2, int moreEnemy, int enemyPlus)
+        void InstantiateEnemies(Queue<GameObject>enemy, Queue<GameObject> enemy2, int moreEnemy, int enemyPlus)
         {
+            List<NavMeshHit> hitList2 = new List<NavMeshHit>();
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
             {
                 NavMeshHit hit;
-
+                
                 if (RandomBoolean())
                 {
                     if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
-                        enemies.Add(Instantiate(enemy, hit.position, Quaternion.identity));
+                    {
+                        enemies.Add(enemy.Dequeue());
+                        hitList2.Add(hit);
+                    }
+                    
                 }
                 else
                 {
                     if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
-                        enemies.Add(Instantiate(enemy2, hit.position, Quaternion.identity));
+                    {
+                        enemies.Add(enemy2.Dequeue());
+                        hitList2.Add(hit);
+                    }
                 }
+            }
+            for (int k = 0; k < enemies.Count; k++)
+            {
+                enemies[k].transform.position = hitList2[k].position;
+                enemies[k].SetActive(true);
             }
 
             for (int i = 0; i < enemies.Count; i++)
