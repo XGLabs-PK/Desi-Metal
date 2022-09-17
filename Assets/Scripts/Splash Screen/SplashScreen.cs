@@ -7,9 +7,10 @@ namespace XGStudios
 {
     public class SplashScreen : MonoBehaviour
     {
+    public float delay;
         IEnumerator Start()
         {
-            yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(delay);
             SceneManager.LoadScene("MainMenu");
         }
 
