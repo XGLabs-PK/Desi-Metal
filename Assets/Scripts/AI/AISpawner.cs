@@ -8,16 +8,11 @@ namespace XGStudios
 {
     public class AISpawner : MonoBehaviour
     {
-        public GameObject mehranEnemy;
-        public GameObject rickshawEnemy;
-        public GameObject truckEnemy;
         public List<GameObject> enemies;
         public PoolManager pool;
         public float yOffset;
         public int enemyCount = 2;
         public GameObject target;
-        [SerializeField]
-        Terrain terrain;
         List<NavmeshAi> _ai;
         int _wave;
         TextMeshProUGUI enemiesLeft;
@@ -30,8 +25,6 @@ namespace XGStudios
             _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
-            target = GameObject.FindGameObjectWithTag("RealCar");
-
             StartCoroutine(Delay());
             hitList = new List<NavMeshHit>();
 
@@ -64,7 +57,7 @@ namespace XGStudios
                     if (_ai[i] == null) continue;
                     if (_ai[i].health > 0) continue;
                     enemies.RemoveAt(i);
-                    _ai[i].health = 100;
+                 
                     _ai.RemoveAt(i);
                     hitList.RemoveAt(i);
                 }

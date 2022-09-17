@@ -40,8 +40,6 @@ namespace XGStudios
         [Header("Health")]
         [SerializeField]
         public int health = 100;
-        [SerializeField]
-        GameObject deathParticle;
         public LayerMask isGround;
         public float groundRadius;
         [Header("Slope")]
@@ -63,12 +61,14 @@ namespace XGStudios
         readonly float yOffset = 23.7f;
         PoolManager pool;
         Transform myTransform;
+        GameObject myGameobject;
         Quaternion newRot;
         Transform rTarget;
         Vector3 directionToTarget;
         float distanceToTarget;
         Vector3 findPointPoint;
         Vector3 moveAwayPoint;
+        GameObject deathParticles;
 
         void Awake()
         {
@@ -83,6 +83,8 @@ namespace XGStudios
             StartCoroutine(FOV());
             pool = FindObjectOfType<PoolManager>();
             myTransform = transform;
+            myGameobject = gameObject;
+           
         }
 
         void Update()
@@ -104,18 +106,20 @@ namespace XGStudios
 
                 int.TryParse(killCounterTxt.text, out _killCounter);
                 PlayerPrefs.SetInt("KillCounter", _killCounter);
-                Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);
-                gameObject.SetActive(false);
-
-                if (gameObject.name.Contains("Mehran"))
-                    pool.mehranQueue.Enqueue(gameObject);
-                else if (gameObject.name.Contains("Rickshaw"))
-                    pool.RickshawQueue.Enqueue(gameObject);
+                // Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);
+                StartCoroutine(DeathEffect());
+                myGameobject.SetActive(false);
+               
+                if (myGameobject.name.Contains("Mehran"))
+                    pool.mehranQueue.Enqueue(myGameobject);
+                else if (myGameobject.name.Contains("Rickshaw"))
+                    pool.RickshawQueue.Enqueue(myGameobject);
                 else
                     pool.truck.SetActive(false);
 
                 AudioManager.Instance.Play("CarDestruction");
                 FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
+                health = 100;
             }
         }
 
@@ -139,7 +143,16 @@ namespace XGStudios
                 myTransform.LookAt(player);
             }
         }
-
+        IEnumerator DeathEffect() {
+            deathParticles =  pool.deathQueue.Dequeue();
+            deathParticles.transform.position = myTransform.position;
+            deathParticles.SetActive(true);
+            yield return new WaitForSecondsRealtime(.00001f);
+            Debug.Log("After wait");
+            deathParticles.SetActive(false);
+            pool.deathQueue.Enqueue(deathParticles);
+        
+        }
         IEnumerator Ramming()
         {
             

@@ -26,48 +26,54 @@ namespace XGStudios
         public Queue<GameObject> RickshawQueue;
         public GameObject truckPrefab;
         public GameObject truck;
-
-        void Awake()
-        {
-            mehranQueue = new Queue<GameObject>();
-            RickshawQueue = new Queue<GameObject>();
-
-        }
-
+        public GameObject deathAnimation;
+        public int deathCount;
+        public Queue<GameObject> deathQueue;
+        Transform myTransform;
+        GameObject placeHolder;
         void Start()
         {
+            myTransform = transform;
+            mehranQueue = new Queue<GameObject>();
+            RickshawQueue = new Queue<GameObject>();
+            deathQueue = new Queue<GameObject>();
             //Spawn "25" bullets, add them to the bulletsList
             for (int i = 0; i < bulletSpawnCount; i++)
             {
-                GameObject bullet = Instantiate(bulletPrefab, transform, true);
-                bulletsList.Add(bullet);
-                bullet.SetActive(false);
+                placeHolder = Instantiate(bulletPrefab, myTransform, true);
+                bulletsList.Add(placeHolder);
+                placeHolder.SetActive(false);
             }
 
             //Spawn "25" bullet Impacts, add them to the bulletsList
             for (int i = 0; i < impactSpawnCount; i++)
             {
-                GameObject bulletImpact = Instantiate(bulletImpactPrefab, transform, true);
-                bulletImpactList.Add(bulletImpact);
-                bulletImpact.SetActive(false);
+                placeHolder = Instantiate(bulletImpactPrefab, myTransform, true);
+                bulletImpactList.Add(placeHolder);
+                placeHolder.SetActive(false);
             }
 
             for (int i = 0; i < mehranCount; i++)
             {
-                GameObject mehran = Instantiate(mehranEnemyPrefab, transform, true);
-                mehran.SetActive(false);
-                mehranQueue.Enqueue(mehran);
+                placeHolder = Instantiate(mehranEnemyPrefab, myTransform, true);
+                placeHolder.SetActive(false);
+                mehranQueue.Enqueue(placeHolder);
             }
 
             for (int i = 0; i < RickShawCount; i++)
             {
-                GameObject rickshaw = Instantiate(RickshawPrefab, transform, true);
-                rickshaw.SetActive(false);
-                RickshawQueue.Enqueue(rickshaw);
+                placeHolder = Instantiate(RickshawPrefab, myTransform, true);
+                placeHolder.SetActive(false);
+                RickshawQueue.Enqueue(placeHolder);
 
             }
+            for (int i = 0; i < deathCount; i++) {
+                placeHolder = Instantiate(deathAnimation, myTransform, true);
+                placeHolder.SetActive(false);
+                deathQueue.Enqueue(placeHolder);
+            }
 
-            truck = Instantiate(truckPrefab, transform, true);
+            truck = Instantiate(truckPrefab, myTransform, true);
             truck.SetActive(false);
 
         }
