@@ -69,8 +69,7 @@ namespace XGStudios
         Vector3 findPointPoint;
         Vector3 moveAwayPoint;
         GameObject deathParticles;
-
-        void Awake()
+        private void Start()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
@@ -84,9 +83,7 @@ namespace XGStudios
             pool = FindObjectOfType<PoolManager>();
             myTransform = transform;
             myGameobject = gameObject;
-           
         }
-
         void Update()
         {
             if (Physics.Raycast(myTransform.position + rayCastOffset, Vector3.down, out slopeHit, maxRay, isGround))
