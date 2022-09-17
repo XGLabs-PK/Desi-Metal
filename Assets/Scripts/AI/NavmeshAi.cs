@@ -106,10 +106,7 @@ namespace XGStudios
 
                 int.TryParse(killCounterTxt.text, out _killCounter);
                 PlayerPrefs.SetInt("KillCounter", _killCounter);
-                // Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);
-                StartCoroutine(DeathEffect());
-                myGameobject.SetActive(false);
-               
+                // Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);               
                 if (myGameobject.name.Contains("Mehran"))
                     pool.mehranQueue.Enqueue(myGameobject);
                 else if (myGameobject.name.Contains("Rickshaw"))
@@ -120,6 +117,9 @@ namespace XGStudios
                 AudioManager.Instance.Play("CarDestruction");
                 FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
                 health = 100;
+                myGameobject.SetActive(false);
+                 
+                
             }
         }
 
@@ -143,16 +143,7 @@ namespace XGStudios
                 myTransform.LookAt(player);
             }
         }
-        IEnumerator DeathEffect() {
-            deathParticles =  pool.deathQueue.Dequeue();
-            deathParticles.transform.position = myTransform.position;
-            deathParticles.SetActive(true);
-            yield return new WaitForSecondsRealtime(.00001f);
-            Debug.Log("After wait");
-            deathParticles.SetActive(false);
-            pool.deathQueue.Enqueue(deathParticles);
-        
-        }
+   
         IEnumerator Ramming()
         {
             

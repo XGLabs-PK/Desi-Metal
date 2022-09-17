@@ -19,6 +19,7 @@ namespace XGStudios
         List<NavMeshHit> hitList;
         NavMeshHit hit;
         Vector3 point;
+        GameObject death;
         void Start()
         {
             enemiesLeft = GameObject.FindGameObjectWithTag("LeftCounter").GetComponent<TextMeshProUGUI>();
@@ -56,8 +57,9 @@ namespace XGStudios
                 {
                     if (_ai[i] == null) continue;
                     if (_ai[i].health > 0) continue;
+
                     enemies.RemoveAt(i);
-                 
+                    StartCoroutine(DeathEffect(_ai[i].transform.position));
                     _ai.RemoveAt(i);
                     hitList.RemoveAt(i);
                 }
@@ -70,7 +72,7 @@ namespace XGStudios
             enemies.Clear();
             _ai.Clear();
             hitList.Clear();
-
+                
 
             switch (_wave)
             {
@@ -107,7 +109,14 @@ namespace XGStudios
             }
 
         }
-
+        IEnumerator DeathEffect(Vector3 pos) {
+            death = pool.deathQueue.Dequeue();
+            death.transform.position = pos;
+            death.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            death.SetActive(false);
+            pool.deathQueue.Enqueue(death);
+        }
         void InstantiateEnemies(Queue<GameObject> enemy, int moreEnemy, int enemyPlus)
         {
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
