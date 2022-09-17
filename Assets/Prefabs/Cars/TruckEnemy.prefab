@@ -122,8 +122,6 @@ MonoBehaviour:
   shootPoint: {fileID: 6928697891062643033}
   Carpoints: []
   health: 100
-  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
-    type: 3}
   isGround:
     serializedVersion: 2
     m_Bits: 520
@@ -265,7 +263,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8678823145569952518, guid: 3cf732ea4aa73e749b90ba41e242d24d, type: 3}
 --- !u!1 &1095555122957451409
