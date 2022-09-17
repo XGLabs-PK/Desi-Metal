@@ -18,7 +18,6 @@ namespace XGStudios
         TextMeshProUGUI enemiesLeft;
         List<NavMeshHit> hitList;
         NavMeshHit hit;
-        Vector3 point;
         GameObject death;
         void Start()
         {
@@ -26,7 +25,6 @@ namespace XGStudios
             _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
-            StartCoroutine(Delay());
             hitList = new List<NavMeshHit>();
 
             for (int i = 0; i < enemyCount; i++)
@@ -179,16 +177,8 @@ namespace XGStudios
 
         Vector3 findPoint()
         {
-            point = new Vector3(target.transform.position.x + Random.Range(100, 300), yOffset,
+            return new Vector3(target.transform.position.x + Random.Range(100, 300), yOffset,
                 target.transform.position.z + Random.Range(100, 300));
-
-            return point;
-
-        }
-
-        IEnumerator Delay()
-        {
-            yield return new WaitForSeconds(5);
 
         }
     }
