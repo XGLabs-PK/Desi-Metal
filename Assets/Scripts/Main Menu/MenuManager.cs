@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace XGStudios
@@ -11,7 +12,7 @@ namespace XGStudios
         static readonly int StartGame = Animator.StringToHash("StartGame");
         static readonly int CreditsMoving = Animator.StringToHash("CreditsMoving");
         [Header("Strings")]
-        public string gameScene;
+        public string nextScene;
 
         [Space(5f)]
         [Header("UI Panels")]
@@ -133,7 +134,7 @@ namespace XGStudios
 
         public void StartTheGame()
         {
-            SceneManager.LoadScene(gameScene);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

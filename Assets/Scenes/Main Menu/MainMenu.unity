@@ -9404,7 +9404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4ce11cf4442dd4c863a5458e8bc32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: The Game
+  nextScene: Story
   menuCanvas: {fileID: 219910473}
   menuRect: {fileID: 219910472}
   settingsCanvas: {fileID: 35525985}
