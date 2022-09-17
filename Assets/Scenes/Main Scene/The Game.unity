@@ -2864,9 +2864,6 @@ MonoBehaviour:
   deathAnimation: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
     type: 3}
   deathCount: 5
-  AIBUllet: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
-    type: 3}
-  AIbulletCount: 40
 --- !u!1 &265900400
 GameObject:
   m_ObjectHideFlags: 0
@@ -18098,7 +18095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &766576767
 Transform:
   m_ObjectHideFlags: 0
@@ -24618,6 +24615,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938210125}
   m_Mesh: {fileID: 2876200810968703567, guid: cc6af26dcf930d844913d00968b4e8be, type: 3}
+--- !u!1 &943558802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 943558803}
+  - component: {fileID: 943558804}
+  m_Layer: 0
+  m_Name: SpawnManagerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &943558803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943558802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1781113053}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &943558804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943558802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9b7fd5485b9fc44987deb1bacf80ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawner: {fileID: 766576766}
 --- !u!1 &944042485
 GameObject:
   m_ObjectHideFlags: 0
@@ -39425,6 +39467,7 @@ Transform:
   - {fileID: 766576767}
   - {fileID: 1313982935}
   - {fileID: 260539495}
+  - {fileID: 943558803}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
