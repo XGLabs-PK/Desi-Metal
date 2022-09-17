@@ -7,7 +7,9 @@ namespace XGStudios
 {
     public class SplashScreen : MonoBehaviour
     {
-    public float delay;
+        public float delay;
+        public string sceneName;
+        
         IEnumerator Start()
         {
             yield return new WaitForSeconds(delay);
@@ -17,7 +19,7 @@ namespace XGStudios
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene(sceneName);
         }
     }
 }
