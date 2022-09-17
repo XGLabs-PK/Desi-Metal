@@ -50,9 +50,9 @@ Material:
     - _Intensity: 0.15
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 1
+    - _Radius: 0.9
     - _Scale: 2
-    - _Softness: 2
+    - _Softness: 1
     - _Speed: 1
     - _SrcBlend: 5
     - _Surface: 1
@@ -60,7 +60,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 57.0379, g: 0, b: 0, a: 1}
+    - _Color: {r: 14.259474, g: 0.14931387, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &80937621361151006
 MonoBehaviour:
