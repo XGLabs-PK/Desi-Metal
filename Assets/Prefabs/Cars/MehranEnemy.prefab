@@ -90,7 +90,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0.55
   m_WalkableMask: 5
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &7033509343154234144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +126,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   health: 100
-  deathParticle: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
-    type: 3}
   isGround:
     serializedVersion: 2
     m_Bits: 520
