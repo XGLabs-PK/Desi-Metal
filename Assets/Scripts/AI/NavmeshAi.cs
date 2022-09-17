@@ -234,10 +234,6 @@ namespace XGStudios
 
         IEnumerator MoveAway()
         {
-            //NavMeshHit hitit;
-            //if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hitit, 300f, UnityEngine.AI.NavMesh.AllAreas)) {
-            //    _agent.SetDestination(hitit.position);
-            //}
             moveAwayPoint = findPoint();
             _agent.SetDestination(moveAwayPoint);
             yield return new WaitForSeconds(5);
