@@ -118,6 +118,9 @@ namespace XGStudios
                  
                 
             }
+            if (health <= 50) {
+                _agent.speed = _agent.speed * 1.5f;
+            }
         }
 
         void FixedUpdate()

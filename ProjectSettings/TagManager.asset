@@ -17,6 +17,7 @@ TagManager:
   - KillCounter
   - LeftCounter
   - RealCar
+  - AIshoot
   layers:
   - Default
   - TransparentFX

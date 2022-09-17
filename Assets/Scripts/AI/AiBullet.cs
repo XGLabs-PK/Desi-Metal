@@ -16,7 +16,6 @@ namespace XGStudios
 
         void Start()
         {
-            Destroy(gameObject, 1.5f);
             myTransform = transform;
         }
 

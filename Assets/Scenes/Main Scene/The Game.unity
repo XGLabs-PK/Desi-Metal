@@ -2864,6 +2864,9 @@ MonoBehaviour:
   deathAnimation: {fileID: 7567779455434661472, guid: 2462239d23f9d454181c8c0ffefd1662,
     type: 3}
   deathCount: 5
+  AIBUllet: {fileID: 2178070479371147316, guid: 2647d9d31f77ed4409620c798b32d2cb,
+    type: 3}
+  AIbulletCount: 40
 --- !u!1 &265900400
 GameObject:
   m_ObjectHideFlags: 0
@@ -26702,6 +26705,11 @@ PrefabInstance:
       propertyPath: airMultiplierSlider
       value: 
       objectReference: {fileID: 1471554069}
+    - target: {fileID: 8228446986427955935, guid: f5a70605d70852d4aaec6114f1eab9fe,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name

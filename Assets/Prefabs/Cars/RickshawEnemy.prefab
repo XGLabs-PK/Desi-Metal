@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8299166328282931844}
   m_Layer: 0
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: AIshoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,10 +272,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 15
-  m_Speed: 20
-  m_Acceleration: 15
+  m_Speed: 40
+  m_Acceleration: 19
   avoidancePriority: 50
-  m_AngularSpeed: 80
+  m_AngularSpeed: 150
   m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

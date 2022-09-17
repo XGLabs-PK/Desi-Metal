@@ -25,6 +25,7 @@ namespace XGStudios
             _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
+
             hitList = new List<NavMeshHit>();
 
             for (int i = 0; i < enemyCount; i++)
