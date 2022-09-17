@@ -8,6 +8,7 @@ namespace XGStudios
 {
     public class NavmeshAi : MonoBehaviour
     {
+        Collider[] rangeChecks;
         static int _addScore;
         [HideInInspector]
         public Transform player;
@@ -61,6 +62,13 @@ namespace XGStudios
         RaycastHit slopeHit;
         readonly float yOffset = 23.7f;
         PoolManager pool;
+        Transform myTransform;
+        Quaternion newRot;
+        Transform rTarget;
+        Vector3 directionToTarget;
+        float distanceToTarget;
+        Vector3 findPointPoint;
+        Vector3 moveAwayPoint;
 
         void Awake()
         {
@@ -74,15 +82,16 @@ namespace XGStudios
             Carpoints = GameObject.FindGameObjectsWithTag("ShotPoint");
             StartCoroutine(FOV());
             pool = FindObjectOfType<PoolManager>();
+            myTransform = transform;
         }
 
         void Update()
         {
-            if (Physics.Raycast(transform.position + rayCastOffset, Vector3.down, out slopeHit, maxRay, isGround))
+            if (Physics.Raycast(myTransform.position + rayCastOffset, Vector3.down, out slopeHit, maxRay, isGround))
             {
-                Debug.DrawLine(transform.position + rayCastOffset, slopeHit.point, Color.red);
-                Quaternion newRot = Quaternion.FromToRotation(transform.up, slopeHit.normal) * transform.rotation;
-                transform.rotation = Quaternion.Lerp(transform.rotation, newRot, slopSpeed);
+                Debug.DrawLine(myTransform.position + rayCastOffset, slopeHit.point, Color.red);
+                newRot = Quaternion.FromToRotation(myTransform.up, slopeHit.normal) * myTransform.rotation;
+                myTransform.rotation = Quaternion.Lerp(myTransform.rotation, newRot, slopSpeed);
             }
 
 
@@ -95,7 +104,7 @@ namespace XGStudios
 
                 int.TryParse(killCounterTxt.text, out _killCounter);
                 PlayerPrefs.SetInt("KillCounter", _killCounter);
-                Destroy(Instantiate(deathParticle, transform.position, Quaternion.identity), 1.5f);
+                Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);
                 gameObject.SetActive(false);
 
                 if (gameObject.name.Contains("Mehran"))
@@ -126,39 +135,38 @@ namespace XGStudios
 
             else
             {
-                transform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
-                transform.LookAt(player);
+                myTransform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
+                myTransform.LookAt(player);
             }
         }
 
         IEnumerator Ramming()
         {
-            float acce = _agent.acceleration;
+            
             _agent.stoppingDistance = stopDist;
-            Vector3 position = player.position;
-            _agent.SetDestination(position);
+            _agent.SetDestination(player.position);
             yield return new WaitUntil(() => _distanceBetweenPlayer <= 8);
-            StartCoroutine(_MoveAway());
+            StartCoroutine(MoveAway());
             _agent.stoppingDistance = 20;
-            _agent.SetDestination(position);
+            _agent.SetDestination(player.position);
             rammingTime = Random.Range(10, 31);
             _agent.stoppingDistance = 20;
         }
 
         void FieldOfViewSearch()
         {
-            var rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, Layers);
+            rangeChecks = Physics.OverlapSphere(myTransform.position, detectionRadius, Layers);
 
             if (rangeChecks.Length != 0)
             {
-                Transform target = rangeChecks[0].transform;
-                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                rTarget = rangeChecks[0].transform;
+                directionToTarget = (rTarget.position - myTransform.position).normalized;
 
-                if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+                if (Vector3.Angle(myTransform.forward, directionToTarget) < viewAngle / 2)
                 {
-                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    distanceToTarget = Vector3.Distance(myTransform.position, rTarget.position);
 
-                    canSeePlayers = !Physics.Raycast(transform.position, directionToTarget,
+                    canSeePlayers = !Physics.Raycast(myTransform.position, directionToTarget,
                         distanceToTarget, occlusionLayers);
                 }
                 else
@@ -213,21 +221,21 @@ namespace XGStudios
 
         Vector3 findPoint()
         {
-            Vector3 point = new Vector3(player.transform.position.x + Random.Range(100, 300), yOffset,
+            findPointPoint = new Vector3(player.transform.position.x + Random.Range(100, 300), yOffset,
                 player.transform.position.z + Random.Range(100, 300));
 
-            return point;
+            return findPointPoint;
 
         }
 
-        IEnumerator _MoveAway()
+        IEnumerator MoveAway()
         {
             //NavMeshHit hitit;
             //if (UnityEngine.AI.NavMesh.SamplePosition(findPoint(), out hitit, 300f, UnityEngine.AI.NavMesh.AllAreas)) {
             //    _agent.SetDestination(hitit.position);
             //}
-            Vector3 myPoint = findPoint();
-            _agent.SetDestination(myPoint);
+            moveAwayPoint = findPoint();
+            _agent.SetDestination(moveAwayPoint);
             yield return new WaitForSeconds(5);
 
         }

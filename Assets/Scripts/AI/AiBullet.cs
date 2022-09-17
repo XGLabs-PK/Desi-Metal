@@ -11,16 +11,19 @@ namespace XGStudios
         [FormerlySerializedAs("EnemyShootPoint")]
         [SerializeField]
         Transform enemyShootPoint;
+        Transform myTransform;
+        float randomDamage;
 
         void Start()
         {
             Destroy(gameObject, 1.5f);
+            myTransform = transform;
         }
 
         void Update()
         {
             if (enemyShootPoint != null)
-                transform.position += enemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
+                myTransform.position += enemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
         }
 
         void OnTriggerEnter(Collider other)
@@ -29,7 +32,7 @@ namespace XGStudios
 
             if (other.gameObject.CompareTag("RealCar"))
             {
-                float randomDamage = Random.Range(1, 10);
+                randomDamage = Random.Range(1, 10);
                 TheHealth.Instance.TakeDamage(randomDamage);
 
                 if (AudioManager.Instance != null)

@@ -108,7 +108,7 @@ MonoBehaviour:
   rammingTime: 0
   detectionRadius: 350
   viewAngle: 100
-  searchDelay: 0.1
+  searchDelay: 0
   Layers:
     serializedVersion: 2
     m_Bits: 256
@@ -131,7 +131,7 @@ MonoBehaviour:
   rayCastOffset: {x: 0, y: 10, z: 0}
   maxRay: 40
   slopSpeed: 5
-  stopDist: 7
+  stopDist: 10
 --- !u!1 &676170668525789269
 GameObject:
   m_ObjectHideFlags: 0
