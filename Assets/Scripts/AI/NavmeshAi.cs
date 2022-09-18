@@ -69,6 +69,17 @@ namespace XGStudios
         Vector3 findPointPoint;
         Vector3 moveAwayPoint;
         GameObject deathParticles;
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
         private void Start()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
