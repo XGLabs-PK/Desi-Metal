@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 392204734}
-  m_IndirectSpecularColor: {r: 0.772576, g: 0.9110399, b: 0.996044, a: 1}
+  m_IndirectSpecularColor: {r: 0.77233493, g: 0.9110178, b: 0.9959777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8094,7 +8094,7 @@ MonoBehaviour:
   enemies: []
   pool: {fileID: 260539496}
   yOffset: 23.71
-  enemyCount: 2
+  enemyCount: 1
   target: {fileID: 201997096}
 --- !u!1 &772246046
 GameObject:

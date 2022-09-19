@@ -79,11 +79,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 14.78
-  m_Speed: 80
-  m_Acceleration: 25
+  m_Speed: 45
+  m_Acceleration: 15
   avoidancePriority: 50
-  m_AngularSpeed: 190
-  m_StoppingDistance: 20
+  m_AngularSpeed: 150
+  m_StoppingDistance: 35
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   rammingTime: 0
   detectionRadius: 300
   viewAngle: 100
-  searchDelay: 0
+  searchDelay: 0.5
   Layers:
     serializedVersion: 2
     m_Bits: 256
@@ -134,6 +134,8 @@ MonoBehaviour:
   maxRay: 20
   slopSpeed: 4
   stopDist: 4.41
+  rammingDistance: 5
+  isMoving: 0
 --- !u!1 &725348139487181479
 GameObject:
   m_ObjectHideFlags: 0

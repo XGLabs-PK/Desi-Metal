@@ -22,6 +22,7 @@ namespace XGStudios
         public Queue<GameObject> mehranQueue;
         [Header("For Rickshaw")]
         public GameObject RickshawPrefab;
+        Quaternion rickshawRot;
         public int RickShawCount;
         public Queue<GameObject> RickshawQueue;
         public GameObject truckPrefab;
@@ -30,13 +31,16 @@ namespace XGStudios
         public int deathCount;
         public Queue<GameObject> deathQueue;
         Transform myTransform;
+        Vector3 myTransformPos;
         GameObject placeHolder;
         void Start()
         {
             myTransform = transform;
+            myTransformPos = transform.position;
             mehranQueue = new Queue<GameObject>();
             RickshawQueue = new Queue<GameObject>();
             deathQueue = new Queue<GameObject>();
+
             //Spawn "25" bullets, add them to the bulletsList
             for (int i = 0; i < bulletSpawnCount; i++)
             {
@@ -55,14 +59,14 @@ namespace XGStudios
 
             for (int i = 0; i < mehranCount; i++)
             {
-                placeHolder = Instantiate(mehranEnemyPrefab, myTransform, true);
+                placeHolder = Instantiate(mehranEnemyPrefab, myTransformPos, Quaternion.identity);
                 placeHolder.SetActive(false);
                 mehranQueue.Enqueue(placeHolder);
             }
 
             for (int i = 0; i < RickShawCount; i++)
             {
-                placeHolder = Instantiate(RickshawPrefab, myTransform, true);
+                placeHolder = Instantiate(RickshawPrefab, myTransformPos, Quaternion.identity);
                 placeHolder.SetActive(false);
                 RickshawQueue.Enqueue(placeHolder);
 
