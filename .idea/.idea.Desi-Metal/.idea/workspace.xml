@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Animations/Intro.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Intro.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/JimaPPP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/JimaPPP.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Splash Screen/Splash Screen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Story Scene/StoryScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Story Scene/StoryScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Splash Screen/SplashScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +103,7 @@
       <workItem from="1663366562777" duration="1945000" />
       <workItem from="1663424119288" duration="1733000" />
       <workItem from="1663435779664" duration="672000" />
+      <workItem from="1663545361403" duration="319000" />
     </task>
     <servers />
   </component>

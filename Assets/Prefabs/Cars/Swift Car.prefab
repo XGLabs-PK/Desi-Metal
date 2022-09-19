@@ -25310,6 +25310,7 @@ GameObject:
   - component: {fileID: 5767164049449013031}
   - component: {fileID: 3798983883190302145}
   - component: {fileID: 2095716685845707956}
+  - component: {fileID: 201997106}
   m_Layer: 8
   m_Name: Swift
   m_TagString: RealCar
@@ -25584,6 +25585,24 @@ MonoBehaviour:
   blitRender: {fileID: 7657033332097895066, guid: c40be3174f62c4acf8c1216858c64956,
     type: 2}
   healthSlider: {fileID: 0}
+--- !u!114 &201997106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831234768491391765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3831327430227488139
 GameObject:
   m_ObjectHideFlags: 0
@@ -50708,8 +50727,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
-  far clip plane: 1000
+  near clip plane: 1
+  far clip plane: 3000
   field of view: 70
   orthographic: 0
   orthographic size: 10
