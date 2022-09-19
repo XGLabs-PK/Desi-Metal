@@ -2226,22 +2226,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1108615353}
   m_PrefabAsset: {fileID: 0}
---- !u!208 &201997107
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201997096}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.075
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.01
 --- !u!1 &209319366
 GameObject:
   m_ObjectHideFlags: 0
@@ -11676,6 +11660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: healthSlider
@@ -11701,16 +11689,6 @@ PrefabInstance:
       propertyPath: airMultiplierSlider
       value: 
       objectReference: {fileID: 1471554069}
-    - target: {fileID: 3886206880871249015, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3886206880871249015, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name
