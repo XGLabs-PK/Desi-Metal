@@ -58,7 +58,7 @@ namespace XGStudios
         float _rateOfFire;
         TextMeshProUGUI killCounterTxt;
         RaycastHit slopeHit;
-        float yOffset = 23.7f;
+        readonly float yOffset = 23.7f;
         PoolManager pool;
         Transform myTransform;
         GameObject myGameobject;
@@ -69,9 +69,8 @@ namespace XGStudios
         Vector3 findPointPoint;
         Vector3 moveAwayPoint;
         WaitForSeconds moveAwayTime;
-        public float rammingDistance;
-       public bool isMoving;
         float myStop;
+        bool isMoving = false;
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -87,7 +86,7 @@ namespace XGStudios
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("RealCar").GetComponent<Transform>();
-            isMoving = false;
+
             rammingTime = Random.Range(10, 31);
             _isShooting = true;
             Carpoints = new GameObject[3];
@@ -96,8 +95,9 @@ namespace XGStudios
             pool = FindObjectOfType<PoolManager>();
             myTransform = transform;
             myGameobject = gameObject;
-            moveAwayTime = new WaitForSeconds(2);
+            moveAwayTime = new WaitForSeconds(1.5f);
             myStop = _agent.stoppingDistance;
+            
         }
         void Update()
         {
@@ -117,8 +117,7 @@ namespace XGStudios
                     killCounterTxt.text = GameManager.Score.ToString();
 
                 int.TryParse(killCounterTxt.text, out _killCounter);
-                PlayerPrefs.SetInt("KillCounter", _killCounter);
-                // Destroy(Instantiate(deathParticle, myTransform.position, Quaternion.identity), 1.5f);               
+                PlayerPrefs.SetInt("KillCounter", _killCounter);              
                 if (myGameobject.name.Contains("Mehran"))
                     pool.mehranQueue.Enqueue(myGameobject);
                 else if (myGameobject.name.Contains("Rickshaw"))
@@ -143,18 +142,16 @@ namespace XGStudios
             if (canSeePlayers && _isShooting)
                 StartCoroutine(Shoot());
 
-            _distanceBetweenPlayer = Vector3.Distance(_agent.transform.position, player.position);
+            _distanceBetweenPlayer = Vector3.Distance(myTransform.position, player.position);
             rammingTime -= Time.deltaTime;
 
             if (rammingTime <= 0)
                 Ramming();
-                //StartCoroutine(Ramming());
 
-            //if (!(_distanceBetweenPlayer <= _agent.stoppingDistance) && !isMoving)
-            if(!isMoving)
+            if ((_distanceBetweenPlayer > _agent.stoppingDistance) && !isMoving)
                 _agent.SetDestination(player.position);
 
-            if(_distanceBetweenPlayer <= _agent.stoppingDistance)
+            else
             {
                 myTransform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
                 myTransform.LookAt(player);
@@ -165,15 +162,12 @@ namespace XGStudios
         {
             
             _agent.stoppingDistance = stopDist;
-            _agent.SetDestination(player.position);
-            //yield return new WaitUntil(() => _distanceBetweenPlayer <= 8);
-            if (_distanceBetweenPlayer <= rammingDistance)
-            {
-                isMoving = true;
-                StartCoroutine(MoveAway());
-                rammingTime = Random.Range(10, 31);
-                _agent.stoppingDistance = myStop;
-            }
+           
+           if(_distanceBetweenPlayer <= stopDist) { 
+            StartCoroutine(MoveAway());
+            _agent.stoppingDistance = myStop;
+            rammingTime = Random.Range(10, 31);
+                }
         }
 
         void FieldOfViewSearch()
@@ -214,19 +208,14 @@ namespace XGStudios
 
             switch (_distanceBetweenPlayer)
             {
-                case > 30:
+                case > 20:
                     bullet.bulletSpeed = 150;
                     _rateOfFire = 1f;
                     shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
                     break;
-                case > 20:
+                case > 10:
                     bullet.bulletSpeed = 170;
                     _rateOfFire = 0.8f;
-                    shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
-                    break;
-                case > 10:
-                    bullet.bulletSpeed = 180;
-                    _rateOfFire = 0.7f;
                     shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
                     break;
                 default:
@@ -258,11 +247,9 @@ namespace XGStudios
 
         IEnumerator MoveAway()
         {
-            Debug.Log("Moving");
-            
+            isMoving = true;
             moveAwayPoint = findPoint();
             _agent.SetDestination(moveAwayPoint);
-            myTransform.LookAt(moveAwayPoint);
             yield return moveAwayTime;
             isMoving = false;
 

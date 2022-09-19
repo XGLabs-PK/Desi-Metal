@@ -18,6 +18,7 @@ TagManager:
   - LeftCounter
   - RealCar
   - AIshoot
+  - track
   layers:
   - Default
   - TransparentFX
