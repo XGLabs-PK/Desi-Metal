@@ -9,7 +9,6 @@ namespace XGStudios
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        public GameObject cutsceneCam;
         static readonly int IsPaused = Animator.StringToHash("isPaused");
         static readonly int IsResumed = Animator.StringToHash("isResumed");
         static readonly int DeathStart = Animator.StringToHash("DeathStart");
@@ -46,7 +45,6 @@ namespace XGStudios
 
         void Start()
         {
-            Destroy(cutsceneCam, 6f);
             Score = 0;
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
@@ -73,17 +71,17 @@ namespace XGStudios
             if (!carDestroyed) return;
             CarDestroyed();
 
-            if (Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Time.timeScale = 1f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            else if (Input.GetKeyDown(KeyCode.F2))
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene("Main Menu");
+                SceneManager.LoadScene("MainMenu");
             }
-            else if (Input.GetKeyDown(KeyCode.F3))
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
                 Application.Quit();
 
             int.TryParse(killCountText.text, out _killCounter);

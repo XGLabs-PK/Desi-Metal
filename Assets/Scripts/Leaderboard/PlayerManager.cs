@@ -21,7 +21,6 @@ namespace XG.Studios
         {
             Debug.Log(playerScore.text);
             int.TryParse(playerScore.text.Replace(".", ""), out _playerScore);
-
             LootLockerSDKManager.SetPlayerName(memberID.text, response =>
             {
                 if (response.success)
