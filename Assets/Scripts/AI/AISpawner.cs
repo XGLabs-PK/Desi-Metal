@@ -15,41 +15,41 @@ namespace XGStudios
         public GameObject target;
         List<NavmeshAi> _ai;
         int _wave;
-        TextMeshProUGUI enemiesLeft;
-        List<NavMeshHit> hitList;
-        NavMeshHit hit;
-        GameObject death;
+        TextMeshProUGUI _enemiesLeft;
+        List<NavMeshHit> _hitList;
+        NavMeshHit _hit;
+        GameObject _death;
+        
         void Start()
         {
-            enemiesLeft = GameObject.FindGameObjectWithTag("LeftCounter").GetComponent<TextMeshProUGUI>();
+            _enemiesLeft = GameObject.FindGameObjectWithTag("LeftCounter").GetComponent<TextMeshProUGUI>();
             _wave = 1;
             enemies = new List<GameObject>();
             _ai = new List<NavmeshAi>();
 
-            hitList = new List<NavMeshHit>();
+            _hitList = new List<NavMeshHit>();
 
             for (int i = 0; i < enemyCount; i++)
-                if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
                 {
                     enemies.Add(pool.RickshawQueue.Dequeue());
-                    hitList.Add(hit);
-
+                    _hitList.Add(_hit);
                 }
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].transform.position = hitList[i].position;
+                enemies[i].transform.position = _hitList[i].position;
                 enemies[i].SetActive(true);
             }
 
-            for (int i = 0; i < enemies.Count; i++)
-                _ai.Add(enemies[i].GetComponent<NavmeshAi>());
+            foreach (GameObject t in enemies)
+                _ai.Add(t.GetComponent<NavmeshAi>());
         }
 
         void Update()
         {
-            if (enemiesLeft != null)
-                enemiesLeft.text = enemies.Count.ToString();
+            if (_enemiesLeft != null)
+                _enemiesLeft.text = enemies.Count.ToString();
 
             if (enemies.Count != 0)
                 for (int i = 0; i < enemies.Count; i++)
@@ -60,19 +60,14 @@ namespace XGStudios
                     enemies.RemoveAt(i);
                     StartCoroutine(DeathEffect(_ai[i].transform.position));
                     _ai.RemoveAt(i);
-                    hitList.RemoveAt(i);
+                    _hitList.RemoveAt(i);
                 }
 
             if (enemies.Count != 0) return;
-
-
-            Debug.Log("Enemies empty");
-            Debug.Log(_wave);
             enemies.Clear();
             _ai.Clear();
-            hitList.Clear();
-                
-
+            _hitList.Clear();
+            
             switch (_wave)
             {
                 case 1:
@@ -92,16 +87,15 @@ namespace XGStudios
                     _wave++;
                     break;
                 case 5:
-                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
                     {
                         enemies.Add(pool.truck);
-                        enemies[0].transform.position = hit.position;
+                        enemies[0].transform.position = _hit.position;
                         enemies[0].SetActive(true);
-
                     }
-
-                    for (int i = 0; i < enemies.Count; i++)
-                        _ai.Add(enemies[i].GetComponent<NavmeshAi>());
+                    
+                    foreach (GameObject t in enemies)
+                        _ai.Add(t.GetComponent<NavmeshAi>());
 
                     _wave = 1;
                     break;
@@ -109,66 +103,63 @@ namespace XGStudios
 
         }
         IEnumerator DeathEffect(Vector3 pos) {
-            death = pool.deathQueue.Dequeue();
-            death.transform.position = pos;
-            death.SetActive(true);
+            _death = pool.deathQueue.Dequeue();
+            _death.transform.position = pos;
+            _death.SetActive(true);
             yield return new WaitForSeconds(1.5f);
-            death.SetActive(false);
-            pool.deathQueue.Enqueue(death);
+            _death.SetActive(false);
+            pool.deathQueue.Enqueue(_death);
         }
+        
         void InstantiateEnemies(Queue<GameObject> enemy, int moreEnemy, int enemyPlus)
         {
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
-                if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
                 {
                     enemies.Add(enemy.Dequeue());
-                    hitList.Add(hit);
-
+                    _hitList.Add(_hit);
                 }
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemies[i].transform.position = hitList[i].position;
+                enemies[i].transform.position = _hitList[i].position;
                 enemies[i].SetActive(true);
             }
 
-            for (int i = 0; i < enemies.Count; i++)
-                _ai.Add(enemies[i].GetComponent<NavmeshAi>());
+            foreach (GameObject t in enemies)
+                _ai.Add(t.GetComponent<NavmeshAi>());
         }
 
         void InstantiateEnemies(Queue<GameObject> enemy, Queue<GameObject> enemy2, int moreEnemy, int enemyPlus)
         {
-
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
             {
-
                 if (RandomBoolean())
                 {
-                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
                     {
                         enemies.Add(enemy.Dequeue());
-                        hitList.Add(hit);
+                        _hitList.Add(_hit);
                     }
-
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(findPoint(), out hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
                     {
                         enemies.Add(enemy2.Dequeue());
-                        hitList.Add(hit);
+                        _hitList.Add(_hit);
                     }
                 }
             }
 
             for (int k = 0; k < enemies.Count; k++)
             {
-                enemies[k].transform.position = hitList[k].position;
+                enemies[k].transform.position = _hitList[k].position;
                 enemies[k].SetActive(true);
             }
 
-            for (int i = 0; i < enemies.Count; i++)
-                _ai.Add(enemies[i].GetComponent<NavmeshAi>());
+            foreach (GameObject t in enemies)
+                _ai.Add(t.GetComponent<NavmeshAi>());
         }
 
         static bool RandomBoolean()
@@ -176,11 +167,11 @@ namespace XGStudios
             return Random.value > 0.5;
         }
 
-        Vector3 findPoint()
+        Vector3 FindPoint()
         {
-            return new Vector3(target.transform.position.x + Random.Range(100, 300), yOffset,
-                target.transform.position.z + Random.Range(100, 300));
-
+            Vector3 position = target.transform.position;
+            return new Vector3(position.x + Random.Range(100, 300), yOffset,
+                position.z + Random.Range(100, 300));
         }
     }
 }

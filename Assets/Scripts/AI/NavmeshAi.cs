@@ -71,6 +71,7 @@ namespace XGStudios
         WaitForSeconds moveAwayTime;
         float myStop;
         bool isMoving = false;
+        
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -167,7 +168,7 @@ namespace XGStudios
             StartCoroutine(MoveAway());
             _agent.stoppingDistance = myStop;
             rammingTime = Random.Range(10, 31);
-                }
+            }
         }
 
         void FieldOfViewSearch()
