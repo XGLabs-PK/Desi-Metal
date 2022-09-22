@@ -87,7 +87,7 @@ namespace XGStudios
                     _wave++;
                     break;
                 case 5:
-                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 200f, NavMesh.AllAreas))
                     {
                         enemies.Add(pool.truck);
                         enemies[0].transform.position = _hit.position;

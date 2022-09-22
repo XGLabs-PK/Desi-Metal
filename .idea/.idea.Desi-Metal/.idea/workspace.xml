@@ -2,35 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Lightning.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Lightning.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Flare.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Flare.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Lightning.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Materials/Lightning.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/damage_indicator_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Media/damage_indicator_down.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Damage Indicator.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Damage Indicator.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/VdiSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/VdiSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/VisualDamageIndicator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/VisualDamageIndicator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Glow.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Glow.shadergraph.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Lightning.shadergraph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Lightning.shadergraph.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Main Stuff/Blue.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Clock Tower/fasialabad_clock.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Clock Tower/fasialabad_clock.blend.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Mazar e Quaid/mazar.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Mazar e Quaid/mazar.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rickshaw/rickshaw.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rickshaw/rickshaw.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.001.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.001.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.003.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.003.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.005.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.005.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.007.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.007.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.008.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.008.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.013.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.013.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.014.mesh" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Rocks/Cube.014.mesh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Truck/truck.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Truck/truck.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/minarepak.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/minarepak.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/monument/source/pakistan monument sketchfab.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/monument/source/pakistan monument sketchfab.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/MehranEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/MehranEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/RickshawEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/RickshawEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Rusted Cultus.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/TruckEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/TruckEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flare.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Flare.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glow.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Glow.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Lightning.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Lightning.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Lightning.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Lightning.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/AIBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet/AIBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lightning.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Lightning.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/TheGamePPP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/TheGamePPP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AISpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AISpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/spawnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/spawnController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AiBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AiBullet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +58,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Standalone Player.UnitTests (batch mode)">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Desi Metal.exe" />
@@ -129,6 +132,7 @@
       <workItem from="1663707452494" duration="405000" />
       <workItem from="1663708629735" duration="692000" />
       <workItem from="1663789625743" duration="1014000" />
+      <workItem from="1663816936108" duration="3100000" />
     </task>
     <servers />
   </component>

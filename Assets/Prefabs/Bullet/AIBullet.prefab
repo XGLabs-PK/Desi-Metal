@@ -5058,9 +5058,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efd2510d45e0f14b93ec1e1f47132bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 700
+  bulletSpeed: 150
   enemyShootPoint: {fileID: 0}
-  pool: {fileID: 0}
+  damageIndicatorDestroyTimer: 2
 --- !u!54 &3851774718093659801
 Rigidbody:
   m_ObjectHideFlags: 0

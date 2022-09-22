@@ -13,6 +13,8 @@ namespace XGStudios
         Transform enemyShootPoint;
         Transform myTransform;
         float randomDamage;
+        [SerializeField]
+        float damageIndicatorDestroyTimer = 5f;
 
         void Start()
         {
@@ -24,6 +26,7 @@ namespace XGStudios
             if (enemyShootPoint != null)
                 myTransform.position += enemyShootPoint.forward * (bulletSpeed * Time.deltaTime);
         }
+        
 
         void OnTriggerEnter(Collider other)
         {
@@ -31,7 +34,7 @@ namespace XGStudios
 
             if (other.gameObject.CompareTag("RealCar"))
             {
-                randomDamage = Random.Range(1, 10);
+                randomDamage = Random.Range(1, 5);
                 TheHealth.Instance.TakeDamage(randomDamage);
 
                 if (AudioManager.Instance != null)
