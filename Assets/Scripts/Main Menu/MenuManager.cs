@@ -44,7 +44,6 @@ namespace XGStudios
         {
             leaderBoardTxt.SetText("LEADERBOARD");
             creditsAnim.enabled = false;
-
             if (playButton != null)
                 playButton.onClick.AddListener(() =>
                 {
