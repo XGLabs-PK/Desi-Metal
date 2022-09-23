@@ -72,11 +72,13 @@ namespace XGStudios
         float myStop;
        public bool isMoving = false;
         public  int myCoount = 0;
+        [SerializeField]NavMeshObstacle playerObstacle;
         private void Start()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
             _agent = GetComponent<NavMeshAgent>();
             player = GameObject.FindGameObjectWithTag("RealCar").GetComponent<Transform>();
+            playerObstacle = GameObject.FindGameObjectWithTag("RealCar").GetComponent<NavMeshObstacle>();
 
             rammingTime = Random.Range(10, 31);
             _isShooting = true;
@@ -146,8 +148,8 @@ namespace XGStudios
             _distanceBetweenPlayer = Vector3.Distance(myTransform.position, player.position);
             rammingTime -= Time.deltaTime;
 
-            //if (rammingTime <= 0)
-            //    Ramming();
+            if (rammingTime <= 0)
+               Ramming();
 
             
                 _agent.SetDestination(player.position);
@@ -161,7 +163,13 @@ namespace XGStudios
    
         void Ramming()
         {
-            
+            playerObstacle.enabled = false;
+            _agent.stoppingDistance = stopDist; 
+           if(_distanceBetweenPlayer <= stopDist+0.5) { 
+            StartCoroutine(MoveAway());
+            _agent.stoppingDistance = myStop;
+            rammingTime = Random.Range(10, 31);
+            }
         }
 
         void FieldOfViewSearch()
@@ -246,6 +254,7 @@ namespace XGStudios
             _agent.SetDestination(moveAwayPoint);
             yield return moveAwayTime;
             isMoving = false;
+            playerObstacle.enabled = true ;
 
         }
     }
