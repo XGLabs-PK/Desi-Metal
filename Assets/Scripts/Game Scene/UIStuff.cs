@@ -34,6 +34,8 @@ namespace XGStudios
         public Slider sfxVolSlider;
         [SerializeField]
         TextMeshProUGUI soundEffectsVolumeText;
+        public TextMeshProUGUI sensitivityText;
+        public Slider sensitivitySlider;
 
         [Header("Misc")]
         public Volume volume;
@@ -59,6 +61,7 @@ namespace XGStudios
 
             musicVolSlider.value = PlayerPrefs.GetFloat("musicVol", 0.15f);
             sfxVolSlider.value = PlayerPrefs.GetFloat("sfxVol", 0.25f);
+            sensitivitySlider.value = PlayerPrefs.GetFloat("camSensitivity", 3f);
             motionBlurSlider.value = PlayerPrefs.GetFloat("motionBlur", 0.1f);
             filmGrainSlider.value = PlayerPrefs.GetFloat("filmGrain", 0.25f);
             qualityDropdown.value = PlayerPrefs.GetInt(QualityKey, 2);
@@ -95,6 +98,13 @@ namespace XGStudios
             soundEffectsVolumeText.text = $"{(int)(value * 100)}%";
             AudioManager.Instance.UpdateMixerVolume();
             PlayerPrefs.SetFloat("sfxVol", value);
+        }
+        
+        public void OnCamSensitivityChange(float value)
+        {
+            sensitivityText.text = $"{(int)value}%";
+            PlayerPrefs.SetFloat("camSensitivity", value);
+            TheCamera.Instance.sensitivity = value;
         }
 
         public void MotionBlurIntensity(float value)

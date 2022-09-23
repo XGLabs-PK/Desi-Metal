@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using XG.Studios;
 using Random = UnityEngine.Random;
@@ -18,6 +19,8 @@ namespace XGStudios
         LayerMask groundLayer;
         [SerializeField]
         GameObject airMultiplierPopup;
+        [SerializeField]
+        GameObject scoreMultiplierPopup;
         [SerializeField]
         GameObject abilityText;
         [SerializeField]
@@ -69,6 +72,7 @@ namespace XGStudios
         bool _headLights;
         bool _inHandBrake;
         int _lastDriveWheel;
+        public static bool AbilityUsed;
 
         Rigidbody _rb;
         [SerializeField]
@@ -103,6 +107,7 @@ namespace XGStudios
         {
             BlitEffect(false);
             airMultiplierPopup.SetActive(false);
+            scoreMultiplierPopup.SetActive(false);
             smokeEffect.SetActive(false);
             headlights.SetActive(false);
             backlights.SetActive(false);
@@ -150,6 +155,7 @@ namespace XGStudios
 
             foreach (ParticleSystem particles in BackFireParticles)
                 BackFireAction += () => particles.Emit(2);
+            
         }
 
         void Update()
@@ -271,7 +277,7 @@ namespace XGStudios
             airMultiplierScore.SetText(floor.ToString());
 
             if (!IsGrounded())
-                Invoke(nameof(ShowPopup), 0.75f);
+                Invoke(nameof(ShowPopup), 0.4f);
             else if (IsGrounded())
             {
                 airMultiplierPopup.SetActive(false);
@@ -285,20 +291,22 @@ namespace XGStudios
                 }
             }
 
-            switch (airMultiplierSlider.value)
+            if (!AbilityUsed)
             {
-                case >= 100:
-                    abilityText.SetActive(true);
-                    _airMultiplierFilled = true;
-                    BlitEffect(true);
+                switch (airMultiplierSlider.value)
+                {
+                    case >= 100:
+                        abilityText.SetActive(true);
+                        _airMultiplierFilled = true;
+                        BlitEffect(true);
 
-                    if (Input.GetButtonDown("Fire2"))
-                        Ability();
-
-                    break;
-                case <= 100:
-                    _airMultiplierFilled = true;
-                    break;
+                        if (Input.GetButtonDown("Fire2"))
+                            Ability();
+                        break;
+                    case <= 100:
+                        _airMultiplierFilled = true;
+                        break;
+                }
             }
         }
 
@@ -312,8 +320,18 @@ namespace XGStudios
             //Ability code here
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("LaserBeam");
-                
-                
+            
+            //Starts Animation
+            //Increase Kill Counter by 1
+            AbilityUsed = true;
+            scoreMultiplierPopup.SetActive(true);
+            Invoke(nameof(AbilityFalse), 20f);
+        }
+
+        void AbilityFalse()
+        {
+            AbilityUsed = false;
+            scoreMultiplierPopup.SetActive(false);
         }
 
         void ShowPopup()

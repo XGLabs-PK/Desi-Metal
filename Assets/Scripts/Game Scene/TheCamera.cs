@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // ReSharper disable once CheckNamespace
 namespace XGStudios
@@ -10,6 +12,16 @@ namespace XGStudios
         public GameObject theCar;
         public GameObject camHolder;
         Camera _cam;
+
+        public static TheCamera Instance;
+
+        void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+        }
 
         void Start()
         {

@@ -104,7 +104,10 @@ namespace XGStudios
 
             if (health <= 0)
             {
-                GameManager.Score++;
+                if (CarController.AbilityUsed)
+                    GameManager.Score += 2;
+                else
+                    GameManager.Score++;
 
                 if (killCounterTxt != null)
                     killCounterTxt.text = GameManager.Score.ToString();
@@ -152,7 +155,7 @@ namespace XGStudios
                Ramming();
 
             
-                _agent.SetDestination(player.position);
+            _agent.SetDestination(player.position);
 
             if(_distanceBetweenPlayer<=_agent.stoppingDistance)
             {
