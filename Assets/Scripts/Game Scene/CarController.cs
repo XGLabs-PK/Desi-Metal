@@ -312,6 +312,8 @@ namespace XGStudios
             //Ability code here
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("LaserBeam");
+                
+                
         }
 
         void ShowPopup()

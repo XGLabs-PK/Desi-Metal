@@ -5273,6 +5273,7 @@ MonoBehaviour:
   stopDist: 5.5
   isMoving: 0
   myCoount: 0
+  playerObstacle: {fileID: 0}
 --- !u!1 &2139558733623984026
 GameObject:
   m_ObjectHideFlags: 0

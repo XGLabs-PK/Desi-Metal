@@ -2495,7 +2495,6 @@ GameObject:
   - component: {fileID: 238264354}
   - component: {fileID: 238264353}
   - component: {fileID: 238264356}
-  - component: {fileID: 238264357}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2597,18 +2596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723fae636eceb594b92a13a34ea70568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &238264357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238264351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a89af593701ec2479c8251218057e98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  fpsText: {fileID: 2038541047}
 --- !u!1 &260539494
 GameObject:
   m_ObjectHideFlags: 0
@@ -24560,15 +24548,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268092737374062378}
-  m_LocalRotation: {x: 0.071162574, y: 0.0031202158, z: -0.006371905, w: 0.9974395}
-  m_LocalPosition: {x: 2094.79, y: 32, z: 1901}
+  m_LocalRotation: {x: 0.0495786, y: 0.0029817086, z: -0.006437884, w: 0.998745}
+  m_LocalPosition: {x: 2094.79, y: 33.449936, z: 1905.2179}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2114513082422358214}
   m_Father: {fileID: 757162758}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 8.164, y: 0.308, z: -0.71}
+  m_LocalEulerAnglesHint: {x: 5.686, y: 0.306, z: -0.723}
 --- !u!114 &1932883222742392209
 MonoBehaviour:
   m_ObjectHideFlags: 0
