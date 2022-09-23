@@ -7,9 +7,9 @@ namespace XGStudios
 {
     public class TheWeapon : MonoBehaviour
     {
+        public GameObject bulletPrefab;
         public Transform weapon;
         public Transform firePoint;
-        public GameObject desertImpactEffect;
         public GameObject carImpactEffect;
         PoolManager _poolManager;
 
@@ -38,27 +38,8 @@ namespace XGStudios
         void Shoot()
         {
             Transform firingTransform = firePoint.transform;
-
-            for (int i = 0; i < _poolManager.bulletsList.Count; i++)
-            {
-                if (_poolManager.bulletsList[i].activeInHierarchy == false)
-                {
-                    _poolManager.bulletsList[i].SetActive(true);
-                    _poolManager.bulletsList[i].transform.localPosition = firingTransform.position;
-                    _poolManager.bulletsList[i].transform.localRotation = firingTransform.rotation;
-                    break;
-                }
-
-                if (i == _poolManager.bulletsList.Count - 1)
-                {
-                    //Last Bullet
-                    GameObject newBullet = Instantiate(_poolManager.bulletPrefab);
-                    newBullet.SetActive(false);
-                    newBullet.transform.parent = _poolManager.transform.parent;
-                    _poolManager.bulletsList.Add(newBullet);
-                }
-            }
-
+            Destroy(Instantiate(bulletPrefab, firingTransform.position, firingTransform.rotation), 4f);
+            
             if (AudioManager.Instance != null)
                 AudioManager.Instance.Play("WeaponFiring");
 

@@ -2641,10 +2641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4d7423e26313541be148857082ad55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3707170685528506107, guid: 82652893c849be244b73c90a6425d2b9,
-    type: 3}
-  bulletSpawnCount: 25
-  bulletsList: []
   bulletImpactPrefab: {fileID: 519327617811173363, guid: 477ee378c097b084f9c069b937d710d9,
     type: 3}
   impactSpawnCount: 25
@@ -11410,46 +11406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Shape
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Center.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Center.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Center.z
-      value: 0.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Extents.x
-      value: 1.145
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Extents.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_Extents.z
-      value: 2.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_MoveThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_TimeToStationary
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
-      propertyPath: m_CarveOnlyStationary
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: healthSlider
@@ -11475,16 +11431,6 @@ PrefabInstance:
       propertyPath: airMultiplierSlider
       value: 
       objectReference: {fileID: 1471554069}
-    - target: {fileID: 8228446986427955929, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_Antialiasing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228446986427955929, guid: f5a70605d70852d4aaec6114f1eab9fe,
-        type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8228446987530827424, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: m_Name

@@ -25425,7 +25425,7 @@ MonoBehaviour:
   topCheck: {fileID: 5941362431892554255}
   flipRadius: 0.1
   angle: -30
-  rotationSpeed: 50
+  rotationSpeed: 40
   groundCheck: {fileID: 8752026049332456212}
   FrontLeftWheel:
     WheelCollider: {fileID: 3974270324504822581}
@@ -25469,21 +25469,21 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 3.59242
         value: 0.9285088
-        inSlope: -0.0853647
-        outSlope: -0.0853647
+        inSlope: 0.32268035
+        outSlope: 0.32268035
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.35623172
+        outWeight: 0.23715404
       - serializedVersion: 3
-        time: 5.214087
-        value: 0.62059355
-        inSlope: 0.28585356
-        outSlope: 0.28585356
+        time: 5.126602
+        value: 0.46033475
+        inSlope: -0.1961451
+        outSlope: -0.1961451
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.23616521
-        outWeight: 0.33333334
+        outWeight: 0.096754834
       - serializedVersion: 3
         time: 8
         value: 0.19966671
@@ -25498,22 +25498,23 @@ MonoBehaviour:
       m_RotationOrder: 4
     MaxRPM: 6000
     MinRPM: 4000
-    CutOffRPM: 8000
-    CutOffOffsetRPM: 1000
+    CutOffRPM: 6000
+    CutOffOffsetRPM: 2000
     CutOffTime: 0.1
     ProbabilityBackfire: 0
-    RpmToNextGear: 5000
-    RpmToPrevGear: 4500
+    RpmToNextGear: 4000
+    RpmToPrevGear: 2500
     MaxForwardSlipToBlockChangeGear: 0.5
     RpmEngineToRpmWheelsLerpSpeed: 15
     GearsRatio:
+    - 5
     - 4
     - 3
     - 2
     - 1
-    MainRatio: 4
+    MainRatio: 5
     ReversGearRatio: 2
-    MaxBrakeTorque: 25000
+    MaxBrakeTorque: 30000
     EnableSteerAngleMultiplier: 1
     MinSteerAngleMultiplier: 0.1
     MaxSteerAngleMultiplier: 1
@@ -25542,10 +25543,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb926deaa14d264281308f7fec74090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2178070479371147316, guid: b1a969737bb35d34e8ee60c7bf8cd2cc,
+    type: 3}
   weapon: {fileID: 8276656893453110256}
   firePoint: {fileID: 2119751526176776823}
-  desertImpactEffect: {fileID: 519327617811173363, guid: 477ee378c097b084f9c069b937d710d9,
-    type: 3}
   carImpactEffect: {fileID: 9217968598369223018, guid: f7208c1b1056af14bb172d43f08fe161,
     type: 3}
   delay: 0.1
@@ -25599,7 +25600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 3
-  outlineColor: {r: 0.4198113, g: 0.68895096, b: 1, a: 1}
+  outlineColor: {r: 0.6273585, g: 0.8010901, b: 1, a: 1}
   outlineWidth: 4
   precomputeOutline: 0
   bakeKeys: []
@@ -25614,12 +25615,12 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.075
+  m_Extents: {x: 1.145, y: 0.8, z: 2.23}
+  m_MoveThreshold: 0.2
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.01
+  m_Center: {x: 0.02, y: 0.64, z: 0.27}
+  m_TimeToStationary: 0.1
 --- !u!1 &3831327430227488139
 GameObject:
   m_ObjectHideFlags: 0
@@ -40752,7 +40753,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153634532010733624}
-  - component: {fileID: 2104262144}
   m_Layer: 0
   m_Name: Cam Holder
   m_TagString: Untagged
@@ -40776,19 +40776,6 @@ Transform:
   m_Father: {fileID: 8228446987530827425}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2104262144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475996198683925667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ccf1cafb94f1449b5d1cf7ee5ddae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clampingAngleX: -20
 --- !u!1 &5941362431892554255
 GameObject:
   m_ObjectHideFlags: 0
@@ -50809,7 +50796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c0f0c79fd58fd45886c713e98f3790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 3.5
+  sensitivity: 3
   theCar: {fileID: 3831234768491391765}
   camHolder: {fileID: 5475996198683925667}
 --- !u!81 &7983685219010859751

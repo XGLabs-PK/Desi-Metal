@@ -6,11 +6,6 @@ namespace XGStudios
 {
     public class PoolManager : MonoBehaviour
     {
-        [Header("For Bullets")]
-        public GameObject bulletPrefab;
-        public int bulletSpawnCount;
-        public List<GameObject> bulletsList;
-
         [Header("For Bullet Impact")]
         public GameObject bulletImpactPrefab;
         public int impactSpawnCount;
@@ -20,6 +15,7 @@ namespace XGStudios
         public GameObject mehranEnemyPrefab;
         public int mehranCount;
         public Queue<GameObject> mehranQueue;
+        
         [Header("For Rickshaw")]
         public GameObject RickshawPrefab;
         Quaternion rickshawRot;
@@ -40,14 +36,6 @@ namespace XGStudios
             mehranQueue = new Queue<GameObject>();
             RickshawQueue = new Queue<GameObject>();
             deathQueue = new Queue<GameObject>();
-
-            //Spawn "25" bullets, add them to the bulletsList
-            for (int i = 0; i < bulletSpawnCount; i++)
-            {
-                placeHolder = Instantiate(bulletPrefab, myTransform, true);
-                bulletsList.Add(placeHolder);
-                placeHolder.SetActive(false);
-            }
 
             //Spawn "25" bullet Impacts, add them to the bulletsList
             for (int i = 0; i < impactSpawnCount; i++)
