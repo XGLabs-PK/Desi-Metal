@@ -202,9 +202,9 @@ namespace XGStudios
         }
         Vector3 Findpoint2() {
             position = target.transform.position;
-            newPoint.x = position.x + Random.Range(200, 400);
+            newPoint.x = position.x + Random.Range(Random.Range(200,300), Random.Range(300,400));
             newPoint.y = yOffset;
-            newPoint.z = position.z + Random.Range(200, 400);
+            newPoint.z = position.z + Random.Range(Random.Range(200,300), Random.Range(300,400));
             return newPoint;
 
 
