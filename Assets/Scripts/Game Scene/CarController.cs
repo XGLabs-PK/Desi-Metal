@@ -290,10 +290,7 @@ namespace XGStudios
                         break;
                 }
             }
-
-            if (!AbilityUsed)
-            {
-                switch (airMultiplierSlider.value)
+            switch (airMultiplierSlider.value)
                 {
                     case >= 100:
                         abilityText.SetActive(true);
@@ -307,7 +304,6 @@ namespace XGStudios
                         _airMultiplierFilled = true;
                         break;
                 }
-            }
         }
 
         void Ability()

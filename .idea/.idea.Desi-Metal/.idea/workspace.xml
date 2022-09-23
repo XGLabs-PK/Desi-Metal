@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/UI/ScoreMultiplier.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/UI/ScoreMultiplier.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/UI/ScoreMultiplier.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/UI/ScoreMultiplier.controller.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Sphere.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/Sphere.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet/The Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Bullet/The Bullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Scene/The Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/NavmeshAi.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCamera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCameraClamping.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/TheCameraClamping.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game Scene/UIStuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/UIStuff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +112,7 @@
       <workItem from="1663789625743" duration="1014000" />
       <workItem from="1663816936108" duration="3474000" />
       <workItem from="1663887624029" duration="498000" />
-      <workItem from="1663964161032" duration="7587000" />
+      <workItem from="1663964161032" duration="8557000" />
     </task>
     <servers />
   </component>
