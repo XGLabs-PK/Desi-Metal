@@ -160,7 +160,7 @@ MeshRenderer:
   - {fileID: 21701675335717725, guid: 85568e29ee5d6d14297304c9a95e6d5e, type: 3}
   - {fileID: -7974061692611825179, guid: 85568e29ee5d6d14297304c9a95e6d5e, type: 3}
   - {fileID: 2100000, guid: 7e76454e97672a34999966ebd58a4804, type: 2}
-  - {fileID: 2100000, guid: d0d0a0c5fd149e84681b81373313939f, type: 2}
+  - {fileID: 2100000, guid: 31af81d66afd997458c7bfca0adfba74, type: 2}
   - {fileID: 8167817994744610055, guid: 85568e29ee5d6d14297304c9a95e6d5e, type: 3}
   - {fileID: 2100000, guid: 7e76454e97672a34999966ebd58a4804, type: 2}
   - {fileID: -5986849637997920160, guid: 85568e29ee5d6d14297304c9a95e6d5e, type: 3}
@@ -25417,16 +25417,21 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 136
+  groundCheck: {fileID: 8752026049332456212}
   airMultiplierPopup: {fileID: 0}
+  airMultiplierScore: {fileID: 0}
+  airMultiplierSlider: {fileID: 0}
+  scoreMultiplierPopup: {fileID: 0}
   abilityText: {fileID: 0}
   headlights: {fileID: 3500193561276069396}
   backlights: {fileID: 9010120248276598055}
   smokeEffect: {fileID: 8575064475025226875}
+  blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
   topCheck: {fileID: 5941362431892554255}
   flipRadius: 0.1
   angle: -30
   rotationSpeed: 40
-  groundCheck: {fileID: 8752026049332456212}
   FrontLeftWheel:
     WheelCollider: {fileID: 3974270324504822581}
     WheelView: {fileID: 3828557927920600281}
@@ -25448,7 +25453,6 @@ MonoBehaviour:
     SlipForGenerateParticle: 0.4
     TrailOffset: {x: -0.1, y: 0.05, z: 0}
   COM: {fileID: 3836972422016468745}
-  BackFireParticles: []
   CarConfig:
     MaxSteerAngle: 55
     DriveType: 2
@@ -25527,10 +25531,6 @@ MonoBehaviour:
     MaxAngularVelocityHelpAngle: 45
     AngularVelucityInMaxAngle: 0.5
     AngularVelucityInMinAngle: 2
-  airMultiplierScore: {fileID: 0}
-  airMultiplierSlider: {fileID: 0}
-  blitRender: {fileID: 2088077491411647271, guid: c40be3174f62c4acf8c1216858c64956,
-    type: 2}
 --- !u!114 &5767164049449013031
 MonoBehaviour:
   m_ObjectHideFlags: 0

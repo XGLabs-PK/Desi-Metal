@@ -116,10 +116,10 @@ namespace XGStudios
             switch (value)
             {
                 case >= 0.5f:
-                    warningTxt.SetActive(true);
+                    warningTxt.gameObject.SetActive(true);
                     break;
                 case < 0.5f:
-                    warningTxt.SetActive(false);
+                    warningTxt.gameObject.SetActive(false);
                     break;
             }
         }
