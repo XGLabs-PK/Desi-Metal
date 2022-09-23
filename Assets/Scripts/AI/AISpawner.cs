@@ -19,9 +19,13 @@ namespace XGStudios
         List<NavMeshHit> _hitList;
         NavMeshHit _hit;
         GameObject _death;
-        
+        Vector3 position;
+        Vector3 newPoint;
+        bool is3;
         void Start()
         {
+            is3 = false;
+            newPoint = Vector3.zero;
             _enemiesLeft = GameObject.FindGameObjectWithTag("LeftCounter").GetComponent<TextMeshProUGUI>();
             _wave = 1;
             enemies = new List<GameObject>();
@@ -71,22 +75,27 @@ namespace XGStudios
             switch (_wave)
             {
                 case 1:
+                    is3 = false;
                     InstantiateEnemies(pool.RickshawQueue, pool.mehranQueue, 2, 0);
                     _wave++;
                     break;
                 case 2:
+                    is3 = false;
                     InstantiateEnemies(pool.RickshawQueue, 2, 5);
                     _wave++;
                     break;
                 case 3:
+                    is3 = true;
                     InstantiateEnemies(pool.mehranQueue, 3, 2);
                     _wave++;
                     break;
                 case 4:
+                    is3 = true;
                     InstantiateEnemies(pool.mehranQueue, pool.RickshawQueue, 5, 2);
                     _wave++;
                     break;
                 case 5:
+                    is3 = false;
                     if (NavMesh.SamplePosition(FindPoint(), out _hit, 200f, NavMesh.AllAreas))
                     {
                         enemies.Add(pool.truck);
@@ -114,12 +123,15 @@ namespace XGStudios
         void InstantiateEnemies(Queue<GameObject> enemy, int moreEnemy, int enemyPlus)
         {
             for (int i = 0; i < moreEnemy + enemyPlus; i++)
-                if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas) && !is3)
                 {
                     enemies.Add(enemy.Dequeue());
                     _hitList.Add(_hit);
                 }
-
+                else if (NavMesh.SamplePosition(Findpoint2(), out _hit, 300f, NavMesh.AllAreas) && is3) {
+                    enemies.Add(enemy.Dequeue());
+                    _hitList.Add(_hit);
+                }
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].transform.position = _hitList[i].position;
@@ -136,15 +148,26 @@ namespace XGStudios
             {
                 if (RandomBoolean())
                 {
-                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas) &&!is3)
                     {
                         enemies.Add(enemy.Dequeue());
                         _hitList.Add(_hit);
                     }
+                    else if (NavMesh.SamplePosition(Findpoint2(), out _hit, 300f, NavMesh.AllAreas) && is3)
+                    {
+                        enemies.Add(enemy.Dequeue());
+                        _hitList.Add(_hit);
+                    }
+
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas))
+                    if (NavMesh.SamplePosition(FindPoint(), out _hit, 300f, NavMesh.AllAreas) && !is3)
+                    {
+                        enemies.Add(enemy2.Dequeue());
+                        _hitList.Add(_hit);
+                    }
+                    else if (NavMesh.SamplePosition(Findpoint2(), out _hit, 300f, NavMesh.AllAreas) && is3)
                     {
                         enemies.Add(enemy2.Dequeue());
                         _hitList.Add(_hit);
@@ -169,9 +192,22 @@ namespace XGStudios
 
         Vector3 FindPoint()
         {
-            Vector3 position = target.transform.position;
-            return new Vector3(position.x + Random.Range(100, 300), yOffset,
-                position.z + Random.Range(100, 300));
+            position = target.transform.position;
+            //return new Vector3(position.x + Random.Range(100, 300), yOffset,
+            //    position.z + Random.Range(100, 300));
+            newPoint.x = position.x + Random.Range(100, 300);
+            newPoint.y = yOffset;
+            newPoint.z = position.z + Random.Range(100, 300);
+            return newPoint;
+        }
+        Vector3 Findpoint2() {
+            position = target.transform.position;
+            newPoint.x = position.x + Random.Range(200, 400);
+            newPoint.y = yOffset;
+            newPoint.z = position.z + Random.Range(200, 400);
+            return newPoint;
+
+
         }
     }
 }
