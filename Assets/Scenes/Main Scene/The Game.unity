@@ -108,7 +108,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.14
     agentHeight: 2
     agentSlope: 33.2
     agentClimb: 0.69
@@ -2248,12 +2248,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1108615353}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &201997097 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3828275737928298105, guid: f5a70605d70852d4aaec6114f1eab9fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 1108615353}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &209319366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,7 +2597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723fae636eceb594b92a13a34ea70568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsText: {fileID: 2038541047}
 --- !u!114 &238264357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2616,11 +2609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a89af593701ec2479c8251218057e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 2636927224998936938, guid: c79afc477f6aa134ab2519ac03d97baf,
-    type: 3}
-  holder: {fileID: 0}
-  camera: {fileID: 1620350440}
-  player: {fileID: 201997097}
 --- !u!1 &260539494
 GameObject:
   m_ObjectHideFlags: 0
@@ -11434,6 +11422,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Shape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Center.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Center.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Center.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Extents.x
+      value: 1.145
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Extents.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_Extents.z
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_MoveThreshold
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_TimeToStationary
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: healthSlider

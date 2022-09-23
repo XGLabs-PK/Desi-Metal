@@ -14,7 +14,7 @@ namespace XGStudios
         Transform myTransform;
         float randomDamage;
         [SerializeField]
-        float damageIndicatorDestroyTimer = 5f;
+        
 
         void Start()
         {

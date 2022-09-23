@@ -70,18 +70,8 @@ namespace XGStudios
         Vector3 moveAwayPoint;
         WaitForSeconds moveAwayTime;
         float myStop;
-        bool isMoving = false;
-        
-        private void OnDisable()
-        {
-            StopAllCoroutines();
-        }
-
-        private void OnDestroy()
-        {
-            StopAllCoroutines();
-        }
-
+       public bool isMoving = false;
+        public  int myCoount = 0;
         private void Start()
         {
             killCounterTxt = GameObject.Find("KillCounter").GetComponent<TextMeshProUGUI>();
@@ -128,12 +118,22 @@ namespace XGStudios
 
                 AudioManager.Instance.Play("CarDestruction");
                 FeelManager.Instance.enemyDestroyed.PlayFeedbacks();
-                health = 100;
+                if (myGameobject.name.Contains("Rickshaw"))
+                {
+                    health = 100;
+                }
+                else if (myGameobject.name.Contains("Mehran"))
+                {
+                    health = 200;
+                }
+                else
+                    health = 300;
                 myGameobject.SetActive(false);
                  
                 
             }
-            if (health <= 50) {
+            if (health <= 50 && myCoount == 0) {
+                myCoount++;
                 _agent.speed = _agent.speed * 1.5f;
             }
         }
@@ -146,13 +146,13 @@ namespace XGStudios
             _distanceBetweenPlayer = Vector3.Distance(myTransform.position, player.position);
             rammingTime -= Time.deltaTime;
 
-            if (rammingTime <= 0)
-                Ramming();
+            //if (rammingTime <= 0)
+            //    Ramming();
 
-            if ((_distanceBetweenPlayer > _agent.stoppingDistance) && !isMoving)
+            
                 _agent.SetDestination(player.position);
 
-            else
+            if(_distanceBetweenPlayer<=_agent.stoppingDistance)
             {
                 myTransform.RotateAround(player.position, Vector3.up, rotationSpeed * Time.deltaTime);
                 myTransform.LookAt(player);
@@ -162,13 +162,6 @@ namespace XGStudios
         void Ramming()
         {
             
-            _agent.stoppingDistance = stopDist;
-           
-           if(_distanceBetweenPlayer <= stopDist) { 
-            StartCoroutine(MoveAway());
-            _agent.stoppingDistance = myStop;
-            rammingTime = Random.Range(10, 31);
-            }
         }
 
         void FieldOfViewSearch()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace XGStudios
 {
-    public class SpawnController : MonoBehaviour
+    public class spawnController : MonoBehaviour
     {
         public GameObject Spawner; 
         // Start is called before the first frame update
