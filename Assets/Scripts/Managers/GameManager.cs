@@ -26,6 +26,7 @@ namespace XGStudios
         public bool carDestroyed;
 
         TheCamera _camScript;
+        CarController _carScript;
         int _inGameKillCounter;
         int _killCounter;
         TheWeapon _weaponScript;
@@ -46,10 +47,13 @@ namespace XGStudios
         void Start()
         {
             Score = 0;
+            _carScript = FindObjectOfType<CarController>();
             _camScript = FindObjectOfType<TheCamera>();
             _weaponScript = FindObjectOfType<TheWeapon>();
-
-            Invoke(nameof(EnableWeapon), 4.7f);
+            
+            _carScript.enabled = false;
+            _weaponScript.enabled = false;
+            Invoke(nameof(EnableWeapon), 5f);
 
             if (pauseUI != null)
                 pauseUI.SetActive(false);
@@ -96,6 +100,7 @@ namespace XGStudios
         void EnableWeapon()
         {
             _weaponScript.enabled = true;
+            _carScript.enabled = true;
         }
 
         void PauseGame()
