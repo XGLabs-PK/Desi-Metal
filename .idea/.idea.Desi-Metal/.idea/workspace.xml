@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/DiscordRpc.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/DiscordRpc.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/DiscordTime.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/DiscordTime.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/PresenceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Discord-RPC/PresenceManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Editor/BuildHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Editor/BuildHelper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/discord-rpc.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/discord-rpc.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86/discord-rpc.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86/discord-rpc.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86_64.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86_64/discord-rpc.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Plugins/x86_64/discord-rpc.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Prefabs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Prefabs/Presence Manager.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord/Prefabs/Presence Manager.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/DiscordManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game Scene/DiscordManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Cars/Swift Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu/MainMenu.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +128,7 @@
       <workItem from="1663816936108" duration="3474000" />
       <workItem from="1663887624029" duration="498000" />
       <workItem from="1663964161032" duration="10849000" />
-      <workItem from="1664049164227" duration="313000" />
+      <workItem from="1664049164227" duration="4672000" />
     </task>
     <servers />
   </component>
