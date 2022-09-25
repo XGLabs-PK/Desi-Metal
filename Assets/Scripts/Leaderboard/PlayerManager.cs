@@ -28,6 +28,7 @@ namespace XG.Studios
                     {
                         if (response.statusCode == 200)
                         {
+                            memberID.text = "";
                             Debug.Log("Successful");
                             scoreSubmitted.text = response.success ? "Score Submitted" : "Score Submission Failed";
                         }

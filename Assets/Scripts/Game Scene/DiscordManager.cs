@@ -6,20 +6,17 @@ namespace XGStudios
 {
     public class DiscordManager : MonoBehaviour
     {
-        public string detail;
+        public string details;
         public string state;
-
+        
         void Awake()
-        {
+        { 
             DontDestroyOnLoad(gameObject);
         }
 
         void Start()
         {
-            PresenceManager.UpdatePresence(
-                detail:detail,
-                state:state
-                );
+            PresenceManager.UpdatePresence(detail:details, state:state);
         }
     }
 }

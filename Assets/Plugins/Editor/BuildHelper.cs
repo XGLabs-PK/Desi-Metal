@@ -17,6 +17,8 @@ public class ScriptBatch
 
     public static bool RunRpcBuildScript()
     {
+        UnityEngine.Debug.Log("Trying to run build script");
+
         Process proc = new Process();
 #if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
 		proc.StartInfo.UseShellExecute = false;
@@ -77,6 +79,7 @@ public class ScriptBatch
         {
             if (!RunRpcBuildScript())
             {
+                UnityEngine.Debug.LogError("Build failed");
                 return;
             }
         }
