@@ -261,5 +261,12 @@ namespace XGStudios
            
 
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag.Equals("RealCar")) {
+                TakeDamage(5);
+            
+            }
+        }
     }
 }
