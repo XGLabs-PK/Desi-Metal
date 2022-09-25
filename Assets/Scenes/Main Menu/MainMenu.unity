@@ -8797,7 +8797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5808e752d78ca9346b13f9d27f04bb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detail: It's the
+  details: it's the
   state: Best Game Ever
 --- !u!1 &1609960171
 GameObject:
