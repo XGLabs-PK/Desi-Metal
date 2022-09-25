@@ -11631,6 +11631,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_MoveThreshold
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 201997107, guid: f5a70605d70852d4aaec6114f1eab9fe, type: 3}
+      propertyPath: m_CarveOnlyStationary
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2095716685845707956, guid: f5a70605d70852d4aaec6114f1eab9fe,
         type: 3}
       propertyPath: healthSlider

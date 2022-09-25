@@ -92,5 +92,11 @@ namespace XGStudios
         {
             fireSmoke.SetActive(boolean);
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag.Equals("AI")) {
+                TakeDamage(5);
+            }
+        }
     }
 }

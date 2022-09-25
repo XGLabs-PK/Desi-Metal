@@ -213,19 +213,19 @@ namespace XGStudios
 
             switch (_distanceBetweenPlayer)
             {
-                case > 20:
+                case > 50:
                     bullet.bulletSpeed = 150;
-                    _rateOfFire = 1f;
+                    _rateOfFire = 0.75f;
                     shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
                     break;
-                case > 10:
+                case > 20:
                     bullet.bulletSpeed = 170;
-                    _rateOfFire = 0.8f;
+                    _rateOfFire = 0.5f;
                     shootPoint.LookAt(Carpoints[Random.Range(0, 3)].transform);
                     break;
                 default:
                     bullet.bulletSpeed = 200;
-                    _rateOfFire = 0.5f;
+                    _rateOfFire = 0.25f;
                     shootPoint.LookAt(player);
                     break;
             }
@@ -256,8 +256,9 @@ namespace XGStudios
             moveAwayPoint = findPoint();
             _agent.SetDestination(moveAwayPoint);
             yield return moveAwayTime;
+            playerObstacle.enabled = true;
             isMoving = false;
-            playerObstacle.enabled = true ;
+           
 
         }
     }
