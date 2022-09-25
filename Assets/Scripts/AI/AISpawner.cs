@@ -100,7 +100,9 @@ namespace XGStudios
                     {
                         enemies.Add(pool.truck);
                         enemies[0].transform.position = _hit.position;
+                        _hitList.Add(_hit);
                         enemies[0].SetActive(true);
+                        
                     }
                     
                     foreach (GameObject t in enemies)
