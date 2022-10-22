@@ -821,11 +821,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 
+  cloudProjectId: 0b4d557f-8f4c-4bf4-95d5-123736183468
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Drift_Lite_2018.3
-  organizationId: 
+  projectName: Project Kay
+  organizationId: xglabs-pk
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

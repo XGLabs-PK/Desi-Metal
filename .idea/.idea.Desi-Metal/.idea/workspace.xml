@@ -2,28 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30a47520-4dbc-4fa4-8e90-c2099af48048" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/DiscordRpc.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/DiscordRpc.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/DiscordTime.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/DiscordTime.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/PresenceManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Discord-RPC/PresenceManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/BuildHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/BuildHelper.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/discord-rpc.so" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/discord-rpc.so.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86/discord-rpc.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86/discord-rpc.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86_64.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86_64/discord-rpc.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Plugins/x86_64/discord-rpc.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Prefabs/Presence Manager.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Prefabs/Presence Manager.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Desi-Metal/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Media/Frame 3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +108,7 @@
       <workItem from="1663964161032" duration="10849000" />
       <workItem from="1664049164227" duration="4672000" />
       <workItem from="1664121915088" duration="328000" />
+      <workItem from="1666433972343" duration="71000" />
     </task>
     <servers />
   </component>
